@@ -1,0 +1,70 @@
+---
+source_dir: ~/.dotfiles
+omz_custom_plugins_src: '{{ source_dir }}/.oh-my-zsh/custom/plugins'
+omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
+vim_plugins: ~/.vim_runtime/my_plugins
+apps:
+  - name: zsh
+    packages:
+      - zsh
+      - git
+    git:
+      - repo: https://github.com/robbyrussell/oh-my-zsh.git
+        dest: ~/.oh-my-zsh
+      - repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: "{{ omz_custom_plugins }}/zsh-autosuggestions"
+        version: v0.5.0
+      - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "{{ omz_custom_plugins }}/zsh-syntax-highlighting"
+        version: 0.6.0
+      - repo: https://github.com/junegunn/fzf.git
+        dest: ~/.fzf
+        version: 0.17.5
+      - repo: https://github.com/nicodebo/base16-fzf.git
+        dest: ~/.local/share/fzf/base16-fzf
+    dotfiles:
+      - path: ~/.zshrc
+        src: "{{ source_dir }}/.zshrc"
+      - path: '{{ omz_custom_plugins }}/ansidot/ansidot.plugin.zsh'
+        src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
+  - name: vim
+    packages:
+      - vim
+      - ShellCheck
+      - editorconfig
+    git:
+      - repo: https://github.com/amix/vimrc.git
+        dest: ~/.vim_runtime
+      - repo: https://github.com/morhetz/gruvbox.git
+        dest: "{{ vim_plugins }}/gruvbox"
+        version: v2.0.0
+      - repo: https://github.com/Valloric/YouCompleteMe.git
+        dest: "{{ vim_plugins }}/YouCompleteMe"
+      - repo: https://github.com/editorconfig/editorconfig-vim.git
+        dest: "{{ vim_plugins }}/editorconfig-vim"
+        version: v0.3.3
+    dotfiles:
+      - path: ~/.vimrc
+        src: "{{ source_dir }}/.vimrc"
+      - path: ~/.vim_runtime/my_configs.vim
+        src: "{{ source_dir }}/.vim_runtime/my_configs.vim"
+        ## Install the python-language-server and other Python tools
+        # python3 -m venv ~/.virtualenvs/ide-python
+        # ~/.virtualenvs/ide-python/bin/python3 -m pip install \
+        #   'python-language-server[all]' \
+        #   pyls-isort pyls-black \
+        #   flake8
+      - path: ~/.vim_runtime/my_plugins/ale-config
+        src: "{{ source_dir }}/.vim_runtime/my_plugins/ale-config"
+  - name: tmux
+    packages:
+      - tmux
+      - urlview
+    git:
+      - repo: https://github.com/gpakosz/.tmux.git
+        dest: ~/.tmux
+    dotfiles:
+      - path: ~/.tmux.conf.local
+        src: "{{ source_dir }}/.tmux.conf.local"
+      - path: ~/.tmux.conf
+        src: ~/.tmux/.tmux.conf
