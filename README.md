@@ -2,6 +2,8 @@
 
 My dotfiles collection for a flawless workflow. Starring `zsh`, `vim` and `tmux`.
 
+![Screenshot](screenshot.png)
+
 ## How to setup
 
 ```shell
