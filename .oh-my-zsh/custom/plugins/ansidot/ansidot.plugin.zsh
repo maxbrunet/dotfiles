@@ -10,6 +10,9 @@ alias ansidot="ANSIBLE_PIPELINING=true ${python_env}/ansible-playbook ${ansidot}
 alias dotapps="${EDITOR:-vim} ${dotfiles}/apps.yml"
 
 dotgit() {
-  GIT_WORK_TREE=${dotfiles} GIT_DIR=${GIT_WORK_TREE}/.git git "${@}"
+  local dotfiles="${HOME}/.dotfiles"
+  GIT_WORK_TREE=${dotfiles} GIT_DIR=${dotfiles}/.git git "${@}"
 }
 compdef '_dispatch git git' dotgit
+
+unset dotfiles ansidot python_env
