@@ -1,0 +1,5 @@
+rofi.theme: Arc-Dark
+rofi.lines: 5
+rofi.eh: 2
+rofi.font: Roboto 18
+rofi.modi: window,run,ssh,drun

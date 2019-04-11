@@ -1,0 +1,25 @@
+command=~/.local/lib/i3blocks-contrib/$BLOCK_NAME/$BLOCK_NAME
+color=#E0E0E0
+separator_block_width=15
+
+[mediaplayer]
+label=
+instance=spotify
+interval=5
+
+[disk]
+label=
+interval=30
+
+[load_average]
+label=
+interval=10
+
+[battery2]
+markup=pango
+interval=30
+
+[time]
+label=
+command=date '+%I:%M %p'
+interval=1

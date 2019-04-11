@@ -22,11 +22,15 @@ apps:
         version: 0.17.5
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
+      - repo: https://github.com/chriskempson/base16-xresources.git
+        dest: ~/.Xresources.d/base16-xresources
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
       - path: '{{ omz_custom_plugins }}/ansidot/ansidot.plugin.zsh'
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
+      - path: ~/.Xresources
+        src: "{{ source_dir }}/.Xresources"
   - name: vim
     packages:
       - vim
@@ -68,3 +72,27 @@ apps:
         src: "{{ source_dir }}/.tmux.conf.local"
       - path: ~/.tmux.conf
         src: ~/.tmux/.tmux.conf
+  - name: i3
+    packages:
+      - i3-gaps
+      - i3blocks
+      - rofi
+      - rxvt-unicode
+    git:
+      - repo: https://github.com/chriskempson/base16-xresources.git
+        dest: ~/.Xresources.d/base16-xresources
+      - repo: https://github.com/vivien/i3blocks-contrib.git
+        dest: ~/.local/lib/i3blocks-contrib
+    dotfiles:
+      - path: ~/.config/i3/config
+        src: "{{ source_dir }}/.config/i3/config"
+      - path: ~/.config/i3blocks/config
+        src: "{{ source_dir }}/.config/i3blocks/config"
+      - path: ~/.config/rofi/config
+        src: "{{ source_dir }}/.config/rofi/config"
+      - path: ~/.Xresources
+        src: "{{ source_dir }}/.Xresources"
+      - path: ~/.gtkrc-2.0
+        src: "{{ source_dir }}/.gtkrc-2.0"
+      - path: ~/.config/gtk-3.0/settings.ini
+        src: "{{ source_dir }}/.config/gtk-3.0/settings.ini"

@@ -1,0 +1,19 @@
+#include ".Xresources.d/base16-xresources/xresources/base16-google-dark-256.Xresources"
+
+URxvt.font: xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true
+URxvt.boldFont: xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true
+URxvt.italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12:antialias=true:hinting=true
+URxvt.letterSpace: -1
+
+URxvt.saveLines: 0
+URxvt.scrollBar: false
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: xdg-open
+URxvt.matcher.button: 3
+
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
