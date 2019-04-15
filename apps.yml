@@ -28,6 +28,10 @@ apps:
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
+      - path: ~/.fzf/.git/hooks/post-merge
+        src: "{{ source_dir }}/githooks/fzf.githook"
+      - path: ~/.fzf/.git/hooks/post-checkout
+        src: post-merge
   - name: vim
     git:
       - repo: https://github.com/amix/vimrc.git
@@ -53,6 +57,10 @@ apps:
         #   flake8
       - path: ~/.vim_runtime/my_plugins/ale-config
         src: "{{ source_dir }}/.vim_runtime/my_plugins/ale-config"
+      - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-merge
+        src: "{{ source_dir }}/githooks/ycmd.githook"
+      - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-checkout
+        src: post-merge
   - name: tmux
     git:
       - repo: https://github.com/gpakosz/.tmux.git
