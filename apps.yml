@@ -5,9 +5,6 @@ omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
 vim_plugins: ~/.vim_runtime/my_plugins
 apps:
   - name: zsh
-    packages:
-      - zsh
-      - git
     git:
       - repo: https://github.com/robbyrussell/oh-my-zsh.git
         dest: ~/.oh-my-zsh
@@ -32,10 +29,6 @@ apps:
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
   - name: vim
-    packages:
-      - vim
-      - ShellCheck
-      - editorconfig
     git:
       - repo: https://github.com/amix/vimrc.git
         dest: ~/.vim_runtime
@@ -61,9 +54,6 @@ apps:
       - path: ~/.vim_runtime/my_plugins/ale-config
         src: "{{ source_dir }}/.vim_runtime/my_plugins/ale-config"
   - name: tmux
-    packages:
-      - tmux
-      - urlview
     git:
       - repo: https://github.com/gpakosz/.tmux.git
         dest: ~/.tmux
@@ -73,11 +63,6 @@ apps:
       - path: ~/.tmux.conf
         src: ~/.tmux/.tmux.conf
   - name: i3
-    packages:
-      - i3-gaps
-      - i3blocks
-      - rofi
-      - rxvt-unicode
     git:
       - repo: https://github.com/chriskempson/base16-xresources.git
         dest: ~/.Xresources.d/base16-xresources
