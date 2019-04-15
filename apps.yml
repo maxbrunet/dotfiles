@@ -16,7 +16,7 @@ apps:
         version: 0.6.0
       - repo: https://github.com/junegunn/fzf.git
         dest: ~/.fzf
-        version: 0.17.5
+        version: 0.18.0
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
       - repo: https://github.com/chriskempson/base16-xresources.git
