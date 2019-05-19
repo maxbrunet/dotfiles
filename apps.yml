@@ -32,6 +32,8 @@ apps:
         src: "{{ source_dir }}/.zshrc"
       - path: '{{ omz_custom_plugins }}/ansidot/ansidot.plugin.zsh'
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
+      - path: '{{ omz_custom_plugins }}/fzf-base16/fzf-base16.plugin.zsh'
+        src: '{{ omz_custom_plugins_src }}/fzf-base16/fzf-base16.plugin.zsh'
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
       - path: ~/.fzf/.git/hooks/post-merge

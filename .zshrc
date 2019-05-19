@@ -10,6 +10,9 @@ ZSH_TMUX_AUTOSTART="true"
 # https://github.com/gpakosz/.tmux/blob/master/README.md#installation
 export TERM=xterm-256color
 
+# fzf-base16 plugin
+FZF_BASE16_COLORSCHEME="google-dark"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -73,6 +76,7 @@ plugins=(
   zsh_reload
   # custom
   ansidot
+  fzf-base16
   kubectx
   zsh-autosuggestions
 )
@@ -153,5 +157,3 @@ open_gh() {
   hub browse ${2:-} -- "tree/$(git rev-parse --abbrev-ref --symbolic @{u} | sed 's#^[^/]*/##')/$(git rev-parse --show-prefix)${1:-}"
   return "${?}"
 }
-
-source $HOME/.local/share/fzf/base16-fzf/bash/base16-google-dark.config
