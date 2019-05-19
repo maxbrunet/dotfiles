@@ -16,6 +16,12 @@ let g:ycm_filetype_blacklist = {
       \ 'mail': 1
       \}
 let g:ale_completion_enabled = 1
+let g:ale_linters={
+\ 'python': ['flake8', 'pyls'],
+\ }
+let g:ale_fixers={
+\ 'python': ['isort', 'black'],
+\ }
 set completeopt=menu,menuone,preview,noselect,noinsert
 highlight ColorColumn ctermbg=red guibg=red
 call matchadd('ColorColumn', '\%81v', 100)

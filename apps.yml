@@ -19,8 +19,14 @@ apps:
         version: 0.18.0
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
+      - repo: https://github.com/pyenv/pyenv-virtualenv.git
+        dest: ~/.pyenv/plugins/pyenv-virtualenv
+        version: v1.1.5
       - repo: https://github.com/chriskempson/base16-xresources.git
         dest: ~/.Xresources.d/base16-xresources
+      - repo: https://github.com/ahmetb/kubectx.git
+        dest: ~/.local/share/kubectx
+        version: v0.6.3
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
@@ -32,6 +38,14 @@ apps:
         src: "{{ source_dir }}/githooks/fzf.githook"
       - path: ~/.fzf/.git/hooks/post-checkout
         src: post-merge
+      - path: ~/.local/bin/kubectx
+        src: ~/.local/share/kubectx/kubectx
+      - path: ~/.local/bin/kubens
+        src: ~/.local/share/kubectx/kubens
+      - path: '{{ omz_custom_plugins }}/kubectx/_kubectx'
+        src: ~/.local/share/kubectx/completion/kubectx.zsh
+      - path: '{{ omz_custom_plugins }}/kubectx/_kubens'
+        src: ~/.local/share/kubectx/completion/kubens.zsh
   - name: vim
     git:
       - repo: https://github.com/amix/vimrc.git
@@ -55,8 +69,6 @@ apps:
         #   'python-language-server[all]' \
         #   pyls-isort pyls-black \
         #   flake8
-      - path: ~/.vim_runtime/my_plugins/ale-config
-        src: "{{ source_dir }}/.vim_runtime/my_plugins/ale-config"
       - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-merge
         src: "{{ source_dir }}/githooks/ycmd.githook"
       - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-checkout

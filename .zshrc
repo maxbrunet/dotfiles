@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -38,7 +38,7 @@ ZSH_THEME="tjkirch"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -58,29 +58,40 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  gitignore
   tmux
   colored-man-pages
   common-aliases
   docker
   fzf
-  nmap
-  pip
+  git
+  gitignore
+  kube-ps1
+  kubectl
+  pyenv
   sudo
-  suse
-  systemd
   vagrant
-  virtualenvwrapper
-  web-search
   zsh_reload
   # custom
   ansidot
-  zsh-syntax-highlighting
+  kubectx
   zsh-autosuggestions
 )
 
+# Conditionally load some plugins
+(( $+commands[pyenv] )) && plugins+=(pyenv)
+(( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
+(( $+commands[zypper] )) && plugins+=(suse)
+
+# Load zsh-syntax-highlighting after all custom widgets have been created
+plugins+=(zsh-syntax-highlighting)
+
 source $ZSH/oh-my-zsh.sh
+
+# kube-ps1
+KUBE_PS1_ENABLED=false
+KUBE_PS1_PREFIX="
+("
+PROMPT="\$(kube_ps1)${PROMPT}"
 
 # User configuration
 
@@ -114,11 +125,20 @@ export EDITOR='vim'
 alias tree='tree -C -F'
 alias vimrc="$EDITOR ~/.vim_runtime/my_configs.vim"
 alias grbb="git rebase --interactive HEAD~\$(git rev-list --count origin/master..HEAD)"
-alias bat="bat --paging=never --style=plain --theme TwoDark"
+alias bat="bat --style=plain --theme TwoDark"
 alias curl="curl --fail"
-alias zinnr='sudo zypper install --no-recommends'
-alias zse='zypper se'
-alias zif='zypper if'
+
+if (( $+commands[zypper] )); then
+  alias zinnr='sudo zypper install --no-recommends'
+  alias zse='zypper se'
+  alias zif='zypper if'
+fi
+
+if [[ "$(uname -s)" == 'Darwin' ]]; then
+  alias mkpasswd='docker run --rm busybox mkpasswd'
+  alias sudoedit='sudo -e'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+fi
 
 kshell() {
   if [[ "${#}" -lt 1 ]]; then
