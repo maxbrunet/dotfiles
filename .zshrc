@@ -7,11 +7,6 @@ export ZSH="${HOME}/.oh-my-zsh"
 # fzf-base16 plugin
 FZF_BASE16_COLORSCHEME='google-dark'
 
-# kube-ps1 plugin
-KUBE_PS1_ENABLED='false'
-KUBE_PS1_PREFIX="\n("
-PROMPT="\$(kube_ps1)${PROMPT}"
-
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
@@ -52,6 +47,11 @@ plugins=(
 plugins+=(zsh-syntax-highlighting)
 
 source "${ZSH}/oh-my-zsh.sh"
+
+# kube-ps1 plugin
+KUBE_PS1_ENABLED='false'
+KUBE_PS1_PREFIX="\n("
+PROMPT="\$(kube_ps1)${PROMPT}"
 
 # Set EDITOR
 export EDITOR='vim'
