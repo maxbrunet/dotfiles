@@ -49,9 +49,28 @@ plugins+=(zsh-syntax-highlighting)
 source "${ZSH}/oh-my-zsh.sh"
 
 # kube-ps1 plugin
-KUBE_PS1_ENABLED='false'
+KUBE_PS1_ENABLED='false' # Disable kube-ps1 by default
 KUBE_PS1_PREFIX="\n("
 PROMPT="\$(kube_ps1)${PROMPT}"
+
+# Automatically enable kube-ps1 when certain commands are executed
+function _enable_kube-ps1 {
+  case "${2%% *}" in
+        kubectl \
+      | kops \
+      | kubens \
+      | kubectx \
+      | kustomize \
+      | minikube \
+    )
+      kubeon
+      ;;
+  esac
+}
+
+if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
+  preexec_functions+=(_enable_kube-ps1)
+fi
 
 # Set EDITOR
 export EDITOR='vim'
