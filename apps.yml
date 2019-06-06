@@ -60,6 +60,8 @@ apps:
       - repo: https://github.com/editorconfig/editorconfig-vim.git
         dest: "{{ vim_plugins }}/editorconfig-vim"
         version: v0.3.3
+      - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
+        path: '{{ vim_plugins }}/Jenkinsfile-vim-syntax'
     dotfiles:
       - path: ~/.vimrc
         src: "{{ source_dir }}/.vimrc"
