@@ -51,7 +51,11 @@ source "${ZSH}/oh-my-zsh.sh"
 # kube-ps1 plugin
 KUBE_PS1_ENABLED='false' # Disable kube-ps1 by default
 KUBE_PS1_PREFIX="\n("
-PROMPT="\$(kube_ps1)${PROMPT}"
+# Adapted PROMPT for kube_ps1 from ${ZSH}/themes/tjkirch.zsh-theme
+PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
+)$(kube_ps1)
+%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
+$(prompt_char) '
 
 # Automatically enable kube-ps1 when certain commands are executed
 function _enable_kube-ps1 {
