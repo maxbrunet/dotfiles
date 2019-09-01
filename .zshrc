@@ -19,6 +19,7 @@ ZSH_THEME='tjkirch'
 # Plugins
 plugins=(
   tmux
+  aws
   colored-man-pages
   common-aliases
   docker
