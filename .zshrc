@@ -103,6 +103,6 @@ fi
 
 # Open a file/directory in GitHub
 open_gh() {
-  hub browse ${2:-} -- "tree/$(git rev-parse --abbrev-ref --symbolic @{u} | sed 's#^[^/]*/##')/$(git rev-parse --show-prefix)${1:-}"
+  hub browse ${2:-} -- "tree/$({git rev-parse --abbrev-ref --symbolic @{u} || git rev-parse --short HEAD} 2>/dev/null | sed 's#^[^/]*/##')/$(git rev-parse --show-prefix)${1:-}"
   return "${?}"
 }
