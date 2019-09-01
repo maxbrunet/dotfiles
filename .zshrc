@@ -101,16 +101,6 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
 
-# Get a shell on a container running in Kubernetes
-kshell() {
-  if [[ "${#}" -lt 1 ]]; then
-    printf 'Usage: %s POD_NAME [CONTAINER_NAME]\n' "${FUNCNAME[0]:-${funcstack[1]}}" >&2
-    return 1
-  fi
-  kubectl exec -it "${1}" --container="${2:-}" -- /bin/sh
-  return "${?}"
-}
-
 # Open a file/directory in GitHub
 open_gh() {
   hub browse ${2:-} -- "tree/$(git rev-parse --abbrev-ref --symbolic @{u} | sed 's#^[^/]*/##')/$(git rev-parse --show-prefix)${1:-}"
