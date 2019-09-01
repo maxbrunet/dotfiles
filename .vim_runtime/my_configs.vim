@@ -17,9 +17,11 @@ let g:ycm_filetype_blacklist = {
       \}
 let g:ale_completion_enabled = 1
 let g:ale_linters={
+\ 'go': ['gotlint', 'govet'],
 \ 'python': ['flake8', 'pyls'],
 \ }
 let g:ale_fixers={
+\ 'go': ['goimports'],
 \ 'python': ['isort', 'black'],
 \ }
 set completeopt=menu,menuone,preview,noselect,noinsert
