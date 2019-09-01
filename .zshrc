@@ -86,6 +86,8 @@ alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/master..HEAD)'
 alias bat='bat --style=plain --theme TwoDark'
 alias curl='curl --fail'
+alias -g J='| bat --language=json'
+alias -g Y='| bat --language=yaml'
 
 # OpenSUSE specific aliases
 if (( $+commands[zypper] )); then
