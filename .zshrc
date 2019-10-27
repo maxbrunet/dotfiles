@@ -7,6 +7,11 @@ export ZSH="${HOME}/.oh-my-zsh"
 # fzf-base16 plugin
 FZF_BASE16_COLORSCHEME='google-dark'
 
+# Go environment
+# run `go env` for more
+export GOBIN="${HOME}/.local/bin"
+export GOPATH="${HOME}/.local/lib/go"
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
