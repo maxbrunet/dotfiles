@@ -26,7 +26,7 @@ apps:
         dest: ~/.Xresources.d/base16-xresources
       - repo: https://github.com/ahmetb/kubectx.git
         dest: ~/.local/share/kubectx
-        version: v0.7.0
+        version: v0.7.1
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
@@ -43,6 +43,10 @@ apps:
       - path: ~/.local/bin/kubectx
         src: ~/.local/share/kubectx/kubectx
       - path: ~/.local/bin/kubens
+        src: ~/.local/share/kubectx/kubens
+      - path: ~/.local/bin/kubectl-ctx
+        src: ~/.local/share/kubectx/kubectx
+      - path: ~/.local/bin/kubectl-ns
         src: ~/.local/share/kubectx/kubens
       - path: '{{ omz_custom_plugins }}/kubectx/_kubectx'
         src: ~/.local/share/kubectx/completion/kubectx.zsh
