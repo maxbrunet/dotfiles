@@ -28,7 +28,6 @@ plugins=(
   colored-man-pages
   common-aliases
   docker
-  fzf
   git
   gitignore
   kube-ps1
@@ -48,11 +47,20 @@ plugins=(
 (( $+commands[pyenv] )) && plugins+=(pyenv)
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 (( $+commands[zypper] )) && plugins+=(suse)
+(( ! $+commands[zypper] )) && (( ! $+commands[brew] )) && plugins+=(fzf)
 
 # Load zsh-syntax-highlighting after all custom widgets have been created
 plugins+=(zsh-syntax-highlighting)
 
 source "${ZSH}/oh-my-zsh.sh"
+
+# fzf
+if (( $+commands[zypper] )); then
+  source /etc/zsh_completion.d/fzf-key-bindings
+elif (( $+commands[brew] )); then
+  [[ $- == *i* ]] && source /usr/local/opt/fzf/shell/completion.zsh 2> /dev/null
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
 
 # kube-ps1 plugin
 KUBE_PS1_ENABLED='false' # Disable kube-ps1 by default

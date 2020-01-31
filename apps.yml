@@ -14,9 +14,6 @@ apps:
       - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: "{{ omz_custom_plugins }}/zsh-syntax-highlighting"
         version: 0.6.0
-      - repo: https://github.com/junegunn/fzf.git
-        dest: ~/.fzf
-        version: 0.20.0
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
       - repo: https://github.com/pyenv/pyenv-virtualenv.git
