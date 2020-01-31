@@ -56,9 +56,6 @@ apps:
     git:
       - repo: https://github.com/amix/vimrc.git
         dest: ~/.vim_runtime
-      - repo: https://github.com/morhetz/gruvbox.git
-        dest: "{{ vim_plugins }}/gruvbox"
-        version: v2.0.0
       - repo: https://github.com/Valloric/YouCompleteMe.git
         dest: "{{ vim_plugins }}/YouCompleteMe"
       - repo: https://github.com/editorconfig/editorconfig-vim.git
