@@ -1,4 +1,3 @@
-set rtp+=/home/maxime/.fzf
 map <leader>ff :FZF<CR>
 colorscheme gruvbox
 let g:ycm_python_binary_path = 'python'
