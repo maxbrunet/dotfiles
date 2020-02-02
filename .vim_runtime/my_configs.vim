@@ -1,3 +1,6 @@
+if has('mac')
+  set rtp+=/usr/local/opt/fzf
+endif
 map <leader>ff :FZF<CR>
 colorscheme gruvbox
 let g:ycm_python_binary_path = 'python'
