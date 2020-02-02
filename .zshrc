@@ -40,7 +40,6 @@ plugins=(
   ansidot
   fzf-base16
   kubectx
-  zsh-autosuggestions
 )
 
 # Conditionally load some plugins
@@ -48,9 +47,6 @@ plugins=(
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 (( $+commands[zypper] )) && plugins+=(suse)
 (( ! $+commands[zypper] )) && (( ! $+commands[brew] )) && plugins+=(fzf)
-
-# Load zsh-syntax-highlighting after all custom widgets have been created
-plugins+=(zsh-syntax-highlighting)
 
 source "${ZSH}/oh-my-zsh.sh"
 
@@ -121,3 +117,13 @@ open_gh() {
   hub browse ${2:-} -- "tree/$({git rev-parse --abbrev-ref --symbolic @{u} || git rev-parse --short HEAD} 2>/dev/null | sed 's#^[^/]*/##')/$(git rev-parse --show-prefix)${1:-}"
   return "${?}"
 }
+
+# zsh-users
+# Load zsh-syntax-highlighting after all custom widgets have been created
+if (( $+commands[brew] )); then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

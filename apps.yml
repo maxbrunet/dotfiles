@@ -8,12 +8,6 @@ apps:
     git:
       - repo: https://github.com/robbyrussell/oh-my-zsh.git
         dest: ~/.oh-my-zsh
-      - repo: https://github.com/zsh-users/zsh-autosuggestions.git
-        dest: "{{ omz_custom_plugins }}/zsh-autosuggestions"
-        version: v0.6.4
-      - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-        dest: "{{ omz_custom_plugins }}/zsh-syntax-highlighting"
-        version: 0.6.0
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
       - repo: https://github.com/pyenv/pyenv-virtualenv.git
