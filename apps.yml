@@ -43,6 +43,8 @@ apps:
         src: ~/.local/share/kubectx/completion/kubectx.zsh
       - path: '{{ omz_custom_plugins }}/kubectx/_kubens'
         src: ~/.local/share/kubectx/completion/kubens.zsh
+      - path: ~/.local/bin/aws-vault-yk
+        src: "{{ source_dir }}/.local/bin/aws-vault-yk"
   - name: vim
     git:
       - repo: https://github.com/amix/vimrc.git

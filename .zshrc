@@ -12,6 +12,15 @@ FZF_BASE16_COLORSCHEME='google-dark'
 export GOBIN="${HOME}/.local/bin"
 export GOPATH="${HOME}/.local/lib/go"
 
+# aws-vault
+if [[ "$(uname -s)" == 'Darwin' ]]; then
+  export AWS_VAULT_KEYCHAIN_NAME='login'
+elif [[ "$(uname -s)" == 'Linux' ]]; then
+  export AWS_VAULT_BACKEND='secret-service'
+fi
+export AWS_SESSION_TOKEN_TTL='8h'
+export AWS_ASSUME_ROLE_TTL='1h'
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
@@ -66,6 +75,9 @@ PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
 )$(kube_ps1)
 %{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
 $(prompt_char) '
+
+# Add aws prompt
+RPROMPT='$(aws_prompt_info)'"${RPROMPT}"
 
 # Automatically enable kube-ps1 when certain commands are executed
 function _enable_kube-ps1 {
