@@ -17,7 +17,7 @@ apps:
         dest: ~/.Xresources.d/base16-xresources
       - repo: https://github.com/ahmetb/kubectx.git
         dest: ~/.local/share/kubectx
-        version: v0.7.1
+        version: v0.8.0
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
