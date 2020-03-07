@@ -27,10 +27,6 @@ apps:
         src: '{{ omz_custom_plugins_src }}/fzf-base16/fzf-base16.plugin.zsh'
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
-      - path: ~/.fzf/.git/hooks/post-merge
-        src: "{{ source_dir }}/githooks/fzf.githook"
-      - path: ~/.fzf/.git/hooks/post-checkout
-        src: post-merge
       - path: ~/.local/bin/kubectx
         src: ~/.local/share/kubectx/kubectx
       - path: ~/.local/bin/kubens
