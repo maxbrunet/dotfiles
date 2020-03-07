@@ -13,11 +13,14 @@ export GOBIN="${HOME}/.local/bin"
 export GOPATH="${HOME}/.local/lib/go"
 
 # aws-vault
-if [[ "$(uname -s)" == 'Darwin' ]]; then
-  export AWS_VAULT_KEYCHAIN_NAME='login'
-elif [[ "$(uname -s)" == 'Linux' ]]; then
-  export AWS_VAULT_BACKEND='secret-service'
-fi
+case "$(uname -s)" in
+  'Darwin')
+    export AWS_VAULT_KEYCHAIN_NAME='login'
+    ;;
+  'Linux')
+    export AWS_VAULT_BACKEND='secret-service'
+    ;;
+esac
 export AWS_SESSION_TOKEN_TTL='8h'
 export AWS_ASSUME_ROLE_TTL='1h'
 
