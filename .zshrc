@@ -68,8 +68,10 @@ elif (( $+commands[brew] )); then
 fi
 
 # kube-ps1 plugin
-KUBE_PS1_ENABLED='false' # Disable kube-ps1 by default
+KUBE_PS1_ENABLED='off' # Disable kube-ps1 by default
 KUBE_PS1_PREFIX="\n("
+KUBE_PS1_SEPARATOR=''
+
 # Adapted PROMPT for kube_ps1 from ${ZSH}/themes/tjkirch.zsh-theme
 PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
 )$(kube_ps1)
