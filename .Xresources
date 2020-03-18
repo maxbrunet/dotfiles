@@ -1,7 +1,7 @@
 #include ".Xresources.d/base16-xresources/xresources/base16-google-dark-256.Xresources"
 
 URxvt.font: xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true
-URxvt.boldFont: xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true
+URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:size=12:antialias=true:hinting=true
 URxvt.italicFont: xft:DejaVu Sans Mono:style=Oblique:size=12:antialias=true:hinting=true
 URxvt.boldItalicFont: xft:DejaVu Sans Mono:style=Bold Oblique:size=12:antialias=true:hinting=true
 URxvt.letterSpace: -1
