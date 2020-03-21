@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # font
-font pango:Roboto 11
+font pango:Noto Sans 11
 
 # thin borders
 hide_edge_borders both
