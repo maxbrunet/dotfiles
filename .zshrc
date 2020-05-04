@@ -24,6 +24,10 @@ esac
 export AWS_SESSION_TOKEN_TTL='8h'
 export AWS_ASSUME_ROLE_TTL='1h'
 
+# bat
+export BAT_STYLE='plain'
+export BAT_THEME='TwoDark'
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
@@ -112,7 +116,6 @@ export EDITOR='vim'
 alias tree='tree -C -F'
 alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/master..HEAD)'
-alias bat='bat --style=plain --theme TwoDark'
 alias curl='curl --fail'
 alias tf='terraform'
 alias tffmt='terraform fmt'
