@@ -27,18 +27,6 @@ apps:
         src: '{{ omz_custom_plugins_src }}/fzf-base16/fzf-base16.plugin.zsh'
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
-      - path: ~/.local/bin/kubectx
-        src: ~/.local/share/kubectx/kubectx
-      - path: ~/.local/bin/kubens
-        src: ~/.local/share/kubectx/kubens
-      - path: ~/.local/bin/kubectl-ctx
-        src: ~/.local/share/kubectx/kubectx
-      - path: ~/.local/bin/kubectl-ns
-        src: ~/.local/share/kubectx/kubens
-      - path: '{{ omz_custom_plugins }}/kubectx/_kubectx'
-        src: ~/.local/share/kubectx/completion/kubectx.zsh
-      - path: '{{ omz_custom_plugins }}/kubectx/_kubens'
-        src: ~/.local/share/kubectx/completion/kubens.zsh
       - path: ~/.local/bin/aws-vault-yk
         src: "{{ source_dir }}/.local/bin/aws-vault-yk"
   - name: vim

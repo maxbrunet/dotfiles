@@ -88,11 +88,13 @@ RPROMPT='$(aws_prompt_info)'"${RPROMPT}"
 function _enable_kube-ps1 {
   case "${2%% *}" in
         kubectl \
+      | k3d \
       | kops \
       | kubens \
       | kubectx \
       | kustomize \
       | minikube \
+      | tk \
     )
       kubeon
       ;;

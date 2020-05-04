@@ -13,3 +13,11 @@ mkvirtualenv .dotfiles
 pip install ansible
 ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local --extra-vars @apps.yml
 ```
+
+Install Go tools
+
+```shell
+GO111MODULE=on awk -F'"' '/_/{cmd = sprintf("go get %s", $2); print cmd; system(cmd)}' Gofile.go
+ln -s kubectx ~/.local/bin/kubectl-ctx
+ln -s kubens ~/.local/bin/kubectl-ns
+```
