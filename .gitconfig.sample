@@ -1,0 +1,21 @@
+[user]
+	name = Thomas A. Anderson
+	email = thomas.anderson@metacortex.mtx
+[commit]
+	gpgsign = true
+[core]
+	pager = diff-highlight | less --tabs=4
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
