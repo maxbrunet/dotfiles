@@ -112,6 +112,11 @@ alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/master..HEAD)'
 alias bat='bat --style=plain --theme TwoDark'
 alias curl='curl --fail'
+alias tf='terraform'
+alias tffmt='terraform fmt'
+alias tfinit='terraform init'
+alias tfplan='terraform plan'
+alias tfapply='terraform apply'
 alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
 
