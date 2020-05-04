@@ -37,6 +37,8 @@ apps:
         version: v0.3.3
       - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
         dest: '{{ vim_plugins }}/Jenkinsfile-vim-syntax'
+      - repo: https://github.com/google/vim-jsonnet
+        dest: '{{ vim_plugins }}/vim-jsonnet'
     dotfiles:
       - path: ~/.vimrc
         src: "{{ source_dir }}/.vimrc"
