@@ -55,7 +55,6 @@ plugins=(
   # custom
   ansidot
   fzf-base16
-  kubectx
 )
 
 # Conditionally load some plugins
