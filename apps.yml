@@ -39,6 +39,8 @@ apps:
         dest: '{{ vim_plugins }}/Jenkinsfile-vim-syntax'
       - repo: https://github.com/google/vim-jsonnet
         dest: '{{ vim_plugins }}/vim-jsonnet'
+      - repo: https://github.com/hashivim/vim-terraform.git
+        dest: '{{ vim_plugins }}/vim-terraform'
     dotfiles:
       - path: ~/.vimrc
         src: "{{ source_dir }}/.vimrc"
