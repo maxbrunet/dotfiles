@@ -6,6 +6,9 @@ map <leader>ff :FZF<CR>
 
 " Color scheme
 colorscheme gruvbox
+let g:lightline = {
+\ 'colorscheme': 'gruvbox',
+\ }
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
