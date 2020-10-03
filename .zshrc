@@ -115,6 +115,7 @@ fi
 export EDITOR='vim'
 
 # Aliases
+alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
 alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/master..HEAD)'
