@@ -12,6 +12,9 @@ FZF_BASE16_COLORSCHEME='google-dark'
 export GOBIN="${HOME}/.local/bin"
 export GOPATH="${HOME}/.local/lib/go"
 
+# awscli
+export AWS_PAGER=''
+
 # aws-vault
 case "$(uname -s)" in
   'Darwin')
