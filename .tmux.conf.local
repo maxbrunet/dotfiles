@@ -109,10 +109,7 @@ tmux_conf_theme_terminal_title='#h ❐ #S ● #I #W'
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_fg='colour7'              # light gray
-# FIXME: Wrong color on tmux_conf_theme_right_separator_main with color aliases
-# `,none` is a hack to work around the issue by injecting the none attribute
-# https://github.com/gpakosz/.tmux/pull/333
-tmux_conf_theme_window_status_bg='colour0,none'         # dark gray
+tmux_conf_theme_window_status_bg='colour0'              # dark gray
 tmux_conf_theme_window_status_attr='none'
 tmux_conf_theme_window_status_format='#I #W'
 #tmux_conf_theme_window_status_format='#{circled_window_index} #W'
