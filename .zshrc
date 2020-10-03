@@ -43,6 +43,7 @@ ZSH_THEME='tjkirch'
 # Plugins
 plugins=(
   tmux
+  asdf
   aws
   colored-man-pages
   common-aliases

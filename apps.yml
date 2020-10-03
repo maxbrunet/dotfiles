@@ -15,6 +15,11 @@ apps:
         version: v1.1.5
       - repo: https://github.com/chriskempson/base16-xresources.git
         dest: ~/.Xresources.d/base16-xresources
+      - repo: https://github.com/asdf-vm/asdf.git
+        dest: ~/.asdf
+        version: v0.8.0
+      - repo: https://github.com/Banno/asdf-kubectl.git
+        dest: ~/.asdf/plugins/kubectl
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
