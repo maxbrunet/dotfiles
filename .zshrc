@@ -31,6 +31,9 @@ export AWS_ASSUME_ROLE_TTL='1h'
 export BAT_STYLE='plain'
 export BAT_THEME='TwoDark'
 
+# terraform
+export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugins"
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
