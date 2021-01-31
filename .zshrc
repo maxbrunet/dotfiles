@@ -68,7 +68,7 @@ plugins=(
 (( $+commands[pyenv] )) && plugins+=(pyenv)
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 (( $+commands[zypper] )) && plugins+=(suse)
-(( ! $+commands[zypper] )) && (( ! $+commands[brew] )) && plugins+=(fzf)
+[[ -f /etc/arch-release ]] && plugins+=(archlinux)
 
 source "${ZSH}/oh-my-zsh.sh"
 
@@ -78,6 +78,8 @@ if (( $+commands[zypper] )); then
 elif (( $+commands[brew] )); then
   [[ $- == *i* ]] && source /usr/local/opt/fzf/shell/completion.zsh 2> /dev/null
   source /usr/local/opt/fzf/shell/key-bindings.zsh
+elif [[ -f /etc/arch-release ]]; then
+  source /usr/share/fzf/key-bindings.zsh
 fi
 
 # kube-ps1 plugin
@@ -156,6 +158,9 @@ open_gh() {
 if (( $+commands[brew] )); then
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ -f /etc/arch-release ]]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
