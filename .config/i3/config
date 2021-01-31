@@ -207,4 +207,4 @@ exec --no-startup-id pasystray
 exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
 exec --no-startup-id pk-update-icon
-exec --no-startup-id /usr/lib/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
