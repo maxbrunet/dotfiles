@@ -78,7 +78,7 @@ set $ws6 "6 "
 set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
-set $ws10 "10 "
+set $ws10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -108,8 +108,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="Firefox|Chromium-browser"] $ws1
 assign [class="URxvt"] $ws2
 assign [class="Thunderbird"] $ws3
-assign [class="Spotify"] $ws10 # https://github.com/i3/i3/issues/2060
-for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 
