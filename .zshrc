@@ -103,7 +103,6 @@ function _enable_kube-ps1 {
       | kubens \
       | kubectx \
       | kustomize \
-      | minikube \
       | tk \
     )
       kubeon
