@@ -48,4 +48,4 @@ call matchadd('ColorColumn', '\%81v', 100)
 set spell spelllang=en
 
 " Use Terraform syntax highlighting for HCL files as well
-autocmd! BufEnter *.hcl :set filetype=terraform
+autocmd BufRead,BufNewFile *.hcl set filetype=terraform
