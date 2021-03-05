@@ -17,7 +17,9 @@ ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local -
 Install Go tools
 
 ```shell
-GO111MODULE=on awk -F'"' '/_/{cmd = sprintf("go get %s", $2); print cmd; system(cmd)}' Gofile.go
+export GO111MODULE='on'
+go get -u github.com/bwplotka/bingo
+bingo get -l
 ln -s kubectx ~/.local/bin/kubectl-ctx
 ln -s kubens ~/.local/bin/kubectl-ns
 ```
