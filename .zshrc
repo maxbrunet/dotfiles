@@ -1,5 +1,5 @@
 # Customize PATH
-export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${HOME}/.pyenv/shims:${PATH}"
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
