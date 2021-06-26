@@ -11,7 +11,7 @@ let g:lightline = {
 \ }
 
 " YouCompleteMe
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = 'python3'
 "" Disable Python completion, since we have Ale+pyls for that
 let g:ycm_filetype_blacklist = {
 \ 'python': 1,
