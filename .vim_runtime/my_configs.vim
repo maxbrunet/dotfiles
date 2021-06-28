@@ -36,6 +36,7 @@ let g:ale_linters={
 let g:ale_fixers={
 \ 'go': ['gofmt', 'goimports'],
 \ 'python': ['isort', 'black'],
+\ 'terraform': ['terraform'],
 \ }
 "" See `help ale-completion-completeopt-bug`
 set completeopt=menu,menuone,preview,noselect,noinsert
