@@ -89,6 +89,12 @@ $(SHFMT): $(BINGO_DIR)/shfmt.mod
 	@echo "(re)installing $(GOBIN)/shfmt-v3.3.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=shfmt.mod -o=$(GOBIN)/shfmt-v3.3.0 "mvdan.cc/sh/v3/cmd/shfmt"
 
+TERRAFORM_LS := $(GOBIN)/terraform-ls-v0.18.1
+$(TERRAFORM_LS): $(BINGO_DIR)/terraform-ls.mod
+	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
+	@echo "(re)installing $(GOBIN)/terraform-ls-v0.18.1"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=terraform-ls.mod -o=$(GOBIN)/terraform-ls-v0.18.1 "github.com/hashicorp/terraform-ls"
+
 TK := $(GOBIN)/tk-v0.16.0
 $(TK): $(BINGO_DIR)/tk.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
