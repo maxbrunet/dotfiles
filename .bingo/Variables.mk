@@ -35,6 +35,12 @@ $(GOLINT): $(BINGO_DIR)/golint.mod
 	@echo "(re)installing $(GOBIN)/golint-v0.0.0-20210508222113-6edffad5e616"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=golint.mod -o=$(GOBIN)/golint-v0.0.0-20210508222113-6edffad5e616 "golang.org/x/lint/golint"
 
+GOPLS := $(GOBIN)/gopls-v0.7.0
+$(GOPLS): $(BINGO_DIR)/gopls.mod
+	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
+	@echo "(re)installing $(GOBIN)/gopls-v0.7.0"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=gopls.mod -o=$(GOBIN)/gopls-v0.7.0 "golang.org/x/tools/gopls"
+
 JB := $(GOBIN)/jb-v0.4.0
 $(JB): $(BINGO_DIR)/jb.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.

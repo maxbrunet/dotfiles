@@ -14,6 +14,7 @@ let g:lightline = {
 let g:ycm_python_binary_path = 'python3'
 "" Disable Python completion, since we have Ale+pyls for that
 let g:ycm_filetype_blacklist = {
+\ 'go': 1,
 \ 'python': 1,
 \ 'tagbar': 1,
 \ 'qf': 1,
@@ -30,7 +31,7 @@ let g:ycm_filetype_blacklist = {
 " Ale
 let g:ale_completion_enabled = 1
 let g:ale_linters={
-\ 'go': ['golint', 'govet'],
+\ 'go': ['golint', 'gopls', 'govet'],
 \ 'python': ['flake8', 'pyls'],
 \ }
 let g:ale_fixers={
