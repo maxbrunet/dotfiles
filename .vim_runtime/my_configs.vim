@@ -37,8 +37,11 @@ let g:ale_linters={
 let g:ale_fixers={
 \ 'go': ['gofmt', 'goimports'],
 \ 'python': ['isort', 'black'],
+\ 'sh': ['shfmt'],
 \ 'terraform': ['terraform'],
 \ }
+"" Google's shell style formatting
+let g:ale_sh_shfmt_options='-i 2 -ci -bn'
 "" See `help ale-completion-completeopt-bug`
 set completeopt=menu,menuone,preview,noselect,noinsert
 
