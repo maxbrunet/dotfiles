@@ -29,11 +29,11 @@ $(GOIMPORTS): $(BINGO_DIR)/goimports.mod
 	@echo "(re)installing $(GOBIN)/goimports-v0.1.4"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=goimports.mod -o=$(GOBIN)/goimports-v0.1.4 "golang.org/x/tools/cmd/goimports"
 
-GOLINT := $(GOBIN)/golint-v0.0.0-20210508222113-6edffad5e616
-$(GOLINT): $(BINGO_DIR)/golint.mod
+GOLANGCI_LINT := $(GOBIN)/golangci-lint-v1.41.1
+$(GOLANGCI_LINT): $(BINGO_DIR)/golangci-lint.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/golint-v0.0.0-20210508222113-6edffad5e616"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=golint.mod -o=$(GOBIN)/golint-v0.0.0-20210508222113-6edffad5e616 "golang.org/x/lint/golint"
+	@echo "(re)installing $(GOBIN)/golangci-lint-v1.41.1"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=golangci-lint.mod -o=$(GOBIN)/golangci-lint-v1.41.1 "github.com/golangci/golangci-lint/cmd/golangci-lint"
 
 GOPLS := $(GOBIN)/gopls-v0.7.0
 $(GOPLS): $(BINGO_DIR)/gopls.mod

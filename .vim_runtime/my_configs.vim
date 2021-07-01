@@ -31,7 +31,7 @@ let g:ycm_filetype_blacklist = {
 " Ale
 let g:ale_completion_enabled = 1
 let g:ale_linters={
-\ 'go': ['golint', 'gopls', 'govet'],
+\ 'go': ['golangci-lint', 'gopls'],
 \ 'python': ['flake8', 'pyls'],
 \ }
 let g:ale_fixers={
