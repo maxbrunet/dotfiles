@@ -17,7 +17,7 @@ apps:
         dest: ~/.Xresources.d/base16-xresources
       - repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
-        version: v0.8.0
+        version: v0.8.1
       - repo: https://github.com/Banno/asdf-kubectl.git
         dest: ~/.asdf/plugins/kubectl
     dotfiles:
