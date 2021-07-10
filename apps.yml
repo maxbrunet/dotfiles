@@ -37,9 +37,6 @@ apps:
         dest: ~/.vim_runtime
       - repo: https://github.com/Valloric/YouCompleteMe.git
         dest: "{{ vim_plugins }}/YouCompleteMe"
-      - repo: https://github.com/editorconfig/editorconfig-vim.git
-        dest: "{{ vim_plugins }}/editorconfig-vim"
-        version: v0.3.3
       - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
         dest: '{{ vim_plugins }}/Jenkinsfile-vim-syntax'
       - repo: https://github.com/google/vim-jsonnet
