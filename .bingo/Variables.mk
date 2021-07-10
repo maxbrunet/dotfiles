@@ -65,17 +65,17 @@ $(JSONNETFMT): $(BINGO_DIR)/jsonnetfmt.mod
 	@echo "(re)installing $(GOBIN)/jsonnetfmt-v0.17.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=jsonnetfmt.mod -o=$(GOBIN)/jsonnetfmt-v0.17.0 "github.com/google/go-jsonnet/cmd/jsonnetfmt"
 
-KUBECTX := $(GOBIN)/kubectx-v0.9.3
+KUBECTX := $(GOBIN)/kubectx-v0.9.4
 $(KUBECTX): $(BINGO_DIR)/kubectx.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/kubectx-v0.9.3"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=kubectx.mod -o=$(GOBIN)/kubectx-v0.9.3 "github.com/ahmetb/kubectx/cmd/kubectx"
+	@echo "(re)installing $(GOBIN)/kubectx-v0.9.4"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=kubectx.mod -o=$(GOBIN)/kubectx-v0.9.4 "github.com/ahmetb/kubectx/cmd/kubectx"
 
-KUBENS := $(GOBIN)/kubens-v0.9.3
+KUBENS := $(GOBIN)/kubens-v0.9.4
 $(KUBENS): $(BINGO_DIR)/kubens.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/kubens-v0.9.3"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=kubens.mod -o=$(GOBIN)/kubens-v0.9.3 "github.com/ahmetb/kubectx/cmd/kubens"
+	@echo "(re)installing $(GOBIN)/kubens-v0.9.4"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=kubens.mod -o=$(GOBIN)/kubens-v0.9.4 "github.com/ahmetb/kubectx/cmd/kubens"
 
 KUBEVAL := $(GOBIN)/kubeval-v0.16.1
 $(KUBEVAL): $(BINGO_DIR)/kubeval.mod
@@ -89,15 +89,15 @@ $(SHFMT): $(BINGO_DIR)/shfmt.mod
 	@echo "(re)installing $(GOBIN)/shfmt-v3.3.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=shfmt.mod -o=$(GOBIN)/shfmt-v3.3.0 "mvdan.cc/sh/v3/cmd/shfmt"
 
-TERRAFORM_LS := $(GOBIN)/terraform-ls-v0.18.1
+TERRAFORM_LS := $(GOBIN)/terraform-ls-v0.19.0
 $(TERRAFORM_LS): $(BINGO_DIR)/terraform-ls.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/terraform-ls-v0.18.1"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=terraform-ls.mod -o=$(GOBIN)/terraform-ls-v0.18.1 "github.com/hashicorp/terraform-ls"
+	@echo "(re)installing $(GOBIN)/terraform-ls-v0.19.0"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=terraform-ls.mod -o=$(GOBIN)/terraform-ls-v0.19.0 "github.com/hashicorp/terraform-ls"
 
-TK := $(GOBIN)/tk-v0.16.0
+TK := $(GOBIN)/tk-v0.17.1
 $(TK): $(BINGO_DIR)/tk.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/tk-v0.16.0"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tk.mod -o=$(GOBIN)/tk-v0.16.0 "github.com/grafana/tanka/cmd/tk"
+	@echo "(re)installing $(GOBIN)/tk-v0.17.1"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tk.mod -o=$(GOBIN)/tk-v0.17.1 "github.com/grafana/tanka/cmd/tk"
 
