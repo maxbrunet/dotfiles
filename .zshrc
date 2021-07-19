@@ -121,7 +121,7 @@ export EDITOR='vim'
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
 alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
-alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/master..HEAD)'
+alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail'
 alias tf='terraform'
 alias tffmt='terraform fmt'
