@@ -51,6 +51,3 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " Spellchecking
 set spell spelllang=en
-
-" Use Terraform syntax highlighting for HCL files as well
-autocmd BufRead,BufNewFile *.hcl set filetype=terraform
