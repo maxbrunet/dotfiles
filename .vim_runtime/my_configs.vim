@@ -43,7 +43,7 @@ let g:ale_fixers={
 "" Google's shell style formatting
 let g:ale_sh_shfmt_options='-i 2 -ci -bn'
 "" See `help ale-completion-completeopt-bug`
-set completeopt=menu,menuone,preview,noselect,noinsert
+set completeopt=menu,menuone,popup,noselect,noinsert
 
 " Highlight lines over 80 characters long
 highlight ColorColumn ctermbg=red guibg=red
