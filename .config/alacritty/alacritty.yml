@@ -21,7 +21,7 @@ font:
   bold_italic:
     family: Source Code Pro
     style: Bold Italic
-  size: 9.0
+  size: 11.0
 
 mouse:
   hide_when_typing: true
