@@ -4,11 +4,8 @@ export PATH="${HOME}/.local/bin:${HOME}/.pyenv/shims:${PATH}"
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
-## Base16 Shell
-source "${HOME}/.local/share/base16-shell/scripts/base16-google-dark.sh"
-
-# fzf-base16 plugin
-FZF_BASE16_COLORSCHEME='google-dark'
+# Base16 theme
+BASE16_THEME='google-dark'
 
 # Go environment
 # run `go env` for more
@@ -64,7 +61,7 @@ plugins=(
   zsh_reload
   # custom
   ansidot
-  fzf-base16
+  base16
 )
 
 # Conditionally load some plugins
