@@ -11,7 +11,7 @@ hide_edge_borders both
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt-256color
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -106,7 +106,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign some containers to a specific workspace
 assign [class="Firefox|Chromium-browser"] $ws1
-assign [class="URxvt"] $ws2
+assign [class="Alacritty"] $ws2
 assign [class="Thunderbird"] $ws3
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Gnome-calculator"] floating enable
@@ -202,7 +202,7 @@ bindsym XF86WebCam exec xfce4-screenshooter -f
 # startup
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec firefox
-exec urxvt-256color
+exec alacritty
 exec --no-startup-id pasystray
 exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet

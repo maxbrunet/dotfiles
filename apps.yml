@@ -8,13 +8,13 @@ apps:
     git:
       - repo: https://github.com/robbyrussell/oh-my-zsh.git
         dest: ~/.oh-my-zsh
+      - repo: https://github.com/chriskempson/base16-shell.git
+        dest: ~/.local/share/base16-shell
       - repo: https://github.com/nicodebo/base16-fzf.git
         dest: ~/.local/share/fzf/base16-fzf
       - repo: https://github.com/pyenv/pyenv-virtualenv.git
         dest: ~/.pyenv/plugins/pyenv-virtualenv
         version: v1.1.5
-      - repo: https://github.com/chriskempson/base16-xresources.git
-        dest: ~/.Xresources.d/base16-xresources
       - repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
         version: v0.8.1
@@ -27,8 +27,6 @@ apps:
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
       - path: '{{ omz_custom_plugins }}/fzf-base16/fzf-base16.plugin.zsh'
         src: '{{ omz_custom_plugins_src }}/fzf-base16/fzf-base16.plugin.zsh'
-      - path: ~/.Xresources
-        src: "{{ source_dir }}/.Xresources"
       - path: ~/.local/bin/aws-vault-yk
         src: "{{ source_dir }}/.local/bin/aws-vault-yk"
   - name: vim
@@ -69,8 +67,8 @@ apps:
         src: ~/.tmux/.tmux.conf
   - name: i3
     git:
-      - repo: https://github.com/chriskempson/base16-xresources.git
-        dest: ~/.Xresources.d/base16-xresources
+      - repo: https://github.com/aarowill/base16-alacritty.git
+        dest: ~/.config/alacritty/base16
       - repo: https://github.com/vivien/i3blocks-contrib.git
         dest: ~/.local/lib/i3blocks-contrib
     dotfiles:
@@ -78,14 +76,14 @@ apps:
         src: "{{ source_dir }}/.config/i3/config"
       - path: ~/.config/i3blocks/config
         src: "{{ source_dir }}/.config/i3blocks/config"
+      - path: ~/.config/alacritty/alacritty.yml
+        src: "{{ source_dir }}/.config/alacritty/alacritty.yml"
       - path: ~/.config/dunst/dunstrc
         src: "{{ source_dir }}/.config/dunst/dunstrc"
       - path: ~/.config/rofi/config
         src: "{{ source_dir }}/.config/rofi/config"
       - path: ~/.local/bin/volume.sh
         src: "{{ source_dir }}/.local/bin/volume.sh"
-      - path: ~/.Xresources
-        src: "{{ source_dir }}/.Xresources"
       - path: ~/.gtkrc-2.0
         src: "{{ source_dir }}/.gtkrc-2.0"
       - path: ~/.config/gtk-3.0/settings.ini
