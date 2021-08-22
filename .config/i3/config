@@ -186,10 +186,10 @@ bindsym XF86Launch1 mode "$mode_system"
 bindsym $mod+shift+x exec --no-startup-id $locker
 bindsym Print exec xfce4-screenshooter -f
 bindsym Mod1+Print exec xfce4-screenshooter -w
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec ~/.local/bin/volume.sh lower
+bindsym XF86AudioMute exec ~/.local/bin/volume.sh mute
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume.sh raise
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next

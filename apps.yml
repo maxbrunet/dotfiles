@@ -78,8 +78,12 @@ apps:
         src: "{{ source_dir }}/.config/i3/config"
       - path: ~/.config/i3blocks/config
         src: "{{ source_dir }}/.config/i3blocks/config"
+      - path: ~/.config/dunst/dunstrc
+        src: "{{ source_dir }}/.config/dunst/dunstrc"
       - path: ~/.config/rofi/config
         src: "{{ source_dir }}/.config/rofi/config"
+      - path: ~/.local/bin/volume.sh
+        src: "{{ source_dir }}/.local/bin/volume.sh"
       - path: ~/.Xresources
         src: "{{ source_dir }}/.Xresources"
       - path: ~/.gtkrc-2.0
