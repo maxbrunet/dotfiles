@@ -98,7 +98,7 @@ function main {
       send_mute_notification
       ;;
     *)
-      printf 'Usage: %s up | down | mute\n' "${BASH_SOURCE[0]}" 1>&2
+      printf 'Usage: %s raise | lower | mute\n' "${BASH_SOURCE[0]}" 1>&2
       return 1
       ;;
   esac
