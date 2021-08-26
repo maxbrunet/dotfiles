@@ -11,16 +11,9 @@ readonly DUNSTIFY_CONFIG=(
 # Disable language localization
 export LC_ALL=C
 
-function get_default_sink {
-  pactl info | awk -F': ' '/^Default Sink: /{print $2}'
-}
-
 function get_volume {
-  # TODO: Replace by `pactl get-sink-volume @DEFAULT_SINK@` (v14.99.1+)
-  pactl list sinks \
-    | awk -v defaultsink="$(get_default_sink)" \
-      '/^\s+Name: /{indefault = $2 == defaultsink}
-       /^\s+Volume: / && indefault {print $5; exit}' \
+  pactl get-sink-volume @DEFAULT_SINK@ \
+    | awk '/^Volume: / {print $5; exit}' \
     | awk -F'%' '{print $1}'
 }
 
@@ -51,13 +44,7 @@ function send_volume_notification {
 
 function send_mute_notification {
   local level muted
-  # TODO: Replace by `pactl get-sink-mute @DEFAULT_SINK@` (v14.99.1+)
-  muted="$(
-    pactl list sinks \
-      | awk -v default_sink="$(get_default_sink)" \
-        '/^\s+Name: /{indefault = $2 == default_sink}
-         /^\s+Mute: / && indefault {print $2; exit}'
-  )"
+  muted="$(pactl get-sink-mute @DEFAULT_SINK@ | awk -F': ' '{print $2}')"
 
   case "${muted}" in
     'yes')
