@@ -153,6 +153,38 @@ open_gh() {
   return "${?}"
 }
 
+# Open a file/directory in Bitbucket Cloud
+open_bb() {
+  local file="${1:-}"
+  local option="${2:-}"
+  local remote commit prefix repository url
+  remote="$(git config --get remote.origin.url)"
+  commit="$(git rev-parse HEAD)"
+  prefix="$(git rev-parse --show-prefix)"
+
+  if [[ "${remote}" =~ '^git@bitbucket.org:(.+)\.git$' ]]; then
+    # ${match} is the Zsh equivalent of Bash's ${BASH_REMATCH}
+    repository="${match[1]}"
+  elif [[ "${remote}" =~ '^https://.+@bitbucket.org/(.+)\.git$' ]]; then
+    repository="${match[1]}"
+  else
+    echo 'Aborted: could not find any git remote pointing to a Bitbucket Cloud repository' >&2
+    return 1
+  fi
+
+  url="https://bitbucket.org/${repository}/src/${commit}/${prefix}${file}"
+  # Yes, I do cheap argument parsing, good enough, to hell getopts and co
+  if [[ " ${option} " =~ " --copy " || " ${option} " =~ " -c " ]]; then
+    # The clipcopy() function is part of oh-my-zsh (see lib/clipboard.zsh)
+    clipcopy <<< "${url}"
+  elif [[ " ${option} " =~ " --url " || " ${option} " =~ " -u " ]]; then
+    printf '%s\n' "${url}"
+  else
+    # The open_command() function is part of oh-my-zsh (see lib/functions.zsh)
+    open_command "${url}"
+  fi
+}
+
 # zsh-users
 # Load zsh-syntax-highlighting after all custom widgets have been created
 if (( $+commands[brew] )); then
