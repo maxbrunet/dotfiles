@@ -117,12 +117,12 @@ if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
 fi
 
 # Set EDITOR
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
-alias vimrc="${EDITOR} ~/.vim_runtime/my_configs.vim"
+alias nvimrc="${EDITOR} ~/.config/nvim/init.vim"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail'
 alias tf='terraform'

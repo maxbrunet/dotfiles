@@ -2,7 +2,7 @@
 source_dir: ~/.dotfiles
 omz_custom_plugins_src: '{{ source_dir }}/.oh-my-zsh/custom/plugins'
 omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
-vim_plugins: ~/.vim_runtime/my_plugins
+nvim_plugins: ~/.local/share/amix-vimrc/my_plugins
 apps:
   - name: zsh
     git:
@@ -31,32 +31,24 @@ apps:
         src: '{{ omz_custom_plugins_src }}/base16/base16.plugin.zsh'
       - path: ~/.local/bin/aws-vault-yk
         src: "{{ source_dir }}/.local/bin/aws-vault-yk"
-  - name: vim
+  - name: nvim
     git:
       - repo: https://github.com/amix/vimrc.git
-        dest: ~/.vim_runtime
+        dest: ~/.local/share/amix-vimrc
       - repo: https://github.com/Valloric/YouCompleteMe.git
-        dest: "{{ vim_plugins }}/YouCompleteMe"
+        dest: '{{ nvim_plugins }}/YouCompleteMe'
       - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
-        dest: '{{ vim_plugins }}/Jenkinsfile-vim-syntax'
+        dest: '{{ nvim_plugins }}/Jenkinsfile-vim-syntax'
       - repo: https://github.com/google/vim-jsonnet
-        dest: '{{ vim_plugins }}/vim-jsonnet'
+        dest: '{{ nvim_plugins }}/vim-jsonnet'
       - repo: https://github.com/hashivim/vim-terraform.git
-        dest: '{{ vim_plugins }}/vim-terraform'
+        dest: '{{ nvim_plugins }}/vim-terraform'
     dotfiles:
-      - path: ~/.vimrc
-        src: "{{ source_dir }}/.vimrc"
-      - path: ~/.vim_runtime/my_configs.vim
-        src: "{{ source_dir }}/.vim_runtime/my_configs.vim"
-        ## Install the python-language-server and other Python tools
-        # python3 -m venv ~/.virtualenvs/ide-python
-        # ~/.virtualenvs/ide-python/bin/python3 -m pip install \
-        #   'python-language-server[all]' \
-        #   pyls-isort pyls-black \
-        #   flake8
-      - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-merge
-        src: "{{ source_dir }}/githooks/ycmd.githook"
-      - path: ~/.vim_runtime/my_plugins/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-checkout
+      - path: ~/.config/nvim/init.vim
+        src: '{{ source_dir }}/.config/nvim/init.vim'
+      - path: '{{ nvim_plugins }}/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-merge'
+        src: '{{ source_dir }}/githooks/ycmd.githook'
+      - path: '{{ nvim_plugins }}/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-checkout'
         src: post-merge
   - name: tmux
     git:

@@ -1,3 +1,10 @@
+" github.com/amix/vimrc
+set runtimepath+=~/.local/share/amix-vimrc
+source ~/.local/share/amix-vimrc/vimrcs/basic.vim
+source ~/.local/share/amix-vimrc/vimrcs/filetypes.vim
+source ~/.local/share/amix-vimrc/vimrcs/plugins_config.vim
+source ~/.local/share/amix-vimrc/vimrcs/extended.vim
+
 " fzf
 if has('mac')
   set rtp+=/usr/local/opt/fzf
@@ -10,9 +17,19 @@ let g:lightline = {
 \ 'colorscheme': 'gruvbox',
 \ }
 
+" Disable Nvim GUI cursor
+set guicursor=
+
+" pynvim, see :help provider-python
+if has('mac')
+  let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python3'
+else
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
+
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python3'
-"" Disable Python completion, since we have Ale+pyls for that
+"" Disable Go and Python completion, since we have ALE for that
 let g:ycm_filetype_blacklist = {
 \ 'go': 1,
 \ 'python': 1,
@@ -42,8 +59,6 @@ let g:ale_fixers={
 \ }
 "" Google's shell style formatting
 let g:ale_sh_shfmt_options='-i 2 -ci -bn'
-"" See `help ale-completion-completeopt-bug`
-set completeopt=menu,menuone,popup,noselect,noinsert
 
 " Highlight lines over 80 characters long
 highlight ColorColumn ctermbg=red guibg=red

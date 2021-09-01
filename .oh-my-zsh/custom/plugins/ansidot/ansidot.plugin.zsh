@@ -13,7 +13,7 @@ alias ansidot="ANSIBLE_PIPELINING=true ${python_env}/ansible-playbook ${ansidot}
 --connection local \
 --extra-vars @${dotfiles}/apps.yml"
 
-alias dotapps="${EDITOR:-vim} ${dotfiles}/apps.yml"
+alias dotapps="${EDITOR:-nvim} ${dotfiles}/apps.yml"
 
 dotgit() {
   local dotfiles="${HOME}/.dotfiles"

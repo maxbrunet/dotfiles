@@ -1,6 +1,6 @@
 # My Awesome Dotfiles
 
-My dotfiles collection for a flawless workflow. Starring `zsh`, `vim` and `tmux`.
+My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim` and `tmux`.
 
 ![Screenshot](screenshot.png)
 
