@@ -27,26 +27,16 @@ else
   let g:python3_host_prog = '/usr/bin/python3'
 endif
 
-" YouCompleteMe
-let g:ycm_python_binary_path = 'python3'
-"" Disable Go and Python completion, since we have ALE for that
-let g:ycm_filetype_blacklist = {
-\ 'go': 1,
-\ 'python': 1,
-\ 'tagbar': 1,
-\ 'qf': 1,
-\ 'notes': 1,
-\ 'markdown': 1,
-\ 'unite': 1,
-\ 'text': 1,
-\ 'vimwiki': 1,
-\ 'pandoc': 1,
-\ 'infolog': 1,
-\ 'mail': 1
-\}
+" Deoplete
+"" Installation requires to be completed with :UpdateRemotePlugins
+let g:deoplete#enable_at_startup = 1
+"" Use ALE as completion sources for Go and Python code
+call deoplete#custom#option('sources', {
+\ 'go': ['ale'],
+\ 'python': ['ale'],
+\})
 
 " Ale
-let g:ale_completion_enabled = 1
 let g:ale_linters={
 \ 'go': ['golangci-lint', 'gopls'],
 \ 'python': ['flake8', 'pylsp'],

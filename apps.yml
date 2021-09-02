@@ -35,8 +35,8 @@ apps:
     git:
       - repo: https://github.com/amix/vimrc.git
         dest: ~/.local/share/amix-vimrc
-      - repo: https://github.com/Valloric/YouCompleteMe.git
-        dest: '{{ nvim_plugins }}/YouCompleteMe'
+      - repo: https://github.com/Shougo/deoplete.nvim.git
+        dest: '{{ nvim_plugins }}/deoplete.nvim'
       - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
         dest: '{{ nvim_plugins }}/Jenkinsfile-vim-syntax'
       - repo: https://github.com/google/vim-jsonnet
@@ -46,10 +46,6 @@ apps:
     dotfiles:
       - path: ~/.config/nvim/init.vim
         src: '{{ source_dir }}/.config/nvim/init.vim'
-      - path: '{{ nvim_plugins }}/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-merge'
-        src: '{{ source_dir }}/githooks/ycmd.githook'
-      - path: '{{ nvim_plugins }}/YouCompleteMe/.git/modules/third_party/ycmd/hooks/post-checkout'
-        src: post-merge
   - name: tmux
     git:
       - repo: https://github.com/gpakosz/.tmux.git
