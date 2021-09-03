@@ -30,13 +30,14 @@ endif
 " Deoplete
 "" Installation requires to be completed with :UpdateRemotePlugins
 let g:deoplete#enable_at_startup = 1
-"" Use ALE as completion sources for Go and Python code
-call deoplete#custom#option('sources', {
-\ 'go': ['ale'],
-\ 'python': ['ale'],
-\})
+"" Disable Go and Python completion, we use ALE for that
+"" ALE can act as a source for Deoplete, but some information from LSP
+"" seems to get lost compared to direct usage from ALE
+autocmd FileType {go,python}
+\ call deoplete#custom#buffer_option('auto_complete', v:false)
 
-" Ale
+" ALE
+let g:ale_completion_enabled = 1
 let g:ale_linters={
 \ 'go': ['golangci-lint', 'gopls'],
 \ 'python': ['flake8', 'pylsp'],
