@@ -2,7 +2,7 @@
 source_dir: ~/.dotfiles
 omz_custom_plugins_src: '{{ source_dir }}/.oh-my-zsh/custom/plugins'
 omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
-nvim_plugins: ~/.local/share/amix-vimrc/my_plugins
+nvim_plugins: ~/.vim_runtime/my_plugins
 apps:
   - name: zsh
     git:
@@ -34,7 +34,7 @@ apps:
   - name: nvim
     git:
       - repo: https://github.com/amix/vimrc.git
-        dest: ~/.local/share/amix-vimrc
+        dest: ~/.vim_runtime
       - repo: https://github.com/Shougo/deoplete.nvim.git
         dest: '{{ nvim_plugins }}/deoplete.nvim'
       - repo: https://github.com/martinda/Jenkinsfile-vim-syntax.git
@@ -46,6 +46,8 @@ apps:
     dotfiles:
       - path: ~/.config/nvim/init.vim
         src: '{{ source_dir }}/.config/nvim/init.vim'
+      - path: ~/.vim_runtime/my_configs.vim
+        src: '{{ source_dir }}/.vim_runtime/my_configs.vim'
   - name: tmux
     git:
       - repo: https://github.com/gpakosz/.tmux.git
