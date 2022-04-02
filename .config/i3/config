@@ -105,7 +105,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign some containers to a specific workspace
-assign [class="Firefox|Chromium-browser"] $ws1
+assign [class="firefox|Chromium-browser"] $ws1
 assign [class="Alacritty"] $ws2
 assign [class="Thunderbird"] $ws3
 for_window [class="Pavucontrol"] floating enable
