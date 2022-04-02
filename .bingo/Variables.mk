@@ -29,11 +29,11 @@ $(GOIMPORTS): $(BINGO_DIR)/goimports.mod
 	@echo "(re)installing $(GOBIN)/goimports-v0.1.4"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=goimports.mod -o=$(GOBIN)/goimports-v0.1.4 "golang.org/x/tools/cmd/goimports"
 
-GOLANGCI_LINT := $(GOBIN)/golangci-lint-v1.43.0
+GOLANGCI_LINT := $(GOBIN)/golangci-lint-v1.45.2
 $(GOLANGCI_LINT): $(BINGO_DIR)/golangci-lint.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/golangci-lint-v1.43.0"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=golangci-lint.mod -o=$(GOBIN)/golangci-lint-v1.43.0 "github.com/golangci/golangci-lint/cmd/golangci-lint"
+	@echo "(re)installing $(GOBIN)/golangci-lint-v1.45.2"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=golangci-lint.mod -o=$(GOBIN)/golangci-lint-v1.45.2 "github.com/golangci/golangci-lint/cmd/golangci-lint"
 
 GOPLS := $(GOBIN)/gopls-v0.7.0
 $(GOPLS): $(BINGO_DIR)/gopls.mod
@@ -89,11 +89,11 @@ $(KUBEVAL): $(BINGO_DIR)/kubeval.mod
 	@echo "(re)installing $(GOBIN)/kubeval-v0.16.1"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=kubeval.mod -o=$(GOBIN)/kubeval-v0.16.1 "github.com/instrumenta/kubeval"
 
-SHFMT := $(GOBIN)/shfmt-v3.3.0
+SHFMT := $(GOBIN)/shfmt-v3.4.3
 $(SHFMT): $(BINGO_DIR)/shfmt.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/shfmt-v3.3.0"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=shfmt.mod -o=$(GOBIN)/shfmt-v3.3.0 "mvdan.cc/sh/v3/cmd/shfmt"
+	@echo "(re)installing $(GOBIN)/shfmt-v3.4.3"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=shfmt.mod -o=$(GOBIN)/shfmt-v3.4.3 "mvdan.cc/sh/v3/cmd/shfmt"
 
 TERRAFORM_LS := $(GOBIN)/terraform-ls-v0.26.0
 $(TERRAFORM_LS): $(BINGO_DIR)/terraform-ls.mod
@@ -107,9 +107,9 @@ $(TFLINT): $(BINGO_DIR)/tflint.mod
 	@echo "(re)installing $(GOBIN)/tflint-v0.35.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tflint.mod -o=$(GOBIN)/tflint-v0.35.0 "github.com/terraform-linters/tflint"
 
-TK := $(GOBIN)/tk-v0.17.1
+TK := $(GOBIN)/tk-v0.20.0
 $(TK): $(BINGO_DIR)/tk.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
-	@echo "(re)installing $(GOBIN)/tk-v0.17.1"
-	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tk.mod -o=$(GOBIN)/tk-v0.17.1 "github.com/grafana/tanka/cmd/tk"
+	@echo "(re)installing $(GOBIN)/tk-v0.20.0"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tk.mod -o=$(GOBIN)/tk-v0.20.0 "github.com/grafana/tanka/cmd/tk"
 
