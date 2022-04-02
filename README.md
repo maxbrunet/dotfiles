@@ -10,7 +10,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim` and `tmux
 git clone --recurse-submodules git@github.com:maxbrunet/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 mkvirtualenv .dotfiles
-pip install ansible
+pip install ansible-core
 ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local --extra-vars @apps.yml
 ```
 
