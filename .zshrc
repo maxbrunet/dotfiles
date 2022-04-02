@@ -31,6 +31,10 @@ export AWS_ASSUME_ROLE_TTL='1h'
 export BAT_STYLE='plain'
 export BAT_THEME='TwoDark'
 
+# nvm
+NVM_LAZY=1
+NVM_LAZY_CMD=(npx)
+
 # terraform
 export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugins"
 
@@ -55,6 +59,7 @@ plugins=(
   gitignore
   kube-ps1
   kubectl
+  nvm
   pyenv
   sudo
   vagrant
