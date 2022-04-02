@@ -97,18 +97,18 @@ RPROMPT='$(aws_prompt_info)'"${RPROMPT}"
 
 # Automatically enable kube-ps1 when certain commands are executed
 function _enable_kube-ps1 {
-  case "${2%% *}" in
-        kubectl \
-      | k3d \
-      | kops \
-      | kubens \
-      | kubectx \
-      | kustomize \
-      | tk \
-    )
-      kubeon
-      ;;
-  esac
+  local -ra KUBE_CMDS=(
+    kubectl
+    k3d
+    kops
+    kubens
+    kubectx
+    kustomize
+    tk
+  )
+  if (( $KUBE_CMDS[(I)${2%% *}] )); then
+    kubeon
+  fi
 }
 
 if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
