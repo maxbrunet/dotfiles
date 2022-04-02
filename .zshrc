@@ -131,6 +131,7 @@ alias tfplan='terraform plan'
 alias tfapply='terraform apply'
 alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
+alias e="${EDITOR}"
 
 # OpenSUSE specific aliases
 if (( $+commands[zypper] )); then
