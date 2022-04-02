@@ -22,6 +22,8 @@ apps:
         version: v0.8.1
       - repo: https://github.com/Banno/asdf-kubectl.git
         dest: ~/.asdf/plugins/kubectl
+      - repo: https://github.com/Banno/asdf-kustomize.git
+        dest: ~/.asdf/plugins/kustomize
       - repo: https://github.com/nvm-sh/nvm.git
         dest: ~/.nvm
         version: v0.39.1

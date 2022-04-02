@@ -65,6 +65,12 @@ $(JSONNETFMT): $(BINGO_DIR)/jsonnetfmt.mod
 	@echo "(re)installing $(GOBIN)/jsonnetfmt-v0.18.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=jsonnetfmt.mod -o=$(GOBIN)/jsonnetfmt-v0.18.0 "github.com/google/go-jsonnet/cmd/jsonnetfmt"
 
+K3D := $(GOBIN)/k3d-v5.4.1
+$(K3D): $(BINGO_DIR)/k3d.mod
+	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
+	@echo "(re)installing $(GOBIN)/k3d-v5.4.1"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=k3d.mod -o=$(GOBIN)/k3d-v5.4.1 "github.com/k3d-io/k3d/v5"
+
 KUBECTX := $(GOBIN)/kubectx-v0.9.4
 $(KUBECTX): $(BINGO_DIR)/kubectx.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
@@ -94,6 +100,12 @@ $(TERRAFORM_LS): $(BINGO_DIR)/terraform-ls.mod
 	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
 	@echo "(re)installing $(GOBIN)/terraform-ls-v0.26.0"
 	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=terraform-ls.mod -o=$(GOBIN)/terraform-ls-v0.26.0 "github.com/hashicorp/terraform-ls"
+
+TFLINT := $(GOBIN)/tflint-v0.35.0
+$(TFLINT): $(BINGO_DIR)/tflint.mod
+	@# Install binary/ries using Go 1.14+ build command. This is using bwplotka/bingo-controlled, separate go module with pinned dependencies.
+	@echo "(re)installing $(GOBIN)/tflint-v0.35.0"
+	@cd $(BINGO_DIR) && $(GO) build -mod=mod -modfile=tflint.mod -o=$(GOBIN)/tflint-v0.35.0 "github.com/terraform-linters/tflint"
 
 TK := $(GOBIN)/tk-v0.17.1
 $(TK): $(BINGO_DIR)/tk.mod
