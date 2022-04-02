@@ -58,7 +58,6 @@ plugins=(
   pyenv
   sudo
   vagrant
-  zsh_reload
   # custom
   ansidot
   base16
