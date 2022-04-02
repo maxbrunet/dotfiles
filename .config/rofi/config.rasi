@@ -1,0 +1,12 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "Noto Sans 16";
+	eh: 2;
+}
+
+@theme "Arc-Dark"
+
+listview {
+	lines: 5;
+	columns: 1;
+}

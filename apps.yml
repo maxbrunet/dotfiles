@@ -75,8 +75,8 @@ apps:
         src: "{{ source_dir }}/.config/alacritty/alacritty.yml"
       - path: ~/.config/dunst/dunstrc
         src: "{{ source_dir }}/.config/dunst/dunstrc"
-      - path: ~/.config/rofi/config
-        src: "{{ source_dir }}/.config/rofi/config"
+      - path: ~/.config/rofi/config.rasi
+        src: "{{ source_dir }}/.config/rofi/config.rasi"
       - path: ~/.local/bin/volume.sh
         src: "{{ source_dir }}/.local/bin/volume.sh"
       - path: ~/.gtkrc-2.0
