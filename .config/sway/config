@@ -7,6 +7,10 @@ font pango:Noto Sans 11
 # thin borders
 hide_edge_borders both
 
+# title bar
+titlebar_border_thickness 1
+titlebar_padding 5 1
+
 # drag windows
 floating_modifier $mod
 
@@ -17,7 +21,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec wofi --show drun | xargs swaymsg exec --
+
+output * bg ~/Pictures/wallpaper.png fill
 
 # change focus
 bindsym $mod+j focus left
@@ -105,16 +111,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign some containers to a specific workspace
-assign [class="firefox|Chromium-browser"] $ws1
-assign [class="Alacritty"] $ws2
-assign [class="Thunderbird"] $ws3
-for_window [class="Pavucontrol"] floating enable
-for_window [class="gnome-calculator"] floating enable
+assign [app_id="firefox"] $ws1
+assign [app_id="Alacritty"] $ws2
+assign [app_id="thunderbird"] $ws3
+assign [class="Chromium-browser"] $ws1
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="gnome-calculator"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -135,11 +141,26 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screenshot mode
+set $mode_screenshot 'Screenshot (a) active, (s) screen, (o) output, (r) area, (w) window'
+mode $mode_screenshot {
+    bindsym a exec grimshot --notify copy active; mode "default"
+    bindsym s exec grimshot --notify copy screen; mode "default"
+    bindsym o exec grimshot --notify copy output; mode "default"
+    bindsym r exec grimshot --notify copy area; mode "default"
+    bindsym w exec grimshot --notify copy window; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+bindsym $mod+Print mode $mode_screenshot
+
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
 
 # window colors
 #                       border              background         text                 indicator
@@ -151,29 +172,20 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-    status_command i3blocks
-    colors {
-        background $bg-color
-        separator #757575
-        #                  border             background         text
-        focused_workspace  $bg-color          $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-    }
-    tray_padding 1
+    swaybar_command waybar
 }
 
 # shutdown, reboot, lock screen
-set $locker i3lock --color 475263 && sleep 1
+set $locker swaylock --color 475263 --daemonize && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym l exec $locker, mode "default"
+    bindsym e exec swaymsg exit, mode "default"
+    bindsym s exec $locker && systemctl suspend, mode "default"
+    bindsym h exec $locker && systemctl hibernate, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+    bindsym Shift+s exec systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -189,9 +201,9 @@ bindsym Control+grave exec dunstctl history-pop
 bindsym Control+period exec dunstctl context
 
 # key-bindings
-bindsym $mod+shift+x exec --no-startup-id $locker
-bindsym Print exec xfce4-screenshooter -f
-bindsym Mod1+Print exec xfce4-screenshooter -w
+bindsym $mod+shift+x exec $locker
+bindsym Print exec grimshot --notify copy screen
+bindsym Mod1+Print exec grimshot --notify copy active
 bindsym XF86AudioLowerVolume exec ~/.local/bin/volume.sh lower
 bindsym XF86AudioMute exec ~/.local/bin/volume.sh mute
 bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume.sh raise
@@ -200,17 +212,30 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Display exec --no-startup-id arandr
-bindsym XF86ScreenSaver exec --no-startup-id $locker
-bindsym XF86Sleep exec --no-startup-id $locker && systemctl suspend
-bindsym XF86WebCam exec xfce4-screenshooter -f
+bindsym XF86Display exec wldisplays
+bindsym XF86MonBrightnessDown exec ~/.local/bin/brightness.sh down
+bindsym XF86MonBrightnessUp exec ~/.local/bin/brightness.sh up
+bindsym XF86ScreenSaver exec $locker
+bindsym XF86Sleep exec $locker && systemctl suspend
+bindsym XF86WebCam exec grimshot --notify copy screen
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Arc-Darker'
+    gsettings set $gnome-schema icon-theme 'Arc'
+    gsettings set $gnome-schema cursor-theme 'breeze_cursors'
+    gsettings set $gnome-schema font-name 'Noto Sans 11'
+}
 
 # startup
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
+exec swayidle -w \
+    timeout 300 '$locker' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep '$locker'
+# https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
+exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
+exec systemctl --user start redshift
 exec firefox
 exec alacritty
-exec --no-startup-id pasystray
-exec --no-startup-id blueberry-tray
-exec --no-startup-id nm-applet
-exec --no-startup-id pk-update-icon
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec dunst

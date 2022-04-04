@@ -1,0 +1,48 @@
+*{
+    font-family: Noto Sans;
+    font-size: 16px;
+}
+
+window {
+    background-color: #7C818C;
+    border-radius: 3px;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #383C4A;
+    color: white;
+}
+
+#inner-box {
+    background-color: #383C4A;
+}
+
+#outer-box {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #383C4A;
+}
+
+#scroll {
+}
+
+#text {
+    padding: 5px;
+    color: white;
+}
+
+#entry:nth-child(even){
+    background-color: #404552;
+}
+
+#entry:selected {
+    background-color: #5291e2;
+}
+
+#text:selected {
+}

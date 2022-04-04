@@ -5,7 +5,7 @@
     follow = mouse
     height = 150
     width = 300
-    offset = 14x40
+    offset = 14x14
     origin = bottom-right
     progress_bar = true
     progress_bar_height = 10
@@ -40,7 +40,7 @@
     icon_position = left
     min_icon_size = 0
     max_icon_size = 32
-    icon_path = /usr/share/icons/Arc/devices/22:/usr/share/icons/Arc/panel/22:/usr/share/icons/Arc/status/22
+    icon_path = /run/current-system/sw/share/icons/Arc/devices/16:/run/current-system/sw/share/icons/Arc/panel/16:/run/current-system/sw/share/icons/Arc/status/16
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/rofi -dmenu -p dunst

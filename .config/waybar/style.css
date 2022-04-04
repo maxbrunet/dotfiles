@@ -1,0 +1,116 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Noto Sans, "Font Awesome 5 Free", "Font Awesome 5 Brands";
+    font-size: 14px;
+    min-height: 0;
+}
+
+#workspaces button {
+    padding: 0px 6px;
+    color: #676e7d;
+}
+
+#workspaces button.focused {
+    color: #f3f4f5;
+}
+
+#workspaces button.urgent {
+    background-color: #e53935;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background-color: inherit;
+}
+
+#mode {
+    color: #f3f4f5;
+    background-color: #e53935;
+    padding: 0px 6px;
+}
+
+#custom-media {
+    color: #f3f4f5;
+    min-width: 100px;
+    padding: 3px 6px 0px 6px;
+}
+
+#clock,
+#battery,
+#bluetooth,
+#cpu,
+#keyboard-state > label.locked,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#tray,
+#idle_inhibitor {
+    padding: 0px 6px;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+/* Omit left margin of first workspace */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #e53935;
+    color: #f3f4f5;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network.disconnected {
+    background-color: #e53935;
+}
+
+#pulseaudio.muted {
+    background-color: #e53935;
+}
+
+#custom-media.custom-spotify {
+    background-color: #1ed760;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #e53935;
+}
+
+#idle_inhibitor.activated {
+    background-color: #f3f4f5;
+    color: #2f343f;
+}
+
+#keyboard-state > label.locked {
+    background: #e53935;
+}

@@ -16,8 +16,6 @@ set guicursor=
 " pynvim, see :help provider-python
 if has('mac')
   let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python3'
-else
-  let g:python3_host_prog = '/usr/bin/python3'
 endif
 
 " Deoplete
@@ -37,6 +35,7 @@ let g:ale_linters={
 \ }
 let g:ale_fixers={
 \ 'go': ['gofmt', 'goimports'],
+\ 'nix': ['nixpkgs-fmt'],
 \ 'python': ['isort', 'black'],
 \ 'sh': ['shfmt'],
 \ 'terraform': ['terraform'],

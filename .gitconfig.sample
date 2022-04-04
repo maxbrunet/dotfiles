@@ -4,7 +4,7 @@
 [commit]
 	gpgsign = true
 [core]
-	pager = diff-highlight | less --tabs=4
+	pager = delta | less --tabs=4
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -19,7 +19,16 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[delta]
+	color-only = true
+	diff-highlight = true
+	max-line-length = 0 
+	wrap-max-lines = 0
+[diff]
+	colorMoved = default
 [init]
 	defaultBranch = main
+[merge]
+	conflictstyle = diff3
 [pull]
 	rebase = true

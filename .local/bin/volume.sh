@@ -13,8 +13,7 @@ export LC_ALL=C
 
 function get_volume {
   pactl get-sink-volume @DEFAULT_SINK@ \
-    | awk '/^Volume: / {print $5; exit}' \
-    | awk -F'%' '{print $1}'
+    | awk '/^Volume: / {print substr($5, 0, length($5)-1); exit}'
 }
 
 function get_volume_icon {

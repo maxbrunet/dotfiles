@@ -81,7 +81,10 @@ plugins=(
 source "${ZSH}/oh-my-zsh.sh"
 
 # fzf
-if (( $+commands[zypper] )); then
+if (( $+commands[fzf-share] )); then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+elif (( $+commands[zypper] )); then
   source /etc/zsh_completion.d/fzf-key-bindings
 elif (( $+commands[brew] )); then
   [[ $- == *i* ]] && source /usr/local/opt/fzf/shell/completion.zsh 2> /dev/null
@@ -196,6 +199,9 @@ open_bb() {
 if (( $+commands[brew] )); then
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif (( $+commands[nix] )); then
+  source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ -f /etc/arch-release ]]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

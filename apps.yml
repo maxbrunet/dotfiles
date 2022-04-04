@@ -48,6 +48,8 @@ apps:
         dest: '{{ nvim_plugins }}/vim-jsonnet'
       - repo: https://github.com/hashivim/vim-terraform.git
         dest: '{{ nvim_plugins }}/vim-terraform'
+      - repo: https://github.com/LnL7/vim-nix.git
+        dest: '{{ nvim_plugins }}/vim-nix'
     dotfiles:
       - path: ~/.config/nvim/init.vim
         src: '{{ source_dir }}/.config/nvim/init.vim'
@@ -62,24 +64,23 @@ apps:
         src: "{{ source_dir }}/.tmux.conf.local"
       - path: ~/.tmux.conf
         src: ~/.tmux/.tmux.conf
-  - name: i3
-    git:
-      - repo: https://github.com/vivien/i3blocks-contrib.git
-        dest: ~/.local/lib/i3blocks-contrib
+  - name: sway
     dotfiles:
-      - path: ~/.config/i3/config
-        src: "{{ source_dir }}/.config/i3/config"
-      - path: ~/.config/i3blocks/config
-        src: "{{ source_dir }}/.config/i3blocks/config"
       - path: ~/.config/alacritty/alacritty.yml
         src: "{{ source_dir }}/.config/alacritty/alacritty.yml"
       - path: ~/.config/dunst/dunstrc
         src: "{{ source_dir }}/.config/dunst/dunstrc"
-      - path: ~/.config/rofi/config.rasi
-        src: "{{ source_dir }}/.config/rofi/config.rasi"
+      - path: ~/.local/bin/brightness.sh
+        src: "{{ source_dir }}/.local/bin/brightness.sh"
       - path: ~/.local/bin/volume.sh
         src: "{{ source_dir }}/.local/bin/volume.sh"
       - path: ~/.gtkrc-2.0
         src: "{{ source_dir }}/.gtkrc-2.0"
       - path: ~/.config/gtk-3.0/settings.ini
         src: "{{ source_dir }}/.config/gtk-3.0/settings.ini"
+      - path: ~/.config/sway/config
+        src: "{{ source_dir }}/.config/sway/config"
+      - path: ~/.config/waybar
+        src: "{{ source_dir }}/.config/waybar"
+      - path: ~/.config/wofi/style.css
+        src: "{{ source_dir }}/.config/wofi/style.css"
