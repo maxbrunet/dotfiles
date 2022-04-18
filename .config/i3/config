@@ -109,7 +109,7 @@ assign [class="firefox|Chromium-browser"] $ws1
 assign [class="Alacritty"] $ws2
 assign [class="Thunderbird"] $ws3
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Gnome-calculator"] floating enable
+for_window [class="gnome-calculator"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
