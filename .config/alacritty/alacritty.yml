@@ -3,7 +3,7 @@ import:
 
 window:
   decorations: none
-  startup_mode: Fullscreen
+  startup_mode: Maximized
 
 scrolling:
   history: 0
