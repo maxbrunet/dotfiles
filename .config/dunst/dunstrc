@@ -3,7 +3,10 @@
 [global]
     monitor = 0
     follow = mouse
-    geometry = "300x5-15-40"
+    height = 150
+    width = 300
+    offset = 14x40
+    origin = bottom-right
     progress_bar = true
     progress_bar_height = 10
     progress_bar_frame_width = 0
