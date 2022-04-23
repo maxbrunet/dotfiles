@@ -15,7 +15,6 @@
     indicate_hidden = yes
     shrink = no
     transparency = 80
-    notification_height = 0
     separator_height = 5
     padding = 8
     horizontal_padding = 8
@@ -49,8 +48,6 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    startup_notification = false
-    verbosity = mesg
     corner_radius = 2
     ignore_dbusclose = false
     force_xwayland = false
@@ -61,12 +58,6 @@
 
 [experimental]
     per_monitor_dpi = false
-
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
 
 [urgency_low]
     background = "#5F697F"

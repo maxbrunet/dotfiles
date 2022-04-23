@@ -182,6 +182,12 @@ mode "$mode_system" {
 
 bindsym XF86Launch1 mode "$mode_system"
 
+# Dunst
+bindsym Control+space exec dunstctl close
+bindsym Control+Shift+space exec dunstctl close-all
+bindsym Control+grave exec dunstctl history-pop
+bindsym Control+period exec dunstctl context
+
 # key-bindings
 bindsym $mod+shift+x exec --no-startup-id $locker
 bindsym Print exec xfce4-screenshooter -f
