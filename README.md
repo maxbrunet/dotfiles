@@ -12,6 +12,7 @@ cd ~/.dotfiles
 mkvirtualenv .dotfiles
 pip install ansible-core
 ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local --extra-vars @apps.yml
+nvim +PackerSync
 ```
 
 Install Go tools
