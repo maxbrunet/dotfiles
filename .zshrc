@@ -7,6 +7,10 @@ export ZSH="${HOME}/.oh-my-zsh"
 # Base16 theme
 BASE16_THEME='google-dark'
 
+# Set default applications
+export BROWSER='firefox'
+export EDITOR='nvim'
+
 # Go environment
 # run `go env` for more
 export GOBIN="${HOME}/.local/bin"
@@ -119,9 +123,6 @@ function _enable_kube-ps1 {
 if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
   preexec_functions+=(_enable_kube-ps1)
 fi
-
-# Set EDITOR
-export EDITOR='nvim'
 
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
