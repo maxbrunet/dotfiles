@@ -51,12 +51,12 @@
         "format-wifi": "",
         "format-ethernet": "",
         "format-linked": " (No IP)",
-        "format-disconnected": "⚠ Disconnected",
+        "format-disconnected": " Disconnected",
         "format-alt": " {ifname}: {ipaddr}/{cidr}",
         "tooltip-format-wifi": " {essid} ({signalStrength}%)",
         "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "tooltip-format-linked": " {ifname} (No IP)",
-        "tooltip-format-disconnected": "⚠ Disconnected",
+        "tooltip-format-disconnected": " Disconnected",
         "tooltip-format-alt": " {ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
