@@ -7,6 +7,10 @@
       ./hardware-configuration.nix
     ];
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback.out
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
@@ -70,6 +74,7 @@
     docker-buildx
     docker-compose_2
     dos2unix
+    droidcam
     evince
     firefox-wayland
     fzf
@@ -121,6 +126,7 @@
     python3Packages.virtualenv
     python3Packages.virtualenvwrapper
     rnix-lsp
+    scrcpy
     shellcheck
     shfmt
     slack
@@ -136,6 +142,7 @@
     traceroute
     tree
     urlview
+    v4l-utils
     vlc
     wget
     xdg-utils
