@@ -33,7 +33,14 @@ export AWS_ASSUME_ROLE_TTL='1h'
 
 # bat
 export BAT_STYLE='plain'
-export BAT_THEME='TwoDark'
+export BAT_THEME='gruvbox-dark'
+
+# fzf
+if (( $+commands[fzf-share] )); then
+  FZF_BASE="$(fzf-share)"
+elif (( $+commands[brew] )); then
+  FZF_BASE='/usr/local/opt/fzf'
+fi
 
 # nvm
 NVM_LAZY=1
@@ -59,6 +66,7 @@ plugins=(
   colored-man-pages
   common-aliases
   docker
+  fzf
   git
   gitignore
   kube-ps1
@@ -66,7 +74,6 @@ plugins=(
   nvm
   pyenv
   sudo
-  vagrant
   # custom
   ansidot
   base16
@@ -75,23 +82,8 @@ plugins=(
 # Conditionally load some plugins
 (( $+commands[pyenv] )) && plugins+=(pyenv)
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
-(( $+commands[zypper] )) && plugins+=(suse)
-[[ -f /etc/arch-release ]] && plugins+=(archlinux)
 
 source "${ZSH}/oh-my-zsh.sh"
-
-# fzf
-if (( $+commands[fzf-share] )); then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-elif (( $+commands[zypper] )); then
-  source /etc/zsh_completion.d/fzf-key-bindings
-elif (( $+commands[brew] )); then
-  [[ $- == *i* ]] && source /usr/local/opt/fzf/shell/completion.zsh 2> /dev/null
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-elif [[ -f /etc/arch-release ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-fi
 
 # kube-ps1 plugin
 KUBE_PS1_ENABLED='off' # Disable kube-ps1 by default
@@ -112,7 +104,6 @@ function _enable_kube-ps1 {
   local -ra KUBE_CMDS=(
     kubectl
     k3d
-    kops
     kubens
     kubectx
     kustomize
@@ -141,20 +132,6 @@ alias tfapply='terraform apply'
 alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
 alias e="${EDITOR}"
-
-# OpenSUSE specific aliases
-if (( $+commands[zypper] )); then
-  alias zinnr='sudo zypper install --no-recommends'
-  alias zse='zypper se'
-  alias zif='zypper if'
-fi
-
-# MacOS specific aliases
-if [[ "$(uname -s)" == 'Darwin' ]]; then
-  alias mkpasswd='docker run --rm busybox mkpasswd'
-  alias sudoedit='sudo -e'
-  alias updatedb='sudo /usr/libexec/locate.updatedb'
-fi
 
 # Open a file/directory in GitHub
 open_gh() {
@@ -196,16 +173,10 @@ open_bb() {
 
 # zsh-users
 # Load zsh-syntax-highlighting after all custom widgets have been created
-if (( $+commands[brew] )); then
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif (( $+commands[nix] )); then
+if (( $+commands[nix] )); then
   source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [[ -f /etc/arch-release ]]; then
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif (( $+commands[brew] )); then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

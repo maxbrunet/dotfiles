@@ -5,7 +5,7 @@ omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
 apps:
   - name: zsh
     git:
-      - repo: https://github.com/robbyrussell/oh-my-zsh.git
+      - repo: https://github.com/ohmyzsh/ohmyzsh.git
         dest: ~/.oh-my-zsh
       - repo: https://github.com/aarowill/base16-alacritty.git
         dest: ~/.local/share/base16/alacritty
