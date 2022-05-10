@@ -264,6 +264,12 @@
       arc-icon-theme
       arc-theme
       alacritty
+      # Fake terminal so desktop applications with Terminal=true work
+      # https://gitlab.gnome.org/GNOME/glib/-/issues/338
+      # https://gitlab.gnome.org/GNOME/glib/-/blob/2.72.1/gio/gdesktopappinfo.c#L2653-2698
+      (linkFarm "fake-xterm" [
+        { name = "bin/xterm"; path = "${alacritty}/bin/alacritty"; }
+      ])
       dunst
       glib
       imv
