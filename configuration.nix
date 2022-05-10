@@ -99,13 +99,16 @@
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
       { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
     ])
+    lazygit
     libreoffice
     libsecret
     lsof
     mate.engrampa
     unstable.neovim
+    ncdu
     nixpkgs-fmt
     nmap
+    nodejs
     pavucontrol
     perl
     playerctl
@@ -125,6 +128,7 @@
     python3Packages.python-lsp-server
     python3Packages.virtualenv
     python3Packages.virtualenvwrapper
+    ripgrep
     rnix-lsp
     scrcpy
     shellcheck
