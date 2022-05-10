@@ -75,6 +75,7 @@
     docker-compose_2
     dos2unix
     droidcam
+    emote
     evince
     firefox-wayland
     fzf
@@ -166,27 +167,23 @@
 
   fonts.fontconfig = {
     defaultFonts = {
-      emoji = [ "Noto Color Emoji" ];
-      monospace = [
-        "Source Code Pro"
+      emoji = [
         "Noto Color Emoji"
         "Font Awesome 5 Free"
         "Font Awesome 5 Brands"
         "SauceCodePro Nerd Font"
+      ];
+      monospace = [
+        "Source Code Pro"
+        "emoji"
       ];
       sansSerif = [
         "Noto Sans"
-        "Noto Color Emoji"
-        "Font Awesome 5 Free"
-        "Font Awesome 5 Brands"
-        "SauceCodePro Nerd Font"
+        "emoji"
       ];
       serif = [
         "Noto Serif"
-        "Noto Color Emoji"
-        "Font Awesome 5 Free"
-        "Font Awesome 5 Brands"
-        "SauceCodePro Nerd Font"
+        "emoji"
       ];
     };
   };
