@@ -70,3 +70,5 @@ apps:
         src: "{{ source_dir }}/.config/waybar"
       - path: ~/.config/wofi/style.css
         src: "{{ source_dir }}/.config/wofi/style.css"
+      - path: ~/.config/xfce4/helpers.rc
+        src: "{{ source_dir }}/.config/xfce4/helpers.rc"
