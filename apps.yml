@@ -33,8 +33,6 @@ apps:
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
       - path: '{{ omz_custom_plugins }}/base16/base16.plugin.zsh'
         src: '{{ omz_custom_plugins_src }}/base16/base16.plugin.zsh'
-      - path: ~/.local/bin/aws-vault-yk
-        src: "{{ source_dir }}/.local/bin/aws-vault-yk"
   - name: nvim
     git:
       - repo: https://github.com/AstroNvim/AstroNvim.git
