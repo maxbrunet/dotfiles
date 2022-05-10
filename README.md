@@ -6,6 +6,8 @@ My [NixOS](https://nixos.org) configuration.
 
 **⚠️ Warning: All data will be erased to install NixOS! These instructions are not indented for any users but myself (@maxbrunet), read scripts carefully!**
 
+Download and boot the [NixOS installer](https://nixos.org/download.html#nixos-iso), then:
+
 ```shell
 sudo -i
 wpa_passphrase <ESSID> | tee /etc/wpa_supplicant.conf
