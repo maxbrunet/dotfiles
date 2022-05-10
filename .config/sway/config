@@ -75,16 +75,16 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $ws1 "1 "
+set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "10 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -236,6 +236,7 @@ exec swayidle -w \
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 exec systemctl --user start redshift
+exec dunst
 exec firefox
 exec alacritty
-exec dunst
+exec thunderbird
