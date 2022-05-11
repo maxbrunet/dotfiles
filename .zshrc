@@ -14,7 +14,7 @@ export EDITOR='nvim'
 # Go environment
 # run `go env` for more
 export GOBIN="${HOME}/.local/bin"
-export GOPATH="${HOME}/.local/lib/go"
+export GOPATH="${HOME}/.local/share/go"
 
 # awscli
 export AWS_PAGER=''
