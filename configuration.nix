@@ -82,6 +82,7 @@
     fpp
     gcc
     gimp
+    gnome.gnome-calculator
     gnome.simple-scan
     go
     gopls
