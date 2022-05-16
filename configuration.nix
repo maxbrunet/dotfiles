@@ -147,6 +147,7 @@
     tmux
     traceroute
     tree
+    unzip
     urlview
     v4l-utils
     vlc
@@ -162,6 +163,7 @@
       ];
     })
     xfce.xfconf
+    zip
     zsh-autosuggestions
     zsh-syntax-highlighting
   ];
