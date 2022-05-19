@@ -84,6 +84,7 @@
     gimp
     gnome.gnome-calculator
     gnome.simple-scan
+    gnumake
     go
     gopls
     gotools
