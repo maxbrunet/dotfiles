@@ -1,3 +1,5 @@
+local colors = require("gruvbox.colors")
+
 local config = {
   colorscheme = "gruvbox",
 
@@ -8,6 +10,7 @@ local config = {
       number = false, -- Hide numberline
       relativenumber = false, -- Hide relative numberline 
       signcolumn = "auto", -- Show sign column when used only
+      spell = true, -- Enable spell checking
     },
   },
 
@@ -17,6 +20,32 @@ local config = {
       { "ellisonleao/gruvbox.nvim", as = "gruvbox" },
       { "google/vim-jsonnet" },
     },
+    feline = {
+      -- Fix theme with gruvbox colors
+      theme = {
+        fg = colors.light0,
+        bg = colors.dark1,
+      },
+    },
+    ["null-ls"] = function(config)
+      local null_ls = require "null-ls"
+      -- Include code and source with diagnostics message
+      config.diagnostics_format = "[#{c}] #{m} (#{s})"
+      config.sources = {
+        null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.diagnostics.golangci_lint,
+        null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.goimports,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.shfmt.with({
+          extra_args = { "-i", "2", "-ci", "-bn"},
+        }),
+        null_ls.builtins.formatting.terraform_fmt,
+      }
+      return config
+    end,
     packer = {
       snapshot = "packer.snapshot.json",
       snapshot_path = vim.fn.stdpath "config" .. "/lua/user",
@@ -32,35 +61,6 @@ local config = {
       },
     },
   },
-
-  ["null-ls"] = function()
-    local status_ok, null_ls = pcall(require, "null-ls")
-    if not status_ok then
-      return
-    end
-
-    local formatting = null_ls.builtins.formatting
-
-    local diagnostics = null_ls.builtins.diagnostics
-
-    null_ls.setup {
-      -- Include code and source with diagnostics message
-      diagnostics_format = "[#{c}] #{m} (#{s})",
-      sources = {
-        diagnostics.flake8,
-        diagnostics.golangci_lint,
-        diagnostics.shellcheck,
-        formatting.black,
-        formatting.gofmt,
-        formatting.goimports,
-        formatting.isort,
-        formatting.shfmt.with({
-          extra_args = { "-i", "2", "-ci", "-bn"},
-        }),
-        formatting.terraform_fmt,
-      },
-    }
-  end,
 
   lsp = {
     servers = {
