@@ -88,10 +88,11 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    go
+    unstable.go_1_18
     gopls
     gotools
-    golangci-lint
+    # https://github.com/golangci/golangci-lint/issues/2414
+    unstable.golangci-lint
     hadolint
     htop
     hub
