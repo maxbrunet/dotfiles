@@ -63,6 +63,7 @@
 
   environment.systemPackages = with pkgs; [
     android-tools
+    appimage-run
     atom
     bat
     bind.dnsutils
