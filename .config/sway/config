@@ -116,6 +116,7 @@ assign [app_id="Alacritty"] $ws2
 assign [app_id="thunderbird"] $ws3
 assign [class="Chromium-browser"] $ws1
 for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set width 492 px height 300 px, move position 860 px 424 px, sticky enable
 for_window [app_id="gnome-calculator"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 
