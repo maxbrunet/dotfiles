@@ -66,6 +66,7 @@ local config = {
     servers = {
       "pylsp",
       "rnix",
+      "rls",
       "terraformls",
       "gopls",
     },

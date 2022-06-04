@@ -24,3 +24,9 @@ bingo get -l
 ln -s kubectx ~/.local/bin/kubectl-ctx
 ln -s kubens ~/.local/bin/kubectl-ns
 ```
+
+Install Rust toolchain
+
+```shell
+rustup toolchain install stable --component rls
+```
