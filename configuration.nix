@@ -68,7 +68,6 @@
     bat
     bind.dnsutils
     brightnessctl
-    cargo
     (chromium.override {
       commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
     })
@@ -137,6 +136,7 @@
     python3Packages.virtualenvwrapper
     ripgrep
     rnix-lsp
+    rustup
     scrcpy
     shellcheck
     shfmt
