@@ -79,6 +79,7 @@
     droidcam
     emote
     evince
+    file
     firefox-wayland
     fzf
     fpp
