@@ -37,6 +37,18 @@
 
   environment.defaultPackages = lib.mkForce [ ];
 
+  environment.etc = {
+    # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+      		bluez_monitor.properties = {
+      			["bluez5.enable-sbc-xq"] = true,
+      			["bluez5.enable-msbc"] = true,
+      			["bluez5.enable-hw-volume"] = true,
+      			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      		}
+      	'';
+  };
+
   environment.loginShellInit = ''
     eval "$(gnome-keyring-daemon --start)"
     export SSH_AUTH_SOCK
@@ -87,11 +99,10 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    unstable.go_1_18
+    go_1_18
     gopls
     gotools
-    # https://github.com/golangci/golangci-lint/issues/2414
-    unstable.golangci-lint
+    golangci-lint
     hadolint
     htop
     hub
@@ -110,7 +121,7 @@
     libsecret
     lsof
     mate.engrampa
-    unstable.neovim
+    neovim
     ncdu
     nixpkgs-fmt
     nmap
@@ -120,9 +131,9 @@
     playerctl
     polkit_gnome
     powertop
+    pre-commit
     psmisc
-    # Until pulseaudio v15 moves to stable
-    unstable.pulseaudio
+    pulseaudio
     pwgen
     python3
     python3Packages.black
@@ -130,7 +141,6 @@
     python3Packages.isort
     python3Packages.pipx
     python3Packages.poetry
-    python3Packages.pre-commit
     python3Packages.python-lsp-server
     python3Packages.virtualenv
     python3Packages.virtualenvwrapper
@@ -177,8 +187,8 @@
     defaultFonts = {
       emoji = [
         "Noto Color Emoji"
-        "Font Awesome 5 Free"
-        "Font Awesome 5 Brands"
+        "Font Awesome 6 Free"
+        "Font Awesome 6 Brands"
         "SauceCodePro Nerd Font"
       ];
       monospace = [
@@ -207,9 +217,7 @@
   ];
 
   hardware.bluetooth.enable = true;
-  # Until Bluez 5.64 moves to stable
-  # https://github.com/bluez/bluez/issues/286
-  hardware.bluetooth.package = pkgs.unstable.bluez;
+  hardware.bluetooth.package = pkgs.bluez;
   hardware.bluetooth.powerOnBoot = false;
 
   hardware.firmware = with pkgs; [
@@ -219,7 +227,7 @@
   ];
 
   hardware.sane.enable = true;
-  hardware.sane.extraBackends = [ pkgs.unstable.hplip ];
+  hardware.sane.extraBackends = [ pkgs.hplip ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -239,12 +247,12 @@
   networking.hostName = "BRUNETM-X230";
   networking.wireless.iwd.enable = true;
 
-  nix.autoOptimiseStore = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+  nix.settings.auto-optimise-store = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -308,40 +316,10 @@
   services.gvfs.enable = true;
 
   services.printing.enable = true;
-  # Until hplip fixes move to stable
-  # https://github.com/NixOS/nixpkgs/issues/114051
-  # https://bugs.launchpad.net/hplip/+bug/1946173
-  services.printing.drivers = [ pkgs.unstable.hplip ];
+  services.printing.drivers = [ pkgs.hplip ];
 
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    media-session.config.bluez-monitor = {
-      rules = [
-        {
-          # Matches all cards
-          matches = [{ "device.name" = "~bluez_card.*"; }];
-          actions = {
-            "update-props" = {
-              "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-              # mSBC is not expected to work on all headset + adapter combinations.
-              "bluez5.msbc-support" = true;
-              # SBC-XQ is not expected to work on all headset + adapter combinations.
-              "bluez5.sbc-xq-support" = true;
-            };
-          };
-        }
-        {
-          matches = [
-            # Matches all sources
-            { "node.name" = "~bluez_input.*"; }
-            # Matches all outputs
-            { "node.name" = "~bluez_output.*"; }
-          ];
-        }
-      ];
-    };
-  };
+  services.pipewire.enable = true;
+  services.pipewire.pulse.enable = true;
 
   services.redshift = {
     enable = true;

@@ -16,10 +16,21 @@ nix-env -iA nixos.git
 git clone https://github.com/maxbrunet/naxos.git
 cd naxos
 ./bootstrap.sh
-reboot
-# Login
+# Change TTY (not tty1) or reboot and login
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --update
 /etc/nixos/bootstrap-user.sh
 ```
+
+If running in VirtualBox, ensure:
+
+* EFI is enabled
+* 3D acceleration is enabled
+* Solid-state Drive is checked for the virtual disk
+* The following variables are exported before starting `sway` (e.g. set from `~/.zshenv`):
+
+  ```shell
+  export WLR_NO_HARDWARE_CURSORS=1
+  export LIBGL_ALWAYS_SOFTWARE=1
+  ```
