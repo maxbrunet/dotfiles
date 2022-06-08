@@ -37,7 +37,7 @@ apps:
     git:
       - repo: https://github.com/AstroNvim/AstroNvim.git
         dest: ~/.config/nvim
-        version: v1.3.0
+        version: v1.4.0
     dotfiles:
       - path: ~/.config/nvim/lua/user
         src: '{{ source_dir }}/.config/nvim/lua/user'
