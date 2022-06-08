@@ -90,20 +90,20 @@
     evince
     file
     firefox-wayland
-    fzf
     fpp
+    fzf
     gcc
+    gh
     gimp
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
     go_1_18
+    golangci-lint
     gopls
     gotools
-    golangci-lint
     hadolint
     htop
-    hub
     imagemagick
     jq
     jsonnet
@@ -119,8 +119,8 @@
     libsecret
     lsof
     mate.engrampa
-    neovim
     ncdu
+    neovim
     nixpkgs-fmt
     nmap
     nodejs
@@ -165,8 +165,8 @@
     v4l-utils
     vlc
     wget
-    xdg-utils
     xdg-user-dirs
+    xdg-utils
     xfce.exo
     (xfce.thunar.override {
       thunarPlugins = with pkgs; [
