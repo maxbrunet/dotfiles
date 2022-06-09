@@ -99,6 +99,7 @@
     gnome.simple-scan
     gnumake
     go_1_18
+    gofumpt
     golangci-lint
     gopls
     gotools
@@ -176,6 +177,7 @@
       ];
     })
     xfce.xfconf
+    yarn
     zip
     zsh-autosuggestions
     zsh-syntax-highlighting
