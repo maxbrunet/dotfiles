@@ -82,8 +82,6 @@
       commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
     })
     delta
-    docker-buildx
-    docker-compose_2
     dos2unix
     droidcam
     emote
@@ -128,6 +126,7 @@
     pavucontrol
     perl
     playerctl
+    podman-compose
     polkit_gnome
     powertop
     pre-commit
@@ -343,7 +342,6 @@
   users.users.maxime = {
     isNormalUser = true;
     extraGroups = [
-      "docker"
       "input"
       "lp"
       "scanner"
@@ -353,12 +351,12 @@
     shell = pkgs.zsh;
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.daemon.settings = {
-    features = {
-      buildkit = true;
-    };
-  };
+  virtualisation.containers.registries.search = [ "docker.io" ];
+
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
+  virtualisation.podman.defaultNetwork.dnsname.enable = true;
+
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
