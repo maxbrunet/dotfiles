@@ -106,6 +106,7 @@
     gofumpt
     golangci-lint
     gopls
+    goreleaser
     gotools
     hadolint
     htop
