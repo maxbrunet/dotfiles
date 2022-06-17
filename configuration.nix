@@ -11,6 +11,9 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback.out
   ];
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1; # need by k3d's svclb-traefik DaemonSet
+  };
   boot.kernelModules = [ "v4l2loopback" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
@@ -61,7 +64,10 @@
     "/share/zsh-syntax-highlighting"
   ];
 
-  environment.sessionVariables = {
+  environment.sessionVariables = rec {
+    # https://k3d.io/stable/usage/advanced/podman/#using-rootless-podman
+    DOCKER_HOST = "unix://${DOCKER_SOCK}";
+    DOCKER_SOCK = "\${XDG_RUNTIME_DIR}/podman/podman.sock";
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "sway";
     XKB_DEFAULT_LAYOUT = "us";
@@ -107,7 +113,9 @@
     jq
     jsonnet
     jsonnet-bundler
-    kube3d
+    # Until v5.4.2 is in stable channel
+    # https://github.com/k3d-io/k3d/pull/1045
+    unstable.kube3d
     kubectx
     (linkFarm "kubectl-ctx" [
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
@@ -336,6 +344,20 @@
   services.upower.enable = true;
 
   sound.enable = true;
+
+  # Delegate cpu/cpuset: https://github.com/k3d-io/k3d/issues/1082
+  systemd.services."user@".serviceConfig = {
+    Delegate = [ "cpu" "cpuset" "io" "memory" "pids" ];
+  };
+
+  # Until https://github.com/NixOS/nixpkgs/pull/176809 make it to the stable channel
+  systemd.user.services.podman = {
+    path = [ "/run/wrappers" ]; # https://github.com/NixOS/nixpkgs/issues/138423
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.podman}/bin/podman $LOGGING system service" ];
+    };
+  };
+  systemd.user.sockets.podman.wantedBy = [ "sockets.target" ];
 
   time.timeZone = "America/Vancouver";
 
