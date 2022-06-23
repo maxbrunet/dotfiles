@@ -187,6 +187,7 @@
     })
     xfce.xfconf
     yarn
+    yq-go
     zip
     zsh-autosuggestions
     zsh-syntax-highlighting
