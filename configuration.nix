@@ -88,6 +88,7 @@
       commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
     })
     delta
+    direnv
     dos2unix
     droidcam
     emote
