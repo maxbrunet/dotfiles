@@ -27,6 +27,13 @@ local config = {
         bg = colors.dark1,
       },
     },
+    ["neo-tree"] = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+      },
+    },
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       -- Include code and source with diagnostics message
