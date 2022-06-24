@@ -1,5 +1,5 @@
 # Customize PATH
-export PATH="${HOME}/.cargo/bin:${HOME}/.local/bin:${HOME}/.pyenv/shims:${PATH}"
+export PATH="${HOME}/.cargo/bin:${HOME}/.local/bin:${PATH}"
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -42,10 +42,6 @@ elif (( $+commands[brew] )); then
   FZF_BASE='/usr/local/opt/fzf'
 fi
 
-# nvm
-NVM_LAZY=1
-NVM_LAZY_CMD=(npx)
-
 # terraform
 export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugins"
 
@@ -71,8 +67,6 @@ plugins=(
   gitignore
   kube-ps1
   kubectl
-  nvm
-  pyenv
   sudo
   # custom
   ansidot
@@ -80,7 +74,6 @@ plugins=(
 )
 
 # Conditionally load some plugins
-(( $+commands[pyenv] )) && plugins+=(pyenv)
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 
 source "${ZSH}/oh-my-zsh.sh"

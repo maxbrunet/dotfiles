@@ -1,14 +1,7 @@
 dotfiles="${HOME}/.dotfiles"
 ansidot="${dotfiles}/ansidot"
 
-if (( $+commands[pyenv] )); then
-  python_env=(${HOME}/.pyenv/versions/3.*/envs/.dotfiles/bin)
-  python_env="${python_env[-1]}"
-else
-  python_env="${HOME}/.virtualenvs/.dotfiles/bin"
-fi
-
-alias ansidot="ANSIBLE_PIPELINING=true ${python_env}/ansible-playbook ${ansidot}/ansidot.yml \
+alias ansidot="ANSIBLE_PIPELINING=true ansible-playbook ${ansidot}/ansidot.yml \
 --inventory localhost, \
 --connection local \
 --extra-vars @${dotfiles}/apps.yml"
@@ -21,4 +14,4 @@ dotgit() {
 }
 compdef '_dispatch git git' dotgit
 
-unset dotfiles ansidot python_env
+unset dotfiles ansidot

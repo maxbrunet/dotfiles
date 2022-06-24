@@ -13,9 +13,6 @@ apps:
         dest: ~/.local/share/base16/fzf
       - repo: https://github.com/chriskempson/base16-shell.git
         dest: ~/.local/share/base16/shell
-      - repo: https://github.com/pyenv/pyenv-virtualenv.git
-        dest: ~/.pyenv/plugins/pyenv-virtualenv
-        version: v1.1.5
       - repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
         version: v0.8.1
@@ -23,9 +20,6 @@ apps:
         dest: ~/.asdf/plugins/kubectl
       - repo: https://github.com/Banno/asdf-kustomize.git
         dest: ~/.asdf/plugins/kustomize
-      - repo: https://github.com/nvm-sh/nvm.git
-        dest: ~/.nvm
-        version: v0.39.1
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
