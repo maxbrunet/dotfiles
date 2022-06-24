@@ -11,8 +11,8 @@ xdg-user-dirs-update
 
 echo '>>> Installing dotfiles...'
 git clone --recursive https://github.com/maxbrunet/dotfiles.git ~/.dotfiles
-git --git-dir="${HOME}/.dotfiles/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
-cd "${HOME}/.dotfiles"
+git --git-dir="${HOME}/.config/dotfiles/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
+cd "${HOME}/config/dotfiles"
 
 echo '>>> Installing Ansible...'
 pipx install ansible-core
