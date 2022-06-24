@@ -14,13 +14,8 @@ git clone --recursive https://github.com/maxbrunet/dotfiles.git ~/.dotfiles
 git --git-dir="${HOME}/.dotfiles/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
 cd "${HOME}/.dotfiles"
 
-echo '>>> Making .dotfiles virtualenv...'
-python -m venv "${HOME}/.virtualenvs/.dotfiles"
-
 echo '>>> Installing Ansible...'
-# shellcheck disable=SC1091
-source "${HOME}/.virtualenvs/.dotfiles/bin/activate"
-pip install ansible-core
+pipx install ansible-core
 
 echo '>>> Running Ansible playbook...'
 ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local --extra-vars @apps.yml
