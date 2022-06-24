@@ -1,8 +1,8 @@
 # Customize PATH
-export PATH="${HOME}/.cargo/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.local/share/cargo/bin:${HOME}/.local/bin:${PATH}"
 
 # Path to oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+export ZSH="${HOME}/.local/share/oh-my-zsh"
 
 # Base16 theme
 BASE16_THEME='google-dark'
@@ -10,11 +10,6 @@ BASE16_THEME='google-dark'
 # Set default applications
 export BROWSER='firefox'
 export EDITOR='nvim'
-
-# Go environment
-# run `go env` for more
-export GOBIN="${HOME}/.local/bin"
-export GOPATH="${HOME}/.local/share/go"
 
 # awscli
 export AWS_PAGER=''
@@ -42,9 +37,6 @@ elif (( $+commands[brew] )); then
   FZF_BASE='/usr/local/opt/fzf'
 fi
 
-# terraform
-export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugins"
-
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 
@@ -57,6 +49,7 @@ ZSH_THEME='tjkirch'
 # Plugins
 plugins=(
   tmux
+  xdg-base-dir
   asdf
   aws
   colored-man-pages

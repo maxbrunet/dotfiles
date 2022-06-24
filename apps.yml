@@ -1,12 +1,12 @@
 ---
-source_dir: ~/.dotfiles
-omz_custom_plugins_src: '{{ source_dir }}/.oh-my-zsh/custom/plugins'
-omz_custom_plugins: ~/.oh-my-zsh/custom/plugins
+source_dir: ~/.config/dotfiles
+omz_custom_plugins_src: '{{ source_dir }}/.local/share/oh-my-zsh/custom/plugins'
+omz_custom_plugins: ~/.local/share/oh-my-zsh/custom/plugins
 apps:
   - name: zsh
     git:
       - repo: https://github.com/ohmyzsh/ohmyzsh.git
-        dest: ~/.oh-my-zsh
+        dest: ~/.local/share/oh-my-zsh
       - repo: https://github.com/aarowill/base16-alacritty.git
         dest: ~/.local/share/base16/alacritty
       - repo: https://github.com/nicodebo/base16-fzf.git
@@ -14,12 +14,12 @@ apps:
       - repo: https://github.com/chriskempson/base16-shell.git
         dest: ~/.local/share/base16/shell
       - repo: https://github.com/asdf-vm/asdf.git
-        dest: ~/.asdf
+        dest: ~/.local/share/asdf
         version: v0.8.1
       - repo: https://github.com/Banno/asdf-kubectl.git
-        dest: ~/.asdf/plugins/kubectl
+        dest: ~/.local/share/asdf/plugins/kubectl
       - repo: https://github.com/Banno/asdf-kustomize.git
-        dest: ~/.asdf/plugins/kustomize
+        dest: ~/.local/share/asdf/plugins/kustomize
     dotfiles:
       - path: ~/.zshrc
         src: "{{ source_dir }}/.zshrc"
@@ -27,6 +27,8 @@ apps:
         src: '{{ omz_custom_plugins_src }}/ansidot/ansidot.plugin.zsh'
       - path: '{{ omz_custom_plugins }}/base16/base16.plugin.zsh'
         src: '{{ omz_custom_plugins_src }}/base16/base16.plugin.zsh'
+      - path: '{{ omz_custom_plugins }}/xdg-base-dir/xdg-base-dir.plugin.zsh'
+        src: '{{ omz_custom_plugins_src }}/xdg-base-dir/xdg-base-dir.plugin.zsh'
   - name: nvim
     git:
       - repo: https://github.com/AstroNvim/AstroNvim.git
@@ -54,8 +56,6 @@ apps:
         src: "{{ source_dir }}/.local/bin/brightness.sh"
       - path: ~/.local/bin/volume.sh
         src: "{{ source_dir }}/.local/bin/volume.sh"
-      - path: ~/.gtkrc-2.0
-        src: "{{ source_dir }}/.gtkrc-2.0"
       - path: ~/.config/gtk-3.0/settings.ini
         src: "{{ source_dir }}/.config/gtk-3.0/settings.ini"
       - path: ~/.config/sway/config
