@@ -54,6 +54,7 @@ plugins=(
   aws
   colored-man-pages
   common-aliases
+  direnv
   docker
   fzf
   git
