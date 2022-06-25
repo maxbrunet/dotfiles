@@ -80,7 +80,7 @@
   environment.systemPackages = with pkgs; [
     android-tools
     appimage-run
-    atom
+    aspellDicts.en
     bat
     bind.dnsutils
     brightnessctl
@@ -179,6 +179,7 @@
     xdg-user-dirs
     xdg-utils
     xfce.exo
+    xfce.mousepad
     (xfce.thunar.override {
       thunarPlugins = with pkgs; [
         xfce.thunar-volman
