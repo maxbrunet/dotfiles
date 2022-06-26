@@ -17,6 +17,7 @@ export TF_PLUGIN_CACHE_DIR="${CACHE_HOME}/terraform/plugins"
 export ANDROID_HOME="${DATA_HOME}/android"
 export ANSIBLE_HOME="${DATA_HOME}/ansible"
 export ASDF_DATA_DIR="${DATA_HOME}/asdf"
+export ASDF_DIR="${ASDF_DATA_DIR}"
 export CARGO_HOME="${DATA_HOME}/cargo"
 export GOPATH="${DATA_HOME}/.local/share/go"
 export LESSHISTFILE="${DATA_HOME}/less/history"
@@ -26,4 +27,4 @@ export RUSTUP_HOME="${DATA_HOME}/rustup"
 export VAGRANT_HOME="${DATA_HOME}/vagrant"
 export WORKON_HOME="${DATA_HOME}/virtualenvs"
 
-unset CACHE_HOME CONFIG_HOME DATA_HOME STATE_HOME
+unset BIN_HOME CACHE_HOME CONFIG_HOME DATA_HOME STATE_HOME
