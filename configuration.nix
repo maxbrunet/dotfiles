@@ -333,6 +333,10 @@
 
   services.gvfs.enable = true;
 
+  services.logind.extraConfig = ''
+    RuntimeDirectorySize=20%
+  '';
+
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplip ];
 
