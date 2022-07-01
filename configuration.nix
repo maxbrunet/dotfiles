@@ -85,7 +85,10 @@
     bind.dnsutils
     brightnessctl
     (chromium.override {
-      commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
+      commandLineArgs = ''
+        --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland "$@"
+        # Comment out the other flags to ensure the WebRTCPipeWireCapturer feature is enabled
+        #'';
     })
     delta
     direnv
@@ -322,6 +325,8 @@
 
   programs.zsh.enable = true;
 
+  security.rtkit.enable = true;
+
   services.avahi.enable = true;
 
   services.blueman.enable = true;
@@ -355,15 +360,18 @@
 
   sound.enable = true;
 
+  # Until https://github.com/NixOS/nixpkgs/pull/173160 makes it to the stable channel
+  systemd.user.services.pipewire-pulse.path = [ pkgs.pulseaudio ];
+
   # Delegate cpu/cpuset: https://github.com/k3d-io/k3d/issues/1082
   systemd.services."user@".serviceConfig = {
     Delegate = [ "cpu" "cpuset" "io" "memory" "pids" ];
   };
 
-  # Until https://github.com/NixOS/nixpkgs/pull/176809 make it to the stable channel
   systemd.user.services.podman = {
     path = [ "/run/wrappers" ]; # https://github.com/NixOS/nixpkgs/issues/138423
     serviceConfig = {
+      # Until https://github.com/NixOS/nixpkgs/pull/176809 makes it to the stable channel
       ExecStart = [ "" "${pkgs.podman}/bin/podman $LOGGING system service" ];
     };
   };
@@ -394,6 +402,9 @@
 
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
+  # Until xdg-desktop-portal-wlr v0.6.0 makes it to the stable channel
+  # https://github.com/emersion/xdg-desktop-portal-wlr/pull/184
+  xdg.portal.extraPortals = lib.mkForce [ pkgs.unstable.xdg-desktop-portal-wlr ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
