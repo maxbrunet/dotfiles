@@ -17,12 +17,12 @@ local config = {
   plugins = {
     init = {
       { "editorconfig/editorconfig-vim", version = "v1.1.1" },
-      { "ellisonleao/gruvbox.nvim", as = "gruvbox" },
-      { "google/vim-jsonnet" },
+      { "ellisonleao/gruvbox.nvim", version = "79419f9313192d238c58feccac887dacb4db9276", as = "gruvbox" },
+      { "google/vim-jsonnet", version = "b7459b36e5465515f7cf81d0bb0e66e42a7c2eb5" },
     },
     feline = {
-      -- Fix theme with gruvbox colors
       theme = {
+        -- Fix theme with gruvbox colors
         fg = colors.light0,
         bg = colors.dark1,
       },
@@ -57,8 +57,8 @@ local config = {
       return config
     end,
     packer = {
-      snapshot = "packer.snapshot.json",
-      snapshot_path = vim.fn.stdpath "config" .. "/lua/user",
+      snapshot = "packer_snapshot",
+      snapshot_path = vim.fn.stdpath("config"),
     },
     session_manager = {
       autosave_last_session = true,

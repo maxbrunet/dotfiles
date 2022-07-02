@@ -14,10 +14,8 @@ export GOBIN="${BIN_HOME}"
 export TF_PLUGIN_CACHE_DIR="${CACHE_HOME}/terraform/plugins"
 
 # Data
-export ANDROID_HOME="${DATA_HOME}/android"
 export ANSIBLE_HOME="${DATA_HOME}/ansible"
 export ASDF_DATA_DIR="${DATA_HOME}/asdf"
-export ASDF_DIR="${ASDF_DATA_DIR}"
 export CARGO_HOME="${DATA_HOME}/cargo"
 export GOPATH="${DATA_HOME}/.local/share/go"
 export LESSHISTFILE="${DATA_HOME}/less/history"

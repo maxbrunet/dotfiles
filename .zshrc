@@ -2,7 +2,8 @@
 export PATH="${HOME}/.local/share/cargo/bin:${HOME}/.local/bin:${PATH}"
 
 # Path to oh-my-zsh installation.
-export ZSH="${HOME}/.local/share/oh-my-zsh"
+ZSH="${HOME}/.local/share/oh-my-zsh"
+ZSH_CUSTOM="${HOME}/.local/share/oh-my-zsh-custom"
 
 # Base16 theme
 BASE16_THEME='google-dark'
@@ -50,21 +51,17 @@ ZSH_THEME='tjkirch'
 plugins=(
   tmux
   xdg-base-dir
-  asdf
   aws
+  base16
   colored-man-pages
   common-aliases
   direnv
-  docker
   fzf
   git
   gitignore
   kube-ps1
   kubectl
   sudo
-  # custom
-  ansidot
-  base16
 )
 
 # Conditionally load some plugins
@@ -108,7 +105,8 @@ fi
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
-alias nvimrc="${EDITOR} ~/.config/nvim/lua/user/init.lua"
+alias nvimrc="${EDITOR} ${HOME}/.config/nixpkgs/.config/astronvim/lua/user/init.lua"
+alias zshrc="${EDITOR} ${HOME}/.config/nixpkgs/.zshrc"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail'
 alias tf='terraform'
@@ -122,7 +120,7 @@ alias e="${EDITOR}"
 
 # zsh-users
 # Load zsh-syntax-highlighting after all custom widgets have been created
-if (( $+commands[nix] )); then
+if (( $+commands[nixos-rebuild] )); then
   source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif (( $+commands[brew] )); then
