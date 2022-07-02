@@ -40,12 +40,12 @@ apps:
   - name: tmux
     git:
       - repo: https://github.com/gpakosz/.tmux.git
-        dest: ~/.tmux
+        dest: ~/.local/share/oh-my-tmux
     dotfiles:
       - path: ~/.tmux.conf.local
         src: "{{ source_dir }}/.tmux.conf.local"
       - path: ~/.tmux.conf
-        src: ~/.tmux/.tmux.conf
+        src: ~/.local/share/oh-my-tmux/.tmux.conf
   - name: sway
     dotfiles:
       - path: ~/.config/alacritty/alacritty.yml
