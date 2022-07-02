@@ -80,6 +80,7 @@
   environment.systemPackages = with pkgs; [
     android-tools
     appimage-run
+    asdf-vm
     aspellDicts.en
     bat
     bind.dnsutils
@@ -113,6 +114,7 @@
     goreleaser
     gotools
     hadolint
+    home-manager
     htop
     imagemagick
     jq

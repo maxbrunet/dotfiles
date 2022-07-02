@@ -10,15 +10,12 @@ echo '>>> Creating XDG user directories...'
 xdg-user-dirs-update
 
 echo '>>> Installing dotfiles...'
-git clone --recursive https://github.com/maxbrunet/dotfiles.git ~/.dotfiles
-git --git-dir="${HOME}/.config/dotfiles/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
-cd "${HOME}/config/dotfiles"
+git clone --recursive https://github.com/maxbrunet/dotfiles.git ~/.config/nixpkgs
+git --git-dir="${HOME}/.config/nixpkgs/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
+cd "${HOME}/config/nixpkgs"
 
-echo '>>> Installing Ansible...'
-pipx install ansible-core
-
-echo '>>> Running Ansible playbook...'
-ansible-playbook ansidot/ansidot.yml --inventory localhost, --connection local --extra-vars @apps.yml
+echo '>>> Building and activating Home Manager configuration...'
+home-manager switch
 
 echo '>>> Generating SSH keys...'
 SSH_PASSPHRASE="$(pwgen -cnysB1 16)"
