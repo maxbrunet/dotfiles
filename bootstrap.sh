@@ -7,6 +7,14 @@ cd "${CONFIG_DIR}"
 readonly MOUNTPOINT="${MOUNTPOINT:-/mnt}"
 readonly DEVICE="${DEVICE:-/dev/sdb}"
 
+if [[ "${DEVICE}" == '/dev/nvme'* ]]; then
+  readonly EFI_PART="${DEVICE}p1"
+  readonly ROOT_PART="${DEVICE}p2"
+else
+  readonly EFI_PART="${DEVICE}1"
+  readonly ROOT_PART="${DEVICE}2"
+fi
+
 echo '>>> Generating LUKS key file...'
 dd bs=4096 count=1 iflag=fullblock \
   if=/dev/random of="keyfile.bin"
@@ -31,11 +39,11 @@ parted "${DEVICE}" -- mkpart primary 128MiB 100%
 parted "${DEVICE}" -- set 1 esp on
 
 echo '>>> Creating file systems...'
-mkfs.fat -F 32 -n EFI "${DEVICE}1"
+mkfs.fat -F 32 -n EFI "${EFI_PART}"
 
-cryptsetup luksFormat --type luks1 --hash sha512 --key-file=keyfile.bin "${DEVICE}2"
-cryptsetup luksAddKey "${DEVICE}2" --key-file=keyfile.bin
-cryptsetup luksOpen "${DEVICE}2" --key-file=keyfile.bin cryptroot
+cryptsetup luksFormat --type luks1 --hash sha512 --key-file=keyfile.bin "${ROOT_PART}"
+cryptsetup luksAddKey "${ROOT_PART}" --key-file=keyfile.bin
+cryptsetup luksOpen "${ROOT_PART}" --key-file=keyfile.bin cryptroot
 
 mkfs.ext4 -L nixos /dev/mapper/cryptroot
 
@@ -43,7 +51,7 @@ echo '>>> Mounting volumes...'
 mount /dev/mapper/cryptroot "${MOUNTPOINT}"
 
 mkdir -p "${MOUNTPOINT}/boot/efi"
-mount "${DEVICE}1" "${MOUNTPOINT}/boot/efi"
+mount "${EFI_PART}" "${MOUNTPOINT}/boot/efi"
 
 echo '>>> Moving LUKS key file to target...'
 mkdir -p "${MOUNTPOINT}/boot/initrd"
@@ -80,7 +88,7 @@ echo '>>> Re-configuring NixOS configuration for user...'
 nixos-enter --root "${MOUNTPOINT}" -- bash <<EOF
   set -euo pipefail
   chown -R maxime /etc/nixos
-  git --git-dir=/etc/nixos/.git remote set-url origin git@github.com:maxbrunet/naxos-testing.git
+  git --git-dir=/etc/nixos/.git remote set-url origin git@github.com:maxbrunet/naxos.git
 EOF
 
 echo '>>> Setting user password...'

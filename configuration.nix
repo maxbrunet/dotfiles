@@ -3,8 +3,6 @@
 {
   imports =
     [
-      <nixos-hardware/common/pc/laptop/ssd>
-      <nixos-hardware/lenovo/thinkpad/x230>
       ./hardware-configuration.nix
     ];
 
@@ -70,9 +68,6 @@
     DOCKER_SOCK = "\${XDG_RUNTIME_DIR}/podman/podman.sock";
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "sway";
-    XKB_DEFAULT_LAYOUT = "us";
-    XKB_DEFAULT_OPTIONS = "terminate:ctrl_alt_bksp";
-    XKB_DEFAULT_VARIANT = "altgr-intl";
   };
 
   environment.shells = [ pkgs.zsh ];
@@ -181,7 +176,6 @@
     v4l-utils
     vlc
     wget
-    xdg-user-dirs
     xdg-utils
     xfce.exo
     xfce.mousepad
@@ -239,12 +233,6 @@
   hardware.bluetooth.package = pkgs.bluez;
   hardware.bluetooth.powerOnBoot = false;
 
-  hardware.firmware = with pkgs; [
-    # Bluetooth: hci0: BCM20702A1 (001.002.014) build 0000
-    # Bluetooth: hci0: BCM: firmware Patch file not found
-    broadcom-bt-firmware
-  ];
-
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.hplip ];
 
@@ -263,7 +251,6 @@
     # https://github.com/NixOS/nixpkgs/issues/49630#issuecomment-622498732
     { from = 32768; to = 60999; }
   ];
-  networking.hostName = "BRUNETM-X230";
   networking.wireless.iwd.enable = true;
 
   nix.gc = {
@@ -293,7 +280,21 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs; let
+      schema = gsettings-desktop-schemas;
+      dataDir = "${schema}/share/gsettings-schemas/${schema.name}";
+      gsettings-wrapped = writeTextFile {
+        name = "gsettings";
+        destination = "/bin/gsettings";
+        executable = true;
+        text = ''
+          export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
+
+          ${pkgs.glib}/bin/gsettings "$@"
+        '';
+      };
+    in
+    [
       arc-icon-theme
       arc-theme
       alacritty
@@ -304,7 +305,7 @@
         { name = "bin/xterm"; path = "${alacritty}/bin/alacritty"; }
       ])
       dunst
-      glib
+      gsettings-wrapped
       imv
       libappindicator
       libsForQt5.breeze-gtk
