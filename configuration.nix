@@ -408,6 +408,11 @@
   # https://github.com/emersion/xdg-desktop-portal-wlr/pull/184
   xdg.portal.extraPortals = lib.mkForce [ pkgs.unstable.xdg-desktop-portal-wlr ];
 
+  zramSwap.enable = true;
+  # 50% RAM, capped at 4 GiB
+  zramSwap.memoryMax = 4294967296;
+  zramSwap.memoryPercent = 50;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
