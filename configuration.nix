@@ -336,6 +336,8 @@
   services.connman.enable = true;
   services.connman.wifi.backend = "iwd";
 
+  services.fwupd.enable = true;
+
   services.gnome.gnome-keyring.enable = true;
 
   services.gvfs.enable = true;
