@@ -1,4 +1,7 @@
-local colors = require("gruvbox.colors")
+-- Importing gruvbox here would create a circular dependency within the config
+-- Hopefully moving to Heirline will make this unnecessary
+-- https://github.com/AstroNvim/AstroNvim/issues/686
+-- local colors = require("gruvbox.colors")
 
 local config = {
   colorscheme = "gruvbox",
@@ -23,8 +26,9 @@ local config = {
     feline = {
       theme = {
         -- Fix theme with gruvbox colors
-        fg = colors.light0,
-        bg = colors.dark1,
+        -- -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
+        fg = "#fbf1c7", -- colors.light0
+        bg = "#3c3836", -- colors.dark1
       },
     },
     ["neo-tree"] = {
