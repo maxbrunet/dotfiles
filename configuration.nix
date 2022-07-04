@@ -6,13 +6,9 @@
       ./hardware-configuration.nix
     ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback.out
-  ];
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # need by k3d's svclb-traefik DaemonSet
   };
-  boot.kernelModules = [ "v4l2loopback" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
@@ -89,7 +85,6 @@
     delta
     direnv
     dos2unix
-    droidcam
     emote
     evince
     file
@@ -156,7 +151,6 @@
     ripgrep
     rnix-lsp
     rustup
-    scrcpy
     shellcheck
     shfmt
     slack
@@ -173,7 +167,6 @@
     tree
     unzip
     urlview
-    v4l-utils
     vlc
     wget
     xdg-utils
