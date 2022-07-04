@@ -81,3 +81,7 @@
 [audio-volume]
     appname = "Audio Volume"
     history_ignore = yes
+
+[monitor-brightness]
+    appname = "Monitor Brightness"
+    history_ignore = yes

@@ -4,6 +4,18 @@ set $mod Mod4
 # font
 font pango:Noto Sans 11
 
+# input
+input type:keyboard {
+  xkb_layout us
+  xkb_options terminate:ctrl_alt_bksp
+  xkb_variant altgr-intl
+}
+
+input type:touchpad {
+  click_method clickfinger
+  tap enabled
+}
+
 # thin borders
 hide_edge_borders both
 
@@ -116,7 +128,7 @@ assign [app_id="Alacritty"] $ws2
 assign [app_id="thunderbird"] $ws3
 assign [class="Chromium-browser"] $ws1
 for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set width 492 px height 300 px, move position 860 px 424 px, sticky enable
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, resize set width 25 ppt height 25 ppt, move position 74 ppt 73 ppt, sticky enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 
@@ -193,12 +205,14 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+bindsym $mod+p mode "$mode_system"
 bindsym XF86Launch1 mode "$mode_system"
 
 # Dunst
 bindsym Control+space exec dunstctl close
 bindsym Control+Shift+space exec dunstctl close-all
 bindsym Control+grave exec dunstctl history-pop
+bindsym XF86NotificationCenter exec dunstctl history-pop
 bindsym Control+period exec dunstctl context
 
 # key-bindings
@@ -228,6 +242,9 @@ exec_always {
     gsettings set $gnome-schema cursor-theme 'breeze_cursors'
     gsettings set $gnome-schema font-name 'Noto Sans 11'
 }
+
+# https://github.com/NixOS/nixpkgs/issues/22652#issuecomment-890512607
+seat * xcursor_theme breeze_cursors
 
 # startup
 exec swayidle -w \
