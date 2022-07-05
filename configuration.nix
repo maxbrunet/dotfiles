@@ -235,9 +235,7 @@
     keyMap = "us";
   };
 
-  location.provider = "manual";
-  location.latitude = 49.7565619;
-  location.longitude = -123.3152747;
+  location.provider = "geoclue2";
 
   networking.firewall.allowedUDPPortRanges = [
     # Allow UPnP/SSDP traffic for Chromecast
@@ -350,6 +348,10 @@
     enable = true;
     executable = "/bin/gammastep";
     package = pkgs.gammastep;
+    temperature = {
+      day = 6500;
+      night = 4500;
+    };
   };
 
   services.tumbler.enable = true;
