@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec wofi --show drun | xargs swaymsg exec --
+bindsym $mod+d exec wofi --show drun
 
 output * bg ~/Pictures/wallpaper.png fill
 
@@ -123,14 +123,14 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign some containers to a specific workspace
-assign [app_id="firefox"] $ws1
+assign [app_id="firefox|chromium-browser"] $ws1
 assign [app_id="Alacritty"] $ws2
 assign [app_id="thunderbird"] $ws3
-assign [class="Chromium-browser"] $ws1
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, resize set width 25 ppt height 25 ppt, move position 74 ppt 73 ppt, sticky enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="wdisplays"] floating enable, resize set width 960 px
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
