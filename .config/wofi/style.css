@@ -10,8 +10,8 @@
 }
 
 #input {
-    padding: 20px;
-    font-size: 20px;
+    padding: 12px;
+    font-size: 18px;
     border-radius: 0px;
     border: 2px solid #2F343F;
     border-bottom: 2px solid #404552;
@@ -25,11 +25,11 @@
 }
 
 #entry {
-    padding: 5px 20px;
+    padding: 3px 10px;
 }
 
 #text {
-    padding: 0px 20px;
+    padding: 0px 10px;
 }
 
 #entry:nth-child(even){
