@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec wofi --show drun
+bindsym $mod+d exec wofi --allow-images --hide-scroll --insensitive --no-actions --show drun
 
 output * bg ~/Pictures/wallpaper.png fill
 

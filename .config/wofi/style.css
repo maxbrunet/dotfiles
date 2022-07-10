@@ -1,39 +1,35 @@
-*{
+* {
     font-family: Noto Sans;
     font-size: 16px;
+    color: #F3F4F5;
 }
 
-window {
-    background-color: #7C818C;
-    border-radius: 3px;
+#window,
+#outer-box {
+    background: none;
 }
 
 #input {
-    margin: 5px;
+    padding: 20px;
+    font-size: 20px;
     border-radius: 0px;
-    border: none;
-    border-bottom: 1px solid black;
+    border: 2px solid #2F343F;
+    border-bottom: 2px solid #404552;
     background-color: #383C4A;
-    color: white;
 }
 
 #inner-box {
     background-color: #383C4A;
+    border: 2px solid #2F343F;
+    border-top: none;
 }
 
-#outer-box {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 3px;
-    background-color: #383C4A;
-}
-
-#scroll {
+#entry {
+    padding: 5px 20px;
 }
 
 #text {
-    padding: 5px;
-    color: white;
+    padding: 0px 20px;
 }
 
 #entry:nth-child(even){
@@ -41,8 +37,5 @@ window {
 }
 
 #entry:selected {
-    background-color: #5291e2;
-}
-
-#text:selected {
+    background-color: #5291E2;
 }
