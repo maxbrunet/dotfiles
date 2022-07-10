@@ -222,6 +222,8 @@
     source-code-pro
   ];
 
+  gtk.iconCache.enable = true;
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.package = pkgs.bluez;
   hardware.bluetooth.powerOnBoot = false;
@@ -300,6 +302,7 @@
       imv
       libappindicator
       libsForQt5.breeze-gtk
+      paper-icon-theme
       sway-contrib.grimshot
       swayidle
       swaylock
