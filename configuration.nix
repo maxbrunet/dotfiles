@@ -125,6 +125,7 @@
     mate.engrampa
     ncdu
     neovim
+    niv
     nixpkgs-fmt
     nmap
     nodejs
