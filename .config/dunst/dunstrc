@@ -40,7 +40,7 @@
     icon_position = left
     min_icon_size = 0
     max_icon_size = 32
-    icon_path = /run/current-system/sw/share/icons/Arc/devices/16:/run/current-system/sw/share/icons/Arc/panel/16:/run/current-system/sw/share/icons/Arc/status/16
+    icon_path = /run/current-system/sw/share/icons/Numix/48/devices:/run/current-system/sw/share/icons/Numix/48/notifications:/run/current-system/sw/share/icons/Numix/48/panel:/run/current-system/sw/share/icons/Numix/48/status
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/rofi -dmenu -p dunst
@@ -82,6 +82,6 @@
     appname = "Audio Volume"
     history_ignore = yes
 
-[monitor-brightness]
-    appname = "Monitor Brightness"
+[display-brightness]
+    appname = "Display Brightness"
     history_ignore = yes

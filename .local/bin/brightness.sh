@@ -13,16 +13,35 @@ function set_brightness {
   send_brigthness_notification "${level}"
 }
 
-function send_brigthness_notification {
+function get_brightness_icon {
   local level="${1?Level required}"
 
+  if [[ "${level}" -le 0 ]]; then
+    printf 'notification-display-brightness-off'
+  elif [[ "${level}" -lt 34 ]]; then
+    printf 'notification-display-brightness-low'
+  elif [[ "${level}" -lt 67 ]]; then
+    printf 'notification-display-brightness-medium'
+  elif [[ "${level}" -lt 100 ]]; then
+    printf 'notification-display-brightness-high'
+  else
+    printf 'notification-display-brightness-full'
+  fi
+}
+
+
+function send_brigthness_notification {
+  local level icon
+  level="${1?Level required}"
+  icon="$(get_brightness_icon "${level}")"
+
   dunstify \
-    --appname='Monitor Brightness' \
+    --appname='Display Brightness' \
     --replace='991049' \
     --urgency='low' \
     --timeout='2000' \
     --hints="int:value:${level}" \
-    --icon="weather-clear" \
+    --icon="${icon}" \
     'Brightness'
 }
 

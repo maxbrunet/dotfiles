@@ -20,13 +20,13 @@ function get_volume_icon {
   local level="${1?Level required}"
 
   if [[ "${level}" -le 0 ]]; then
-    printf 'audio-volume-low-zero'
+    printf 'notification-audio-volume-off'
   elif [[ "${level}" -lt 34 ]]; then
-    printf 'audio-volume-low'
+    printf 'notification-audio-volume-low'
   elif [[ "${level}" -lt 67 ]]; then
-    printf 'audio-volume-medium'
+    printf 'notification-audio-volume-medium'
   else
-    printf 'audio-volume-high'
+    printf 'notification-audio-volume-high'
   fi
 }
 
@@ -49,7 +49,7 @@ function send_mute_notification {
     'yes')
       dunstify "${DUNSTIFY_CONFIG[@]}" \
         --hints='int:value:0' \
-        --icon='audio-volume-muted-blocking-panel' \
+        --icon='notification-audio-volume-muted' \
         'Volume' \
         'Mute'
       ;;
