@@ -289,7 +289,6 @@
       };
     in
     [
-      arc-icon-theme
       arc-theme
       alacritty
       # Fake terminal so desktop applications with Terminal=true work
@@ -302,8 +301,9 @@
       gsettings-wrapped
       imv
       libappindicator
-      libsForQt5.breeze-gtk
-      paper-icon-theme
+      numix-cursor-theme
+      numix-icon-theme
+      numix-icon-theme-circle
       sway-contrib.grimshot
       swayidle
       swaylock
