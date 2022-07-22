@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./modules/services/automatic-timezoned.nix
     ];
 
   boot.kernel.sysctl = {
@@ -325,6 +326,8 @@
 
   security.rtkit.enable = true;
 
+  services.automatic-timezoned.enable = true;
+
   services.avahi.enable = true;
 
   services.blueman.enable = true;
@@ -380,8 +383,6 @@
     };
   };
   systemd.user.sockets.podman.wantedBy = [ "sockets.target" ];
-
-  time.timeZone = "America/Vancouver";
 
   users.users.maxime = {
     isNormalUser = true;
