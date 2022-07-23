@@ -299,6 +299,7 @@
         { name = "bin/xterm"; path = "${alacritty}/bin/alacritty"; }
       ])
       dunst
+      gammastep
       gsettings-wrapped
       imv
       libappindicator
@@ -350,16 +351,6 @@
 
   services.pipewire.enable = true;
   services.pipewire.pulse.enable = true;
-
-  services.redshift = {
-    enable = true;
-    executable = "/bin/gammastep";
-    package = pkgs.gammastep;
-    temperature = {
-      day = 6500;
-      night = 4500;
-    };
-  };
 
   services.tumbler.enable = true;
 
