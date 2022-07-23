@@ -254,7 +254,6 @@ exec swayidle -w \
 # https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
-exec systemctl --user start redshift
 exec dunst
 exec firefox
 exec alacritty
