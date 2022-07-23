@@ -2,6 +2,8 @@
 
 My [NixOS](https://nixos.org) configuration.
 
+![Screenshot](screenshot.png)
+
 ## Bootstrap
 
 **⚠️ Warning: All data will be erased to install NixOS! These instructions are not indented for any users but myself (@maxbrunet), read scripts carefully!**
