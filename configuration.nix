@@ -303,7 +303,7 @@
       gsettings-wrapped
       imv
       libappindicator
-      numix-cursor-theme
+      libsForQt5.breeze-gtk
       numix-icon-theme
       numix-icon-theme-circle
       sway-contrib.grimshot
