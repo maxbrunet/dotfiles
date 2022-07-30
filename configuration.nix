@@ -111,6 +111,10 @@
     jq
     jsonnet
     jsonnet-bundler
+    # https://github.com/NixOS/nixpkgs/pull/176144
+    # unstable.jsonnet-language-server
+    # (callPackage <nixos-unstable/pkgs/development/tools/jsonnet-language-server> { })
+    unstable.jsonnet-language-server
     # Until v5.4.2 is in stable channel
     # https://github.com/k3d-io/k3d/pull/1045
     unstable.kube3d
@@ -130,6 +134,11 @@
     nixpkgs-fmt
     nmap
     nodejs
+    nodePackages.bash-language-server
+    nodePackages.prettier
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
     pavucontrol
     perl
     playerctl
