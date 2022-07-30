@@ -53,6 +53,7 @@ local config = {
         }),
         null_ls.builtins.formatting.goimports,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.shfmt.with({
           extra_args = { "-i", "2", "-ci", "-bn"},
         }),
@@ -78,11 +79,38 @@ local config = {
 
   lsp = {
     servers = {
-      "pylsp",
-      "rnix",
-      "rls",
-      "terraformls",
+      "bashls",
+      "cssls",
+      "eslint",
       "gopls",
+      "html",
+      "jsonls",
+      "jsonnet_ls",
+      "pylsp",
+      "rls",
+      "rnix",
+      "terraformls",
+      "tsserver",
+      "yamlls",
+    },
+    ["server-settings"] = {
+      yamlls = {
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-action"] = "/action.{yml,yaml}",
+              ["https://json.schemastore.org/github-workflow"] = "/.github/workflows/*.{yml,yaml}",
+              ["https://json.schemastore.org/github-workflow-template-properties"] = "/.github/workflow-templates/*.{yml,yaml}",
+              ["https://goreleaser.com/static/schema.json"] = "/.goreleaser.{yml,yaml}",
+              ["https://json.schemastore.org/golangci-lint"] = "/.golangci.{yml,yaml}",
+              ["https://json.schemastore.org/pre-commit-config"] = "/.pre-commit-config.{yml,yaml}",
+              ["https://json.schemastore.org/pre-commit-hooks"] = "/.pre-commit-hooks.{yml,yaml}",
+              ["https://json.schemastore.org/semantic-release"] = "/.releaserc.{yml,yaml}",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose*.{yml,yaml}",
+            },
+          },
+        },
+      },
     },
   },
 
