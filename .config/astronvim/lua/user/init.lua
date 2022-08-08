@@ -20,7 +20,7 @@ local config = {
   plugins = {
     init = {
       { "editorconfig/editorconfig-vim", version = "v1.1.1" },
-      { "ellisonleao/gruvbox.nvim", version = "29c50f1327d9d84436e484aac362d2fa6bca590b", as = "gruvbox" },
+      { "ellisonleao/gruvbox.nvim", version = "1.0.0", as = "gruvbox" },
       { "google/vim-jsonnet", version = "b7459b36e5465515f7cf81d0bb0e66e42a7c2eb5" },
     },
     feline = {
