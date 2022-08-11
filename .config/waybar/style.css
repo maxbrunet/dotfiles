@@ -84,6 +84,10 @@ label:focus {
     background-color: #e53935;
 }
 
+#bluetooth.disabled {
+    color: #676e7d;
+}
+
 #pulseaudio.muted {
     background-color: #e53935;
 }

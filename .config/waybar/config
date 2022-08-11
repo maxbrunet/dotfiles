@@ -53,7 +53,7 @@
         "format-linked": " (No IP)",
         "format-disconnected": " Disconnected",
         "format-alt": " {ifname}: {ipaddr}/{cidr}",
-        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-wifi": " {essid} ({signalStrength} dBm)",
         "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "tooltip-format-linked": " {ifname} (No IP)",
         "tooltip-format-disconnected": " Disconnected",
@@ -77,13 +77,16 @@
         },
         "on-click": "pavucontrol"
     },
+    // The bluetooth module assumes the conntroller is started when Waybar starts,
+    // if it is not the case the module breaks.
+    // https://github.com/Alexays/Waybar/blob/0.9.13/src/modules/bluetooth.cpp#L95-L96
+    // https://github.com/Alexays/Waybar/issues/1603#issuecomment-1172312650
     "bluetooth": {
-        "format": "{icon}",
-        "format-icons": {
-            "enabled": "",
-            "disabled": "<span color=\"#676e7d\"></span>"
-        },
+        "format": "",
         "tooltip-format": "{}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} ( {device_battery_percentage}%)",
         "on-click": "blueman-manager"
     },
     "custom/media": {
