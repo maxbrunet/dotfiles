@@ -6,7 +6,9 @@ My [NixOS](https://nixos.org) configuration.
 
 ## Bootstrap
 
-**⚠️ Warning: All data will be erased to install NixOS! These instructions are not indented for any users but myself (@maxbrunet), read scripts carefully!**
+> **Warning**
+>
+> All data will be erased to install NixOS! These instructions are not indented for any users but myself (@maxbrunet), read scripts carefully!
 
 Download and boot the [NixOS installer](https://nixos.org/download.html#nixos-iso), then:
 
