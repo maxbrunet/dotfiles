@@ -204,7 +204,7 @@
         "Noto Color Emoji"
         "Font Awesome 6 Free"
         "Font Awesome 6 Brands"
-        "SauceCodePro Nerd Font"
+        "Symbols Nerd Font Mono"
       ];
       monospace = [
         "Source Code Pro"
@@ -227,9 +227,7 @@
     noto-fonts-cjk-serif
     noto-fonts-emoji
     font-awesome
-    # Use NerdFontsSymbolsOnly once available in release
-    # https://github.com/ryanoasis/nerd-fonts/issues/479
-    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+    (unstable.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     source-code-pro
   ];
 
