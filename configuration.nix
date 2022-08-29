@@ -98,11 +98,11 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    go_1_18
+    unstable.go_1_19
     gofumpt
-    golangci-lint
+    unstable.golangci-lint
     gopls
-    goreleaser
+    unstable.goreleaser
     gotools
     hadolint
     home-manager
