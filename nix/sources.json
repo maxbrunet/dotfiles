@@ -5,10 +5,10 @@
         "homepage": "https://github.com/asdf-vm/asdf",
         "owner": "Banno",
         "repo": "asdf-kubectl",
-        "rev": "11ac5c3b0f403f7ead0b4a65bfbb04381ac8139e",
-        "sha256": "10rzkgbbirwg1fcgs70l2dykw57f779pyp2xvjsnbdkhfi5gnrzc",
+        "rev": "3d005920acc25d492d8a72ca1976d95134c3e3ff",
+        "sha256": "070ajjr8nzsy6b5q7z5kcwhzxbwxicwfj0xdgrds3r7ysdgbq892",
         "type": "tarball",
-        "url": "https://github.com/Banno/asdf-kubectl/archive/11ac5c3b0f403f7ead0b4a65bfbb04381ac8139e.tar.gz",
+        "url": "https://github.com/Banno/asdf-kubectl/archive/3d005920acc25d492d8a72ca1976d95134c3e3ff.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "asdf-kustomize": {
@@ -53,10 +53,10 @@
         "homepage": "https://github.com/base16-project/base16",
         "owner": "base16-project",
         "repo": "base16-fzf",
-        "rev": "3236e91c0f9fa42460e63ee38ca598ca7bfd5c66",
-        "sha256": "0nym0va1pdfr1lx91hdgghmw1mad2afy0066xbg6qxp5a10vw4cd",
+        "rev": "665b0821cb5ece119a039f0d91467b1828e6c355",
+        "sha256": "1z57ph27smglj82x1yaa8d7xxc842b7ghg91j7afd8kzds0gq8yx",
         "type": "tarball",
-        "url": "https://github.com/base16-project/base16-fzf/archive/3236e91c0f9fa42460e63ee38ca598ca7bfd5c66.tar.gz",
+        "url": "https://github.com/base16-project/base16-fzf/archive/665b0821cb5ece119a039f0d91467b1828e6c355.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-shell": {
@@ -65,10 +65,10 @@
         "homepage": "https://github.com/base16-project/base16",
         "owner": "base16-project",
         "repo": "base16-shell",
-        "rev": "da1a14e9a4edfa44b2f19016e4158414bf7215c3",
-        "sha256": "1drf0aravmhd8zmsxmvl9zcmlpd56nsdcybqbnv3a3h91hwas39c",
+        "rev": "4de166baf0ad1e2a2bea5393c9b07e3eabe6ae75",
+        "sha256": "1q60mw7yks9idj86rlvghm4hcpmkaypw7awz48x8z79n2wksc3mi",
         "type": "tarball",
-        "url": "https://github.com/base16-project/base16-shell/archive/da1a14e9a4edfa44b2f19016e4158414bf7215c3.tar.gz",
+        "url": "https://github.com/base16-project/base16-shell/archive/4de166baf0ad1e2a2bea5393c9b07e3eabe6ae75.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-tmux": {
@@ -77,10 +77,10 @@
         "homepage": "",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "b620a4f0fb6d8631b98559022a1d5e5f2bd2ce4f",
-        "sha256": "063wvw5j5hyz19p00xzabmmwnf7lhhvv9hwsc63gqxvj5b72dk2j",
+        "rev": "562f9c128e627d55b0fa8ca71a205a421702ffe0",
+        "sha256": "1kg7df033xqn7alyg765m8jc7ra1bfl2lc73ml6rwv0pn0qjqfkj",
         "type": "tarball",
-        "url": "https://github.com/gpakosz/.tmux/archive/b620a4f0fb6d8631b98559022a1d5e5f2bd2ce4f.tar.gz",
+        "url": "https://github.com/gpakosz/.tmux/archive/562f9c128e627d55b0fa8ca71a205a421702ffe0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-zsh": {
@@ -89,10 +89,10 @@
         "homepage": "https://ohmyz.sh",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "97134d1eed19b72a9c4bf90a2effa847221608bf",
-        "sha256": "1cyq3ngzrxlxiswjwl1bl4d0s7xziwk67gqvvvy03yfizv1cdck2",
+        "rev": "7dcabbe6826073ef6069c8a4b6f9a943f00d2df0",
+        "sha256": "1pqj8aljpy84vmi2sg0wq0s10h9193mj512lj8r4g1yq3r18ck9j",
         "type": "tarball",
-        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/97134d1eed19b72a9c4bf90a2effa847221608bf.tar.gz",
+        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/7dcabbe6826073ef6069c8a4b6f9a943f00d2df0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
