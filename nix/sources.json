@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "astronvim": {
-        "branch": "v1.9.2",
+        "branch": "v1.10.0",
         "description": "AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins ",
         "homepage": "https://AstroNvim.github.io",
         "owner": "AstroNvim",
         "repo": "AstroNvim",
-        "rev": "9badfdd8f2e472fc79dd666679df9ed6237240a8",
-        "sha256": "00r5plpi1v67l582zx1ldx2b7lcp7xzg460vw9y1s4c95zv0p99i",
+        "rev": "392b92d4f731d6126a1a3b946cc3a20e7aef9bfc",
+        "sha256": "15zdx0nbg60xb4rs05bx5jywp9nyxagb9h94rawvnvhqpy05b8rw",
         "type": "tarball",
-        "url": "https://github.com/AstroNvim/AstroNvim/archive/9badfdd8f2e472fc79dd666679df9ed6237240a8.tar.gz",
+        "url": "https://github.com/AstroNvim/AstroNvim/archive/392b92d4f731d6126a1a3b946cc3a20e7aef9bfc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
@@ -65,10 +65,10 @@
         "homepage": "https://github.com/base16-project/base16",
         "owner": "base16-project",
         "repo": "base16-shell",
-        "rev": "4de166baf0ad1e2a2bea5393c9b07e3eabe6ae75",
-        "sha256": "1q60mw7yks9idj86rlvghm4hcpmkaypw7awz48x8z79n2wksc3mi",
+        "rev": "da05fd6183c30f3453efa1ab7a60afe354760f69",
+        "sha256": "198lb7jx1daqyqk6id9qrfni661q64l73vxlfxpdb7r6s8h4ii39",
         "type": "tarball",
-        "url": "https://github.com/base16-project/base16-shell/archive/4de166baf0ad1e2a2bea5393c9b07e3eabe6ae75.tar.gz",
+        "url": "https://github.com/base16-project/base16-shell/archive/da05fd6183c30f3453efa1ab7a60afe354760f69.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-tmux": {
@@ -89,10 +89,10 @@
         "homepage": "https://ohmyz.sh",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "7dcabbe6826073ef6069c8a4b6f9a943f00d2df0",
-        "sha256": "1pqj8aljpy84vmi2sg0wq0s10h9193mj512lj8r4g1yq3r18ck9j",
+        "rev": "570158e464c9f57ab03c4162b4e6853b2c7c650d",
+        "sha256": "14waa2zc66ywcdz6dkcgisg1axjp13cqh0piwixhla2iwy5aq4zy",
         "type": "tarball",
-        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/7dcabbe6826073ef6069c8a4b6f9a943f00d2df0.tar.gz",
+        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/570158e464c9f57ab03c4162b4e6853b2c7c650d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
