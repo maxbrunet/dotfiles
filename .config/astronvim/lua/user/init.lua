@@ -1,13 +1,9 @@
--- Importing gruvbox here would create a circular dependency within the config
--- Hopefully moving to Heirline will make this unnecessary
--- https://github.com/AstroNvim/AstroNvim/issues/686
--- local colors = require("gruvbox.colors")
-
-local config = {
+return {
   colorscheme = "gruvbox",
 
   options = {
     opt = {
+      cmdheight = 1, -- Always display cmd line
       guicursor = "", -- Disable Nvim GUI cursor
       mouse = "", -- Disable mouse support
       number = false, -- Hide numberline
@@ -17,20 +13,30 @@ local config = {
     },
   },
 
+  heirline = {
+    colors = {
+      -- Fix theme with gruvbox colors
+      -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
+      -- https://github.com/ellisonleao/gruvbox.nvim/issues/119
+      fg = "#ebdbb2", -- colors.light1 
+      bg = "#504945", -- colors.dark2
+      section_fg = "#ebdbb2", -- colors.light1
+      section_bg = "#504945", -- colors.dark2
+    }
+  },
+
   plugins = {
     init = {
       { "editorconfig/editorconfig-vim", version = "v1.1.1" },
       { "ellisonleao/gruvbox.nvim", version = "1.0.0", as = "gruvbox" },
-      { "google/vim-jsonnet", version = "b7459b36e5465515f7cf81d0bb0e66e42a7c2eb5" },
     },
-    feline = {
-      theme = {
-        -- Fix theme with gruvbox colors
-        -- -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
-        fg = "#fbf1c7", -- colors.light0
-        bg = "#3c3836", -- colors.dark1
-      },
-    },
+    heirline = function(config)
+      config[1] = vim.tbl_deep_extend("force", config[1], {
+        -- add mode component
+        astronvim.status.component.mode { mode_text = { padding = { left = 1, right = 1 } } },
+      })
+      return config
+    end,
     ["neo-tree"] = {
       filesystem = {
         filtered_items = {
@@ -43,10 +49,8 @@ local config = {
       -- Include code and source with diagnostics message
       config.diagnostics_format = "[#{c}] #{m} (#{s})"
       config.sources = {
-        null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.gofumpt.with({
           extra_args = { "-extra" },
@@ -57,7 +61,6 @@ local config = {
         null_ls.builtins.formatting.shfmt.with({
           extra_args = { "-i", "2", "-ci", "-bn"},
         }),
-        null_ls.builtins.formatting.terraform_fmt,
       }
       return config
     end,
@@ -70,8 +73,9 @@ local config = {
     },
     treesitter = {
       ensure_installed = {
-        "hcl",
         "gomod",
+        "hcl",
+        "jsonnet",
         "nix",
       },
     },
@@ -93,7 +97,24 @@ local config = {
       "tsserver",
       "yamlls",
     },
+    formatting = {
+      disabled = {
+        "gopls",
+        "tsserver",
+      },
+      format_on_save = {
+        enabled = false,
+      },
+    },
     ["server-settings"] = {
+      pylsp = {
+        settings = {
+          pylsp = {
+            configurationSources = { "flake8" },
+            ["plugins.flake8.enabled"] = true,
+          },
+        },
+      },
       yamlls = {
         settings = {
           yaml = {
@@ -115,6 +136,13 @@ local config = {
   },
 
   polish = function()
+    vim.filetype.add({
+      extension = {
+        -- Map .libsonnet files to jsonnet filetype
+        libsonnet = "jsonnet",
+      }
+    })
+
     -- Highlight lines over 80 characters long
     vim.cmd([[
       highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
@@ -122,5 +150,3 @@ local config = {
     ]])
   end,
 }
-
-return config
