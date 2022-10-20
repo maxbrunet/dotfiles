@@ -99,11 +99,17 @@ return {
     },
     formatting = {
       disabled = {
-        "gopls",
-        "tsserver",
+        "gopls", -- use null-ls' gofumpt/goimports instead 
+        "tsserver", -- use null-ls' prettier instead
       },
       format_on_save = {
-        enabled = false,
+        enabled = true,
+        allow_filetypes = {
+          "go",
+          "jsonnet",
+          "rust",
+          "terraform",
+        },
       },
     },
     ["server-settings"] = {
@@ -139,14 +145,22 @@ return {
     vim.filetype.add({
       extension = {
         -- Map .libsonnet files to jsonnet filetype
+        -- https://github.com/neovim/neovim/pull/20752
         libsonnet = "jsonnet",
       }
     })
 
-    -- Highlight lines over 80 characters long
-    vim.cmd([[
-      highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-      call matchadd('ColorColumn', '\%81v', 100)
-    ]])
+    vim.api.nvim_create_autocmd("FileType", {
+      desc = "Highlight lines over 80 characters long",
+      callback = function()
+        if vim.bo.filetype == "alpha" then
+          return
+        end
+        vim.cmd([[
+          highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
+          call matchadd('ColorColumn', '\%81v', 100)
+        ]])
+      end,
+    })
   end,
 }
