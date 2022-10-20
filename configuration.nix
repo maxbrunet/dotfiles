@@ -76,6 +76,7 @@
     aspellDicts.en
     bat
     bind.dnsutils
+    bottom
     brightnessctl
     (chromium.override {
       commandLineArgs = ''
@@ -93,6 +94,7 @@
     fpp
     fzf
     gcc
+    gdu
     gh
     gimp
     gnome.gnome-calculator
@@ -128,8 +130,8 @@
     libsecret
     lsof
     mate.engrampa
-    ncdu
-    neovim
+    # Until v0.8 is in stable channel
+    unstable.neovim
     niv
     nixpkgs-fmt
     nmap
