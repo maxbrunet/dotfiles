@@ -27,8 +27,8 @@ return {
 
   plugins = {
     init = {
-      { "editorconfig/editorconfig-vim", version = "v1.1.1" },
       { "ellisonleao/gruvbox.nvim", version = "1.0.0", as = "gruvbox" },
+      { "gpanders/editorconfig.nvim", version = "v1.3.1" },
     },
     heirline = function(config)
       config[1] = vim.tbl_deep_extend("force", config[1], {
