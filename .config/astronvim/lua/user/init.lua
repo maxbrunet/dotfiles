@@ -17,7 +17,7 @@ return {
     colors = {
       -- Fix theme with gruvbox colors
       -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
-      -- https://github.com/ellisonleao/gruvbox.nvim/issues/119
+      -- https://github.com/AstroNvim/AstroNvim/issues/1147
       fg = "#ebdbb2", -- colors.light1 
       bg = "#504945", -- colors.dark2
       section_fg = "#ebdbb2", -- colors.light1
@@ -104,8 +104,11 @@ return {
     },
     formatting = {
       disabled = {
-        "gopls", -- use null-ls' gofumpt/goimports instead 
-        "tsserver", -- use null-ls' prettier instead
+        -- use null-ls' gofumpt/goimports instead 
+        -- https://github.com/golang/tools/pull/410
+        "gopls", 
+        -- use null-ls' prettier instead
+        "tsserver", 
       },
       format_on_save = {
         enabled = true,
@@ -150,7 +153,7 @@ return {
     vim.filetype.add({
       extension = {
         -- Map .libsonnet files to jsonnet filetype
-        -- https://github.com/neovim/neovim/pull/20752
+        -- https://github.com/neovim/neovim/pull/20753
         libsonnet = "jsonnet",
       }
     })
