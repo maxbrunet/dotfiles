@@ -73,10 +73,15 @@ return {
     },
     treesitter = {
       ensure_installed = {
+        "go",
         "gomod",
         "hcl",
         "jsonnet",
         "nix",
+        "python",
+        "regex",
+        "rust",
+        "typescript",
       },
     },
   },
