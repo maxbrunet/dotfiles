@@ -72,8 +72,11 @@
   environment.systemPackages = with pkgs; [
     android-tools
     appimage-run
+    unstable.argocd
     asdf-vm
     aspellDicts.en
+    aws-vault
+    awscli2
     bat
     bind.dnsutils
     bottom
@@ -100,6 +103,7 @@
     unstable.go_1_19
     gofumpt
     unstable.golangci-lint
+    google-cloud-sdk
     gopls
     unstable.goreleaser
     gotools
@@ -143,6 +147,7 @@
     playerctl
     podman-compose
     polkit_gnome
+    popeye
     powertop
     pre-commit
     psmisc
@@ -164,6 +169,7 @@
     shellcheck
     shfmt
     slack
+    ssm-session-manager-plugin
     stern
     system-config-printer
     tanka
