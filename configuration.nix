@@ -79,10 +79,7 @@
     bottom
     brightnessctl
     (chromium.override {
-      commandLineArgs = ''
-        --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland "$@"
-        # Comment out the other flags to ensure the WebRTCPipeWireCapturer feature is enabled
-        #'';
+      commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
     })
     delta
     direnv
