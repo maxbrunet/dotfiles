@@ -12,16 +12,6 @@ home-manager switch
 nvim +PackerSync
 ```
 
-Install Go tools
-
-```shell
-export GO111MODULE='on'
-go get -u github.com/bwplotka/bingo
-bingo get -l
-ln -s kubectx ~/.local/bin/kubectl-ctx
-ln -s kubens ~/.local/bin/kubectl-ns
-```
-
 Install Rust toolchain
 
 ```shell

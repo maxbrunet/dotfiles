@@ -16,14 +16,7 @@ export EDITOR='nvim'
 export AWS_PAGER=''
 
 # aws-vault
-case "$(uname -s)" in
-  'Darwin')
-    export AWS_VAULT_KEYCHAIN_NAME='login'
-    ;;
-  'Linux')
-    export AWS_VAULT_BACKEND='secret-service'
-    ;;
-esac
+export AWS_VAULT_BACKEND='secret-service'
 export AWS_SESSION_TOKEN_TTL='8h'
 export AWS_ASSUME_ROLE_TTL='1h'
 
@@ -32,11 +25,7 @@ export BAT_STYLE='plain'
 export BAT_THEME='gruvbox-dark'
 
 # fzf
-if (( $+commands[fzf-share] )); then
-  FZF_BASE="$(fzf-share)"
-elif (( $+commands[brew] )); then
-  FZF_BASE='/usr/local/opt/fzf'
-fi
+FZF_BASE="$(fzf-share)"
 
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
@@ -120,10 +109,5 @@ alias e="${EDITOR}"
 
 # zsh-users
 # Load zsh-syntax-highlighting after all custom widgets have been created
-if (( $+commands[nixos-rebuild] )); then
-  source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif (( $+commands[brew] )); then
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
