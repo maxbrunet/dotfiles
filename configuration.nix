@@ -402,6 +402,26 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
+  xdg.mime = rec {
+    defaultApplications = {
+      "application/pdf" = "org.gnome.Evince.desktop";
+      "application/x-extension-htm" = "firefox.desktop";
+      "application/x-extension-html" = "firefox.desktop";
+      "application/x-extension-shtml" = "firefox.desktop";
+      "application/x-extension-xht" = "firefox.desktop";
+      "application/x-extension-xhtml" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "text/plain" = "org.xfce.mousepad.desktop";
+      "text/x-readme" = "org.xfce.mousepad.desktop";
+      "x-scheme-handler/chrome" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/mailto" = "thunderbird.desktop";
+    };
+    addedAssociations = defaultApplications;
+  };
+
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
   # Until xdg-desktop-portal-wlr v0.6.0 makes it to the stable channel
