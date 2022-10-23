@@ -1,3 +1,4 @@
+# vim: ft=desktop
 WebBrowser=firefox
 MailReader=thunderbird
 FileManager=thunar

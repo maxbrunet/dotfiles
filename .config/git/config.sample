@@ -1,3 +1,4 @@
+; vim: ft=gitconfig
 [user]
 	name = Thomas A. Anderson
 	email = thomas.anderson@metacortex.mtx
