@@ -168,7 +168,16 @@
     rustup
     shellcheck
     shfmt
-    slack
+    # https://github.com/NixOS/nixpkgs/issues/180678
+    (unstable.slack.overrideAttrs (old: {
+      installPhase = old.installPhase + ''
+        rm $out/bin/slack
+        makeWrapper $out/lib/slack/slack $out/bin/slack \
+          --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
+          --prefix PATH : ${lib.makeBinPath [xdg-utils]} \
+          --add-flags "--enable-features=WebRTCPipeWireCapturer"
+      '';
+    }))
     ssm-session-manager-plugin
     stern
     system-config-printer
