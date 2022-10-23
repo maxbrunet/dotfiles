@@ -255,7 +255,6 @@ exec swayidle -w \
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
 exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 exec systemctl --user start gammastep
-exec dunst
 exec firefox
 exec alacritty
 exec thunderbird
