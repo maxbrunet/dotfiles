@@ -55,6 +55,7 @@ in
     };
     astronvim = {
       # onChange = "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'";
+      onChange = "nvim --headless -c 'if exists(\":LuaCacheClear\") | :LuaCacheClear' +quitall";
       source = ./.config/astronvim;
     };
     dunst = {
@@ -65,6 +66,7 @@ in
     };
     nvim = {
       # onChange = "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'";
+      onChange = "nvim --headless -c 'if exists(\":LuaCacheClear\") | :LuaCacheClear' +quitall";
       source = sources.astronvim;
     };
     "sway" = {
