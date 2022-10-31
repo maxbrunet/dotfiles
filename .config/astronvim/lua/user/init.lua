@@ -13,16 +13,18 @@ return {
     },
   },
 
-  heirline = {
-    colors = {
-      -- Fix theme with gruvbox colors
-      -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
+  highlights = {
+    -- Fix Gruvbox highlight groups
+    -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
+    gruvbox = {
+      -- Hard-code reversed colors 
       -- https://github.com/AstroNvim/AstroNvim/issues/1147
-      fg = "#ebdbb2", -- colors.light1 
-      bg = "#504945", -- colors.dark2
-      section_fg = "#ebdbb2", -- colors.light1
-      section_bg = "#504945", -- colors.dark2
-    }
+      StatusLine = { fg = "#ebdbb2", bg = "#504945" }, -- colors.light1 / colors.dark2
+      -- Add WinBar groups
+      -- https://github.com/ellisonleao/gruvbox.nvim/issues/162
+      WinBar = { fg = "#a89984", bg = "#32302f" }, -- colors.light4 / colors.dark0_hard
+      WinBarNC = { fg = "#bdae93", bg = "#1d2021" },   -- colors.light3 / colors.dark0_soft
+    },
   },
 
   plugins = {
