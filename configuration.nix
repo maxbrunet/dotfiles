@@ -355,7 +355,12 @@
   services.blueman.enable = true;
 
   services.connman.enable = true;
+  services.connman.extraFlags = [ "--nodnsproxy" ]; # For dnscrypt-proxy
   services.connman.wifi.backend = "iwd";
+  # For dnscrypt-proxy: https://wiki.archlinux.org/title/ConnMan#/etc/resolv.conf
+  systemd.services.connman.serviceConfig.RuntimeDirectory = "connman";
+
+  services.dnscrypt-proxy2.enable = true;
 
   services.fwupd.enable = true;
 
