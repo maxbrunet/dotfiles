@@ -4,8 +4,13 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/services/automatic-timezoned.nix
+      <nixos-unstable/nixos/modules/misc/ids.nix>
+      <nixos-unstable/nixos/modules/services/system/automatic-timezoned.nix>
     ];
+  disabledModules = [
+    "misc/ids.nix"
+    "services/system/automatic-timezoned.nix"
+  ];
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # need by k3d's svclb-traefik DaemonSet
@@ -350,6 +355,8 @@
   security.rtkit.enable = true;
 
   services.automatic-timezoned.enable = true;
+  # Always running unstable as maintainer
+  services.automatic-timezoned.package = pkgs.unstable.automatic-timezoned;
 
   services.avahi.enable = true;
 
