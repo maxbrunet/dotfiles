@@ -64,6 +64,9 @@ in
     "gtk-3.0/settings.ini" = {
       source = ./.config/gtk-3.0/settings.ini;
     };
+    "gtk-4.0/settings.ini" = {
+      source = ./.config/gtk-4.0/settings.ini;
+    };
     nvim = {
       # onChange = "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'";
       onChange = "nvim --headless -c 'if exists(\":LuaCacheClear\") | :LuaCacheClear' +quitall";
