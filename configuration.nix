@@ -63,6 +63,7 @@
     # https://k3d.io/stable/usage/advanced/podman/#using-rootless-podman
     DOCKER_HOST = "unix://${DOCKER_SOCK}";
     DOCKER_SOCK = "\${XDG_RUNTIME_DIR}/podman/podman.sock";
+    GTK_THEME = "Arc-Dark"; # For GTK 4
     NIXOS_OZONE_WL = "1";
     XDG_CURRENT_DESKTOP = "sway";
   };
