@@ -20,16 +20,12 @@ return {
       -- Hard-code reversed colors 
       -- https://github.com/AstroNvim/AstroNvim/issues/1147
       StatusLine = { fg = "#ebdbb2", bg = "#504945" }, -- colors.light1 / colors.dark2
-      -- Add WinBar groups
-      -- https://github.com/ellisonleao/gruvbox.nvim/issues/162
-      WinBar = { fg = "#a89984", bg = "#32302f" }, -- colors.light4 / colors.dark0_hard
-      WinBarNC = { fg = "#bdae93", bg = "#1d2021" },   -- colors.light3 / colors.dark0_soft
     },
   },
 
   plugins = {
     init = {
-      ["ellisonleao/gruvbox.nvim"] = { version = "1.0.0" },
+      ["ellisonleao/gruvbox.nvim"] = { version = "99e480720f81baa0ad1dddf0cf33fd096fcee176" },
       ["gpanders/editorconfig.nvim"] = { version = "v1.3.1" },
     },
     heirline = function(config)
