@@ -4,16 +4,10 @@
   imports =
     [
       ./hardware-configuration.nix
-      <nixos-unstable/nixos/modules/misc/ids.nix>
-      <nixos-unstable/nixos/modules/services/system/automatic-timezoned.nix>
     ];
-  disabledModules = [
-    "misc/ids.nix"
-    "services/system/automatic-timezoned.nix"
-  ];
 
   boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1; # need by k3d's svclb-traefik DaemonSet
+    "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
   };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
@@ -78,7 +72,7 @@
   environment.systemPackages = with pkgs; [
     android-tools
     appimage-run
-    unstable.argocd
+    argocd
     asdf-vm
     aspellDicts.en
     aws-vault
@@ -106,12 +100,12 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    unstable.go_1_19
+    go_1_19
     gofumpt
-    unstable.golangci-lint
+    golangci-lint
     google-cloud-sdk
     gopls
-    unstable.goreleaser
+    goreleaser
     gotools
     hadolint
     home-manager
@@ -120,13 +114,8 @@
     jq
     jsonnet
     jsonnet-bundler
-    # https://github.com/NixOS/nixpkgs/pull/176144
-    # unstable.jsonnet-language-server
-    # (callPackage <nixos-unstable/pkgs/development/tools/jsonnet-language-server> { })
-    unstable.jsonnet-language-server
-    # Until v5.4.2 is in stable channel
-    # https://github.com/k3d-io/k3d/pull/1045
-    unstable.kube3d
+    jsonnet-language-server
+    kube3d
     kubectx
     (linkFarm "kubectl-ctx" [
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
@@ -137,8 +126,7 @@
     libsecret
     lsof
     mate.engrampa
-    # Until v0.8 is in stable channel
-    unstable.neovim
+    neovim
     niv
     nixpkgs-fmt
     nmap
@@ -175,7 +163,7 @@
     shellcheck
     shfmt
     # https://github.com/NixOS/nixpkgs/issues/180678
-    (unstable.slack.overrideAttrs (old: {
+    (slack.overrideAttrs (old: {
       installPhase = old.installPhase + ''
         rm $out/bin/slack
         makeWrapper $out/lib/slack/slack $out/bin/slack \
@@ -247,7 +235,7 @@
     noto-fonts-cjk-serif
     noto-fonts-emoji
     font-awesome
-    (unstable.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     source-code-pro
   ];
 
@@ -392,22 +380,13 @@
 
   sound.enable = true;
 
-  # Until https://github.com/NixOS/nixpkgs/pull/173160 makes it to the stable channel
-  systemd.user.services.pipewire-pulse.path = [ pkgs.pulseaudio ];
-
   # Delegate cpu/cpuset: https://github.com/k3d-io/k3d/issues/1082
   systemd.services."user@".serviceConfig = {
     Delegate = [ "cpu" "cpuset" "io" "memory" "pids" ];
   };
 
-  systemd.user.services.podman = {
-    path = [ "/run/wrappers" ]; # https://github.com/NixOS/nixpkgs/issues/138423
-    serviceConfig = {
-      # Until https://github.com/NixOS/nixpkgs/pull/176809 makes it to the stable channel
-      ExecStart = [ "" "${pkgs.podman}/bin/podman $LOGGING system service" ];
-    };
-  };
-  systemd.user.sockets.podman.wantedBy = [ "sockets.target" ];
+  # https://github.com/NixOS/nixpkgs/issues/138423
+  systemd.user.services.podman.path = [ "/run/wrappers" ];
 
   users.users.maxime = {
     isNormalUser = true;
@@ -452,9 +431,6 @@
 
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
-  # Until xdg-desktop-portal-wlr v0.6.0 makes it to the stable channel
-  # https://github.com/emersion/xdg-desktop-portal-wlr/pull/184
-  xdg.portal.extraPortals = lib.mkForce [ pkgs.unstable.xdg-desktop-portal-wlr ];
 
   zramSwap.enable = true;
   # 50% RAM, capped at 4 GiB
