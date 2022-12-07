@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "astronvim": {
-        "branch": "v2.8.0",
+        "branch": "v2.8.5",
         "description": "AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins ",
         "homepage": "https://AstroNvim.github.io",
         "owner": "AstroNvim",
         "repo": "AstroNvim",
-        "rev": "ea1ed5f57538fa919e7194ae7b68fa7542753de2",
-        "sha256": "0bzn2sx6p6f465r3aj7gxw4wk6gih16q643yjcffrba05bmb24vd",
+        "rev": "fca755314c3b8359fc72748a56abb2f98c800d2f",
+        "sha256": "0pi6md15d3glb0gkdn9mf17r76rwndmjpfvvld4ba5p1xgf8lxwx",
         "type": "tarball",
-        "url": "https://github.com/AstroNvim/AstroNvim/archive/ea1ed5f57538fa919e7194ae7b68fa7542753de2.tar.gz",
+        "url": "https://github.com/AstroNvim/AstroNvim/archive/fca755314c3b8359fc72748a56abb2f98c800d2f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
@@ -53,10 +53,10 @@
         "homepage": "https://github.com/base16-project/base16",
         "owner": "base16-project",
         "repo": "base16-fzf",
-        "rev": "665b0821cb5ece119a039f0d91467b1828e6c355",
-        "sha256": "1z57ph27smglj82x1yaa8d7xxc842b7ghg91j7afd8kzds0gq8yx",
+        "rev": "039fc680f1509596c874e432dfb7e5d8196b3833",
+        "sha256": "04070ph5k5sdlzhhzzhjh5l1n0gr9pk0c5xn35dvs453ss8b4h99",
         "type": "tarball",
-        "url": "https://github.com/base16-project/base16-fzf/archive/665b0821cb5ece119a039f0d91467b1828e6c355.tar.gz",
+        "url": "https://github.com/base16-project/base16-fzf/archive/039fc680f1509596c874e432dfb7e5d8196b3833.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-shell": {
@@ -65,10 +65,10 @@
         "homepage": "https://github.com/base16-project/base16",
         "owner": "base16-project",
         "repo": "base16-shell",
-        "rev": "da05fd6183c30f3453efa1ab7a60afe354760f69",
-        "sha256": "198lb7jx1daqyqk6id9qrfni661q64l73vxlfxpdb7r6s8h4ii39",
+        "rev": "d79396071c60dcb3a22a4400010087d5bc045689",
+        "sha256": "1p24sw256x2pjq46pi3f908gsvkbr73qmcm3md27svbw376jhlaw",
         "type": "tarball",
-        "url": "https://github.com/base16-project/base16-shell/archive/da05fd6183c30f3453efa1ab7a60afe354760f69.tar.gz",
+        "url": "https://github.com/base16-project/base16-shell/archive/d79396071c60dcb3a22a4400010087d5bc045689.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-tmux": {
@@ -77,10 +77,10 @@
         "homepage": "",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "562f9c128e627d55b0fa8ca71a205a421702ffe0",
-        "sha256": "1kg7df033xqn7alyg765m8jc7ra1bfl2lc73ml6rwv0pn0qjqfkj",
+        "rev": "5641d3b3f5f9c353c58dfcba4c265df055a05b6b",
+        "sha256": "0f5g7daq52d9ffl0yh1i6jxkxiz4a4sg3hkadqpk9zz79j4mmmyy",
         "type": "tarball",
-        "url": "https://github.com/gpakosz/.tmux/archive/562f9c128e627d55b0fa8ca71a205a421702ffe0.tar.gz",
+        "url": "https://github.com/gpakosz/.tmux/archive/5641d3b3f5f9c353c58dfcba4c265df055a05b6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-zsh": {
@@ -89,10 +89,10 @@
         "homepage": "https://ohmyz.sh",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "570158e464c9f57ab03c4162b4e6853b2c7c650d",
-        "sha256": "14waa2zc66ywcdz6dkcgisg1axjp13cqh0piwixhla2iwy5aq4zy",
+        "rev": "585e7138b556db89715eb2a850f8959fdf527384",
+        "sha256": "03j5l2zvhwfqlbqc5na27zvp6gfmb8zwazynd2xvr98nacrq88dc",
         "type": "tarball",
-        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/570158e464c9f57ab03c4162b4e6853b2c7c650d.tar.gz",
+        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/585e7138b556db89715eb2a850f8959fdf527384.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
