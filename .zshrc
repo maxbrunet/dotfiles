@@ -103,6 +103,7 @@ alias tffmt='terraform fmt'
 alias tfinit='terraform init'
 alias tfplan='terraform plan'
 alias tfapply='terraform apply'
+alias tfswitch="tfswitch --bin=\"${HOME}/.local/bin/terraform\""
 alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
 alias e="${EDITOR}"

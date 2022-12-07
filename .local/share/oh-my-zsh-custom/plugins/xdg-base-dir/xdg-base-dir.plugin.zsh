@@ -13,6 +13,11 @@ export GOBIN="${BIN_HOME}"
 # Cache
 export TF_PLUGIN_CACHE_DIR="${CACHE_HOME}/terraform/plugins"
 
+# Config
+export AWS_CONFIG_FILE="${CONFIG_HOME}/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="${CONFIG_HOME}/aws/credentials"
+export OCI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
+
 # Data
 export ANSIBLE_HOME="${DATA_HOME}/ansible"
 export ASDF_DATA_DIR="${DATA_HOME}/asdf"
