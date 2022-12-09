@@ -168,5 +168,13 @@ return {
         ]])
       end,
     })
+
+    local dap_adapters = {
+      "delve",
+    }
+    local dapconfig_ok, dapconfig = pcall(require, "mason-nvim-dap.automatic_setup")
+    if dapconfig_ok then
+      vim.tbl_map(dapconfig, dap_adapters)
+    end
   end,
 }
