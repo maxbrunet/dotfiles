@@ -85,6 +85,7 @@
       commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
     })
     delta
+    delve
     direnv
     dos2unix
     emote
