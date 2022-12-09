@@ -131,7 +131,7 @@
     niv
     nixpkgs-fmt
     nmap
-    nodejs
+    nodejs-16_x
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript-language-server
