@@ -82,7 +82,13 @@
     bottom
     brightnessctl
     (chromium.override {
-      commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
+      commandLineArgs = builtins.concatStringsSep " " [
+        "--enable-features=WebRTCPipeWireCapturer"
+        # Hardware acceleration freezes the (Chromecast) video playback
+        # when the window is not focused/is in the background.
+        # https://bugs.chromium.org/p/chromium/issues/detail?id=752726
+        "--disable-gpu"
+      ];
     })
     delta
     delve
