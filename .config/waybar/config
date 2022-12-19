@@ -3,7 +3,7 @@
     "position": "bottom",
     "height": 26,
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "bluetooth", "network", "disk", "cpu", "battery", "clock"],
+    "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "disk", "cpu", "battery", "clock"],
     "tray": {
         "icon-size": 16,
         "spacing": 12
@@ -76,18 +76,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    // The bluetooth module assumes the conntroller is started when Waybar starts,
-    // if it is not the case the module breaks.
-    // https://github.com/Alexays/Waybar/blob/0.9.13/src/modules/bluetooth.cpp#L95-L96
-    // https://github.com/Alexays/Waybar/issues/1603#issuecomment-1172312650
-    "bluetooth": {
-        "format": "",
-        "tooltip-format": "{}",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias} ( {device_battery_percentage}%)",
-        "on-click": "blueman-manager"
     },
     "custom/media": {
         "format": "{icon} {}",

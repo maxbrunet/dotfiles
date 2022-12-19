@@ -38,7 +38,6 @@
 
 #clock,
 #battery,
-#bluetooth,
 #cpu,
 #keyboard-state > label.locked,
 #memory,
@@ -82,10 +81,6 @@ label:focus {
 
 #network.disconnected {
     background-color: #e53935;
-}
-
-#bluetooth.disabled {
-    color: #676e7d;
 }
 
 #pulseaudio.muted {
