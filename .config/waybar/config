@@ -4,6 +4,9 @@
     "height": 26,
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "disk", "cpu", "battery", "clock"],
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
     "tray": {
         "icon-size": 16,
         "spacing": 12
