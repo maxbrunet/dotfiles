@@ -219,7 +219,9 @@
       ];
     })
     xfce.xfconf
-    yarn
+    (yarn.override {
+      nodejs = nodejs-16_x;
+    })
     yq-go
     zip
     zsh-autosuggestions
