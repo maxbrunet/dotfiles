@@ -112,7 +112,7 @@
     golangci-lint
     google-cloud-sdk
     gopls
-    goreleaser
+    unstable.goreleaser
     gotools
     hadolint
     home-manager
