@@ -15,5 +15,5 @@ nvim +PackerSync
 Install Rust toolchain
 
 ```shell
-rustup toolchain install stable --component rls
+rustup toolchain install stable
 ```
