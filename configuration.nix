@@ -6,19 +6,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Sound just gets lost
-  # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/2886#note_1683148
-  boot.kernelPackages =
-    let
-      pkgs = import
-        (builtins.fetchTarball {
-          url = "https://github.com/NixOS/nixpkgs/archive/106b850f8f2a6c307405dc98d707cfbb9bc010c0.tar.gz";
-          sha256 = "0xbw7dlk4b9llyzxqkkfixxd3piz9abyivgfnlf8v6wqdn2prv7n";
-        })
-        { };
-      kernel = pkgs.linux_5_15;
-    in
-    pkgs.linuxPackagesFor kernel;
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
   };
