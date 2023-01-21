@@ -166,6 +166,7 @@
     regctl
     ripgrep
     rnix-lsp
+    rust-analyzer
     rustup
     shellcheck
     shfmt
