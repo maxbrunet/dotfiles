@@ -26,7 +26,7 @@ return {
   plugins = {
     init = {
       ["ellisonleao/gruvbox.nvim"] = { version = "99e480720f81baa0ad1dddf0cf33fd096fcee176" },
-      ["gpanders/editorconfig.nvim"] = { version = "v1.3.1" },
+      ["gpanders/editorconfig.nvim"] = { version = "v1.4.0" },
     },
     heirline = function(config)
       config[1] = vim.tbl_deep_extend("force", config[1], {
@@ -79,6 +79,7 @@ return {
         "python",
         "regex",
         "rust",
+        "terraform",
         "typescript",
       },
     },

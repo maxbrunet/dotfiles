@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "astronvim": {
-        "branch": "v2.10.1",
+        "branch": "v2.11.8",
         "description": "AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins ",
         "homepage": "https://AstroNvim.github.io",
         "owner": "AstroNvim",
         "repo": "AstroNvim",
-        "rev": "55ac5d0ed9901528e110966c614f983f41b86656",
-        "sha256": "0f6i1aj0l1dkm34qgd26bidd5snldrp3pqg3nd1s392yh62pbsn6",
+        "rev": "4f4269d174d85df8b278a6e09d05daeef840df4a",
+        "sha256": "0cknamcvw7il7fbndaj9dc6g66fj32aby87iqx8akr6nl83sp4ky",
         "type": "tarball",
-        "url": "https://github.com/AstroNvim/AstroNvim/archive/55ac5d0ed9901528e110966c614f983f41b86656.tar.gz",
+        "url": "https://github.com/AstroNvim/AstroNvim/archive/4f4269d174d85df8b278a6e09d05daeef840df4a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
