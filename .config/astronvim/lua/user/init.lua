@@ -47,6 +47,7 @@ return {
       -- Include code and source with diagnostics message
       config.diagnostics_format = "[#{c}] #{m} (#{s})"
       config.sources = {
+        null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.formatting.black,
@@ -120,14 +121,6 @@ return {
       },
     },
     ["server-settings"] = {
-      pylsp = {
-        settings = {
-          pylsp = {
-            configurationSources = { "flake8" },
-            ["plugins.flake8.enabled"] = true,
-          },
-        },
-      },
       yamlls = {
         settings = {
           yaml = {
