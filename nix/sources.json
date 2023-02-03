@@ -77,10 +77,10 @@
         "homepage": "",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "72f09fae75d82e67439af1c74fa31035f39e8f4d",
-        "sha256": "0iaa4zfzirv8z00zi2yql4p0yh1nijh8h4sdakqx93xig8h483kz",
+        "rev": "12f96dac7cd4fa7c6aeebd46a2905f0c77c1d3ba",
+        "sha256": "02ijq4sx87fzmzjnfhbm8h8qsp2xcjv6n56f2qfkrg0rimq9nma6",
         "type": "tarball",
-        "url": "https://github.com/gpakosz/.tmux/archive/72f09fae75d82e67439af1c74fa31035f39e8f4d.tar.gz",
+        "url": "https://github.com/gpakosz/.tmux/archive/12f96dac7cd4fa7c6aeebd46a2905f0c77c1d3ba.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-zsh": {
@@ -89,10 +89,10 @@
         "homepage": "https://ohmyz.sh",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "ba8777fc3013a3c682d8144586e16457cbe12586",
-        "sha256": "0ldfwxfa56a8p9m6480gl09l0r23wrhqfmm1gzg746gyr9j3ayhq",
+        "rev": "f8bf8f0029a475831ebfba0799975ede20e08742",
+        "sha256": "1yzdcsp3bp6ykbw0hnpngbxaly18lcckh6v5zxg3fhb7yd4bj577",
         "type": "tarball",
-        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/ba8777fc3013a3c682d8144586e16457cbe12586.tar.gz",
+        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/f8bf8f0029a475831ebfba0799975ede20e08742.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
