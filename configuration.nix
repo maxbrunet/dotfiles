@@ -81,6 +81,7 @@
     bind.dnsutils
     bottom
     brightnessctl
+    unstable.buf
     (chromium.override {
       commandLineArgs = builtins.concatStringsSep " " [
         "--enable-features=WebRTCPipeWireCapturer"
@@ -114,6 +115,7 @@
     gopls
     unstable.goreleaser
     gotools
+    grpcurl
     hadolint
     home-manager
     htop
