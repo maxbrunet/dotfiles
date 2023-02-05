@@ -108,9 +108,9 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    go_1_19
+    unstable.go_1_20
     gofumpt
-    golangci-lint
+    unstable.golangci-lint
     google-cloud-sdk
     gopls
     unstable.goreleaser
