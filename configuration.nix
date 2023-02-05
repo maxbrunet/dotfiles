@@ -149,6 +149,7 @@
     perl
     playerctl
     podman-compose
+    poetry
     polkit_gnome
     popeye
     powertop
@@ -161,7 +162,6 @@
     python3Packages.flake8
     python3Packages.isort
     python3Packages.pipx
-    python3Packages.poetry
     python3Packages.python-lsp-server
     python3Packages.virtualenv
     python3Packages.virtualenvwrapper
