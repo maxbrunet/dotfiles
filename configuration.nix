@@ -110,7 +110,10 @@
     gnumake
     unstable.go_1_20
     gofumpt
-    unstable.golangci-lint
+    # https://github.com/golangci/golangci-lint/issues/3565
+    (unstable.golangci-lint.override {
+      buildGoModule = unstable.buildGo120Module;
+    })
     google-cloud-sdk
     gopls
     unstable.goreleaser
