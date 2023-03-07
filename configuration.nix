@@ -415,8 +415,6 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
-  virtualisation.waydroid.enable = true;
-
   xdg.mime = rec {
     defaultApplications = {
       "application/pdf" = "org.gnome.Evince.desktop";
