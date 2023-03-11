@@ -24,64 +24,68 @@ return {
   },
 
   plugins = {
-    init = {
-      ["ellisonleao/gruvbox.nvim"] = { version = "99e480720f81baa0ad1dddf0cf33fd096fcee176" },
-      ["gpanders/editorconfig.nvim"] = { version = "v1.4.0" },
+    { "ellisonleao/gruvbox.nvim", version = "99e480720f81baa0ad1dddf0cf33fd096fcee176" },
+    { "gpanders/editorconfig.nvim", version = "v1.4.0" },
+    { 
+      "rebelot/heirline.nvim",
+      opts = function(_, opts)
+        local status = require("astronvim.utils.status")
+        opts.statusline = vim.tbl_deep_extend("force", opts.statusline, {
+          -- add mode component
+          status.component.mode { mode_text = { padding = { left = 1, right = 1 } } },
+        })
+        return opts
+      end
     },
-    heirline = function(config)
-      config[1] = vim.tbl_deep_extend("force", config[1], {
-        -- add mode component
-        astronvim.status.component.mode { mode_text = { padding = { left = 1, right = 1 } } },
-      })
-      return config
-    end,
-    ["neo-tree"] = {
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
+    { 
+      "nvim-neo-tree/neo-tree.nvim", 
+      opts = {
+        filesystem = {
+          filtered_items = {
+            hide_dotfiles = false,
+          },
         },
-      },
-    },
-    ["null-ls"] = function(config)
-      local null_ls = require "null-ls"
-      -- Include code and source with diagnostics message
-      config.diagnostics_format = "[#{c}] #{m} (#{s})"
-      config.sources = {
-        null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.diagnostics.golangci_lint,
-        null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.gofumpt.with({
-          extra_args = { "-extra" },
-        }),
-        null_ls.builtins.formatting.goimports,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.shfmt.with({
-          extra_args = { "-i", "2", "-ci", "-bn"},
-        }),
       }
-      return config
-    end,
-    packer = {
-      snapshot = "packer_snapshot",
-      snapshot_path = vim.fn.stdpath("config"),
     },
-    session_manager = {
-      autosave_last_session = true,
+    { 
+      "jose-elias-alvarez/null-ls.nvim",
+      opts = function(_, opts)
+        local null_ls = require "null-ls"
+        -- Include code and source with diagnostics message
+        opts.diagnostics_format = "[#{c}] #{m} (#{s})"
+        opts.sources = {
+          null_ls.builtins.diagnostics.flake8,
+          null_ls.builtins.diagnostics.golangci_lint,
+          null_ls.builtins.diagnostics.hadolint,
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.gofumpt.with({
+            extra_args = { "-extra" },
+          }),
+          null_ls.builtins.formatting.goimports,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.shfmt.with({
+            extra_args = { "-i", "2", "-ci", "-bn"},
+          }),
+        }
+        return opts
+      end,
     },
-    treesitter = {
-      ensure_installed = {
-        "go",
-        "gomod",
-        "hcl",
-        "jsonnet",
-        "nix",
-        "python",
-        "regex",
-        "rust",
-        "terraform",
-        "typescript",
+    {
+      "nvim-treesitter/nvim-treesitter",
+      opts = {
+        ensure_installed = {
+          "go",
+          "gomod",
+          "hcl",
+          "jsonnet",
+          "nix",
+          "python",
+          "regex",
+          "rust",
+          "terraform",
+          "typescript",
+        },
       },
     },
   },
@@ -120,7 +124,7 @@ return {
         },
       },
     },
-    ["server-settings"] = {
+    config = {
       yamlls = {
         settings = {
           yaml = {

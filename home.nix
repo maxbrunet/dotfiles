@@ -54,7 +54,6 @@ in
       source = ./.config/alacritty;
     };
     astronvim = {
-      # onChange = "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'";
       onChange = "nvim --headless -c 'if exists(\":LuaCacheClear\") | :LuaCacheClear' +quitall";
       source = ./.config/astronvim;
     };
@@ -68,7 +67,6 @@ in
       source = ./.config/gtk-4.0/settings.ini;
     };
     nvim = {
-      # onChange = "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'";
       onChange = "nvim --headless -c 'if exists(\":LuaCacheClear\") | :LuaCacheClear' +quitall";
       source = sources.astronvim;
     };
