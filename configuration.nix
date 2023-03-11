@@ -240,7 +240,7 @@
     noto-fonts-cjk-serif
     noto-fonts-emoji
     font-awesome
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (unstable.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     source-code-pro
   ];
 
