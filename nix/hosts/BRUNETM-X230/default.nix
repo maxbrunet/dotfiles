@@ -3,8 +3,6 @@
 {
   imports =
     [
-      <nixos-hardware/common/pc/laptop/ssd>
-      <nixos-hardware/lenovo/thinkpad/x230>
       ./hardware-configuration.nix
     ];
 

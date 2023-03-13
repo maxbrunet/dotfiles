@@ -3,7 +3,6 @@
 {
   imports =
     [
-      <nixos-hardware/lenovo/thinkpad/x1/9th-gen>
       ./hardware-configuration.nix
     ];
 

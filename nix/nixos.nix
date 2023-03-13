@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
   };
@@ -278,11 +273,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
   };
 
   programs.git.enable = true;

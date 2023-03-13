@@ -1,9 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash --packages jq
+# shellcheck shell=bash
 set -euo pipefail
+
+export NIX_CONFIG='experimental-features = nix-command flakes'
 
 CONFIG_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${CONFIG_DIR}"
 
+readonly HOST="${1?Must provide HOST}"
+readonly CONFIG_DIR
+readonly HOST_DIR="${CONFIG_DIR}/nix/hosts/${HOST}"
 readonly MOUNTPOINT="${MOUNTPOINT:-/mnt}"
 readonly DEVICE="${DEVICE:-/dev/sdb}"
 
@@ -13,6 +20,12 @@ if [[ "${DEVICE}" == '/dev/nvme'* ]]; then
 else
   readonly EFI_PART="${DEVICE}1"
   readonly ROOT_PART="${DEVICE}2"
+fi
+
+if ! nix flake show --json \
+  | jq --arg host "${HOST}" '.nixosConfigurations|has($host) or halt_error' >/dev/null; then
+  printf '>>> Error: no configuration for host: %s\n' "${HOST}" >&2
+  exit 1
 fi
 
 echo '>>> Generating LUKS key file...'
@@ -61,33 +74,18 @@ echo '>>> Copying NixOS configuration to target...'
 mkdir -p "${MOUNTPOINT}/etc"
 cp -a "${CONFIG_DIR}" "${MOUNTPOINT}/etc/nixos"
 
-echo '>>> Configuring and updating NixOS channels...'
-nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-nix-channel --update
-
 echo '>>> Generating hardware configuration...'
-rm -f "${MOUNTPOINT}/etc/nixos/hardware-configuration.nix"
-nixos-generate-config --root "${MOUNTPOINT}"
+rm -f "${MOUNTPOINT}/${HOST_DIR}/hardware-configuration.nix"
+nixos-generate-config --root "${MOUNTPOINT}" --dir "${HOST_DIR}"
+rm -f "${MOUNTPOINT}/${HOST_DIR}/configuration.nix"
 
 echo '>>> Installing NixOS...'
-# There is an issue with TMPDIR and initrd.secrets
-# https://github.com/NixOS/nixpkgs/issues/157989
-TMPDIR=/tmp nixos-install --no-root-passwd --root "${MOUNTPOINT}"
-
-# Fails: https://github.com/NixOS/nix/issues/3145
-# echo '>>> Configuring NixOS channels on target...'
-# nixos-enter --root "${MOUNTPOINT}" -- bash <<EOF
-#   set -euo pipefail
-#   nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-#   nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-#   nix-channel --update
-# EOF
+nixos-install --verbose --no-root-passwd --root "${MOUNTPOINT}" --flake ".#${HOST}"
 
 echo '>>> Re-configuring NixOS configuration for user...'
 nixos-enter --root "${MOUNTPOINT}" -- bash <<EOF
   set -euo pipefail
-  chown -R maxime /etc/nixos
+  chown -R maxime:users /etc/nixos
   git --git-dir=/etc/nixos/.git remote set-url origin git@github.com:maxbrunet/naxos.git
 EOF
 
