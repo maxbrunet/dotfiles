@@ -25,6 +25,7 @@ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.ta
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --update
 /etc/nixos/bootstrap-user.sh
+/etc/nixos/generate-ssh-key.sh
 ```
 
 If running in VirtualBox, ensure:
