@@ -89,10 +89,10 @@
         "homepage": "https://ohmyz.sh",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "f8bf8f0029a475831ebfba0799975ede20e08742",
-        "sha256": "1yzdcsp3bp6ykbw0hnpngbxaly18lcckh6v5zxg3fhb7yd4bj577",
+        "rev": "72732a224e886933df6b64a49ec6f5e94c884612",
+        "sha256": "0j96x6sp7jdah8yaj3vfa81jmv3ccqpj8r8l64vx2n23rnshhxrg",
         "type": "tarball",
-        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/f8bf8f0029a475831ebfba0799975ede20e08742.tar.gz",
+        "url": "https://github.com/ohmyzsh/ohmyzsh/archive/72732a224e886933df6b64a49ec6f5e94c884612.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
