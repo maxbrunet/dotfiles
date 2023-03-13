@@ -128,17 +128,6 @@ return {
       yamlls = {
         settings = {
           yaml = {
-            schemas = {
-              ["https://json.schemastore.org/github-action"] = "/action.{yml,yaml}",
-              ["https://json.schemastore.org/github-workflow"] = "/.github/workflows/*.{yml,yaml}",
-              ["https://json.schemastore.org/github-workflow-template-properties"] = "/.github/workflow-templates/*.{yml,yaml}",
-              ["https://goreleaser.com/static/schema.json"] = "/.goreleaser.{yml,yaml}",
-              ["https://json.schemastore.org/golangci-lint"] = "/.golangci.{yml,yaml}",
-              ["https://json.schemastore.org/pre-commit-config"] = "/.pre-commit-config.{yml,yaml}",
-              ["https://json.schemastore.org/pre-commit-hooks"] = "/.pre-commit-hooks.{yml,yaml}",
-              ["https://json.schemastore.org/semantic-release"] = "/.releaserc.{yml,yaml}",
-              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose*.{yml,yaml}",
-            },
           },
         },
       },
