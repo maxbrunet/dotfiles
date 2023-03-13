@@ -14,12 +14,6 @@ in
     ".local/bin/volume.sh" = {
       source = ./.local/bin/volume.sh;
     };
-    ".tmux.conf" = {
-      source = "${sources.oh-my-tmux}/.tmux.conf";
-    };
-    ".tmux.conf.local" = {
-      source = ./.tmux.conf.local;
-    };
     ".zshrc" = {
       source = ./.zshrc;
     };
@@ -72,6 +66,12 @@ in
     };
     "sway" = {
       source = ./.config/sway;
+    };
+    "tmux/tmux.conf" = {
+      source = "${sources.oh-my-tmux}/.tmux.conf";
+    };
+    "tmux/tmux.conf.local" = {
+      source = ./.config/tmux/tmux.conf.local;
     };
     "waybar" = {
       source = ./.config/waybar;

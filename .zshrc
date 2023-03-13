@@ -29,6 +29,7 @@ FZF_BASE="$(fzf-share)"
 
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
+ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
 
 # https://github.com/gpakosz/.tmux/blob/master/README.md#installation
 export TERM='xterm-256color'

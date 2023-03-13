@@ -77,10 +77,10 @@
         "homepage": "",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "12f96dac7cd4fa7c6aeebd46a2905f0c77c1d3ba",
-        "sha256": "02ijq4sx87fzmzjnfhbm8h8qsp2xcjv6n56f2qfkrg0rimq9nma6",
+        "rev": "a989554fbc124ec428089819f5ca81ddd500c584",
+        "sha256": "10pdbar0dhdnpxqpswyjmwx6g1lpg8234nj4j18c6rw9sdf50n7z",
         "type": "tarball",
-        "url": "https://github.com/gpakosz/.tmux/archive/12f96dac7cd4fa7c6aeebd46a2905f0c77c1d3ba.tar.gz",
+        "url": "https://github.com/gpakosz/.tmux/archive/a989554fbc124ec428089819f5ca81ddd500c584.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "oh-my-zsh": {
