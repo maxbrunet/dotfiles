@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo '>>> Creating XDG user directories...'
-nix-shell --packages xdg-user-dirs --run xdg-user-dirs-update
-
 echo '>>> Installing dotfiles...'
+mkdir -p "${HOME}/.config"
 git clone --recursive https://github.com/maxbrunet/dotfiles.git ~/.config/nixpkgs
 git --git-dir="${HOME}/.config/nixpkgs/.git" remote set-url origin git@github.com:maxbrunet/dotfiles.git
 cd "${HOME}/.config/nixpkgs"
