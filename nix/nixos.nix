@@ -115,7 +115,6 @@
     gotools
     grpcurl
     hadolint
-    home-manager
     htop
     imagemagick
     jq
@@ -134,7 +133,6 @@
     lsof
     mate.engrampa
     neovim
-    niv
     nixpkgs-fmt
     nmap
     nodejs-16_x

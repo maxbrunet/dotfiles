@@ -5,9 +5,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
+    asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
+    astronvim = { url = "github:AstroNvim/AstroNvim/v3.1.1"; flake = false; };
+    base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
+    base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
+    base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
+    oh-my-tmux = { url = "github:gpakosz/.tmux"; flake = false; };
+    oh-my-zsh = { url = "github:ohmyzsh/ohmyzsh"; flake = false; };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, ... }@attrs:
     let
       overlayUnstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
@@ -15,6 +26,13 @@
       baseModules = [
         ({ ... }: { nixpkgs.overlays = [ overlayUnstable ]; })
         ./nix/nixos.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = false;
+          home-manager.users.maxime = import ./nix/home.nix;
+          home-manager.extraSpecialArgs = attrs;
+        }
       ];
     in
     {

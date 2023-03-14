@@ -5,12 +5,12 @@ set -euo pipefail
 
 export NIX_CONFIG='experimental-features = nix-command flakes'
 
-CONFIG_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "${CONFIG_DIR}"
+ROOT_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT_DIR}"
 
 readonly HOST="${1?Must provide HOST}"
-readonly CONFIG_DIR
-readonly HOST_DIR="${CONFIG_DIR}/nix/hosts/${HOST}"
+readonly ROOT_DIR
+readonly HOST_DIR="${ROOT_DIR}/nix/hosts/${HOST}"
 readonly MOUNTPOINT="${MOUNTPOINT:-/mnt}"
 readonly DEVICE="${DEVICE:-/dev/sdb}"
 
@@ -42,7 +42,7 @@ parted "${DEVICE}" -- mklabel gpt
 ## so we cannot use systemd-repart yet
 ## https://github.com/NixOS/nixpkgs/issues/122449
 # systemd-repart "${DEVICE}" \
-#   --definitions="${CONFIG_DIR}/repart.d" \
+#   --definitions="${ROOT_DIR}/repart.d" \
 #   --dry-run=no \
 #   --key-file=keyfile.bin
 
@@ -72,7 +72,7 @@ mv keyfile.bin "${MOUNTPOINT}/boot/initrd/keyfile.bin"
 
 echo '>>> Copying NixOS configuration to target...'
 mkdir -p "${MOUNTPOINT}/etc"
-cp -a "${CONFIG_DIR}" "${MOUNTPOINT}/etc/nixos"
+cp -a "${ROOT_DIR}" "${MOUNTPOINT}/etc/nixos"
 
 echo '>>> Generating hardware configuration...'
 rm -f "${MOUNTPOINT}/${HOST_DIR}/hardware-configuration.nix"
@@ -83,8 +83,7 @@ echo '>>> Installing NixOS...'
 nixos-install --verbose --no-root-passwd --root "${MOUNTPOINT}" --flake ".#${HOST}"
 
 echo '>>> Re-configuring NixOS configuration for user...'
-nixos-enter --root "${MOUNTPOINT}" -- bash <<EOF
-  set -euo pipefail
+nixos-enter --root "${MOUNTPOINT}" -- bash -e <<EOF
   chown -R maxime:users /etc/nixos
   git --git-dir=/etc/nixos/.git remote set-url origin git@github.com:maxbrunet/naxos.git
 EOF

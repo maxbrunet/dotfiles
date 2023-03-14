@@ -95,8 +95,8 @@ fi
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
-alias nvimrc="${EDITOR} ${HOME}/.config/nixpkgs/.config/astronvim/lua/user/init.lua"
-alias zshrc="${EDITOR} ${HOME}/.config/nixpkgs/.zshrc"
+alias nvimrc="${EDITOR} /etc/nixos/.config/astronvim/lua/user/init.lua"
+alias zshrc="${EDITOR} /etc/nixos/.zshrc"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail'
 alias tf='terraform'
