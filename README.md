@@ -9,7 +9,6 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim` and `tmux
 ```shell
 git clone git@github.com:maxbrunet/dotfiles.git ~/.config/nixpkgs
 home-manager switch
-nvim +PackerSync
 ```
 
 Install Rust toolchain
