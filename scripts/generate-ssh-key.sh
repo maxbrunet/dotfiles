@@ -3,7 +3,7 @@ set -euo pipefail
 
 readonly SSH_PRIVATE_KEY="${HOME}/.ssh/id_rsa"
 
-if [[ -f "${SSH_PRIVATE_KEY}" ]]; then 
+if [[ -f "${SSH_PRIVATE_KEY}" ]]; then
   printf '>>> Error: SSH key "%s" already exists.\n' "${SSH_PRIVATE_KEY}"
   exit 1
 fi

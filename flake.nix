@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -18,14 +20,17 @@
     oh-my-zsh = { url = "github:ohmyzsh/ohmyzsh"; flake = false; };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, ... }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, disko, home-manager, ... }@attrs:
     let
       overlayUnstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
       baseModules = [
-        ({ ... }: { nixpkgs.overlays = [ overlayUnstable ]; })
+        { nixpkgs.overlays = [ overlayUnstable ]; }
         ./nix/nixos.nix
+        disko.nixosModules.disko
+        # Disable Disko config as it uses device names, we prefer the robustness of UUIDs. 
+        { disko = { enableConfig = false; rootMountPoint = "/mnt"; }; }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
