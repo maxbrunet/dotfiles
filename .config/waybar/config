@@ -2,7 +2,7 @@
 {
     "position": "bottom",
     "height": 26,
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "mpris"],
     "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "disk", "cpu", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true
@@ -80,16 +80,22 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
+    "mpris": {
+	    "format": "{player_icon} {dynamic}",
+	    "format-paused": "{player_icon} {dynamic} {status_icon}",
+	    "format-stopped": "{player_icon} {dynamic} {status_icon}",
+	    "player-icons": {
+            "default": "🎜",
+            "firefox": "",
+            "chromium": "",
             "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "waybar-mediaplayer.py"
-    }
+            "vlc": ""
+	    },
+	    "status-icons": {
+	        "playing": "",
+	    	"paused": "",
+	    	"stopped": ""
+	    }
+	}
 }
 

@@ -318,7 +318,8 @@
       sway-contrib.grimshot
       swayidle
       swaylock
-      (waybar.override { withMediaPlayer = true; })
+      # Until 0.9.17 (with mpris) is available in stable channel
+      unstable.waybar
       wdisplays
       wl-clipboard
       wofi

@@ -31,11 +31,7 @@
     padding: 0px 6px;
 }
 
-#custom-media {
-    color: #f3f4f5;
-    padding: 3px 6px 0px 6px;
-}
-
+#mpris,
 #clock,
 #battery,
 #cpu,
@@ -87,11 +83,11 @@ label:focus {
     background-color: #e53935;
 }
 
-#custom-media.custom-spotify {
+#mpris.spotify {
     background-color: #1ed760;
 }
 
-#custom-media.custom-vlc {
+#mpris.vlc {
     background-color: #f48b00;
 }
 
