@@ -14,6 +14,4 @@
   };
 
   users.users.maxime.extraGroups = [ "vboxsf" ];
-
-  virtualisation.virtualbox.guest.enable = true;
 }
