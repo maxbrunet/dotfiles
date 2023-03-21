@@ -45,14 +45,14 @@ echo '>>> Moving LUKS key file to target...'
 mkdir -p "${MOUNTPOINT}/boot/initrd"
 mv keyfile.bin "${MOUNTPOINT}/boot/initrd/keyfile.bin"
 
+echo '>>> Generating hardware configuration...'
+rm -f "${HOST_DIR}/hardware-configuration.nix"
+nixos-generate-config --root "${MOUNTPOINT}" --dir "${HOST_DIR}"
+rm -f "${HOST_DIR}/configuration.nix"
+
 echo '>>> Copying NixOS configuration to target...'
 mkdir -p "${MOUNTPOINT}/etc"
 cp -a "${ROOT_DIR}" "${MOUNTPOINT}/etc/nixos"
-
-echo '>>> Generating hardware configuration...'
-rm -f "${MOUNTPOINT}/${HOST_DIR}/hardware-configuration.nix"
-nixos-generate-config --root "${MOUNTPOINT}" --dir "${HOST_DIR}"
-rm -f "${MOUNTPOINT}/${HOST_DIR}/configuration.nix"
 
 echo '>>> Installing NixOS...'
 nixos-install --verbose --no-root-passwd --root "${MOUNTPOINT}" --flake ".#${HOST}"
