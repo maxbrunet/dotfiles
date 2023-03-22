@@ -16,6 +16,7 @@
   boot.initrd = {
     luks.devices."cryptroot" = {
       allowDiscards = true;
+      bypassWorkqueues = true;
       fallbackToPassword = true;
       keyFile = "/keyfile.bin";
     };
