@@ -35,7 +35,12 @@ in
               type = "luks";
               name = "cryptroot";
               keyFile = "/tmp/cryptroot.key";
-              extraArgs = [ "--type" "luks1" "--hash" "sha512" ];
+              extraFormatArgs = [ "--type" "luks1" "--hash" "sha512" ];
+              extraOpenArgs = [
+                "--allow-discards"
+                "--perf-no_read_workqueue"
+                "--perf-no_write_workqueue"
+              ];
               content = {
                 type = "filesystem";
                 format = "ext4";
