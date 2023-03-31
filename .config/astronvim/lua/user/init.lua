@@ -124,14 +124,6 @@ return {
         },
       },
     },
-    config = {
-      yamlls = {
-        settings = {
-          yaml = {
-          },
-        },
-      },
-    },
   },
 
   polish = function()
