@@ -37,6 +37,17 @@ return {
         return opts
       end
     },
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      config = function()
+        local dap = require('dap')
+        local adapters = require('mason-nvim-dap.mappings.adapters')
+        local configurations = require('mason-nvim-dap.mappings.configurations')
+
+        dap.adapters.delve = adapters.delve
+        dap.configurations.go = configurations.delve
+      end,
+    },
     { 
       "nvim-neo-tree/neo-tree.nvim", 
       opts = {
@@ -147,13 +158,5 @@ return {
         ]])
       end,
     })
-
-    local dap_adapters = {
-      "delve",
-    }
-    local dapconfig_ok, dapconfig = pcall(require, "mason-nvim-dap.automatic_setup")
-    if dapconfig_ok then
-      vim.tbl_map(dapconfig, dap_adapters)
-    end
   end,
 }

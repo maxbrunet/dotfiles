@@ -88,7 +88,7 @@
       ];
     })
     delta
-    delve
+    unstable.delve
     direnv
     dos2unix
     emote
