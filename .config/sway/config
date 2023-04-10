@@ -127,7 +127,7 @@ assign [app_id="firefox|chromium-browser"] $ws1
 assign [app_id="Alacritty"] $ws2
 assign [app_id="thunderbird"] $ws3
 for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, resize set width 25 ppt height 25 ppt, move position 74 ppt 73 ppt, sticky enable
+for_window [app_id="firefox|" title="^Picture(?:-in-P| in p)icture$"] floating enable, resize set width 25 ppt height 25 ppt, move position 74 ppt 73 ppt, sticky enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="wdisplays"] floating enable, resize set width 960 px
