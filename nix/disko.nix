@@ -14,7 +14,6 @@ in
         format = "gpt";
         partitions = [
           {
-            type = "partition";
             name = "ESP";
             start = "1MiB";
             end = "128MiB";
@@ -27,7 +26,6 @@ in
             };
           }
           {
-            type = "partition";
             name = "primary";
             start = "128MiB";
             end = "100%";
