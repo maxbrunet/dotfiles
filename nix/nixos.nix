@@ -136,7 +136,7 @@
     neovim
     nixpkgs-fmt
     nmap
-    nodejs-16_x
+    nodejs
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript-language-server
@@ -196,9 +196,7 @@
       ];
     })
     xfce.xfconf
-    (yarn.override {
-      nodejs = nodejs-16_x;
-    })
+    yarn
     yq-go
     zip
     zsh-autosuggestions
