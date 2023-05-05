@@ -4,10 +4,11 @@ return {
   options = {
     opt = {
       cmdheight = 1, -- Always display cmd line
+      foldcolumn = "0", -- Hide foldcolumn
       guicursor = "", -- Disable Nvim GUI cursor
       mouse = "", -- Disable mouse support
       number = false, -- Hide numberline
-      relativenumber = false, -- Hide relative numberline 
+      relativenumber = false, -- Hide relative numberline
       signcolumn = "auto", -- Show sign column when used only
       spell = true, -- Enable spell checking
     },
@@ -17,16 +18,15 @@ return {
     -- Fix Gruvbox highlight groups
     -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
     gruvbox = {
-      -- Hard-code reversed colors 
+      -- Hard-code reversed colors
       -- https://github.com/AstroNvim/AstroNvim/issues/1147
       StatusLine = { fg = "#ebdbb2", bg = "#504945" }, -- colors.light1 / colors.dark2
     },
   },
 
   plugins = {
-    { "ellisonleao/gruvbox.nvim", version = "99e480720f81baa0ad1dddf0cf33fd096fcee176" },
-    { "gpanders/editorconfig.nvim", version = "v1.4.0" },
-    { 
+    { "ellisonleao/gruvbox.nvim", version = "df149bccb19a02c5c2b9fa6ec0716f0c0487feb0" },
+    {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
         local status = require("astronvim.utils.status")
@@ -48,8 +48,8 @@ return {
         dap.configurations.go = configurations.delve
       end,
     },
-    { 
-      "nvim-neo-tree/neo-tree.nvim", 
+    {
+      "nvim-neo-tree/neo-tree.nvim",
       opts = {
         filesystem = {
           filtered_items = {
@@ -58,7 +58,7 @@ return {
         },
       }
     },
-    { 
+    {
       "jose-elias-alvarez/null-ls.nvim",
       opts = function(_, opts)
         local null_ls = require "null-ls"
@@ -120,11 +120,11 @@ return {
     },
     formatting = {
       disabled = {
-        -- use null-ls' gofumpt/goimports instead 
+        -- use null-ls' gofumpt/goimports instead
         -- https://github.com/golang/tools/pull/410
-        "gopls", 
+        "gopls",
         -- use null-ls' prettier instead
-        "tsserver", 
+        "tsserver",
       },
       format_on_save = {
         enabled = true,
@@ -139,14 +139,6 @@ return {
   },
 
   polish = function()
-    vim.filetype.add({
-      extension = {
-        -- Map .libsonnet files to jsonnet filetype
-        -- https://github.com/neovim/neovim/pull/20753
-        libsonnet = "jsonnet",
-      }
-    })
-
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Highlight lines over 80 characters long",
       callback = function()

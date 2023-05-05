@@ -12,7 +12,7 @@
 
     asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
     asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
-    astronvim = { url = "github:AstroNvim/AstroNvim/v3.12.0"; flake = false; };
+    astronvim = { url = "github:AstroNvim/AstroNvim/v3.15.1"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
@@ -29,7 +29,7 @@
         { nixpkgs.overlays = [ overlayUnstable ]; }
         ./nix/nixos.nix
         disko.nixosModules.disko
-        # Disable Disko config as it uses device names, we prefer the robustness of UUIDs. 
+        # Disable Disko config as it uses device names, we prefer the robustness of UUIDs.
         { disko = { enableConfig = false; rootMountPoint = "/mnt"; }; }
         home-manager.nixosModules.home-manager
         {

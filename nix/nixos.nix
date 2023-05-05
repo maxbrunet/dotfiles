@@ -133,7 +133,7 @@
     libsecret
     lsof
     mate.engrampa
-    neovim
+    unstable.neovim
     nixpkgs-fmt
     nmap
     nodejs
