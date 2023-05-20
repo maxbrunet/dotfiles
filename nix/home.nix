@@ -72,6 +72,9 @@
       onChange = "${pkgs.neovim}/bin/nvim --headless +quitall";
       source = astronvim;
     };
+    pypoetry = {
+      source = ../.config/pypoetry;
+    };
     "sway" = {
       source = ../.config/sway;
     };

@@ -65,16 +65,16 @@ return {
         -- Include code and source with diagnostics message
         opts.diagnostics_format = "[#{c}] #{m} (#{s})"
         opts.sources = {
-          null_ls.builtins.diagnostics.flake8,
           null_ls.builtins.diagnostics.golangci_lint,
           null_ls.builtins.diagnostics.hadolint,
+          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.gofumpt.with({
             extra_args = { "-extra" },
           }),
           null_ls.builtins.formatting.goimports,
-          null_ls.builtins.formatting.isort,
           null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.ruff,
           null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "2", "-ci", "-bn"},
           }),

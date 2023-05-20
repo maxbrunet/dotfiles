@@ -1,0 +1,8 @@
+[installer]
+# To ensure ruff is built from source
+# https://github.com/NixOS/nixpkgs/issues/142383
+no-binary = ["ruff"]
+
+[virtualenvs]
+# virtualenvwrapper is used instead
+create = false

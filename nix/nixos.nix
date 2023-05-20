@@ -60,6 +60,9 @@
     DOCKER_SOCK = "\${XDG_RUNTIME_DIR}/podman/podman.sock";
     GTK_THEME = "Arc-Dark"; # For GTK 4
     NIXOS_OZONE_WL = "1";
+    # To ensure ruff is always built from source (e.g. pre-commit)
+    # https://github.com/NixOS/nixpkgs/issues/142383#issuecomment-1481800175
+    PIP_NO_BINARY = "ruff";
     XDG_CURRENT_DESKTOP = "sway";
   };
 
@@ -156,8 +159,6 @@
     pwgen
     python3
     python3Packages.black
-    python3Packages.flake8
-    python3Packages.isort
     python3Packages.pipx
     python3Packages.python-lsp-server
     python3Packages.virtualenv
@@ -165,6 +166,7 @@
     regctl
     ripgrep
     rnix-lsp
+    unstable.ruff
     rust-analyzer
     rustup
     shellcheck
