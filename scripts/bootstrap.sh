@@ -32,7 +32,7 @@ fi
 echo '>>> Partitioning and formatting disk...'
 DISKO="$(
   nix build --no-link --print-out-paths \
-    ".#nixosConfigurations.${HOST}.config.system.build.disko"
+    ".#nixosConfigurations.${HOST}.config.system.build.diskoScript"
 )"
 "${DISKO}"
 
