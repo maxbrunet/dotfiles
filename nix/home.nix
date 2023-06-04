@@ -28,10 +28,10 @@
   };
 
   xdg.dataFile = {
-    "asdf/plugins/kubectl" = {
+    "rtx/plugins/kubectl" = {
       source = asdf-kubectl;
     };
-    "asdf/plugins/kustomize" = {
+    "rtx/plugins/kustomize" = {
       source = asdf-kustomize;
     };
     "base16/alacritty" = {

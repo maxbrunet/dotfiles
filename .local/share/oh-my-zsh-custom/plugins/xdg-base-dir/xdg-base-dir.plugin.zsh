@@ -1,4 +1,4 @@
-# https://wiki.archlinux.org/title/XDG_Base_Directory 
+# https://wiki.archlinux.org/title/XDG_Base_Directory
 # https://github.com/b3nj5m1n/xdg-ninja
 
 BIN_HOME="${HOME}/.local/bin"
@@ -20,7 +20,6 @@ export OCI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
 
 # Data
 export ANSIBLE_HOME="${DATA_HOME}/ansible"
-export ASDF_DATA_DIR="${DATA_HOME}/asdf"
 export CARGO_HOME="${DATA_HOME}/cargo"
 export GOPATH="${DATA_HOME}/go"
 export LESSHISTFILE="${DATA_HOME}/less/history"

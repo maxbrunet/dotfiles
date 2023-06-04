@@ -1,5 +1,5 @@
 # Customize PATH
-export PATH="${HOME}/.local/share/asdf/shims:${HOME}/.local/share/cargo/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.local/share/rtx/shims:${HOME}/.local/share/cargo/bin:${HOME}/.local/bin:${PATH}"
 
 # Path to oh-my-zsh installation.
 ZSH="${HOME}/.local/share/oh-my-zsh"

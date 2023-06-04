@@ -63,6 +63,7 @@
     # To ensure ruff is always built from source (e.g. pre-commit)
     # https://github.com/NixOS/nixpkgs/issues/142383#issuecomment-1481800175
     PIP_NO_BINARY = "ruff";
+    RTX_HIDE_UPDATE_WARNING = "1";
     XDG_CURRENT_DESKTOP = "sway";
   };
 
@@ -72,7 +73,6 @@
     android-tools
     appimage-run
     argocd
-    asdf-vm
     aspellDicts.en
     aws-vault
     awscli2
@@ -166,6 +166,7 @@
     regctl
     ripgrep
     rnix-lsp
+    unstable.rtx
     unstable.ruff
     rust-analyzer
     rustup
