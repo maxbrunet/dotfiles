@@ -8,7 +8,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
     enable = true;
-    version = 2;
     device = "nodev";
     efiSupport = true;
     enableCryptodisk = true;
@@ -25,8 +24,8 @@
     };
   };
   boot.plymouth.enable = true;
-  boot.tmpOnTmpfs = true;
-  boot.tmpOnTmpfsSize = "25%";
+  boot.tmp.useTmpfs = true;
+  boot.tmp.tmpfsSize = "25%";
 
   environment.defaultPackages = lib.mkForce [ ];
 
@@ -80,7 +79,7 @@
     bind.dnsutils
     bottom
     brightnessctl
-    unstable.buf
+    buf
     (chromium.override {
       commandLineArgs = builtins.concatStringsSep " " [
         "--enable-features=WebRTCPipeWireCapturer"
@@ -91,7 +90,7 @@
       ];
     })
     delta
-    unstable.delve
+    delve
     direnv
     dos2unix
     emote
@@ -107,15 +106,12 @@
     gnome.gnome-calculator
     gnome.simple-scan
     gnumake
-    unstable.go_1_20
+    go
     gofumpt
-    # https://github.com/golangci/golangci-lint/issues/3565
-    (unstable.golangci-lint.override {
-      buildGoModule = unstable.buildGo120Module;
-    })
+    golangci-lint
     google-cloud-sdk
     gopls
-    unstable.goreleaser
+    goreleaser
     gotools
     grpcurl
     hadolint
@@ -136,7 +132,7 @@
     libsecret
     lsof
     mate.engrampa
-    unstable.neovim
+    neovim
     nixpkgs-fmt
     nmap
     nodejs
@@ -167,7 +163,7 @@
     ripgrep
     rnix-lsp
     unstable.rtx
-    unstable.ruff
+    ruff
     rust-analyzer
     rustup
     shellcheck
@@ -235,7 +231,7 @@
     noto-fonts-cjk-serif
     noto-fonts-emoji
     font-awesome
-    (unstable.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     source-code-pro
   ];
 
@@ -320,8 +316,7 @@
       sway-contrib.grimshot
       swayidle
       swaylock
-      # Until 0.9.17 (with mpris) is available in stable channel
-      unstable.waybar
+      waybar
       wdisplays
       wl-clipboard
       wofi
@@ -377,13 +372,10 @@
 
   sound.enable = true;
 
-  # Delegate cpu/cpuset: https://github.com/k3d-io/k3d/issues/1082
+  # Delegate cpuset to user slice: https://github.com/k3d-io/k3d/issues/1082
   systemd.services."user@".serviceConfig = {
-    Delegate = [ "cpu" "cpuset" "io" "memory" "pids" ];
+    Delegate = [ "cpuset" ];
   };
-
-  # https://github.com/NixOS/nixpkgs/issues/138423
-  systemd.user.services.podman.path = [ "/run/wrappers" ];
 
   users.users.maxime = {
     isNormalUser = true;
@@ -401,7 +393,9 @@
 
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
-  virtualisation.podman.defaultNetwork.dnsname.enable = true;
+  virtualisation.podman.defaultNetwork.settings = {
+    dns_enabled = true;
+  };
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;

@@ -2,17 +2,17 @@
   description = "My NixOS configuration: A Mix of Nix and Max";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
     asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
-    astronvim = { url = "github:AstroNvim/AstroNvim/v3.20.0"; flake = false; };
+    astronvim = { url = "github:AstroNvim/AstroNvim/v3.22.0"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
