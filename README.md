@@ -38,13 +38,13 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 5. Install Rust toolchain:
 
     ```shell
-    rustup toolchain install stable
+    rustup toolchain install stable --component rust-analyzer
     ```
 
 > **Note**
 >
 > If running in VirtualBox, ensure:
-> 
+>
 > * EFI is enabled
 > * 3D acceleration is enabled
 > * Solid-state Drive is checked for the virtual disk

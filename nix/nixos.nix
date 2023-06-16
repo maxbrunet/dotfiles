@@ -164,7 +164,6 @@
     rnix-lsp
     unstable.rtx
     ruff
-    rust-analyzer
     rustup
     shellcheck
     shfmt
