@@ -107,6 +107,7 @@
     gnome.simple-scan
     gnumake
     go
+    go-jsonnet
     gofumpt
     golangci-lint
     google-cloud-sdk
@@ -118,7 +119,6 @@
     htop
     imagemagick
     jq
-    jsonnet
     jsonnet-bundler
     jsonnet-language-server
     kube3d
