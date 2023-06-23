@@ -135,12 +135,13 @@
     neovim
     nixpkgs-fmt
     nmap
-    nodejs
     nodePackages.bash-language-server
     nodePackages.prettier
+    nodePackages.ts-node
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
+    nodejs
     pavucontrol
     perl
     playerctl
