@@ -252,11 +252,6 @@
 
   location.provider = "geoclue2";
 
-  networking.firewall.allowedUDPPortRanges = [
-    # Allow UPnP/SSDP traffic for Chromecast
-    # https://github.com/NixOS/nixpkgs/issues/49630#issuecomment-622498732
-    { from = 32768; to = 60999; }
-  ];
   networking.wireless.iwd.enable = true;
 
   nix.gc = {
