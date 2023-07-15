@@ -66,7 +66,7 @@
     regctl
     ripgrep
     rnix-lsp
-    unstable.rtx
+    rtx
     ruff
     rustup
     shellcheck
