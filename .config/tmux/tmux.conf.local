@@ -421,3 +421,6 @@ tmux_conf_uninstall_plugins_on_reload=true
 #
 # "$@"
 # # /!\ do not remove the previous line
+
+# https://github.com/tinted-theming/base16-shell/issues/1
+set -g allow-passthrough on

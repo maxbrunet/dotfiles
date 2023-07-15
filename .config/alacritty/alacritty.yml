@@ -1,27 +1,9 @@
 import:
   - ~/.local/share/base16/alacritty/colors/base16-google-dark-256.yml
-
-window:
-  decorations: none
-  startup_mode: Maximized
+  - ~/.config/alacritty/system.yml
 
 scrolling:
   history: 0
-
-font:
-  normal:
-    family: Source Code Pro
-    style: Regular
-  bold:
-    family: Source Code Pro
-    style: Bold
-  italic:
-    family: Source Code Pro
-    style: Italic
-  bold_italic:
-    family: Source Code Pro
-    style: Bold Italic
-  size: 11.0
 
 mouse:
   hide_when_typing: true

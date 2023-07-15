@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  common = import ./common.nix { inherit pkgs; };
+in
 {
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
@@ -62,145 +65,66 @@
     # To ensure ruff is always built from source (e.g. pre-commit)
     # https://github.com/NixOS/nixpkgs/issues/142383#issuecomment-1481800175
     PIP_NO_BINARY = "ruff";
+    POETRY_INSTALLER_NO_BINARY = "ruff";
     RTX_HIDE_UPDATE_WARNING = "1";
     XDG_CURRENT_DESKTOP = "sway";
   };
 
   environment.shells = [ pkgs.zsh ];
 
-  environment.systemPackages = with pkgs; [
-    android-tools
-    appimage-run
-    argocd
-    aspellDicts.en
-    aws-vault
-    awscli2
-    bat
-    bind.dnsutils
-    bottom
-    brightnessctl
-    buf
-    (chromium.override {
-      commandLineArgs = builtins.concatStringsSep " " [
-        "--enable-features=WebRTCPipeWireCapturer"
-        # Hardware acceleration freezes the (Chromecast) video playback
-        # when the window is not focused/is in the background.
-        # https://bugs.chromium.org/p/chromium/issues/detail?id=752726
-        "--disable-gpu"
-      ];
-    })
-    delta
-    delve
-    direnv
-    dos2unix
-    emote
-    evince
-    file
-    firefox-wayland
-    fpp
-    fzf
-    gcc
-    gdu
-    gh
-    gimp
-    gnome.gnome-calculator
-    gnome.simple-scan
-    gnumake
-    go
-    go-jsonnet
-    gofumpt
-    golangci-lint
-    google-cloud-sdk
-    gopls
-    goreleaser
-    gotools
-    grpcurl
-    hadolint
-    htop
-    imagemagick
-    jq
-    jsonnet-bundler
-    jsonnet-language-server
-    kube3d
-    kubectx
-    (linkFarm "kubectl-ctx" [
-      { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
-      { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
-    ])
-    lazygit
-    libreoffice
-    libsecret
-    lsof
-    mate.engrampa
-    neovim
-    nixpkgs-fmt
-    nmap
-    nodePackages.bash-language-server
-    nodePackages.prettier
-    nodePackages.ts-node
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-    nodejs
-    pavucontrol
-    perl
-    playerctl
-    podman-compose
-    poetry
-    polkit_gnome
-    popeye
-    powertop
-    pre-commit
-    psmisc
-    pulseaudio
-    pwgen
-    python3
-    python3Packages.black
-    python3Packages.pipx
-    python3Packages.python-lsp-server
-    python3Packages.virtualenv
-    python3Packages.virtualenvwrapper
-    regctl
-    ripgrep
-    rnix-lsp
-    unstable.rtx
-    ruff
-    rustup
-    shellcheck
-    shfmt
-    ssm-session-manager-plugin
-    stern
-    system-config-printer
-    tanka
-    tcptraceroute
-    terraform-ls
-    tflint
-    tfswitch
-    thunderbird-wayland
-    tmux
-    traceroute
-    tree
-    unzip
-    urlview
-    vlc
-    wget
-    xdg-utils
-    xfce.exo
-    xfce.mousepad
-    (xfce.thunar.override {
-      thunarPlugins = with pkgs; [
-        xfce.thunar-volman
-        xfce.thunar-archive-plugin
-        xfce.thunar-media-tags-plugin
-      ];
-    })
-    xfce.xfconf
-    yarn
-    yq-go
-    zip
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-  ];
+  environment.systemPackages =
+    common.packages ++
+    (with pkgs; [
+      appimage-run
+      aspellDicts.en
+      bind.dnsutils
+      brightnessctl
+      (chromium.override {
+        commandLineArgs = builtins.concatStringsSep " " [
+          "--enable-features=WebRTCPipeWireCapturer"
+          # Hardware acceleration freezes the (Chromecast) video playback
+          # when the window is not focused/is in the background.
+          # https://bugs.chromium.org/p/chromium/issues/detail?id=752726
+          "--disable-gpu"
+        ];
+      })
+      emote
+      evince
+      file
+      firefox-wayland
+      gcc
+      gimp
+      gnome.gnome-calculator
+      gnome.simple-scan
+      gnumake
+      libreoffice
+      libsecret
+      lsof
+      mate.engrampa
+      pavucontrol
+      playerctl
+      polkit_gnome
+      powertop
+      psmisc
+      pulseaudio
+      system-config-printer
+      thunderbird-wayland
+      traceroute
+      unzip
+      vlc
+      xdg-utils
+      xfce.exo
+      xfce.mousepad
+      (xfce.thunar.override {
+        thunarPlugins = with pkgs; [
+          xfce.thunar-volman
+          xfce.thunar-archive-plugin
+          xfce.thunar-media-tags-plugin
+        ];
+      })
+      xfce.xfconf
+      zip
+    ]);
 
   fonts.fontconfig = {
     defaultFonts = {

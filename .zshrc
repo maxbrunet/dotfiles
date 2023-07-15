@@ -5,18 +5,36 @@ export PATH="${HOME}/.local/share/rtx/shims:${HOME}/.local/share/cargo/bin:${HOM
 ZSH="${HOME}/.local/share/oh-my-zsh"
 ZSH_CUSTOM="${HOME}/.local/share/oh-my-zsh-custom"
 
+# dotfiles
+case "${OSTYPE}" in
+  darwin*)
+    DOTFILES_DIR="${HOME}/.config/darwin"
+    ;;
+  linux*)
+    DOTFILES_DIR="/etc/nixos"
+    ;;
+esac
+
 # Base16 theme
 BASE16_THEME='google-dark'
 
 # Set default applications
-export BROWSER='firefox'
+# The open_command() function is part of oh-my-zsh (see lib/functions.zsh)
+export BROWSER='open_command'
 export EDITOR='nvim'
 
 # awscli
 export AWS_PAGER=''
 
 # aws-vault
-export AWS_VAULT_BACKEND='secret-service'
+case "${OSTYPE}" in
+  darwin*)
+    export AWS_VAULT_KEYCHAIN_NAME='login'
+    ;;
+  linux*)
+    export AWS_VAULT_BACKEND='secret-service'
+    ;;
+esac
 export AWS_SESSION_TOKEN_TTL='8h'
 export AWS_ASSUME_ROLE_TTL='1h'
 
@@ -55,6 +73,7 @@ plugins=(
 )
 
 # Conditionally load some plugins
+[[ -x /opt/homebrew/bin/brew ]] && plugins+=(brew)
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 
 source "${ZSH}/oh-my-zsh.sh"
@@ -95,8 +114,8 @@ fi
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
-alias nvimrc="${EDITOR} /etc/nixos/.config/astronvim/lua/user/init.lua"
-alias zshrc="${EDITOR} /etc/nixos/.zshrc"
+alias nvimrc="${EDITOR} ${DOTFILES_DIR}/.config/astronvim/lua/user/init.lua"
+alias zshrc="${EDITOR} ${DOTFILES_DIR}/.zshrc"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail'
 alias tf='terraform'
@@ -113,3 +132,12 @@ alias e="${EDITOR}"
 # Load zsh-syntax-highlighting after all custom widgets have been created
 source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Clean up variables
+unset \
+  BASE16_THEME \
+  DOTFILES_DIR \
+  FZF_BASE \
+  ZSH \
+  ZSH_CUSTOM \
+  ZSH_THEME

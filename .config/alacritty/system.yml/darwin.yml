@@ -1,0 +1,24 @@
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font
+    style: Bold
+  italic:
+    family: SauceCodePro Nerd Font
+    style: Italic
+  bold_italic:
+    family: SauceCodePro Nerd Font
+    style: Bold Italic
+  size: 14.0
+
+key_bindings:
+  # https://github.com/alacritty/alacritty/wiki/Keyboard-mappings#macos
+  - { key: N,     mods: Command, action: SpawnNewInstance                 }
+  - { key: Space, mods: Alt,     chars: " "                               }
+  - { key: Back,  mods: Super,   chars: "\x15"                            } # delete word/line
+  - { key: Left,  mods: Alt,     chars: "\x1bb"                           } # one word left
+  - { key: Right, mods: Alt,     chars: "\x1bf"                           } # one word right
+  - { key: Left,  mods: Command, chars: "\x1bOH",         mode: AppCursor } # Home
+  - { key: Right, mods: Command, chars: "\x1bOF",         mode: AppCursor } # End

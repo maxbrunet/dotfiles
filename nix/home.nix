@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , astronvim
 , asdf-kubectl
@@ -11,15 +12,15 @@
 , ...
 }:
 
+let
+  inherit (pkgs) stdenv;
+in
 {
-  home.username = "maxime";
-  home.homeDirectory = "/home/maxime";
-
   home.file = {
-    ".local/bin/brightness.sh" = {
+    ".local/bin/brightness.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/brightness.sh;
     };
-    ".local/bin/volume.sh" = {
+    ".local/bin/volume.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/volume.sh;
     };
     ".zshrc" = {
@@ -52,20 +53,23 @@
   };
 
   xdg.configFile = {
-    alacritty = {
-      source = ../.config/alacritty;
+    "alacritty/alacritty.yml" = {
+      source = ../.config/alacritty/alacritty.yml;
+    };
+    "alacritty/system.yml" = {
+      source = ../.config/alacritty/system.yml + "/${lib.toLower stdenv.hostPlatform.uname.system}.yml";
     };
     astronvim = {
       onChange = "${pkgs.neovim}/bin/nvim --headless +quitall";
       source = ../.config/astronvim;
     };
-    dunst = {
+    dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };
-    "gtk-3.0/settings.ini" = {
+    "gtk-3.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-3.0/settings.ini;
     };
-    "gtk-4.0/settings.ini" = {
+    "gtk-4.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-4.0/settings.ini;
     };
     nvim = {
@@ -75,7 +79,7 @@
     pypoetry = {
       source = ../.config/pypoetry;
     };
-    "sway" = {
+    "sway" = lib.mkIf stdenv.isLinux {
       source = ../.config/sway;
     };
     "tmux/tmux.conf" = {
@@ -84,18 +88,18 @@
     "tmux/tmux.conf.local" = {
       source = ../.config/tmux/tmux.conf.local;
     };
-    "waybar" = {
+    "waybar" = lib.mkIf stdenv.isLinux {
       source = ../.config/waybar;
     };
-    "wofi" = {
+    "wofi" = lib.mkIf stdenv.isLinux {
       source = ../.config/wofi;
     };
-    "xfce4/helpers.rc" = {
+    "xfce4/helpers.rc" = lib.mkIf stdenv.isLinux {
       source = ../.config/xfce4/helpers.rc;
     };
   };
 
-  xdg.userDirs = {
+  xdg.userDirs = lib.mkIf stdenv.isLinux {
     enable = true;
     createDirectories = true;
   };
