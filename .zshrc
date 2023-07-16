@@ -73,7 +73,13 @@ plugins=(
 )
 
 # Conditionally load some plugins
-[[ -x /opt/homebrew/bin/brew ]] && plugins+=(brew)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  plugins+=(brew)
+  # Add completion functions for brew packages to fpath
+  # https://github.com/ohmyzsh/ohmyzsh/issues/10412#issuecomment-967029981
+  typeset -U FPATH fpath # Enforce uniqueness in FPATH
+  fpath+=( /opt/homebrew/share/zsh/site-functions )
+fi
 (( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 
 source "${ZSH}/oh-my-zsh.sh"
