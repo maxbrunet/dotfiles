@@ -45,6 +45,7 @@ in
       ])
       findutils
       git
+      gnugrep
       gnupg
       gnused
       gnutar
