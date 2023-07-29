@@ -19,8 +19,14 @@ esac
 BASE16_THEME='google-dark'
 
 # Set default applications
-# The open_command() function is part of oh-my-zsh (see lib/functions.zsh)
-export BROWSER='open_command'
+case "${OSTYPE}" in
+  darwin*)
+    export BROWSER='open -a Firefox'
+    ;;
+  linux*)
+    export BROWSER='firefox'
+    ;;
+esac
 export EDITOR='nvim'
 
 # awscli
