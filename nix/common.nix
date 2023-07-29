@@ -4,7 +4,9 @@
   packages = with pkgs; [
     amazon-ecr-credential-helper
     android-tools
-    argocd
+    # Until v2.7.8 is available in stable channel
+    # https://github.com/argoproj/argo-cd/pull/13924
+    unstable.argocd
     aws-vault
     awscli2
     bat
