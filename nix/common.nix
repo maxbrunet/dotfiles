@@ -75,6 +75,7 @@
     rustup
     shellcheck
     shfmt
+    solo2-cli
     ssm-session-manager-plugin
     stern
     tanka
