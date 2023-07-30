@@ -12,6 +12,7 @@
     bat
     bottom
     buf
+    unstable.d2
     delta
     delve
     direnv
