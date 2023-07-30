@@ -5,8 +5,6 @@ let
 in
 {
   environment.interactiveShellInit = ''
-    export RTX_HIDE_UPDATE_WARNING=1
-
     # Set DOCKER_HOST and DOCKER_SOCK environment variables
     eval "$(
       /opt/homebrew/bin/podman system connection list --format='{{if .Default}}{{.URI}}{{end -}}' \
@@ -55,6 +53,10 @@ in
       pinentry_mac
       reattach-to-user-namespace
     ]);
+
+  environment.variables = {
+    RTX_HIDE_UPDATE_WARNING = "1";
+  };
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
