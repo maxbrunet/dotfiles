@@ -23,6 +23,18 @@ in
     ".local/bin/volume.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/volume.sh;
     };
+    # tmux-256color on macOS - Nix edition
+    # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+    ".terminfo/74/tmux-256color" =
+      let
+        terminfo = pkgs.runCommand "terminfo-tmux-256color" { } ''
+          ${pkgs.ncurses}/bin/infocmp -x tmux-256color >tmux-256color.src
+          /usr/bin/tic -o $out -x tmux-256color.src
+        '';
+      in
+      lib.mkIf stdenv.isDarwin {
+        source = "${terminfo}/74/tmux-256color";
+      };
     ".zshrc" = {
       source = ../.zshrc;
     };
