@@ -42,8 +42,10 @@ in
         { name = "bin/docker"; path = "/opt/homebrew/bin/podman"; }
       ])
       findutils
+      gawk
       git
       gnugrep
+      gnumake
       gnupg
       gnused
       gnutar
