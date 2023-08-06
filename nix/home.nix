@@ -72,7 +72,7 @@ in
       source = ../.config/alacritty/system.yml + "/${lib.toLower stdenv.hostPlatform.uname.system}.yml";
     };
     astronvim = {
-      onChange = "${pkgs.neovim}/bin/nvim --headless +quitall";
+      onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
       source = ../.config/astronvim;
     };
     dunst = lib.mkIf stdenv.isLinux {
@@ -85,7 +85,7 @@ in
       source = ../.config/gtk-4.0/settings.ini;
     };
     nvim = {
-      onChange = "${pkgs.neovim}/bin/nvim --headless +quitall";
+      onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
       source = astronvim;
     };
     pypoetry = {
