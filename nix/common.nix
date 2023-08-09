@@ -50,6 +50,7 @@
     nixpkgs-fmt
     nmap
     nodePackages.bash-language-server
+    nodePackages.pnpm
     nodePackages.prettier
     nodePackages.ts-node
     nodePackages.typescript-language-server
