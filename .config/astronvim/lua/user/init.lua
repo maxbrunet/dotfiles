@@ -70,10 +70,6 @@ return {
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.gofumpt.with({
-            extra_args = { "-extra" },
-          }),
-          null_ls.builtins.formatting.goimports,
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.ruff,
           null_ls.builtins.formatting.shfmt.with({
@@ -121,9 +117,6 @@ return {
     },
     formatting = {
       disabled = {
-        -- use null-ls' gofumpt/goimports instead
-        -- https://github.com/golang/tools/pull/410
-        "gopls",
         -- use null-ls' prettier instead
         "tsserver",
       },
