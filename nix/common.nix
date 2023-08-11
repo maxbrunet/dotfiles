@@ -40,6 +40,7 @@
     jsonnet-bundler
     jsonnet-language-server
     kube3d
+    unstable.kubectl-explore
     kubectx
     (linkFarm "kubectl-ctx" [
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
