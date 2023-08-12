@@ -86,7 +86,8 @@ in
   nix.gc.automatic = true;
   nix.gc.interval = { Weekday = 0; };
   nix.gc.options = "--delete-older-than 30d";
-  nix.settings.auto-optimise-store = true;
+  # https://github.com/NixOS/nix/issues/7273
+  nix.settings.auto-optimise-store = false;
 
   programs.zsh.enable = true;
   # Managed by oh-my-zsh
