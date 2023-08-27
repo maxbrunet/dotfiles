@@ -88,6 +88,7 @@ in
   nix.gc.options = "--delete-older-than 30d";
   # https://github.com/NixOS/nix/issues/7273
   nix.settings.auto-optimise-store = false;
+  nix.settings.sandbox = true;
 
   programs.zsh.enable = true;
   # Managed by oh-my-zsh
