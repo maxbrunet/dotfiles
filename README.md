@@ -94,7 +94,8 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    ssh-keygen -b 4096
    cat >>~/.ssh/config <<EOF
    Host *
-    UseKeychain yes
+     SetEnv LC_ALL=C
+     UseKeychain yes
    EOF
    ```
 
