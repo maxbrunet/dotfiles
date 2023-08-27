@@ -223,6 +223,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-devpod": {
+      "locked": {
+        "lastModified": 1693179502,
+        "narHash": "sha256-HdWxq9wdksUy0JXepG+3UEPPLq5Inuop0zOZxf2/52Q=",
+        "owner": "maxbrunet",
+        "repo": "nixpkgs",
+        "rev": "f91b0ca75a19ffac2d290bf150c92fca90e0bf4c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maxbrunet",
+        "ref": "feat/devpod",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1692404241,
@@ -286,6 +302,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "nixpkgs-devpod": "nixpkgs-devpod",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oh-my-tmux": "oh-my-tmux",
         "oh-my-zsh": "oh-my-zsh"
