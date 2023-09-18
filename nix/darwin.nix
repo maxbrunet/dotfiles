@@ -54,6 +54,7 @@ in
       ncurses
       pinentry_mac
       reattach-to-user-namespace
+      unixtools.watch
     ]);
 
   environment.variables = {
