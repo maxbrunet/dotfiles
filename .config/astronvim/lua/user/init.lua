@@ -118,7 +118,11 @@ return {
     formatting = {
       disabled = {
         -- use null-ls' prettier instead
+        "cssls",
+        "html",
+        "jsonls",
         "tsserver",
+        "yaml",
       },
       format_on_save = {
         enabled = true,
