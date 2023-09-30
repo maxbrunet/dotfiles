@@ -25,7 +25,7 @@ return {
   },
 
   plugins = {
-    { "ellisonleao/gruvbox.nvim", version = "df149bccb19a02c5c2b9fa6ec0716f0c0487feb0" },
+    { "ellisonleao/gruvbox.nvim", version = "1.1.0" },
     { "terrastruct/d2-vim", version = "981c87dccb63df2887cc41b96e84bf550f736c57", ft = { "d2" }},
     {
       "rebelot/heirline.nvim",
