@@ -27,7 +27,7 @@ export LESSHISTFILE="${DATA_HOME}/less/history"
 export NODE_REPL_HISTORY="${DATA_HOME}/node/repl_history"
 export PIPX_HOME="${DATA_HOME}/pipx"
 export RUSTUP_HOME="${DATA_HOME}/rustup"
-export TFLINT_PLUGIN_DIR="${DATA}/tflint/plugins"
+export TFLINT_PLUGIN_DIR="${DATA_HOME}/tflint/plugins"
 export VAGRANT_HOME="${DATA_HOME}/vagrant"
 export WORKON_HOME="${DATA_HOME}/virtualenvs"
 
