@@ -13,41 +13,41 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 1. Download and boot the [NixOS installer](https://nixos.org/download.html#nixos-iso)
 2. If using WiFi, connect to it:
 
-    ```shell
-    wpa_passphrase <ESSID> | sudo tee /etc/wpa_supplicant.conf
-    sudo wpa_supplicant -B -i wlp3s0 -c /etc/wpa_supplicant.conf
-    ```
+   ```shell
+   wpa_passphrase <ESSID> | sudo tee /etc/wpa_supplicant.conf
+   sudo wpa_supplicant -B -i wlp3s0 -c /etc/wpa_supplicant.conf
+   ```
 
 3. Run bootstrap script:
 
-    ```shell
-    sudo -i
-    nix-env -iA nixos.git
-    git clone https://github.com/maxbrunet/dotfiles.git
-    cd dotfiles
-    ./scripts/bootstrap.sh <HOSTNAME>
-    reboot
-    ```
+   ```shell
+   sudo -i
+   nix-env -iA nixos.git
+   git clone https://github.com/maxbrunet/dotfiles.git
+   cd dotfiles
+   ./scripts/bootstrap.sh <HOSTNAME>
+   reboot
+   ```
 
 4. Generate SSH key:
 
-    ```shell
-    /etc/nixos/scripts/generate-ssh-key.sh
-    ```
+   ```shell
+   /etc/nixos/scripts/generate-ssh-key.sh
+   ```
 
 5. Install Rust toolchain:
 
-    ```shell
-    rustup toolchain install stable --component rust-analyzer
-    ```
+   ```shell
+   rustup toolchain install stable --component rust-analyzer
+   ```
 
 > **Note**
 >
 > If running in VirtualBox, ensure:
 >
-> * EFI is enabled
-> * 3D acceleration is enabled
-> * Solid-state Drive is checked for the virtual disk
+> - EFI is enabled
+> - 3D acceleration is enabled
+> - Solid-state Drive is checked for the virtual disk
 
 ## Bootstrapping macOS
 

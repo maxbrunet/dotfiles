@@ -1,5 +1,40 @@
 repos:
-  - repo: https://github.com/nix-community/nixpkgs-fmt
-    rev: v1.3.0
+  - repo: local
     hooks:
       - id: nixpkgs-fmt
+        name: nixpkgs-fmt
+        description: Format nix code with nixpkgs-fmt.
+        entry: nixpkgs-fmt
+        language: system
+        files: \.nix$
+      - id: prettier
+        name: prettier
+        description: Opinionated code formatter.
+        entry: prettier
+        args:
+          - --ignore-unknown
+          - --list-different
+          - --write
+        language: system
+        types: [text]
+        require_serial: false
+      - id: shellcheck
+        name: shellcheck
+        description: Static analysis tool for shell scripts.
+        entry: shellcheck
+        language: system
+        types: [shell]
+        exclude_types: [zsh]
+      - id: shfmt
+        name: shfmt
+        description: Shell source code formatter.
+        entry: shfmt
+        args:
+          # Google-style
+          - --write
+          - --indent=2
+          - --case-indent
+          - --binary-next-line
+        language: system
+        types: [shell]
+        exclude_types: [zsh]

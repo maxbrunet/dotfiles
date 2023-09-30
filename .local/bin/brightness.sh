@@ -29,7 +29,6 @@ function get_brightness_icon {
   fi
 }
 
-
 function send_brigthness_notification {
   local level icon
   level="${1?Level required}"

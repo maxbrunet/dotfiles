@@ -1,22 +1,22 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: Noto Sans, "Font Awesome 6 Free", "Font Awesome 6 Brands";
-    font-size: 14px;
-    min-height: 0;
+  border: none;
+  border-radius: 0;
+  font-family: Noto Sans, "Font Awesome 6 Free", "Font Awesome 6 Brands";
+  font-size: 14px;
+  min-height: 0;
 }
 
 #workspaces button {
-    padding: 0px 6px;
-    color: #676e7d;
+  padding: 0px 6px;
+  color: #676e7d;
 }
 
 #workspaces button.focused {
-    color: #f3f4f5;
+  color: #f3f4f5;
 }
 
 #workspaces button.urgent {
-    background-color: #e53935;
+  background-color: #e53935;
 }
 
 #workspaces button:hover {
@@ -26,9 +26,9 @@
 }
 
 #mode {
-    color: #f3f4f5;
-    background-color: #e53935;
-    padding: 0px 6px;
+  color: #f3f4f5;
+  background-color: #e53935;
+  padding: 0px 6px;
 }
 
 #mpris,
@@ -42,69 +42,69 @@
 #pulseaudio,
 #tray,
 #idle_inhibitor {
-    padding: 0px 6px;
+  padding: 0px 6px;
 }
 
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* Omit left margin of first workspace */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #e53935;
-    color: #f3f4f5;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: #e53935;
+  color: #f3f4f5;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #network.disconnected {
-    background-color: #e53935;
+  background-color: #e53935;
 }
 
 #pulseaudio.muted {
-    background-color: #e53935;
+  background-color: #e53935;
 }
 
 #mpris.spotify {
-    background-color: #1ed760;
+  background-color: #1ed760;
 }
 
 #mpris.vlc {
-    background-color: #f48b00;
+  background-color: #f48b00;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #e53935;
+  -gtk-icon-effect: highlight;
+  background-color: #e53935;
 }
 
 #idle_inhibitor.activated {
-    background-color: #f3f4f5;
-    color: #2f343f;
+  background-color: #f3f4f5;
+  color: #2f343f;
 }
 
 #keyboard-state > label.locked {
-    background: #e53935;
+  background: #e53935;
 }
