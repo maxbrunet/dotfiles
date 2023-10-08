@@ -16,7 +16,7 @@ return {
 
   highlights = {
     -- Fix Gruvbox highlight groups
-    -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox/palette.lua
+    -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox.lua
     gruvbox = {
       -- Hard-code reversed colors
       -- https://github.com/AstroNvim/AstroNvim/issues/1147
@@ -25,7 +25,7 @@ return {
   },
 
   plugins = {
-    { "ellisonleao/gruvbox.nvim", version = "1.1.0" },
+    { "ellisonleao/gruvbox.nvim", version = "2.0.0" },
     { "terrastruct/d2-vim", version = "981c87dccb63df2887cc41b96e84bf550f736c57", ft = { "d2" }},
     {
       "rebelot/heirline.nvim",
