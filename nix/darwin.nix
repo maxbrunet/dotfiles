@@ -68,7 +68,6 @@ in
 
   homebrew.enable = true;
   homebrew.casks = [
-    "aerial"
     "alacritty"
     "android-file-transfer"
     "firefox"
