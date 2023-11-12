@@ -52,6 +52,7 @@ in
 
   environment.pathsToLink = [
     "/libexec"
+    "/share/fzf-tab"
     "/share/zsh-autosuggestions"
     "/share/zsh-syntax-highlighting"
   ];

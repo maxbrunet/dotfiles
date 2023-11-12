@@ -98,6 +98,7 @@
     yarn
     yq-go
     zsh-autosuggestions
+    zsh-fzf-tab
     zsh-syntax-highlighting
   ];
 }

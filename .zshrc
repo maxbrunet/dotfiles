@@ -51,6 +51,18 @@ export BAT_THEME='gruvbox-dark'
 # fzf
 FZF_BASE="$(fzf-share)"
 
+# fzf-tab
+# disable sort when completing git commands
+zstyle ':completion:*:git-*:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with ls when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
@@ -140,6 +152,7 @@ alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
 alias e="${EDITOR}"
 
+source /run/current-system/sw/share/fzf-tab/fzf-tab.zsh
 # zsh-users
 # Load zsh-syntax-highlighting after all custom widgets have been created
 source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
