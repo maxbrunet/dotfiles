@@ -250,6 +250,8 @@ in
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
 
+  programs.xwayland.enable = false;
+
   programs.zsh.enable = true;
 
   security.rtkit.enable = true;
