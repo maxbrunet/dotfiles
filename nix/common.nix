@@ -112,7 +112,8 @@
         install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
       '';
     }))
-    zsh-fzf-tab
+    # https://github.com/Aloxaf/fzf-tab/issues/335
+    (unstable.zsh-fzf-tab.override { inherit (pkgs) stdenv; })
     zsh-syntax-highlighting
   ];
 }
