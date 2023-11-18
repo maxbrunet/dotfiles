@@ -7,7 +7,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-devpod.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.1.0";
@@ -17,7 +16,7 @@
 
     asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
     asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
-    astronvim = { url = "github:AstroNvim/AstroNvim/v3.37.12"; flake = false; };
+    astronvim = { url = "github:AstroNvim/AstroNvim/v3.38.0"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
@@ -32,7 +31,6 @@
     , nixos-hardware
     , nixpkgs-darwin
     , nixpkgs-unstable
-    , nixpkgs-devpod
     , darwin
     , disko
     , home-manager
@@ -45,11 +43,8 @@
       overlayNixpkgsUnstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
-      overlayNixpkgsDevpod = final: prev: {
-        devpod = nixpkgs-devpod.legacyPackages.${prev.system};
-      };
       baseModules = [
-        { nixpkgs.overlays = [ overlayNixOSUnstable overlayNixpkgsDevpod ]; }
+        { nixpkgs.overlays = [ overlayNixOSUnstable ]; }
         ./nix/nixos.nix
         disko.nixosModules.disko
         # Disable Disko config as it uses device names, we prefer the robustness of UUIDs.
@@ -91,7 +86,7 @@
         Maxime-Brunet = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            { nixpkgs.overlays = [ overlayNixpkgsUnstable overlayNixpkgsDevpod ]; }
+            { nixpkgs.overlays = [ overlayNixpkgsUnstable ]; }
             ./nix/darwin.nix
             ./nix/hosts/Maxime-Brunet
             home-manager.darwinModules.home-manager

@@ -15,7 +15,7 @@
     unstable.d2
     delta
     delve
-    devpod.devpod
+    unstable.devpod
     direnv
     docker-credential-helpers
     dos2unix
