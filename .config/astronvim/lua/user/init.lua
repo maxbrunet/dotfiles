@@ -149,5 +149,45 @@ return {
         ]])
       end,
     })
+
+    local function yaml_ft(_, bufnr)
+      -- get content of buffer as string
+      local content = vim.filetype.getlines(bufnr)
+      if type(content) == "table" then content = table.concat(content, "\n") end
+
+      -- check if file has 'apiVersion', 'kind', 'metadata' properties
+      local regex = vim.regex "apiVersion:.\\+kind:.\\+metadata:.\\+"
+      if regex and regex:match_str(content) then return "yaml.k8s" end
+
+      -- return yaml if nothing else
+      return "yaml"
+    end
+
+    vim.filetype.add {
+      extension = {
+        yml = yaml_ft,
+        yaml = yaml_ft,
+      },
+    }
+
+    vim.api.nvim_create_autocmd("FileType", {
+      desc = "Kubernetes YAML Language Server",
+      group = vim.api.nvim_create_augroup("yaml_k8s", { clear = true }),
+      pattern = "yaml.k8s",
+      callback = function()
+        require("lspconfig").yamlls.setup(
+          require("astronvim.utils").extend_tbl(require("astronvim.utils.lsp").config "yamlls", {
+            settings = {
+              yaml = {
+                schemas = {
+                  ["kubernetes"] = "/*.{yaml,yml}",
+                },
+              },
+            },
+            filetypes = { "yaml.k8s" },
+          })
+        )
+      end,
+    })
   end,
 }
