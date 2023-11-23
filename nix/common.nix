@@ -70,7 +70,6 @@
     pre-commit
     pwgen
     python3
-    python3Packages.black
     python3Packages.pipx
     python3Packages.python-lsp-server
     python3Packages.virtualenv
@@ -79,7 +78,8 @@
     ripgrep
     rnix-lsp
     rtx
-    ruff
+    unstable.ruff
+    unstable.ruff-lsp
     rustup
     shellcheck
     shfmt
