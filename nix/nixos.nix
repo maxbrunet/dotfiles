@@ -92,7 +92,7 @@ in
       emote
       evince
       file
-      firefox-wayland
+      firefox
       gcc
       gimp
       gnome.gnome-calculator
@@ -109,7 +109,7 @@ in
       psmisc
       pulseaudio
       system-config-printer
-      thunderbird-wayland
+      thunderbird
       traceroute
       unzip
       vlc
@@ -149,12 +149,12 @@ in
       ];
     };
   };
-  fonts.enableDefaultFonts = false;
-  fonts.fonts = with pkgs; [
+  fonts.enableDefaultPackages = false;
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     font-awesome
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     source-code-pro

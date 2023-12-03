@@ -4,15 +4,13 @@
   packages = with pkgs; [
     amazon-ecr-credential-helper
     android-tools
-    # Until v2.7.8 is available in stable channel
-    # https://github.com/argoproj/argo-cd/pull/13924
-    unstable.argocd
+    argocd
     aws-vault
     awscli2
     bat
     bottom
     buf
-    unstable.d2
+    d2
     delta
     delve
     unstable.devpod
@@ -45,7 +43,7 @@
     jsonnet-bundler
     jsonnet-language-server
     kube3d
-    unstable.kubectl-explore
+    kubectl-explore
     kubectx
     (linkFarm "kubectl-ctx" [
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
@@ -93,12 +91,21 @@
     tfswitch
     tmux
     tree
-    urlview
+    # https://github.com/NixOS/nixpkgs/pull/273406
+    (urlview.overrideAttrs (_: _: {
+      env = lib.optionalAttrs stdenv.cc.isClang {
+        NIX_CFLAGS_COMPILE = toString [
+          "-Wno-implicit-function-declaration"
+          "-Wno-parentheses"
+          "-Wno-pointer-sign"
+        ];
+      };
+    }))
     wget
     yarn
     yq-go
     zsh-autosuggestions
-    (unstable.zsh-completions.overrideAttrs (_: _: {
+    (zsh-completions.overrideAttrs (_: _: {
       installPhase = ''
         functions=(
           _direnv
@@ -112,8 +119,8 @@
         install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
       '';
     }))
-    # https://github.com/Aloxaf/fzf-tab/issues/335
-    (unstable.zsh-fzf-tab.override { inherit (pkgs) stdenv; })
+    # https://github.com/NixOS/nixpkgs/pull/271088
+    unstable.zsh-fzf-tab
     zsh-syntax-highlighting
   ];
 }
