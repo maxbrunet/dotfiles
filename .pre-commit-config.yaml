@@ -18,6 +18,7 @@ repos:
         language: system
         types: [text]
         require_serial: false
+        exclude: (^|/)flake\.lock$
       - id: shellcheck
         name: shellcheck
         description: Static analysis tool for shell scripts.
