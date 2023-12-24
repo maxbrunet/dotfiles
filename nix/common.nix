@@ -91,16 +91,7 @@
     tfswitch
     tmux
     tree
-    # https://github.com/NixOS/nixpkgs/pull/273406
-    (urlview.overrideAttrs (_: _: {
-      env = lib.optionalAttrs stdenv.cc.isClang {
-        NIX_CFLAGS_COMPILE = toString [
-          "-Wno-implicit-function-declaration"
-          "-Wno-parentheses"
-          "-Wno-pointer-sign"
-        ];
-      };
-    }))
+    urlscan
     wget
     yarn
     yq-go

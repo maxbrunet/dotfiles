@@ -242,11 +242,11 @@
     "oh-my-tmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1702048351,
-        "narHash": "sha256-Na8kyUz5oSf5tjxZF2oFJLdK4J0tjfxM+pLlWAnMgeM=",
+        "lastModified": 1703184315,
+        "narHash": "sha256-3/aIMELyupsQWDz2h1Ow19Ei+fqxcVUYMO268/BrAqA=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "1b88bf2127ab5260e82acaf8a51e857727b50dae",
+        "rev": "dd9502a09a9d5a4c97c271670e7ca7cb2171ab7f",
         "type": "github"
       },
       "original": {
