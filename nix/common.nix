@@ -110,8 +110,7 @@
         install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
       '';
     }))
-    # https://github.com/NixOS/nixpkgs/pull/271088
-    unstable.zsh-fzf-tab
+    zsh-fzf-tab
     zsh-syntax-highlighting
   ];
 }
