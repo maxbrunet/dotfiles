@@ -318,9 +318,6 @@ in
     dns_enabled = true;
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-
   xdg.mime = rec {
     defaultApplications = {
       "application/pdf" = "org.gnome.Evince.desktop";
