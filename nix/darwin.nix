@@ -60,6 +60,8 @@ in
 
   environment.variables = {
     RTX_HIDE_UPDATE_WARNING = "1";
+    # Mainly "[WARN] rtx::toolset: Tool not installed" is annoying
+    RTX_LOG_LEVEL = "error";
   };
 
   fonts.fontDir.enable = true;
