@@ -17,6 +17,7 @@
     direnv
     docker-credential-helpers
     dos2unix
+    fd
     fpp
     fzf
     gdu
