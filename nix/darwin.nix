@@ -74,6 +74,7 @@ in
     "firefox"
     "gimp"
     "google-chrome"
+    "localsend/localsend/localsend"
     "podman-desktop"
     "thunderbird"
   ];

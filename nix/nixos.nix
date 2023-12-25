@@ -99,6 +99,7 @@ in
       gnumake
       libreoffice
       libsecret
+      localsend
       lsof
       mate.engrampa
       pavucontrol
