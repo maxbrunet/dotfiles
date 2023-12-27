@@ -44,7 +44,7 @@
     sticky_history = yes
     history_length = 20
     dmenu = /run/current-system/sw/bin/wofi --dmenu --hide-scroll --insensitive --prompt dunst
-    browser = /run/current-system/sw/bin/firefox -new-tab
+    browser = /run/current-system/sw/bin/librewolf -new-tab
     always_run_script = true
     title = Dunst
     class = Dunst

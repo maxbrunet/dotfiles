@@ -1,5 +1,5 @@
 # vim: ft=desktop
-WebBrowser=firefox
+WebBrowser=librewolf
 MailReader=thunderbird
 FileManager=thunar
 TerminalEmulator=alacritty

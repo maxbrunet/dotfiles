@@ -26,6 +26,9 @@ in
     ".zshrc" = {
       source = ../.zshrc;
     };
+    ".librewolf/librewolf.overrides.cfg" = {
+      source = ../.librewolf/librewolf.overrides.cfg;
+    };
   };
 
   xdg.dataFile = {

@@ -21,10 +21,10 @@ BASE16_THEME='google-dark'
 # Set default applications
 case "${OSTYPE}" in
   darwin*)
-    export BROWSER='open -a Firefox'
+    export BROWSER='open -a Librewolf'
     ;;
   linux*)
-    export BROWSER='firefox'
+    export BROWSER='librewolf'
     ;;
 esac
 export EDITOR='nvim'

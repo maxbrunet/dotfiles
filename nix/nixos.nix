@@ -93,7 +93,7 @@ in
       emote
       evince
       file
-      firefox
+      librewolf
       gcc
       gimp
       gnome.gnome-calculator
@@ -324,21 +324,21 @@ in
   xdg.mime = rec {
     defaultApplications = {
       "application/pdf" = "org.gnome.Evince.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
-      "application/x-extension-shtml" = "firefox.desktop";
-      "application/x-extension-xht" = "firefox.desktop";
-      "application/x-extension-xhtml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
+      "application/x-extension-htm" = "librewolf.desktop";
+      "application/x-extension-html" = "librewolf.desktop";
+      "application/x-extension-shtml" = "librewolf.desktop";
+      "application/x-extension-xht" = "librewolf.desktop";
+      "application/x-extension-xhtml" = "librewolf.desktop";
+      "application/xhtml+xml" = "librewolf.desktop";
       "image/avif" = "imv-folder;imv.desktop";
       "image/bmp" = "imv-folder;imv.desktop";
-      "image/gif" = "firefox.desktop";
+      "image/gif" = "librewolf.desktop";
       "image/heif" = "imv-folder;imv.desktop";
       "image/jpeg" = "imv-folder;imv.desktop";
       "image/jpg" = "imv-folder;imv.desktop";
       "image/pjpeg" = "imv-folder;imv.desktop";
       "image/png" = "imv-folder;imv.desktop";
-      "image/svg+xml" = "firefox.desktop";
+      "image/svg+xml" = "librewolf.desktop";
       "image/tiff" = "imv-folder;imv.desktop";
       "image/x-bmp" = "imv-folder;imv.desktop";
       "image/x-pcx" = "imv-folder;imv.desktop";
@@ -349,12 +349,12 @@ in
       "image/x-portable-pixmap" = "imv-folder;imv.desktop";
       "image/x-tga" = "imv-folder;imv.desktop";
       "image/x-xbitmap" = "imv-folder;imv.desktop";
-      "text/html" = "firefox.desktop";
+      "text/html" = "librewolf.desktop";
       "text/plain" = "org.xfce.mousepad.desktop";
       "text/x-readme" = "org.xfce.mousepad.desktop";
-      "x-scheme-handler/chrome" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/chrome" = "librewolf.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
       "x-scheme-handler/mailto" = "thunderbird.desktop";
     };
     addedAssociations = defaultApplications;
