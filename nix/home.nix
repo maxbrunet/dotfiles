@@ -31,6 +31,16 @@ in
     };
   };
 
+  programs.chromium.enable = true;
+  programs.chromium.package = pkgs.writeTextDir "dummy-chromium/chromium" "";
+  programs.chromium.extensions = [
+    "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
+    "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
+    "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
+    "hipekcciheckooncpjeljhnekcoolahp" # Tabliss
+    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
+  ];
+
   xdg.dataFile = {
     "rtx/plugins/kubectl" = {
       source = asdf-kubectl;

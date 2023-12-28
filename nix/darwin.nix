@@ -73,8 +73,9 @@ in
   homebrew.casks = [
     "alacritty"
     "android-file-transfer"
+    # https://chromium.googlesource.com/chromium/src/+/main/docs/mac_arm64.md
+    { name = "chromium"; args = { no_quarantine = true; }; }
     "gimp"
-    "google-chrome"
     # https://librewolf.net/docs/faq/#why-is-librewolf-marked-as-broken
     { name = "librewolf"; args = { no_quarantine = true; }; }
     "localsend/localsend/localsend"
