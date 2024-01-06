@@ -1,0 +1,18 @@
+[font]
+size = 14.0
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+style = "Regular"
+
+# backward-word
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "Left"
+mods = "Alt"
+
+# forward-word
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "Right"
+mods = "Alt"

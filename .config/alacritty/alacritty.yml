@@ -1,9 +1,0 @@
-import:
-  - ~/.local/share/base16/alacritty/colors/base16-google-dark-256.yml
-  - ~/.config/alacritty/system.yml
-
-scrolling:
-  history: 0
-
-mouse:
-  hide_when_typing: true

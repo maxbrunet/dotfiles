@@ -66,11 +66,11 @@ in
   };
 
   xdg.configFile = {
-    "alacritty/alacritty.yml" = {
-      source = ../.config/alacritty/alacritty.yml;
+    "alacritty/alacritty.toml" = {
+      source = ../.config/alacritty/alacritty.toml;
     };
-    "alacritty/system.yml" = {
-      source = ../.config/alacritty/system.yml + "/${lib.toLower stdenv.hostPlatform.uname.system}.yml";
+    "alacritty/system.toml" = {
+      source = ../.config/alacritty/system.toml + "/${lib.toLower stdenv.hostPlatform.uname.system}.toml";
     };
     astronvim = {
       onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";

@@ -1,0 +1,10 @@
+import = [
+  "~/.local/share/base16/alacritty/colors/base16-google-dark-256.toml",
+  "~/.config/alacritty/system.toml",
+]
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 0
