@@ -54,7 +54,6 @@ in
       # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
       ncurses
       pinentry_mac
-      reattach-to-user-namespace
       unixtools.watch
     ]);
 

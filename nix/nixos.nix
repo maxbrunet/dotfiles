@@ -135,7 +135,7 @@ in
         "Noto Color Emoji"
         "Font Awesome 6 Free"
         "Font Awesome 6 Brands"
-        "Symbols Nerd Font Mono"
+        "Symbols Nerd Font"
       ];
       monospace = [
         "Source Code Pro"
