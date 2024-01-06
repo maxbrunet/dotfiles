@@ -107,6 +107,9 @@ in
     "wofi" = lib.mkIf stdenv.isLinux {
       source = ../.config/wofi;
     };
+    "xdg-terminals.list" = lib.mkIf stdenv.isLinux {
+      source = ../.config/xdg-terminals.list;
+    };
     "xfce4/helpers.rc" = lib.mkIf stdenv.isLinux {
       source = ../.config/xfce4/helpers.rc;
     };
