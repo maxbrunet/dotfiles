@@ -6,7 +6,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 
 ## Bootstrapping NixOS
 
-> **Warning**
+> [!WARNING]
 >
 > All data will be erased to install NixOS! These instructions are not indented for any users but myself (**@maxbrunet**), read scripts carefully!
 
@@ -41,7 +41,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    rustup toolchain install stable --component rust-analyzer
    ```
 
-> **Note**
+> [!NOTE]
 >
 > If running in VirtualBox, ensure:
 >
