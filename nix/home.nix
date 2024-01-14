@@ -115,6 +115,26 @@ in
     };
   };
 
+  systemd.user.services = {
+    # https://www.kernel.org/doc/html/latest/userspace-api/sysfs-platform_profile.html
+    platform-profile-notify = {
+      Unit = {
+        Description = "Notify on platform profile change";
+        ConditionPathExists = "/sys/firmware/acpi/platform_profile";
+        Requires = [ "dunst.service" ];
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+      Install = { WantedBy = [ "graphical-session.target" ]; };
+      Service = {
+        Environment = "PATH=${pkgs.bash}/bin:${pkgs.dunst}/bin:${pkgs.inotify-tools}/bin";
+        ExecStart = ../.local/bin/platform_profile_notify.sh;
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+    };
+  };
+
   xdg.userDirs = lib.mkIf stdenv.isLinux {
     enable = true;
     createDirectories = true;

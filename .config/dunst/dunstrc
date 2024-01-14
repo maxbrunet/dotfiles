@@ -85,3 +85,7 @@
 [display-brightness]
     appname = "Display Brightness"
     history_ignore = yes
+
+[platform-profile]
+    appname = "Platform Profile"
+    history_ignore = yes
