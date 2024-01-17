@@ -117,22 +117,41 @@ in
 
   systemd.user.services = {
     # https://www.kernel.org/doc/html/latest/userspace-api/sysfs-platform_profile.html
-    platform-profile-notify = {
-      Unit = {
-        Description = "Notify on platform profile change";
-        ConditionPathExists = "/sys/firmware/acpi/platform_profile";
-        Requires = [ "dunst.service" ];
-        After = [ "graphical-session-pre.target" ];
-        PartOf = [ "graphical-session.target" ];
+    platform-profile-notify =
+      let
+        script = pkgs.writeShellApplication {
+          name = "platform-profile-notify";
+          runtimeInputs = with pkgs; [ dunst inotify-tools ];
+          text = ''
+            inotifywait --event=MODIFY --format=%w --monitor /sys/firmware/acpi/platform_profile \
+              | while read -r file; do
+                profile="$(<"$file")"
+                dunstify \
+                  --appname='Platform Profile' \
+                  --replace='991049' \
+                  --urgency='low' \
+                  --timeout='2000' \
+                  --icon='cpu' \
+                  "$profile"
+              done
+          '';
+        };
+      in
+      {
+        Unit = {
+          Description = "Notify on platform profile change";
+          ConditionPathExists = "/sys/firmware/acpi/platform_profile";
+          Requires = [ "dunst.service" ];
+          After = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+        Install = { WantedBy = [ "graphical-session.target" ]; };
+        Service = {
+          ExecStart = "${script}/bin/platform-profile-notify";
+          Restart = "on-failure";
+          RestartSec = 5;
+        };
       };
-      Install = { WantedBy = [ "graphical-session.target" ]; };
-      Service = {
-        Environment = "PATH=${pkgs.bash}/bin:${pkgs.dunst}/bin:${pkgs.inotify-tools}/bin";
-        ExecStart = ../.local/bin/platform_profile_notify.sh;
-        Restart = "on-failure";
-        RestartSec = 5;
-      };
-    };
   };
 
   xdg.userDirs = lib.mkIf stdenv.isLinux {

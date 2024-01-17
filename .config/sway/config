@@ -255,6 +255,7 @@ exec swayidle -w \
 # https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
 exec dbus-update-activation-environment --systemd GTK_THEME WAYLAND_DISPLAY
 exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
+exec systemctl --user start platform-profile-notify
 exec systemctl --user start gammastep
 exec systemctl --user start blueman-applet
 exec librewolf
