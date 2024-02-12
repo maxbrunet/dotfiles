@@ -62,6 +62,7 @@
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     nodejs
+    pdm
     perl
     podman-compose
     poetry
