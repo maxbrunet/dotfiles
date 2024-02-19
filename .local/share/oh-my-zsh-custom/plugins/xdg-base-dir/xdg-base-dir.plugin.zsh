@@ -16,12 +16,12 @@ export TF_PLUGIN_CACHE_DIR="${CACHE_HOME}/terraform/plugins"
 # Config
 export AWS_CONFIG_FILE="${CONFIG_HOME}/aws/config"
 export AWS_SHARED_CREDENTIALS_FILE="${CONFIG_HOME}/aws/credentials"
-export DEVPOD_HOME="${CONFIG_HOME}/devpod"
 export OCI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
 
 # Data
 export ANSIBLE_HOME="${DATA_HOME}/ansible"
 export CARGO_HOME="${DATA_HOME}/cargo"
+export DEVPOD_HOME="${DATA_HOME}/devpod"
 export GOPATH="${DATA_HOME}/go"
 export LESSHISTFILE="${DATA_HOME}/less/history"
 export NODE_REPL_HISTORY="${DATA_HOME}/node/repl_history"
