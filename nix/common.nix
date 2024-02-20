@@ -1,5 +1,25 @@
 { pkgs }:
 
+let
+  pnpm-completion =
+    let inherit (pkgs.nodePackages) pnpm; in
+    pkgs.runCommand "pnpm-completion-${pnpm.version}"
+      {
+        nativeBuildInputs = [ pkgs.installShellFiles pnpm ];
+      }
+      ''
+        # https://github.com/pnpm/pnpm/issues/3083
+        export HOME="$PWD"
+        pnpm install-completion bash
+        pnpm install-completion fish
+        pnpm install-completion zsh
+        sed -i '1 i#compdef pnpm' .config/tabtab/zsh/pnpm.zsh
+        installShellCompletion \
+          .config/tabtab/bash/pnpm.bash \
+          .config/tabtab/zsh/pnpm.zsh \
+          .config/tabtab/fish/pnpm.fish
+      '';
+in
 {
   packages = with pkgs; [
     amazon-ecr-credential-helper
@@ -64,6 +84,7 @@
     nodejs
     pdm
     perl
+    pnpm-completion
     podman-compose
     poetry
     popeye
