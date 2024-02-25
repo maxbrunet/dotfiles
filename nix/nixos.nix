@@ -258,6 +258,8 @@ in
   services.automatic-timezoned.enable = true;
   # Always running unstable as maintainer
   services.automatic-timezoned.package = pkgs.unstable.automatic-timezoned;
+  # https://github.com/NixOS/nixpkgs/pull/289862
+  systemd.services.automatic-timezoned.serviceConfig.ExecStart = lib.mkForce "${config.services.automatic-timezoned.package}/bin/automatic-timezoned";
 
   services.avahi.enable = true;
 
