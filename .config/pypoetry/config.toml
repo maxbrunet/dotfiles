@@ -1,3 +1,2 @@
 [virtualenvs]
-# virtualenvwrapper is used instead
-create = false
+in-project = true
