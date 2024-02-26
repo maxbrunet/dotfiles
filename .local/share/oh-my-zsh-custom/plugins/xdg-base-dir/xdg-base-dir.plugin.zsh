@@ -29,6 +29,5 @@ export PIPX_HOME="${DATA_HOME}/pipx"
 export RUSTUP_HOME="${DATA_HOME}/rustup"
 export TFLINT_PLUGIN_DIR="${DATA_HOME}/tflint/plugins"
 export VAGRANT_HOME="${DATA_HOME}/vagrant"
-export WORKON_HOME="${DATA_HOME}/virtualenvs"
 
 unset BIN_HOME CACHE_HOME CONFIG_HOME DATA_HOME STATE_HOME

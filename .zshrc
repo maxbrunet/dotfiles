@@ -98,7 +98,6 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
   typeset -U FPATH fpath # Enforce uniqueness in FPATH
   fpath+=( /opt/homebrew/share/zsh/site-functions )
 fi
-(( $+commands[virtualenvwrapper_lazy.sh] )) && plugins+=(virtualenvwrapper)
 
 source "${ZSH}/oh-my-zsh.sh"
 

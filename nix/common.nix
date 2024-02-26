@@ -93,8 +93,6 @@ in
     python3
     python3Packages.pipx
     python3Packages.python-lsp-server
-    python3Packages.virtualenv
-    python3Packages.virtualenvwrapper
     regctl
     ripgrep
     rnix-lsp
