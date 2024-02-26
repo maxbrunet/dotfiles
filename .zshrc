@@ -88,6 +88,7 @@ plugins=(
   kube-ps1
   kubectl
   sudo
+  terraform
 )
 
 # Conditionally load some plugins
@@ -141,11 +142,6 @@ alias nvimrc="${EDITOR} ${DOTFILES_DIR}/.config/astronvim/lua/user/init.lua"
 alias zshrc="${EDITOR} ${DOTFILES_DIR}/.zshrc"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail-with-body'
-alias tf='terraform'
-alias tffmt='terraform fmt'
-alias tfinit='terraform init'
-alias tfplan='terraform plan'
-alias tfapply='terraform apply'
 alias tfswitch="tfswitch --bin=\"${HOME}/.local/bin/terraform\""
 alias -g J='| bat --language=json'
 alias -g Y='| bat --language=yaml'
