@@ -84,6 +84,7 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     nodejs
+    oci-cli
     pdm
     perl
     pnpm-completion
