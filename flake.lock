@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "asdf-kustomize": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1702406288,
-        "narHash": "sha256-wG3lCh93C37zmAOBX0Vz55OU/2sdCseKaOFjcKCgzls=",
-        "owner": "Banno",
-        "repo": "asdf-kustomize",
-        "rev": "8e929af8d10e589e0e5ac993b3521a1644bbafde",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Banno",
-        "repo": "asdf-kustomize",
-        "type": "github"
-      }
-    },
     "astronvim": {
       "flake": false,
       "locked": {
@@ -274,7 +258,6 @@
     "root": {
       "inputs": {
         "asdf-kubectl": "asdf-kubectl",
-        "asdf-kustomize": "asdf-kustomize",
         "astronvim": "astronvim",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",

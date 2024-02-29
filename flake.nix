@@ -15,7 +15,6 @@
     home-manager.inputs.nixpkgs.follows = "nixos";
 
     asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
-    asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
     astronvim = { url = "github:AstroNvim/AstroNvim/v3.44.0"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };

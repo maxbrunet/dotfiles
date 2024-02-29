@@ -3,7 +3,6 @@
 , pkgs
 , astronvim
 , asdf-kubectl
-, asdf-kustomize
 , base16-alacritty
 , base16-fzf
 , base16-shell
@@ -44,9 +43,6 @@ in
   xdg.dataFile = {
     "mise/plugins/kubectl" = {
       source = asdf-kubectl;
-    };
-    "mise/plugins/kustomize" = {
-      source = asdf-kustomize;
     };
     "base16/alacritty" = {
       source = base16-alacritty;

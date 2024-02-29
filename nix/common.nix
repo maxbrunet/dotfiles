@@ -70,6 +70,7 @@ in
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
       { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
     ])
+    kustomize
     lazygit
     neovim
     nixpkgs-fmt
