@@ -109,7 +109,7 @@ in
     stern
     tanka
     tcptraceroute
-    terraform-ls
+    unstable.terraform-ls
     tflint
     tfswitch
     tmux
