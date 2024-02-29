@@ -96,7 +96,7 @@ in
     regctl
     ripgrep
     rnix-lsp
-    rtx
+    unstable.mise
     unstable.ruff
     unstable.ruff-lsp
     rustup

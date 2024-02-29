@@ -68,9 +68,6 @@ in
     PDM_NO_BINARY = "ruff";
     PIP_NO_BINARY = "ruff";
     POETRY_INSTALLER_NO_BINARY = "ruff";
-    RTX_HIDE_UPDATE_WARNING = "1";
-    # Mainly "[WARN] rtx::toolset: Tool not installed" is annoying
-    RTX_LOG_LEVEL = "error";
     XDG_CURRENT_DESKTOP = "sway";
   };
 
