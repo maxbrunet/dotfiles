@@ -15,9 +15,6 @@ case "${OSTYPE}" in
     ;;
 esac
 
-# Base16 theme
-BASE16_THEME='google-dark'
-
 # Set default applications
 case "${OSTYPE}" in
   darwin*)
@@ -159,7 +156,6 @@ source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlight
 
 # Clean up variables
 unset \
-  BASE16_THEME \
   DOTFILES_DIR \
   FZF_BASE \
   ZSH \

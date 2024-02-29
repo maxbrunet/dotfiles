@@ -91,6 +91,7 @@ in
     "sway" = lib.mkIf stdenv.isLinux {
       source = ../.config/sway;
     };
+    "tinted-theming/theme_name" = { text = "google-dark"; };
     "tmux/tmux.conf" = {
       source = "${oh-my-tmux}/.tmux.conf";
     };
