@@ -64,6 +64,7 @@ in
     jsonnet-bundler
     jsonnet-language-server
     kube3d
+    unstable.kubecolor
     kubectl-explore
     kubectx
     (linkFarm "kubectl-ctx" [

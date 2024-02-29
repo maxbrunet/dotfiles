@@ -135,6 +135,10 @@ if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
   preexec_functions+=(_enable_kube-ps1)
 fi
 
+# kubecolor
+alias kubectl='kubecolor'
+compdef kubecolor='kubectl'
+
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
