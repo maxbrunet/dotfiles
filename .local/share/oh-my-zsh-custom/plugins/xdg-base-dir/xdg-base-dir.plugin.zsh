@@ -16,6 +16,7 @@ export TF_PLUGIN_CACHE_DIR="${CACHE_HOME}/terraform/plugins"
 # Config
 export AWS_CONFIG_FILE="${CONFIG_HOME}/aws/config"
 export AWS_SHARED_CREDENTIALS_FILE="${CONFIG_HOME}/aws/credentials"
+export DOCKER_CONFIG="${CONFIG_HOME}/docker"
 export OCI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
 
 # Data
