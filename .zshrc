@@ -116,10 +116,11 @@ RPROMPT='$(aws_prompt_info)'"${RPROMPT}"
 # Automatically enable kube-ps1 when certain commands are executed
 function _enable_kube-ps1 {
   local -ra KUBE_CMDS=(
-    kubectl
     k3d
-    kubens
+    kubecolor
+    kubectl
     kubectx
+    kubens
     kustomize
     tk
   )
