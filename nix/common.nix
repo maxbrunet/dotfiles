@@ -98,7 +98,6 @@ in
     python3Packages.python-lsp-server
     regctl
     ripgrep
-    rnix-lsp
     unstable.mise
     unstable.ruff
     unstable.ruff-lsp

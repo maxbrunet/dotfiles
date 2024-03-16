@@ -68,6 +68,7 @@ return {
         opts.sources = {
           null_ls.builtins.diagnostics.golangci_lint,
           null_ls.builtins.diagnostics.hadolint,
+          null_ls.builtins.formatting.nixpkgs_fmt,
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "2", "-ci", "-bn"},
@@ -106,7 +107,6 @@ return {
       "jsonls",
       "jsonnet_ls",
       "pylsp",
-      "rnix",
       "ruff_lsp",
       "rust_analyzer",
       "terraformls",
