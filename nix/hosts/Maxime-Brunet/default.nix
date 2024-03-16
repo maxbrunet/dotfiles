@@ -6,7 +6,6 @@
   ];
 
   homebrew.casks = [
-    "1password"
     "tailscale"
     "tuple"
   ];
