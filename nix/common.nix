@@ -74,6 +74,7 @@ in
     kustomize
     lazygit
     neovim
+    nixd
     nixpkgs-fmt
     nmap
     nodePackages.bash-language-server
