@@ -42,17 +42,17 @@ in
     fzf
     gdu
     gh
-    unstable.go_1_21
+    unstable.go_1_22
     go-jsonnet
     gofumpt
     (unstable.golangci-lint.override {
-      buildGoModule = unstable.buildGo121Module;
+      buildGoModule = unstable.buildGo122Module;
     })
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
     (unstable.gopls.override {
-      buildGoModule = unstable.buildGo121Module;
+      buildGoModule = unstable.buildGo122Module;
     })
     goreleaser
     gotools
