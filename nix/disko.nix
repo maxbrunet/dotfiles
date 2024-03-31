@@ -32,13 +32,12 @@ in
             content = {
               type = "luks";
               name = "cryptroot";
-              keyFile = "/tmp/cryptroot.key";
+              settings = {
+                allowDiscards = true;
+                bypassWorkqueues = true;
+                keyFile = "/tmp/cryptroot.key";
+              };
               extraFormatArgs = [ "--type" "luks1" "--hash" "sha512" ];
-              extraOpenArgs = [
-                "--allow-discards"
-                "--perf-no_read_workqueue"
-                "--perf-no_write_workqueue"
-              ];
               content = {
                 type = "filesystem";
                 format = "ext4";

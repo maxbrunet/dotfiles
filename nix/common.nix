@@ -85,19 +85,19 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     nodejs
-    oci-cli
-    pdm
+    unstable.oci-cli
+    unstable.pdm
     perl
     pnpm-completion
     podman-compose
     poetry
-    popeye
+    unstable.popeye
     pre-commit
     pwgen
     python3
     python3Packages.pipx
     python3Packages.python-lsp-server
-    regctl
+    unstable.regctl
     ripgrep
     unstable.mise
     unstable.ruff
