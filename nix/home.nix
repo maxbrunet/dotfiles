@@ -81,6 +81,9 @@ in
     "gtk-4.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-4.0/settings.ini;
     };
+    "npm" = {
+      source = ../.config/npm;
+    };
     nvim = {
       onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
       source = astronvim;
