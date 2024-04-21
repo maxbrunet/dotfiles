@@ -41,6 +41,7 @@ in
     fpp
     fzf
     gdu
+    git-lfs
     gh
     unstable.go_1_22
     go-jsonnet
@@ -86,7 +87,18 @@ in
     nodePackages.yaml-language-server
     nodejs
     unstable.oci-cli
-    unstable.pdm
+    # https://github.com/NixOS/nixpkgs/pull/303871
+    (unstable.pdm.overrideAttrs (_: previousAttrs: {
+      postInstall = ''
+        export PDM_LOG_DIR=/tmp/pdm/log
+      '' + previousAttrs.postInstall + ''
+        unset PDM_LOG_DIR
+      '';
+
+      disabledTests = previousAttrs.disabledTests ++ [
+        "test_build_with_no_isolation"
+      ];
+    }))
     perl
     pnpm-completion
     podman-compose
