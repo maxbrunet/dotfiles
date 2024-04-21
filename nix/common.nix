@@ -74,6 +74,7 @@ in
     ])
     kustomize
     lazygit
+    lua-language-server
     neovim
     nixd
     nixpkgs-fmt

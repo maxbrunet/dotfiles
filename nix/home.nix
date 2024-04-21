@@ -1,7 +1,6 @@
 { config
 , lib
 , pkgs
-, astronvim
 , asdf-kubectl
 , base16-alacritty
 , base16-fzf
@@ -68,10 +67,6 @@ in
     "alacritty/system.toml" = {
       source = ../.config/alacritty/system.toml + "/${lib.toLower stdenv.hostPlatform.uname.system}.toml";
     };
-    astronvim = {
-      onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
-      source = ../.config/astronvim;
-    };
     dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };
@@ -86,7 +81,7 @@ in
     };
     nvim = {
       onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
-      source = astronvim;
+      source = ../.config/nvim;
     };
     pypoetry = {
       source = ../.config/pypoetry;

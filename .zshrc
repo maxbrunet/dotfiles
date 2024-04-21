@@ -140,7 +140,7 @@ compdef kubecolor='kubectl'
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
 alias tree='tree -C -F'
-alias nvimrc="${EDITOR} ${DOTFILES_DIR}/.config/astronvim/lua/user/init.lua"
+alias nvimrc="${EDITOR} ${DOTFILES_DIR}/.config/nvim/init.lua"
 alias zshrc="${EDITOR} ${DOTFILES_DIR}/.zshrc"
 alias grbb='git rebase --interactive HEAD~$(git rev-list --count origin/HEAD..HEAD)'
 alias curl='curl --fail-with-body'
