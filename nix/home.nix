@@ -12,6 +12,16 @@
 
 let
   inherit (pkgs) stdenv;
+  litellm = pkgs.unstable.python3Packages.litellm.override {
+    rq = pkgs.unstable.python3Packages.rq.overridePythonAttrs {
+      # https://github.com/NixOS/nixpkgs/pull/307790
+      doCheck = !stdenv.isDarwin;
+    };
+  };
+  litellmProxy = litellm.overrideAttrs (prev: {
+    propagatedBuildInputs = prev.propagatedBuildInputs
+      ++ litellm.optional-dependencies.proxy;
+  });
 in
 {
   home.file = {
@@ -26,6 +36,27 @@ in
     };
     ".librewolf/librewolf.overrides.cfg" = {
       source = ../.librewolf/librewolf.overrides.cfg;
+    };
+  };
+
+  launchd.agents = {
+    LiteLLM = {
+      config = {
+        ProgramArguments = [
+          "${litellmProxy}/bin/litellm"
+          "--config"
+          "${config.xdg.configHome}/litellm/config.yaml"
+          "--host"
+          "127.0.0.1"
+          "--telemetry"
+          "False"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/LiteLLM/launchd-stderr.log";
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/LiteLLM/launchd-stdout.log";
+      };
+      enable = true;
     };
   };
 
@@ -111,6 +142,18 @@ in
   };
 
   systemd.user.services = {
+    litellm = {
+      Unit = {
+        Description = "Use any LLM as a drop in replacement for gpt-3.5-turbo.";
+        ConditionPathExists = "${config.xdg.configHome}/litellm/config.yaml";
+      };
+      Install = { WantedBy = [ "default.target" ]; };
+      Service = {
+        ExecStart = "${litellmProxy}/bin/litellm --config ${config.xdg.configHome}/litellm/config.yaml --host 127.0.0.1 --telemetry False";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+    };
     # https://www.kernel.org/doc/html/latest/userspace-api/sysfs-platform_profile.html
     platform-profile-notify =
       let

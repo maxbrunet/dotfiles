@@ -1,0 +1,14 @@
+# vim: ft=yaml
+model_list:
+  - model_name: command-r
+    litellm_params:
+      model: command-r
+      api_key: COHERE_API_KEY
+  - model_name: command-r-plus
+    litellm_params: &default
+      model: command-r-plus
+      api_key: COHERE_API_KEY
+  # ChatGPT.nvim's default model
+  # https://github.com/jackMort/ChatGPT.nvim/blob/df53728e05129278d6ea26271ec086aa013bed90/lua/chatgpt/config.lua#L160
+  - model_name: gpt-3.5-turbo
+    litellm_params: *default
