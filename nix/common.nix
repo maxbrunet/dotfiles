@@ -32,7 +32,9 @@ in
     buf
     d2
     delta
-    delve
+    (unstable.delve.override {
+      buildGoModule = unstable.buildGo122Module;
+    })
     unstable.devpod
     direnv
     docker-credential-helpers

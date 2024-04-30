@@ -116,19 +116,13 @@ require("lazy").setup({
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    opts = function(_, opts)
-      local null_ls = require "null-ls"
-      -- Include code and source with diagnostics message
-      opts.diagnostics_format = "[#{c}] #{m} (#{s})"
-      opts.sources = {
-        null_ls.builtins.diagnostics.golangci_lint,
-        null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.shfmt.with({
-          extra_args = { "-i", "2", "-ci", "-bn"},
-        }),
-      }
-      return opts
+    config = function()
+      local dap = require('dap')
+      local adapters = require('mason-nvim-dap.mappings.adapters')
+      local configurations = require('mason-nvim-dap.mappings.configurations')
+
+      dap.adapters.delve = adapters.delve
+      dap.configurations.go = configurations.delve
     end,
   },
   {
