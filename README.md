@@ -99,7 +99,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 8. Configure SSH client:
 
    ```shell
-   ssh-keygen -b 4096
+   ssh-keygen -t rsa -b 4096
    cat >>~/.ssh/config <<EOF
    Host *
      SetEnv LC_ALL=C

@@ -90,14 +90,14 @@ in
     nodePackages.yaml-language-server
     nodejs
     unstable.oci-cli
-    # https://github.com/NixOS/nixpkgs/pull/303871
     (unstable.pdm.overrideAttrs (_: previousAttrs: {
-      postInstall = ''
-        export PDM_LOG_DIR=/tmp/pdm/log
-      '' + previousAttrs.postInstall + ''
-        unset PDM_LOG_DIR
-      '';
+      propagatedBuildInputs =
+        previousAttrs.propagatedBuildInputs ++
+        (with pkgs.unstable.python3Packages; [
+          keyrings-google-artifactregistry-auth
+        ]);
 
+      # Fails: No module named 'first' ¯\_(ツ)_/¯
       disabledTests = previousAttrs.disabledTests ++ [
         "test_build_with_no_isolation"
       ];
