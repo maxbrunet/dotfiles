@@ -134,7 +134,7 @@ if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
 fi
 
 # kubecolor
-alias kubectl='kubecolor'
+alias kubectl='KUBECOLOR_PRESET="${KUBECOLOR_PRESET:-pre-0.0.21-dark}" kubecolor'
 compdef kubecolor='kubectl'
 
 # Aliases
