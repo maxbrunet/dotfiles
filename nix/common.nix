@@ -61,6 +61,7 @@ in
     gotools
     grpcurl
     hadolint
+    helm-ls
     htop
     imagemagick
     jq

@@ -98,6 +98,7 @@ require("lazy").setup({
         "cssls",
         "eslint",
         "gopls",
+        "helm_ls",
         "html",
         "jsonls",
         "jsonnet_ls",
@@ -133,6 +134,7 @@ require("lazy").setup({
   },
   { "ellisonleao/gruvbox.nvim", version = "2.0.0" },
   { "terrastruct/d2-vim", version = "981c87dccb63df2887cc41b96e84bf550f736c57", ft = { "d2" }},
+  { "towolf/vim-helm", version = "86cc6766db60b8cc5731068d0c2111dee1f2b328" },
   {
     "jackMort/ChatGPT.nvim",
     cmd = {
