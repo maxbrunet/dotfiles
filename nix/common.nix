@@ -68,12 +68,14 @@ in
     jsonnet-language-server
     kube3d
     unstable.kubecolor
+    kubectl
     kubectl-explore
     kubectx
     (linkFarm "kubectl-ctx" [
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
       { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
     ])
+    kubernetes-helm
     kustomize
     lazygit
     lua-language-server
@@ -114,7 +116,6 @@ in
     python3Packages.python-lsp-server
     unstable.regctl
     ripgrep
-    unstable.mise
     unstable.ruff
     unstable.ruff-lsp
     rustup

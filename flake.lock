@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "asdf-kubectl": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1678798503,
-        "narHash": "sha256-xS6AOZGsSqxtvWwWikO2tOLQ42K/xV/eVFTsimDuK5s=",
-        "owner": "asdf-community",
-        "repo": "asdf-kubectl",
-        "rev": "cbe6df49865a52ad5e6e430dff33f474785ff2bf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "asdf-community",
-        "repo": "asdf-kubectl",
-        "type": "github"
-      }
-    },
     "base16-alacritty": {
       "flake": false,
       "locked": {
@@ -240,7 +224,6 @@
     },
     "root": {
       "inputs": {
-        "asdf-kubectl": "asdf-kubectl",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",

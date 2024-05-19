@@ -14,7 +14,6 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
-    asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };

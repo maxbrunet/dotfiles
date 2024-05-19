@@ -1,7 +1,6 @@
 { config
 , lib
 , pkgs
-, asdf-kubectl
 , base16-alacritty
 , base16-fzf
 , base16-shell
@@ -71,9 +70,6 @@ in
   ];
 
   xdg.dataFile = {
-    "mise/plugins/kubectl" = {
-      source = asdf-kubectl;
-    };
     "base16/alacritty" = {
       source = base16-alacritty;
     };
