@@ -111,7 +111,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 
    ```shell
    sudo podman-mac-helper install
-   podman machine init --cpus=2 --image-path=stable --memory=4096 --now
+   podman machine init --cpus=4 --memory=4096 --now
 
    # https://github.com/k3d-io/k3d/issues/1082
    podman machine ssh bash -e <<EOF
