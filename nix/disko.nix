@@ -10,25 +10,22 @@ in
       inherit device;
       type = "disk";
       content = {
-        type = "table";
-        format = "gpt";
-        partitions = [
-          {
-            name = "ESP";
-            start = "1MiB";
-            end = "128MiB";
-            flags = [ "esp" ];
+        type = "gpt";
+        partitions = {
+          ESP = {
+            label = "ESP";
+            type = "EF00";
+            size = "128M";
             content = {
               type = "filesystem";
               format = "vfat";
               extraArgs = [ "-F" "32" "-n" "EFI" ];
               mountpoint = "/boot/efi";
             };
-          }
-          {
-            name = "primary";
-            start = "128MiB";
-            end = "100%";
+          };
+          primary = {
+            label = "primary";
+            size = "100%";
             content = {
               type = "luks";
               name = "cryptroot";
@@ -45,8 +42,8 @@ in
                 mountpoint = "/";
               };
             };
-          }
-        ];
+          };
+        };
       };
     };
   };
