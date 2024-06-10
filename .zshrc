@@ -60,6 +60,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
+# kubecolor
+export KUBECOLOR_PRESET='pre-0.0.21-dark'
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
@@ -134,7 +137,7 @@ if ! (( $preexec_functions[(I)_enable_kube-ps1] )); then
 fi
 
 # kubecolor
-alias kubectl='KUBECOLOR_PRESET="${KUBECOLOR_PRESET:-pre-0.0.21-dark}" kubecolor'
+alias kubectl='kubecolor'
 compdef kubecolor='kubectl'
 
 # Aliases
