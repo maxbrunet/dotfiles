@@ -1,7 +1,7 @@
 local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=v10.21.0", lazypath })
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=v10.24.0", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -22,7 +22,7 @@ local sysname = vim.loop.os_uname().sysname
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.7.7",
+    version = "4.10.3",
     import = "astronvim.plugins",
   },
   {
@@ -134,7 +134,7 @@ require("lazy").setup({
   },
   { "ellisonleao/gruvbox.nvim", version = "2.0.0" },
   { "terrastruct/d2-vim", version = "981c87dccb63df2887cc41b96e84bf550f736c57", ft = { "d2" }},
-  { "towolf/vim-helm", version = "9425cf68d2a73d2efbfd05ab3e8b80ffb5a08802" },
+  { "towolf/vim-helm", version = "ae1ebc160d2b9b90108477ab10df7a4fc501e358" },
   {
     "jackMort/ChatGPT.nvim",
     cmd = {
