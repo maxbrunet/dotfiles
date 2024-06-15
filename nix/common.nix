@@ -1,25 +1,5 @@
 { pkgs }:
 
-let
-  pnpm-completion =
-    let inherit (pkgs.nodePackages) pnpm; in
-    pkgs.runCommand "pnpm-completion-${pnpm.version}"
-      {
-        nativeBuildInputs = [ pkgs.installShellFiles pnpm ];
-      }
-      ''
-        # https://github.com/pnpm/pnpm/issues/3083
-        export HOME="$PWD"
-        pnpm install-completion bash
-        pnpm install-completion fish
-        pnpm install-completion zsh
-        sed -i '1 i#compdef pnpm' .config/tabtab/zsh/pnpm.zsh
-        installShellCompletion \
-          .config/tabtab/bash/pnpm.bash \
-          .config/tabtab/zsh/pnpm.zsh \
-          .config/tabtab/fish/pnpm.fish
-      '';
-in
 {
   packages = with pkgs; [
     amazon-ecr-credential-helper
@@ -85,7 +65,6 @@ in
     nixpkgs-fmt
     nmap
     nodePackages.bash-language-server
-    nodePackages.pnpm
     nodePackages.prettier
     nodePackages.ts-node
     nodePackages.typescript-language-server
@@ -101,7 +80,17 @@ in
         ]);
     }))
     perl
-    pnpm-completion
+    (unstable.pnpm.overrideAttrs (previousAttrs: {
+      # https://github.com/NixOS/nixpkgs/pull/320124
+      nativeBuildInputs = [ installShellFiles nodejs ];
+      postInstall = ''
+        node $out/bin/pnpm completion bash >pnpm.bash
+        node $out/bin/pnpm completion fish >pnpm.fish
+        node $out/bin/pnpm completion zsh >pnpm.zsh
+        sed -i '1 i#compdef pnpm' pnpm.zsh
+        installShellCompletion pnpm.{bash,fish,zsh}
+      '';
+    }))
     podman-compose
     poetry
     popeye
