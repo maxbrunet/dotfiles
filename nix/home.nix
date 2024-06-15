@@ -11,12 +11,7 @@
 
 let
   inherit (pkgs) stdenv;
-  litellm = pkgs.unstable.python3Packages.litellm.override {
-    rq = pkgs.unstable.python3Packages.rq.overridePythonAttrs {
-      # https://github.com/NixOS/nixpkgs/pull/307790
-      doCheck = !stdenv.isDarwin;
-    };
-  };
+  inherit (pkgs.python3Packages) litellm;
   litellmProxy = litellm.overrideAttrs (prev: {
     propagatedBuildInputs = prev.propagatedBuildInputs
       ++ litellm.optional-dependencies.proxy;

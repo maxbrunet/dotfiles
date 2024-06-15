@@ -35,7 +35,7 @@ in
     (unstable.delve.override {
       buildGoModule = unstable.buildGo122Module;
     })
-    unstable.devpod
+    devpod
     direnv
     docker-credential-helpers
     dos2unix
@@ -68,7 +68,7 @@ in
     jsonnet-bundler
     jsonnet-language-server
     kube3d
-    unstable.kubecolor
+    kubecolor
     kubectl
     kubectl-explore
     kubectx
@@ -92,33 +92,28 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     nodejs
-    unstable.oci-cli
-    (unstable.pdm.overrideAttrs (_: previousAttrs: {
+    oci-cli
+    (pdm.overrideAttrs (_: previousAttrs: {
       propagatedBuildInputs =
         previousAttrs.propagatedBuildInputs ++
-        (with pkgs.unstable.python3Packages; [
+        (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
-
-      # Fails: No module named 'first' ¯\_(ツ)_/¯
-      disabledTests = previousAttrs.disabledTests ++ [
-        "test_build_with_no_isolation"
-      ];
     }))
     perl
     pnpm-completion
     podman-compose
     poetry
-    unstable.popeye
+    popeye
     pre-commit
     pwgen
     python3
     python3Packages.pipx
     python3Packages.python-lsp-server
-    unstable.regctl
+    regctl
     ripgrep
-    unstable.ruff
-    unstable.ruff-lsp
+    ruff
+    ruff-lsp
     rustup
     shellcheck
     shfmt

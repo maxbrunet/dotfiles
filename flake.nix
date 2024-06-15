@@ -2,16 +2,16 @@
   description = "My NixOS configuration: A Mix of Nix and Max";
 
   inputs = {
-    nixos.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.11-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.6.1";
     disko.inputs.nixpkgs.follows = "nixos";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
@@ -22,8 +22,7 @@
   };
 
   outputs =
-    { self
-    , nixos
+    { nixos
     , nixos-unstable
     , nixos-hardware
     , nixpkgs-darwin
@@ -42,9 +41,6 @@
       };
       baseModules = [
         {
-          # https://github.com/NixOS/nixpkgs/pull/254405
-          nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
-          nix.registry.nixpkgs.to = { type = "path"; path = nixos.outPath; };
           nixpkgs.overlays = [ overlayNixOSUnstable ];
         }
         ./nix/nixos.nix
@@ -89,7 +85,9 @@
           system = "aarch64-darwin";
           modules = [
             {
+              # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setNixPath
               nix.nixPath = nixpkgs-darwin.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
+              # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setFlakeRegistry
               nix.registry.nixpkgs.to = { type = "path"; path = nixpkgs-darwin.outPath; };
               nixpkgs.overlays = [ overlayNixpkgsUnstable ];
             }

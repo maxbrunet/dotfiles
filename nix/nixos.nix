@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   common = import ./common.nix { inherit pkgs; };
@@ -31,18 +31,6 @@ in
   boot.tmp.tmpfsSize = "25%";
 
   environment.defaultPackages = lib.mkForce [ ];
-
-  environment.etc = {
-    # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-        ["bluez5.enable-sbc-xq"] = true,
-        ["bluez5.enable-msbc"] = true,
-        ["bluez5.enable-hw-volume"] = true,
-        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-      }
-    '';
-  };
 
   environment.loginShellInit = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -114,15 +102,15 @@ in
       traceroute
       unzip
       vlc
-      unstable.xdg-terminal-exec
+      xdg-terminal-exec
       xdg-utils
       xfce.exo
       xfce.mousepad
       (xfce.thunar.override {
-        thunarPlugins = with pkgs; [
-          xfce.thunar-volman
-          xfce.thunar-archive-plugin
-          xfce.thunar-media-tags-plugin
+        thunarPlugins = with xfce; [
+          thunar-volman
+          thunar-archive-plugin
+          thunar-media-tags-plugin
         ];
       })
       xfce.xfconf
@@ -214,13 +202,13 @@ in
         text = ''
           export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
 
-          ${pkgs.glib}/bin/gsettings "$@"
+          ${glib}/bin/gsettings "$@"
         '';
       };
     in
     [
       arc-theme
-      unstable.alacritty
+      alacritty
       dunst
       gammastep
       gsettings-wrapped
@@ -255,8 +243,6 @@ in
   services.automatic-timezoned.enable = true;
   # Always running unstable as maintainer
   services.automatic-timezoned.package = pkgs.unstable.automatic-timezoned;
-  # https://github.com/NixOS/nixpkgs/pull/289862
-  systemd.services.automatic-timezoned.serviceConfig.ExecStart = lib.mkForce "${config.services.automatic-timezoned.package}/bin/automatic-timezoned";
 
   services.avahi.enable = true;
 
@@ -285,6 +271,15 @@ in
 
   services.pipewire.enable = true;
   services.pipewire.pulse.enable = true;
+  services.pipewire.wireplumber.extraConfig = {
+    # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
+    "monitor.bluez.properties" = {
+      "bluez5.enable-sbc-xq" = true;
+      "bluez5.enable-msbc" = true;
+      "bluez5.enable-hw-volume" = true;
+      "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+    };
+  };
 
   services.tumbler.enable = true;
 
