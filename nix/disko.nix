@@ -21,6 +21,7 @@ in
               format = "vfat";
               extraArgs = [ "-F" "32" "-n" "EFI" ];
               mountpoint = "/boot/efi";
+              mountOptions = [ "umask=077" ];
             };
           };
           primary = {
