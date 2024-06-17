@@ -132,6 +132,11 @@ require("lazy").setup({
       }
     },
   },
+  {
+    "AstroNvim/astrocommunity",
+    version = "v10.0.0",
+    import = "astrocommunity.recipes.telescope-lsp-mappings",
+  },
   { "ellisonleao/gruvbox.nvim", version = "d4cde3853a172485961b515c36d51d757728d6e6" },
   { "terrastruct/d2-vim", version = "981c87dccb63df2887cc41b96e84bf550f736c57", ft = { "d2" }},
   { "towolf/vim-helm", version = "ae1ebc160d2b9b90108477ab10df7a4fc501e358" },
