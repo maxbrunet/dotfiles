@@ -27,48 +27,21 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocore",
-    opts = function(_, opts)
-      local get_icon = require("astroui").get_icon
-      local chatgpt_mappings = {
-        ["<Leader>m"] = { desc = get_icon("ChatGPT", 1, true) .. "ChatGPT" },
-        ["<Leader>mc"] = { "<Cmd>ChatGPT<CR>", desc = "ChatGPT" },
-        ["<Leader>mC"] = { "<Cmd>ChatGPTActAs<CR>", desc = "ChatGPT Acts As ..." },
-        ["<Leader>me"] = { "<Cmd>ChatGPTEditWithInstruction<CR>", desc ="Edit with instruction" },
-        ["<Leader>mg"] = { "<Cmd>ChatGPTRun grammar_correction<CR>", desc ="Grammar Correction" },
-        ["<Leader>mt"] = { "<Cmd>ChatGPTRun translate<CR>", desc ="Translate" },
-        ["<Leader>mk"] = { "<Cmd>ChatGPTRun keywords<CR>", desc ="Keywords" },
-        ["<Leader>md"] = { "<Cmd>ChatGPTRun docstring<CR>", desc ="Docstring" },
-        ["<Leader>ma"] = { "<Cmd>ChatGPTRun add_tests<CR>", desc ="Add Tests" },
-        ["<Leader>mo"] = { "<Cmd>ChatGPTRun optimize_code<CR>", desc ="Optimize Code" },
-        ["<Leader>ms"] = { "<Cmd>ChatGPTRun summarize<CR>", desc ="Summarize" },
-        ["<Leader>mf"] = { "<Cmd>ChatGPTRun fix_bugs<CR>", desc ="Fix Bugs" },
-        ["<Leader>mx"] = { "<Cmd>ChatGPTRun explain_code<CR>", desc ="Explain Code" },
-        ["<Leader>mr"] = { "<Cmd>ChatGPTRun roxygen_edit<CR>", desc ="Roxygen Edit" },
-        ["<Leader>ml"] = { "<Cmd>ChatGPTRun code_readability_analysis<CR>", desc ="Code Readability Analysis" },
-      }
-
-      return vim.tbl_deep_extend("force", opts,
-        ---@type AstroCoreOpts
-        {
-          options = {
-            opt = {
-              cmdheight = 1, -- Always display cmd line
-              foldcolumn = "0", -- Hide foldcolumn
-              guicursor = "", -- Disable Nvim GUI cursor
-              mouse = "", -- Disable mouse support
-              number = false, -- Hide numberline
-              relativenumber = false, -- Hide relative numberline
-              signcolumn = "auto", -- Show sign column when used only
-              spell = true, -- Enable spell checking
-            },
-          },
-          mappings = {
-            n = chatgpt_mappings,
-            v = chatgpt_mappings,
-          },
-        }
-      )
-    end,
+    ---@type AstroCoreOpts
+    opts = {
+      options = {
+        opt = {
+          cmdheight = 1, -- Always display cmd line
+          foldcolumn = "0", -- Hide foldcolumn
+          guicursor = "", -- Disable Nvim GUI cursor
+          mouse = "", -- Disable mouse support
+          number = false, -- Hide numberline
+          relativenumber = false, -- Hide relative numberline
+          signcolumn = "auto", -- Show sign column when used only
+          spell = true, -- Enable spell checking
+        },
+      },
+     }
   },
   {
     "AstroNvim/astrolsp",
@@ -116,7 +89,7 @@ require("lazy").setup({
   {
     "AstroNvim/astroui",
     ---@type AstroUIOpts
-    config = {
+    opts = {
       colorscheme = "gruvbox",
       highlights = {
         -- Fix Gruvbox highlight groups
@@ -127,33 +100,20 @@ require("lazy").setup({
           StatusLine = { fg = "#ebdbb2", bg = "#504945" }, -- colors.light1 / colors.dark2
         },
       },
-      icons = {
-        ChatGPT = "󰭹",
-      }
     },
   },
   {
     "AstroNvim/astrocommunity",
-    version = "10.0.0",
-    import = "astrocommunity.recipes.telescope-lsp-mappings",
+    commit = "1f3a6ec008b404c72f84093fe25c574ba63fc256",
+    pin = true,
+    { import = "astrocommunity.editing-support.chatgpt-nvim" },
+    { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   },
   { "ellisonleao/gruvbox.nvim" },
   { "terrastruct/d2-vim", ft = { "d2" } },
   { "towolf/vim-helm" },
   {
     "jackMort/ChatGPT.nvim",
-    cmd = {
-      "ChatGPT",
-      "ChatGPTActAs",
-      "ChatGPTEditWithInstructions",
-      "ChatGPTRun",
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      { "folke/trouble.nvim", cmd = "Trouble", opts = {} },
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
     opts = {
       api_host_cmd = "echo http://127.0.0.1:4000",
       api_key_cmd = "echo dummy",
