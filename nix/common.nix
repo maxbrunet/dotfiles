@@ -80,17 +80,7 @@
         ]);
     }))
     perl
-    (unstable.pnpm.overrideAttrs (previousAttrs: {
-      # https://github.com/NixOS/nixpkgs/pull/320124
-      nativeBuildInputs = [ installShellFiles nodejs ];
-      postInstall = ''
-        node $out/bin/pnpm completion bash >pnpm.bash
-        node $out/bin/pnpm completion fish >pnpm.fish
-        node $out/bin/pnpm completion zsh >pnpm.zsh
-        sed -i '1 i#compdef pnpm' pnpm.zsh
-        installShellCompletion pnpm.{bash,fish,zsh}
-      '';
-    }))
+    unstable.pnpm
     podman-compose
     poetry
     popeye
