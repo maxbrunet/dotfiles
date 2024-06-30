@@ -5,7 +5,7 @@
 [commit]
 	gpgsign = true
 [core]
-	pager = delta | less --tabs=4
+	pager = delta
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -23,7 +23,9 @@
 [delta]
 	color-only = true
 	diff-highlight = true
-	max-line-length = 0 
+	max-line-length = 0
+	paging = always
+	tabs = 4
 	wrap-max-lines = 0
 [diff]
 	colorMoved = default
