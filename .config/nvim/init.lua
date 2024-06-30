@@ -22,7 +22,7 @@ local sysname = vim.loop.os_uname().sysname
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.11.1",
+    version = "4.15.0",
     import = "astronvim.plugins",
   },
   {
