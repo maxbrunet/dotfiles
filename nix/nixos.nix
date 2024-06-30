@@ -174,7 +174,7 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config = {
