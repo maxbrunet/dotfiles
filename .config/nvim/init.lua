@@ -70,6 +70,7 @@ require("lazy").setup({
         "bashls",
         "cssls",
         "eslint",
+        "golangci_lint_ls",
         "gopls",
         "helm_ls",
         "html",
@@ -157,9 +158,6 @@ require("lazy").setup({
       -- Include code and source with diagnostics message
       opts.diagnostics_format = "[#{c}] #{m} (#{s})"
       opts.sources = {
-        null_ls.builtins.diagnostics.golangci_lint.with({
-          extra_args = { "--fast" },
-        }),
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.shfmt.with({

@@ -31,6 +31,7 @@
     (unstable.golangci-lint.override {
       buildGoModule = unstable.buildGo122Module;
     })
+    golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
