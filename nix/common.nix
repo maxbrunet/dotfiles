@@ -18,6 +18,7 @@
     devpod
     direnv
     docker-credential-helpers
+    dockerfile-language-server-nodejs
     dos2unix
     fd
     fpp

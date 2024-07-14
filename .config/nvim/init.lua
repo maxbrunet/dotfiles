@@ -69,6 +69,7 @@ require("lazy").setup({
       servers = {
         "bashls",
         "cssls",
+        "dockerls",
         "eslint",
         "golangci_lint_ls",
         "gopls",
