@@ -78,6 +78,7 @@ require("lazy").setup({
         "jsonls",
         "jsonnet_ls",
         "lua_ls",
+        "marksman",
         "nixd",
         "pylsp",
         "ruff_lsp",

@@ -62,6 +62,7 @@
     kustomize
     lazygit
     lua-language-server
+    marksman
     neovim
     nixd
     nixpkgs-fmt
