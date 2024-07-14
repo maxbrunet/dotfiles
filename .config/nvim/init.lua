@@ -115,6 +115,14 @@ require("lazy").setup({
   { "terrastruct/d2-vim", ft = { "d2" } },
   { "towolf/vim-helm" },
   {
+    "m4xshen/smartcolumn.nvim",
+    event = { "InsertEnter", "User AstroFile" },
+    opts = {
+      disabled_filetypes = { "alpha", "neo-tree", "help", "text" },
+      scope = "window",
+    },
+  },
+  {
     "jackMort/ChatGPT.nvim",
     opts = {
       api_host_cmd = "echo http://127.0.0.1:4000",
@@ -190,16 +198,3 @@ require("lazy").setup({
 } --[[@as LazySpec]], {
   lockfile = dotfiles_dir_tbl[sysname] .. "/.config/nvim/lazy-lock.json",
 } --[[@as LazyConfig]])
-
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Highlight lines over 80 characters long",
-  callback = function()
-    if vim.bo.filetype == "alpha" then
-      return
-    end
-    vim.cmd([[
-      highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-      call matchadd('ColorColumn', '\%81v', 100)
-    ]])
-  end,
-})
