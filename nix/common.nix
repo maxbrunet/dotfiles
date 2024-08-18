@@ -13,7 +13,7 @@
     d2
     delta
     (unstable.delve.override {
-      buildGoModule = unstable.buildGo122Module;
+      buildGoModule = unstable.buildGo123Module;
     })
     devpod
     direnv
@@ -26,18 +26,18 @@
     gdu
     git-lfs
     gh
-    unstable.go_1_22
+    unstable.go_1_23
     go-jsonnet
     gofumpt
     (unstable.golangci-lint.override {
-      buildGoModule = unstable.buildGo122Module;
+      buildGoModule = unstable.buildGo123Module;
     })
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
     (unstable.gopls.override {
-      buildGoModule = unstable.buildGo122Module;
+      buildGoModule = unstable.buildGo123Module;
     })
     goreleaser
     gotools
