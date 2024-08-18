@@ -22,7 +22,7 @@ local sysname = vim.loop.os_uname().sysname
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.20.1",
+    version = "4.23.5",
     import = "astronvim.plugins",
   },
   {
@@ -107,7 +107,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "11.1.0",
+    version = "12.0.0",
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   },
