@@ -63,6 +63,7 @@
     lazygit
     lua-language-server
     marksman
+    unstable.mods
     neovim
     nixd
     nixpkgs-fmt
