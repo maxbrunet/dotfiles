@@ -51,11 +51,11 @@ in
     DOCKER_SOCK = "\${XDG_RUNTIME_DIR}/podman/podman.sock";
     GTK_THEME = "Arc-Dark"; # For GTK 4
     NIXOS_OZONE_WL = "1";
-    # To ensure ruff is always built from source (e.g. pre-commit)
+    # To ensure ruff and uv are always built from source (e.g. pre-commit)
     # https://github.com/NixOS/nixpkgs/issues/142383#issuecomment-1481800175
-    PDM_NO_BINARY = "ruff";
-    PIP_NO_BINARY = "ruff";
-    POETRY_INSTALLER_NO_BINARY = "ruff";
+    PDM_NO_BINARY = "ruff,uv";
+    PIP_NO_BINARY = "ruff,uv";
+    POETRY_INSTALLER_NO_BINARY = "ruff,uv";
     XDG_CURRENT_DESKTOP = "sway";
   };
 

@@ -111,6 +111,7 @@
     tmux
     tree
     urlscan
+    unstable.uv
     wget
     yarn
     yq-go
