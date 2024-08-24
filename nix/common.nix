@@ -10,6 +10,7 @@
     bat
     bottom
     buf
+    cmake
     d2
     delta
     (unstable.delve.override {
