@@ -7,6 +7,9 @@ in
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
   };
+  # Until 6.6.47 is backported to the stable channel
+  # https://github.com/NixOS/nixpkgs/issues/330685
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.unstable.linux;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
