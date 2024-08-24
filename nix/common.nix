@@ -91,7 +91,6 @@
     pre-commit
     pwgen
     python3
-    python3Packages.pipx
     python3Packages.python-lsp-server
     regctl
     ripgrep
