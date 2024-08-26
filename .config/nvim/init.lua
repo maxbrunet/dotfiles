@@ -81,7 +81,7 @@ require("lazy").setup({
         "marksman",
         "nixd",
         "pylsp",
-        "ruff_lsp",
+        "ruff",
         "rust_analyzer",
         "terraformls",
         "tsserver",

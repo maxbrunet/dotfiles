@@ -95,8 +95,7 @@
     python3Packages.python-lsp-server
     regctl
     ripgrep
-    ruff
-    ruff-lsp
+    unstable.ruff
     rustup
     shellcheck
     shfmt
