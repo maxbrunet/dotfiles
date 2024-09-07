@@ -30,9 +30,7 @@
     unstable.go_1_23
     go-jsonnet
     gofumpt
-    (unstable.golangci-lint.override {
-      buildGoModule = unstable.buildGo123Module;
-    })
+    unstable.golangci-lint
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
