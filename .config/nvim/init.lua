@@ -24,7 +24,7 @@ local COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.25.2",
+    version = "4.26.1",
     import = "astronvim.plugins",
   },
   {
@@ -86,7 +86,7 @@ require("lazy").setup({
         "ruff",
         "rust_analyzer",
         "terraformls",
-        "tsserver",
+        "ts_ls",
         "yamlls",
       },
     },
@@ -109,7 +109,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "13.1.0",
+    version = "13.2.0",
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   },
