@@ -60,6 +60,36 @@
     kubernetes-helm
     kustomize
     lazygit
+    (unstable.llm-ls.overrideAttrs (previousAttrs: rec {
+      # https://github.com/huggingface/llm-ls/pull/104
+      src = fetchFromGitHub {
+        owner = "huggingface";
+        repo = "llm-ls";
+        rev = "fc5f4d249d78108aeed33b1cc464c4e9bcccd82c";
+        sha256 = "sha256-0xlJOip68gQ9TKJmu8DdVsgk5qetQPb/YbV3HTlf0b8=";
+      };
+      patches = [
+        # https://github.com/huggingface/llm-ls/pull/102
+        (fetchpatch {
+          name = "fix-time-compilation-failure.patch";
+          url = "https://github.com/huggingface/llm-ls/commit/cb0a3da737d933614bcd011e91048f2009036d09.patch?full_index=1";
+          hash = "sha256-rgC0u3cOg15ECMOupJsu0eGb43+DXmDClqYEJ+fRWhM=";
+        })
+      ];
+      cargoDeps = previousAttrs.cargoDeps.overrideAttrs (lib.const {
+        name = "${previousAttrs.pname}-${previousAttrs.version}-vendor.tar.gz";
+        inherit src patches;
+        outputHash = "sha256-m/w9aJZCCh1rgnHlkGQD/pUDoWn2/WRVt5X4pFx9nC4=";
+      });
+      buildInputs =
+        previousAttrs.buildInputs ++
+        lib.optionals stdenv.isDarwin [
+          darwin.apple_sdk.frameworks.Security
+        ];
+      meta = previousAttrs.meta // {
+        badPlatforms = [ ];
+      };
+    }))
     lua-language-server
     marksman
     unstable.mods

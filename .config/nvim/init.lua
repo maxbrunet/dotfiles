@@ -19,6 +19,8 @@ local dotfiles_dir_tbl = {
 }
 local sysname = vim.loop.os_uname().sysname
 
+local COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
@@ -128,6 +130,25 @@ require("lazy").setup({
       api_host_cmd = "echo http://127.0.0.1:4000",
       api_key_cmd = "echo dummy",
     },
+  },
+  {
+    "huggingface/llm.nvim",
+    enabled = COHERE_API_KEY ~= nil and COHERE_API_KEY ~= "",
+    opts = {
+      api_token = COHERE_API_KEY,
+      model = "command-r-plus",
+      backend = "cohere",
+      url = "https://api.cohere.com",
+      request_body = {
+        preamble = "You are a software engineer. Complete the code. Do not repeat the given code. Do not format with markdown. Do not explain.",
+        temperature = 0.2,
+        p = 0.95,
+      },
+      lsp = {
+        bin_path = "/run/current-system/sw/bin/llm-ls",
+      },
+      context_window = 4096,
+    }
   },
   {
     "rebelot/heirline.nvim",
