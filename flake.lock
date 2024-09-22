@@ -3,15 +3,15 @@
     "base16-alacritty": {
       "flake": false,
       "locked": {
-        "lastModified": 1703982197,
-        "narHash": "sha256-TNxKbwdiUXGi4Z4chT72l3mt3GSvOcz6NZsUH8bQU/k=",
-        "owner": "aarowill",
+        "lastModified": 1725879522,
+        "narHash": "sha256-mR2hPx5YOOg/+FDEPBvYyaxse2TU1OBzPkZOJ4xEaz4=",
+        "owner": "tinted-theming",
         "repo": "base16-alacritty",
-        "rev": "c95c200b3af739708455a03b5d185d3d2d263c6e",
+        "rev": "75475bccf4565426b684c0f4d1ba4dfabca32a8f",
         "type": "github"
       },
       "original": {
-        "owner": "aarowill",
+        "owner": "tinted-theming",
         "repo": "base16-alacritty",
         "type": "github"
       }
