@@ -127,7 +127,7 @@ require("lazy").setup({
   {
     "jackMort/ChatGPT.nvim",
     opts = {
-      api_host_cmd = "echo http://127.0.0.1:4000",
+      api_host_cmd = "echo http://127.0.0.1:5483",
       api_key_cmd = "echo dummy",
     },
   },

@@ -45,6 +45,8 @@ in
           "${config.xdg.configHome}/litellm/config.yaml"
           "--host"
           "127.0.0.1"
+          "--port"
+          "5483"
           "--telemetry"
           "False"
         ];
@@ -146,7 +148,7 @@ in
       };
       Install = { WantedBy = [ "default.target" ]; };
       Service = {
-        ExecStart = "${litellmProxy}/bin/litellm --config ${config.xdg.configHome}/litellm/config.yaml --host 127.0.0.1 --telemetry False";
+        ExecStart = "${litellmProxy}/bin/litellm --config ${config.xdg.configHome}/litellm/config.yaml --host 127.0.0.1 --port 5483 --telemetry False";
         Restart = "on-failure";
         RestartSec = 5;
       };
