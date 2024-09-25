@@ -100,7 +100,13 @@
     perl
     unstable.pnpm
     podman-compose
-    poetry
+    (poetry.overrideAttrs (_: previousAttrs: {
+      propagatedBuildInputs =
+        previousAttrs.propagatedBuildInputs ++
+        (with python3Packages; [
+          keyrings-google-artifactregistry-auth
+        ]);
+    }))
     popeye
     pre-commit
     pwgen
