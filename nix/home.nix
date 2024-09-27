@@ -12,8 +12,8 @@
 let
   inherit (pkgs) stdenv;
   inherit (pkgs.python3Packages) litellm;
-  litellmProxy = litellm.overrideAttrs (prev: {
-    propagatedBuildInputs = prev.propagatedBuildInputs
+  litellmProxy = litellm.overridePythonAttrs (prev: {
+    dependencies = prev.dependencies
       ++ litellm.optional-dependencies.proxy;
   });
 in

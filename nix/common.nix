@@ -60,7 +60,7 @@
     kubernetes-helm
     kustomize
     lazygit
-    (unstable.llm-ls.overrideAttrs (previousAttrs: rec {
+    (unstable.llm-ls.overrideAttrs (prev: rec {
       # https://github.com/huggingface/llm-ls/pull/104
       src = fetchFromGitHub {
         owner = "huggingface";
@@ -68,9 +68,9 @@
         rev = "fc5f4d249d78108aeed33b1cc464c4e9bcccd82c";
         sha256 = "sha256-0xlJOip68gQ9TKJmu8DdVsgk5qetQPb/YbV3HTlf0b8=";
       };
-      patches = [ (builtins.elemAt previousAttrs.patches 0) ];
-      cargoDeps = previousAttrs.cargoDeps.overrideAttrs (lib.const {
-        name = "${previousAttrs.pname}-${previousAttrs.version}-vendor.tar.gz";
+      patches = [ (builtins.elemAt prev.patches 0) ];
+      cargoDeps = prev.cargoDeps.overrideAttrs (lib.const {
+        name = "${prev.pname}-${prev.version}-vendor.tar.gz";
         inherit src patches;
         outputHash = "sha256-m/w9aJZCCh1rgnHlkGQD/pUDoWn2/WRVt5X4pFx9nC4=";
       });
@@ -90,9 +90,8 @@
     nodePackages.yaml-language-server
     nodejs
     oci-cli
-    (pdm.overrideAttrs (_: previousAttrs: {
-      propagatedBuildInputs =
-        previousAttrs.propagatedBuildInputs ++
+    (pdm.overridePythonAttrs (prev: {
+      dependencies = prev.dependencies ++
         (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
@@ -100,9 +99,8 @@
     perl
     unstable.pnpm
     podman-compose
-    (poetry.overrideAttrs (_: previousAttrs: {
-      propagatedBuildInputs =
-        previousAttrs.propagatedBuildInputs ++
+    (poetry.overrideAttrs (prev: {
+      propagatedBuildInputs = prev.propagatedBuildInputs ++
         (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
