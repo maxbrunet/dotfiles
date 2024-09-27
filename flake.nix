@@ -19,6 +19,7 @@
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
     oh-my-tmux = { url = "github:gpakosz/.tmux"; flake = false; };
     oh-my-zsh = { url = "github:ohmyzsh/ohmyzsh"; flake = false; };
+    zsh-completions-src = { url = "github:zsh-users/zsh-completions"; flake = false; };
   };
 
   outputs =
@@ -30,9 +31,29 @@
     , darwin
     , disko
     , home-manager
+    , zsh-completions-src
     , ...
     }@attrs:
     let
+      overlayPkgs = final: prev: {
+        zsh-completions = (prev.zsh-completions.overrideAttrs {
+          version = "HEAD";
+          src = zsh-completions-src;
+          installPhase = ''
+            functions=(
+              _direnv
+              _golang
+              _grpcurl
+              _node
+              _pre-commit
+              _ts-node
+              _tsc
+              _yarn
+            )
+            install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
+          '';
+        });
+      };
       overlayNixOSUnstable = final: prev: {
         unstable = nixos-unstable.legacyPackages.${prev.system};
       };
@@ -41,7 +62,7 @@
       };
       baseModules = [
         {
-          nixpkgs.overlays = [ overlayNixOSUnstable ];
+          nixpkgs.overlays = [ overlayNixOSUnstable overlayPkgs ];
         }
         ./nix/nixos.nix
         disko.nixosModules.disko
@@ -89,7 +110,7 @@
               nix.nixPath = nixpkgs-darwin.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
               # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setFlakeRegistry
               nix.registry.nixpkgs.to = { type = "path"; path = nixpkgs-darwin.outPath; };
-              nixpkgs.overlays = [ overlayNixpkgsUnstable ];
+              nixpkgs.overlays = [ overlayNixpkgsUnstable overlayPkgs ];
             }
             ./nix/darwin.nix
             ./nix/hosts/Maxime-Brunet

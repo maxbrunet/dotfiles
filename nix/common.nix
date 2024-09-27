@@ -132,20 +132,7 @@
     yarn
     yq-go
     zsh-autosuggestions
-    (zsh-completions.overrideAttrs (_: _: {
-      installPhase = ''
-        functions=(
-          _direnv
-          _golang
-          _grpcurl
-          _node
-          _ts-node
-          _tsc
-          _yarn
-        )
-        install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
-      '';
-    }))
+    zsh-completions
     zsh-fzf-tab
     zsh-syntax-highlighting
   ];

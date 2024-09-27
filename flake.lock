@@ -236,7 +236,24 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oh-my-tmux": "oh-my-tmux",
-        "oh-my-zsh": "oh-my-zsh"
+        "oh-my-zsh": "oh-my-zsh",
+        "zsh-completions-src": "zsh-completions-src"
+      }
+    },
+    "zsh-completions-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726540670,
+        "narHash": "sha256-+NWfTiiqZ7orLYRgpj7Qi1wktCHdR7mw5ohDGYleK0c=",
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "rev": "d24f58d2f187a72697aa2781a730f65732cb2f6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "type": "github"
       }
     }
   },
