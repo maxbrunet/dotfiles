@@ -80,7 +80,7 @@
     unstable.mods
     neovim
     nixd
-    nixpkgs-fmt
+    nixfmt-rfc-style
     nmap
     nodePackages.bash-language-server
     nodePackages.prettier
