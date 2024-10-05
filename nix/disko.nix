@@ -1,4 +1,7 @@
-{ disks ? [ "/dev/sdb" ], ... }:
+{
+  disks ? [ "/dev/sdb" ],
+  ...
+}:
 
 let
   device = builtins.elemAt disks 0;
@@ -19,7 +22,12 @@ in
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-F" "32" "-n" "EFI" ];
+              extraArgs = [
+                "-F"
+                "32"
+                "-n"
+                "EFI"
+              ];
               mountpoint = "/boot/efi";
               mountOptions = [ "umask=077" ];
             };
@@ -35,11 +43,19 @@ in
                 bypassWorkqueues = true;
                 keyFile = "/tmp/cryptroot.key";
               };
-              extraFormatArgs = [ "--type" "luks1" "--hash" "sha512" ];
+              extraFormatArgs = [
+                "--type"
+                "luks1"
+                "--hash"
+                "sha512"
+              ];
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "nixos" ];
+                extraArgs = [
+                  "-L"
+                  "nixos"
+                ];
                 mountpoint = "/";
               };
             };

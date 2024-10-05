@@ -14,45 +14,66 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixos";
 
-    base16-alacritty = { url = "github:tinted-theming/base16-alacritty"; flake = false; };
-    base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
-    base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
-    oh-my-tmux = { url = "github:gpakosz/.tmux"; flake = false; };
-    oh-my-zsh = { url = "github:ohmyzsh/ohmyzsh"; flake = false; };
-    zsh-completions-src = { url = "github:zsh-users/zsh-completions"; flake = false; };
+    base16-alacritty = {
+      url = "github:tinted-theming/base16-alacritty";
+      flake = false;
+    };
+    base16-fzf = {
+      url = "github:tinted-theming/base16-fzf";
+      flake = false;
+    };
+    base16-shell = {
+      url = "github:tinted-theming/base16-shell";
+      flake = false;
+    };
+    oh-my-tmux = {
+      url = "github:gpakosz/.tmux";
+      flake = false;
+    };
+    oh-my-zsh = {
+      url = "github:ohmyzsh/ohmyzsh";
+      flake = false;
+    };
+    zsh-completions-src = {
+      url = "github:zsh-users/zsh-completions";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixos
-    , nixos-unstable
-    , nixos-hardware
-    , nixpkgs-darwin
-    , nixpkgs-unstable
-    , darwin
-    , disko
-    , home-manager
-    , zsh-completions-src
-    , ...
+    {
+      nixos,
+      nixos-unstable,
+      nixos-hardware,
+      nixpkgs-darwin,
+      nixpkgs-unstable,
+      darwin,
+      disko,
+      home-manager,
+      zsh-completions-src,
+      ...
     }@attrs:
     let
       overlayPkgs = final: prev: {
-        zsh-completions = (prev.zsh-completions.overrideAttrs {
-          version = "HEAD";
-          src = zsh-completions-src;
-          installPhase = ''
-            functions=(
-              _direnv
-              _golang
-              _grpcurl
-              _node
-              _pre-commit
-              _ts-node
-              _tsc
-              _yarn
-            )
-            install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
-          '';
-        });
+        zsh-completions = (
+          prev.zsh-completions.overrideAttrs {
+            version = "HEAD";
+            src = zsh-completions-src;
+            installPhase = ''
+              functions=(
+                _direnv
+                _golang
+                _grpcurl
+                _node
+                _pre-commit
+                _ts-node
+                _tsc
+                _yarn
+              )
+              install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
+            '';
+          }
+        );
       };
       overlayNixOSUnstable = final: prev: {
         unstable = nixos-unstable.legacyPackages.${prev.system};
@@ -62,12 +83,20 @@
       };
       baseModules = [
         {
-          nixpkgs.overlays = [ overlayNixOSUnstable overlayPkgs ];
+          nixpkgs.overlays = [
+            overlayNixOSUnstable
+            overlayPkgs
+          ];
         }
         ./nix/nixos.nix
         disko.nixosModules.disko
         # Disable Disko config as it uses device names, we prefer the robustness of UUIDs.
-        { disko = { enableConfig = false; rootMountPoint = "/mnt"; }; }
+        {
+          disko = {
+            enableConfig = false;
+            rootMountPoint = "/mnt";
+          };
+        }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -109,8 +138,14 @@
               # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setNixPath
               nix.nixPath = nixpkgs-darwin.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
               # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setFlakeRegistry
-              nix.registry.nixpkgs.to = { type = "path"; path = nixpkgs-darwin.outPath; };
-              nixpkgs.overlays = [ overlayNixpkgsUnstable overlayPkgs ];
+              nix.registry.nixpkgs.to = {
+                type = "path";
+                path = nixpkgs-darwin.outPath;
+              };
+              nixpkgs.overlays = [
+                overlayNixpkgsUnstable
+                overlayPkgs
+              ];
             }
             ./nix/darwin.nix
             ./nix/hosts/Maxime-Brunet

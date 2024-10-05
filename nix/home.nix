@@ -1,20 +1,20 @@
-{ config
-, lib
-, pkgs
-, base16-alacritty
-, base16-fzf
-, base16-shell
-, oh-my-tmux
-, oh-my-zsh
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  base16-alacritty,
+  base16-fzf,
+  base16-shell,
+  oh-my-tmux,
+  oh-my-zsh,
+  ...
 }:
 
 let
   inherit (pkgs) stdenv;
   inherit (pkgs.python3Packages) litellm;
   litellmProxy = litellm.overridePythonAttrs (prev: {
-    dependencies = prev.dependencies
-      ++ litellm.optional-dependencies.proxy;
+    dependencies = prev.dependencies ++ litellm.optional-dependencies.proxy;
   });
 in
 {
@@ -122,7 +122,9 @@ in
     "sway" = lib.mkIf stdenv.isLinux {
       source = ../.config/sway;
     };
-    "tinted-theming/theme_name" = { text = "google-dark"; };
+    "tinted-theming/theme_name" = {
+      text = "google-dark";
+    };
     "tmux/tmux.conf" = {
       source = "${oh-my-tmux}/.tmux.conf";
     };
@@ -152,7 +154,9 @@ in
         Description = "Use any LLM as a drop in replacement for gpt-3.5-turbo.";
         ConditionPathExists = "${config.xdg.configHome}/litellm/config.yaml";
       };
-      Install = { WantedBy = [ "default.target" ]; };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
       Service = {
         ExecStart = "${litellmProxy}/bin/litellm --config ${config.xdg.configHome}/litellm/config.yaml --host 127.0.0.1 --port 5483 --telemetry False";
         Restart = "on-failure";
@@ -164,7 +168,10 @@ in
       let
         script = pkgs.writeShellApplication {
           name = "platform-profile-notify";
-          runtimeInputs = with pkgs; [ dunst inotify-tools ];
+          runtimeInputs = with pkgs; [
+            dunst
+            inotify-tools
+          ];
           text = ''
             inotifywait --event=MODIFY --format=%w --monitor /sys/firmware/acpi/platform_profile \
               | while read -r file; do
@@ -188,7 +195,9 @@ in
           After = [ "graphical-session-pre.target" ];
           PartOf = [ "graphical-session.target" ];
         };
-        Install = { WantedBy = [ "graphical-session.target" ]; };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
         Service = {
           ExecStart = "${script}/bin/platform-profile-notify";
           Restart = "on-failure";

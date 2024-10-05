@@ -51,8 +51,14 @@
     kubectl-explore
     kubectx
     (linkFarm "kubectl-ctx" [
-      { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
-      { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
+      {
+        name = "bin/kubectl-ctx";
+        path = "${kubectx}/bin/kubectx";
+      }
+      {
+        name = "bin/kubectl-ns";
+        path = "${kubectx}/bin/kubens";
+      }
     ])
     kubelogin
     kubernetes-helm
@@ -67,18 +73,20 @@
         sha256 = "sha256-0xlJOip68gQ9TKJmu8DdVsgk5qetQPb/YbV3HTlf0b8=";
       };
       patches = [ (builtins.elemAt prev.patches 0) ];
-      cargoDeps = prev.cargoDeps.overrideAttrs (lib.const {
-        name = "${prev.pname}-${prev.version}-vendor.tar.gz";
-        inherit src patches;
-        outputHash = "sha256-m/w9aJZCCh1rgnHlkGQD/pUDoWn2/WRVt5X4pFx9nC4=";
-      });
+      cargoDeps = prev.cargoDeps.overrideAttrs (
+        lib.const {
+          name = "${prev.pname}-${prev.version}-vendor.tar.gz";
+          inherit src patches;
+          outputHash = "sha256-m/w9aJZCCh1rgnHlkGQD/pUDoWn2/WRVt5X4pFx9nC4=";
+        }
+      );
     }))
     lua-language-server
     marksman
     mods
     neovim
     nixd
-    nixpkgs-fmt
+    nixfmt-rfc-style
     nmap
     nodePackages.prettier
     nodePackages.ts-node
@@ -88,8 +96,9 @@
     nodejs
     oci-cli
     (pdm.overridePythonAttrs (prev: {
-      dependencies = prev.dependencies ++
-        (with python3Packages; [
+      dependencies =
+        prev.dependencies
+        ++ (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
     }))
@@ -97,8 +106,9 @@
     pnpm
     podman-compose
     (poetry.overridePythonAttrs (prev: {
-      dependencies = prev.dependencies ++
-        (with python3Packages; [
+      dependencies =
+        prev.dependencies
+        ++ (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
     }))
@@ -109,31 +119,39 @@
     (
       let
         inherit (python3Packages) keyring;
-        unpropagateKeyring = pkg: pkg.overridePythonAttrs (prev: {
-          buildInputs = prev.buildInputs ++ [ keyring ];
-          propagatedBuildInputs =
-            lib.remove keyring prev.propagatedBuildInputs;
-        });
-        backends = map unpropagateKeyring (with python3Packages; [
-          keyrings-google-artifactregistry-auth
-        ]);
+        unpropagateKeyring =
+          pkg:
+          pkg.overridePythonAttrs (prev: {
+            buildInputs = prev.buildInputs ++ [ keyring ];
+            propagatedBuildInputs = lib.remove keyring prev.propagatedBuildInputs;
+          });
+        backends = map unpropagateKeyring (
+          with python3Packages;
+          [
+            keyrings-google-artifactregistry-auth
+          ]
+        );
       in
       keyring.overridePythonAttrs (prev: {
         dependencies = prev.dependencies ++ backends;
-        pythonImportsCheck = prev.pythonImportsCheck ++
-          map (pkg: pkg.pythonImportsCheck) backends;
+        pythonImportsCheck = prev.pythonImportsCheck ++ map (pkg: pkg.pythonImportsCheck) backends;
       })
     )
     (
       let
         inherit (python3Packages) python-lsp-server;
-        unpropagatePylsp = pkg: pkg.overridePythonAttrs (prev: {
-          build-system = (prev.build-system or [ ]) ++ [ python-lsp-server ];
-          dependencies = lib.remove python-lsp-server prev.dependencies;
-        });
-        plugins = map unpropagatePylsp (with python3Packages; [
-          pylsp-mypy
-        ]);
+        unpropagatePylsp =
+          pkg:
+          pkg.overridePythonAttrs (prev: {
+            build-system = (prev.build-system or [ ]) ++ [ python-lsp-server ];
+            dependencies = lib.remove python-lsp-server prev.dependencies;
+          });
+        plugins = map unpropagatePylsp (
+          with python3Packages;
+          [
+            pylsp-mypy
+          ]
+        );
       in
       python-lsp-server.overridePythonAttrs (prev: {
         dependencies = prev.dependencies ++ plugins;
@@ -141,8 +159,7 @@
           "test_notebook_document__did_open"
           "test_notebook_document__did_change"
         ];
-        pythonImportsCheck = prev.pythonImportsCheck ++
-          map (pkg: pkg.pythonImportsCheck) plugins;
+        pythonImportsCheck = prev.pythonImportsCheck ++ map (pkg: pkg.pythonImportsCheck) plugins;
       })
     )
     regctl

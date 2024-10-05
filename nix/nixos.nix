@@ -62,8 +62,8 @@ in
   environment.shells = [ pkgs.zsh ];
 
   environment.systemPackages =
-    common.packages ++
-    (with pkgs; [
+    common.packages
+    ++ (with pkgs; [
       appimage-run
       aspellDicts.en
       azure-cli
@@ -175,7 +175,10 @@ in
     options = "--delete-older-than 30d";
   };
   nix.optimise.automatic = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -194,39 +197,41 @@ in
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; let
-      schema = gsettings-desktop-schemas;
-      dataDir = "${schema}/share/gsettings-schemas/${schema.name}";
-      gsettings-wrapped = writeTextFile {
-        name = "gsettings";
-        destination = "/bin/gsettings";
-        executable = true;
-        text = ''
-          export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
+    extraPackages =
+      with pkgs;
+      let
+        schema = gsettings-desktop-schemas;
+        dataDir = "${schema}/share/gsettings-schemas/${schema.name}";
+        gsettings-wrapped = writeTextFile {
+          name = "gsettings";
+          destination = "/bin/gsettings";
+          executable = true;
+          text = ''
+            export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
 
-          ${glib}/bin/gsettings "$@"
-        '';
-      };
-    in
-    [
-      arc-theme
-      alacritty
-      dunst
-      gammastep
-      gsettings-wrapped
-      imv
-      libappindicator
-      libsForQt5.breeze-gtk
-      numix-icon-theme
-      numix-icon-theme-circle
-      sway-contrib.grimshot
-      swayidle
-      swaylock
-      waybar
-      wdisplays
-      wl-clipboard
-      wofi
-    ];
+            ${glib}/bin/gsettings "$@"
+          '';
+        };
+      in
+      [
+        arc-theme
+        alacritty
+        dunst
+        gammastep
+        gsettings-wrapped
+        imv
+        libappindicator
+        libsForQt5.breeze-gtk
+        numix-icon-theme
+        numix-icon-theme-circle
+        sway-contrib.grimshot
+        swayidle
+        swaylock
+        waybar
+        wdisplays
+        wl-clipboard
+        wofi
+      ];
     extraSessionCommands = ''
       eval "$(gnome-keyring-daemon --start)"
       export SSH_AUTH_SOCK
@@ -279,7 +284,12 @@ in
       "bluez5.enable-sbc-xq" = true;
       "bluez5.enable-msbc" = true;
       "bluez5.enable-hw-volume" = true;
-      "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+      "bluez5.roles" = [
+        "hsp_hs"
+        "hsp_ag"
+        "hfp_hf"
+        "hfp_ag"
+      ];
     };
   };
 

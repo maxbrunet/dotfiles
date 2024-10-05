@@ -36,11 +36,14 @@ in
   environment.shells = [ "/run/current-system/sw/bin/zsh" ];
 
   environment.systemPackages =
-    common.packages ++
-    (with pkgs; [
+    common.packages
+    ++ (with pkgs; [
       coreutils-prefixed
       (linkFarm "docker-compat" [
-        { name = "bin/docker"; path = "/opt/homebrew/bin/podman"; }
+        {
+          name = "bin/docker";
+          path = "/opt/homebrew/bin/podman";
+        }
       ])
       findutils
       gawk
@@ -73,10 +76,20 @@ in
     "alacritty"
     "android-file-transfer"
     # https://chromium.googlesource.com/chromium/src/+/main/docs/mac_arm64.md
-    { name = "chromium"; args = { no_quarantine = true; }; }
+    {
+      name = "chromium";
+      args = {
+        no_quarantine = true;
+      };
+    }
     "gimp"
     # https://librewolf.net/docs/faq/#why-is-librewolf-marked-as-broken
-    { name = "librewolf"; args = { no_quarantine = true; }; }
+    {
+      name = "librewolf";
+      args = {
+        no_quarantine = true;
+      };
+    }
     "localsend/localsend/localsend"
     "podman-desktop"
     "thunderbird"
@@ -89,7 +102,9 @@ in
     experimental-features = nix-command flakes
   '';
   nix.gc.automatic = true;
-  nix.gc.interval = { Weekday = 0; };
+  nix.gc.interval = {
+    Weekday = 0;
+  };
   nix.gc.options = "--delete-older-than 30d";
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
