@@ -62,6 +62,13 @@ in
   ];
 
   homebrew.enable = true;
+  homebrew.brews = [
+    # Unable to build the darwin-system derivation with the azure-cli package,
+    # so using Homebrew's instead
+    # sandbox-exec: pattern serialization length 66790 exceeds maximum (65535)
+    # https://github.com/NixOS/nix/issues/4119
+    "azure-cli"
+  ];
   homebrew.casks = [
     "alacritty"
     "android-file-transfer"

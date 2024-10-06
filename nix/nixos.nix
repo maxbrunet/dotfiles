@@ -66,6 +66,7 @@ in
     (with pkgs; [
       appimage-run
       aspellDicts.en
+      unstable.azure-cli
       bind.dnsutils
       brightnessctl
       (chromium.override {

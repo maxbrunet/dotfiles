@@ -57,6 +57,7 @@
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
       { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
     ])
+    unstable.kubelogin
     kubernetes-helm
     kustomize
     lazygit
