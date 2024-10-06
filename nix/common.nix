@@ -42,7 +42,7 @@
     gotools
     grpcurl
     hadolint
-    helm-ls
+    unstable.helm-ls
     htop
     imagemagick
     jq
