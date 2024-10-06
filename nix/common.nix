@@ -79,6 +79,7 @@
     lua-language-server
     marksman
     unstable.mods
+    mypy
     neovim
     nixd
     nixpkgs-fmt

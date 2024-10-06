@@ -190,6 +190,16 @@ require("lazy").setup({
       opts.diagnostics_format = "[#{c}] #{m} (#{s})"
       opts.sources = {
         null_ls.builtins.diagnostics.hadolint,
+        -- pylsp-mypy would probably be nicer, but setting it up with Nix is not
+        -- as straightforward unfortunately
+        -- https://github.com/NixOS/nixpkgs/issues/229337
+        null_ls.builtins.diagnostics.mypy.with({
+          extra_args = {
+            "--python-executable=python",
+            "--warn-unreachable",
+            "--strict",
+          },
+        }),
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.shfmt.with({
           extra_args = { "-i", "2", "-ci", "-bn" },
