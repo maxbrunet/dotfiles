@@ -136,7 +136,7 @@ require("lazy").setup({
     enabled = COHERE_API_KEY ~= nil and COHERE_API_KEY ~= "",
     opts = {
       api_token = COHERE_API_KEY,
-      model = "command-r-plus",
+      model = "command-r-plus-08-2024",
       backend = "cohere",
       url = "https://api.cohere.com",
       request_body = {
