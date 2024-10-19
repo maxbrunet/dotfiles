@@ -123,7 +123,7 @@
     stern
     tanka
     tcptraceroute
-    terraform-docs
+    unstable.terraform-docs
     unstable.terraform-ls
     tflint
     tfswitch
