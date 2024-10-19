@@ -101,7 +101,7 @@
     perl
     unstable.pnpm
     podman-compose
-    (poetry.overrideAttrs (prev: {
+    (poetry.overridePythonAttrs (prev: {
       propagatedBuildInputs = prev.propagatedBuildInputs ++
         (with python3Packages; [
           keyrings-google-artifactregistry-auth
@@ -111,6 +111,24 @@
     pre-commit
     pwgen
     python3
+    (
+      let
+        inherit (python3Packages) keyring;
+        unpropagateKeyring = pkg: pkg.overridePythonAttrs (prev: {
+          buildInputs = prev.buildInputs ++ [ keyring ];
+          propagatedBuildInputs =
+            lib.remove keyring prev.propagatedBuildInputs;
+        });
+        backends = map unpropagateKeyring (with python3Packages; [
+          keyrings-google-artifactregistry-auth
+        ]);
+      in
+      keyring.overridePythonAttrs (prev: {
+        propagatedBuildInputs = prev.propagatedBuildInputs ++ backends;
+        pythonImportsCheck = prev.pythonImportsCheck ++
+          map (pkg: pkg.pythonImportsCheck) backends;
+      })
+    )
     python3Packages.python-lsp-server
     regctl
     ripgrep
