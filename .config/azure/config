@@ -1,0 +1,9 @@
+# vim: ft=dosini
+[cloud]
+name = AzureCloud
+
+[core]
+collect_telemetry = no
+
+[output]
+show_survey_link = no

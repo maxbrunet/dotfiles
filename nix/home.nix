@@ -94,6 +94,9 @@ in
     "alacritty/system.toml" = {
       source = ../.config/alacritty/system.toml + "/${lib.toLower stdenv.hostPlatform.uname.system}.toml";
     };
+    "azure/config" = {
+      source = ../.config/azure/config;
+    };
     dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };
