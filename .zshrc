@@ -75,10 +75,10 @@ ZSH_THEME='tjkirch'
 
 # Plugins
 plugins=(
+  base16
   tmux
   xdg-base-dir
   aws
-  base16
   colored-man-pages
   common-aliases
   direnv
