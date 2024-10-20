@@ -90,6 +90,17 @@ require("lazy").setup({
         "yamlls",
       },
       config = {
+        bashls = {
+          settings = {
+            bashIde = {
+              shfmt = {
+                -- Google-style
+                binaryNextLine = true,
+                caseIndent = true,
+              },
+            },
+          },
+        },
         pylsp = {
           settings = {
             pylsp = {
@@ -209,9 +220,6 @@ require("lazy").setup({
       opts.sources = {
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.shfmt.with({
-          extra_args = { "-i", "2", "-ci", "-bn" },
-        }),
       }
       return opts
     end,

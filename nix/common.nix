@@ -7,6 +7,7 @@
     argocd
     aws-vault
     awscli2
+    unstable.bash-language-server
     bat
     bottom
     buf
@@ -83,7 +84,6 @@
     nixd
     nixpkgs-fmt
     nmap
-    nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.ts-node
     nodePackages.typescript-language-server
