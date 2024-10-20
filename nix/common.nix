@@ -79,7 +79,6 @@
     lua-language-server
     marksman
     unstable.mods
-    mypy
     neovim
     nixd
     nixpkgs-fmt
@@ -129,7 +128,28 @@
           map (pkg: pkg.pythonImportsCheck) backends;
       })
     )
-    python3Packages.python-lsp-server
+    (
+      let
+        inherit (python3Packages) python-lsp-server;
+        unpropagatePylsp = pkg: pkg.overridePythonAttrs (prev: {
+          buildInputs = (prev.buildInputs or [ ]) ++ [ python-lsp-server ];
+          propagatedBuildInputs =
+            lib.remove python-lsp-server prev.propagatedBuildInputs;
+        });
+        plugins = map unpropagatePylsp (with python3Packages; [
+          pylsp-mypy
+        ]);
+      in
+      python-lsp-server.overridePythonAttrs (prev: {
+        dependencies = prev.dependencies ++ plugins;
+        disabledTests = prev.disabledTests ++ [
+          "test_notebook_document__did_open"
+          "test_notebook_document__did_change"
+        ];
+        pythonImportsCheck = prev.pythonImportsCheck ++
+          map (pkg: pkg.pythonImportsCheck) plugins;
+      })
+    )
     regctl
     ripgrep
     unstable.ruff
