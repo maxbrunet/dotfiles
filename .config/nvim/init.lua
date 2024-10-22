@@ -144,7 +144,7 @@ require("lazy").setup({
   },
   { "ellisonleao/gruvbox.nvim" },
   { "terrastruct/d2-vim", ft = { "d2" } },
-  { "towolf/vim-helm" },
+  { "towolf/vim-helm", ft = { "helm" } },
   {
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
