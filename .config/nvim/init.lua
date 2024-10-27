@@ -141,11 +141,13 @@ require("lazy").setup({
     version = "14.1.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
+    { import = "astrocommunity.pack.helm" },
+    { import = "astrocommunity.pack.json" },
+    { import = "astrocommunity.pack.yaml" },
     { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   },
   { "ellisonleao/gruvbox.nvim" },
   { "terrastruct/d2-vim", ft = { "d2" } },
-  { "towolf/vim-helm", ft = { "helm" } },
   {
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
@@ -216,6 +218,9 @@ require("lazy").setup({
       dap.configurations.go = configurations.delve
     end,
   },
+  { "williamboman/mason-lspconfig.nvim", enabled = false },
+  { "jay-babu/mason-null-ls.nvim", enabled = false },
+  { "williamboman/mason.nvim", enabled = false },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -244,15 +249,20 @@ require("lazy").setup({
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "bash",
+        "dockerfile",
         "go",
         "gomod",
         "hcl",
+        "hjson",
+        "json",
         "jsonnet",
         "nix",
+        "proto",
         "python",
         "regex",
         "rust",
         "terraform",
+        "toml",
         "typescript",
       })
     end,
