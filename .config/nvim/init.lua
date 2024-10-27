@@ -139,6 +139,7 @@ require("lazy").setup({
   {
     "AstroNvim/astrocommunity",
     version = "14.1.0",
+    { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   },
@@ -151,6 +152,20 @@ require("lazy").setup({
     opts = {
       disabled_filetypes = { "alpha", "neo-tree", "help", "text" },
       scope = "window",
+    },
+  },
+  {
+    "yetone/avante.nvim",
+    dependencies = {
+      { "MeanderingProgrammer/render-markdown.nvim" },
+    },
+    opts = {
+      provider = "cohere",
+      auto_suggestions_provider = "cohere",
+      cohere = {
+        -- https://github.com/yetone/avante.nvim/issues/499
+        tokenizer_id = "gpt-4o",
+      },
     },
   },
   {

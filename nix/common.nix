@@ -80,7 +80,7 @@
     lua-language-server
     marksman
     unstable.mods
-    neovim
+    unstable.neovim
     nixd
     nixpkgs-fmt
     nmap
