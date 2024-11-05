@@ -1,3 +1,4 @@
+[general]
 import = [
   "~/.local/share/base16/alacritty/colors/base16-google-dark-256.toml",
   "~/.config/alacritty/system.toml",
