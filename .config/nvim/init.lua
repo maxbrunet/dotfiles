@@ -19,7 +19,7 @@ local dotfiles_dir_tbl = {
 }
 local sysname = vim.loop.os_uname().sysname
 
-local COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+local CO_API_KEY = os.getenv("CO_API_KEY")
 
 require("lazy").setup({
   {
@@ -158,6 +158,7 @@ require("lazy").setup({
   },
   {
     "yetone/avante.nvim",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     dependencies = {
       { "MeanderingProgrammer/render-markdown.nvim" },
     },
@@ -179,9 +180,9 @@ require("lazy").setup({
   },
   {
     "huggingface/llm.nvim",
-    enabled = COHERE_API_KEY ~= nil and COHERE_API_KEY ~= "",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     opts = {
-      api_token = COHERE_API_KEY,
+      api_token = CO_API_KEY,
       model = "command-r-plus-08-2024",
       backend = "cohere",
       url = "https://api.cohere.com",
