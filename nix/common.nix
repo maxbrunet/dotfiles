@@ -10,7 +10,7 @@
     unstable.bash-language-server
     bat
     bottom
-    buf
+    unstable.buf
     cmake
     d2
     delta

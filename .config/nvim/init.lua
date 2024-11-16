@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.27.1",
+    version = "4.28.0",
     import = "astronvim.plugins",
   },
   {
@@ -70,6 +70,7 @@ require("lazy").setup({
       },
       servers = {
         "bashls",
+        "buf_ls",
         "cssls",
         "dockerls",
         "eslint",
@@ -138,7 +139,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "14.1.0",
+    version = "15.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.pack.helm" },
@@ -155,6 +156,12 @@ require("lazy").setup({
       disabled_filetypes = { "alpha", "neo-tree", "help", "text" },
       scope = "window",
     },
+  },
+  {
+    -- Made a direct dependency, because when avante.nvim is disabled, its hash
+    -- disappears from the lock file.
+    "MeanderingProgrammer/render-markdown.nvim",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
   },
   {
     "yetone/avante.nvim",

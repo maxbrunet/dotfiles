@@ -129,6 +129,9 @@ in
     "tmux/tmux.conf.local" = {
       source = ../.config/tmux/tmux.conf.local;
     };
+    "uv" = lib.mkIf stdenv.isLinux {
+      source = ../.config/uv;
+    };
     "waybar" = lib.mkIf stdenv.isLinux {
       source = ../.config/waybar;
     };

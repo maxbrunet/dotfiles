@@ -1,0 +1,2 @@
+# https://github.com/astral-sh/uv/issues/4291
+no-binary-package = ["ruff", "uv"]
