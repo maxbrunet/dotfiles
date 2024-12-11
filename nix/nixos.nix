@@ -66,7 +66,7 @@ in
     (with pkgs; [
       appimage-run
       aspellDicts.en
-      unstable.azure-cli
+      azure-cli
       bind.dnsutils
       brightnessctl
       (chromium.override {
@@ -84,12 +84,10 @@ in
       librewolf
       gcc
       gimp
-      gnome.gnome-calculator
-      gnome.simple-scan
+      gnome-calculator
       gnumake
       libreoffice
       libsecret
-      localsend
       lsof
       mate.engrampa
       pavucontrol
@@ -98,6 +96,7 @@ in
       powertop
       psmisc
       pulseaudio
+      simple-scan
       system-config-printer
       thunderbird
       traceroute
@@ -186,6 +185,8 @@ in
 
   programs.gnupg.agent.enable = true;
 
+  programs.localsend.enable = true;
+
   programs.noisetorch.enable = true;
 
   programs.seahorse.enable = true;
@@ -209,7 +210,7 @@ in
     in
     [
       arc-theme
-      unstable.alacritty
+      alacritty
       dunst
       gammastep
       gsettings-wrapped
@@ -285,8 +286,6 @@ in
   services.tumbler.enable = true;
 
   services.upower.enable = true;
-
-  sound.enable = true;
 
   # Delegate cpuset to user slice: https://github.com/k3d-io/k3d/issues/1082
   systemd.services."user@".serviceConfig = {

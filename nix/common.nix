@@ -7,16 +7,14 @@
     argocd
     aws-vault
     awscli2
-    unstable.bash-language-server
+    bash-language-server
     bat
     bottom
-    unstable.buf
+    buf
     cmake
     d2
     delta
-    (unstable.delve.override {
-      buildGoModule = unstable.buildGo123Module;
-    })
+    delve
     devpod
     direnv
     docker-credential-helpers
@@ -28,22 +26,20 @@
     gdu
     git-lfs
     gh
-    unstable.go_1_23
+    go
     go-jsonnet
     gofumpt
-    unstable.golangci-lint
+    golangci-lint
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
-    (unstable.gopls.override {
-      buildGoModule = unstable.buildGo123Module;
-    })
+    gopls
     goreleaser
     gotools
     grpcurl
     hadolint
-    unstable.helm-ls
+    helm-ls
     htop
     imagemagick
     jq
@@ -58,11 +54,11 @@
       { name = "bin/kubectl-ctx"; path = "${kubectx}/bin/kubectx"; }
       { name = "bin/kubectl-ns"; path = "${kubectx}/bin/kubens"; }
     ])
-    unstable.kubelogin
+    kubelogin
     kubernetes-helm
     kustomize
     lazygit
-    (unstable.llm-ls.overrideAttrs (prev: rec {
+    (llm-ls.overrideAttrs (prev: rec {
       # https://github.com/huggingface/llm-ls/pull/104
       src = fetchFromGitHub {
         owner = "huggingface";
@@ -79,8 +75,8 @@
     }))
     lua-language-server
     marksman
-    unstable.mods
-    unstable.neovim
+    mods
+    neovim
     nixd
     nixpkgs-fmt
     nmap
@@ -98,10 +94,10 @@
         ]);
     }))
     perl
-    unstable.pnpm
+    pnpm
     podman-compose
     (poetry.overridePythonAttrs (prev: {
-      propagatedBuildInputs = prev.propagatedBuildInputs ++
+      dependencies = prev.dependencies ++
         (with python3Packages; [
           keyrings-google-artifactregistry-auth
         ]);
@@ -123,7 +119,7 @@
         ]);
       in
       keyring.overridePythonAttrs (prev: {
-        propagatedBuildInputs = prev.propagatedBuildInputs ++ backends;
+        dependencies = prev.dependencies ++ backends;
         pythonImportsCheck = prev.pythonImportsCheck ++
           map (pkg: pkg.pythonImportsCheck) backends;
       })
@@ -132,9 +128,8 @@
       let
         inherit (python3Packages) python-lsp-server;
         unpropagatePylsp = pkg: pkg.overridePythonAttrs (prev: {
-          buildInputs = (prev.buildInputs or [ ]) ++ [ python-lsp-server ];
-          propagatedBuildInputs =
-            lib.remove python-lsp-server prev.propagatedBuildInputs;
+          build-system = (prev.build-system or [ ]) ++ [ python-lsp-server ];
+          dependencies = lib.remove python-lsp-server prev.dependencies;
         });
         plugins = map unpropagatePylsp (with python3Packages; [
           pylsp-mypy
@@ -161,8 +156,8 @@
     stern
     tanka
     tcptraceroute
-    unstable.terraform-docs
-    unstable.terraform-ls
+    terraform-docs
+    terraform-ls
     tflint
     tfswitch
     tmux
