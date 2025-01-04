@@ -88,15 +88,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    chsh -s /run/current-system/sw/bin/zsh maxime
    ```
 
-7. [Fix `tmux-256color`](https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/):
-
-   ```shell
-   /run/current-system/sw/bin/infocmp -x tmux-256color >tmux-256color.src
-   /usr/bin/tic -o ~/.terminfo -x tmux-256color.src
-   rm -f tmux-256color.src
-   ```
-
-8. Configure SSH client:
+7. Configure SSH client:
 
    ```shell
    ssh-keygen -t ed25519 -a 100
@@ -107,7 +99,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    EOF
    ```
 
-9. Set up Podman machine:
+8. Set up Podman machine:
 
    ```shell
    sudo podman-mac-helper install

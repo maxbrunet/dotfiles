@@ -53,9 +53,6 @@ in
       gnupg
       gnused
       gnutar
-      # tmux-256color on macOS - Nix edition
-      # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
-      ncurses
       pinentry_mac
       unixtools.watch
     ]);
