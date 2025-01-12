@@ -166,6 +166,7 @@ in
   };
 
   location.provider = "geoclue2";
+  services.geoclue2.geoProviderUrl = "https://beacondb.net/v1/geolocate";
 
   networking.wireless.iwd.enable = true;
 
