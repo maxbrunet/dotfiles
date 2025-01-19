@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.29.0",
+    version = "4.29.2",
     import = "astronvim.plugins",
   },
   {
@@ -139,7 +139,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "15.0.0",
+    version = "16.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.pack.helm" },
@@ -172,10 +172,6 @@ require("lazy").setup({
     opts = {
       provider = "cohere",
       auto_suggestions_provider = "cohere",
-      cohere = {
-        -- https://github.com/yetone/avante.nvim/issues/499
-        tokenizer_id = "gpt-4o",
-      },
     },
   },
   {

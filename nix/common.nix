@@ -164,7 +164,19 @@
     )
     regctl
     ripgrep
-    unstable.ruff
+    (
+      if stdenv.hostPlatform.isDarwin then
+        # https://github.com/NixOS/nixpkgs/pull/374697
+        unstable.ruff.overrideAttrs {
+          checkFlags = [ ];
+          cargoTestFlags = [
+            "--workspace"
+            "--exclude=red_knot"
+          ];
+        }
+      else
+        unstable.ruff
+    )
     rustup
     shellcheck
     shfmt
