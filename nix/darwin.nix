@@ -53,6 +53,7 @@ in
       gnupg
       gnused
       gnutar
+      netcat-gnu
       pinentry_mac
       unixtools.watch
     ]);
