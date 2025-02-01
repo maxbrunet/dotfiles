@@ -166,7 +166,14 @@ in
   };
 
   location.provider = "geoclue2";
-  services.geoclue2.geoProviderUrl = "https://beacondb.net/v1/geolocate";
+  services.geoclue2.appConfig = {
+    gammastep = {
+      isAllowed = true;
+      isSystem = false;
+    };
+  };
+  services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+  services.geoclue2.submissionUrl = "https://api.beacondb.net/v2/geosubmit";
 
   networking.wireless.iwd.enable = true;
 
