@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.29.2",
+    version = "4.29.3",
     import = "astronvim.plugins",
   },
   {
@@ -130,6 +130,7 @@ require("lazy").setup({
         -- Fix Gruvbox highlight groups
         -- https://github.com/ellisonleao/gruvbox.nvim/blob/main/lua/gruvbox.lua
         gruvbox = {
+          NotifyBackground = { bg = "#282828" }, -- colors.dark0
           -- Hard-code reversed colors
           -- https://github.com/AstroNvim/AstroNvim/issues/1147
           StatusLine = { fg = "#ebdbb2", bg = "#504945" }, -- colors.light1 / colors.dark2
