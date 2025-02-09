@@ -89,8 +89,10 @@ in
       };
     }
     "localsend/localsend/localsend"
+    "lulu"
     "podman-desktop"
     "thunderbird"
+    "wireshark"
   ];
   homebrew.masApps = {
     Amphetamine = 937984704;
