@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.29.3",
+    version = "4.31.1",
     import = "astronvim.plugins",
   },
   {
@@ -140,7 +140,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "16.0.0",
+    version = "17.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.pack.helm" },
