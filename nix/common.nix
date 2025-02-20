@@ -61,6 +61,7 @@
       }
     ])
     kubelogin
+    unstable.kubelogin-oidc
     kubernetes-helm
     kustomize
     lazygit
