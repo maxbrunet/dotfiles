@@ -173,6 +173,9 @@ require("lazy").setup({
     opts = {
       provider = "cohere",
       auto_suggestions_provider = "cohere",
+      cohere = {
+        model = "command-a-03-2025",
+      }
     },
   },
   {
@@ -187,7 +190,7 @@ require("lazy").setup({
     enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     opts = {
       api_token = CO_API_KEY,
-      model = "command-r-plus-08-2024",
+      model = "command-a-03-2025",
       backend = "cohere",
       url = "https://api.cohere.com",
       request_body = {

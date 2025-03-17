@@ -1,9 +1,7 @@
 apis:
   cohere:
     models:
-      command-r-plus-08-2024:
-        max-input-chars: 128000
-      command-r-08-2024:
-        max-input-chars: 128000
-default-model: command-r-plus-08-2024
+      command-a-03-2025:
+        max-input-chars: 256000
+default-model: command-a-03-2025
 no-cache: true
