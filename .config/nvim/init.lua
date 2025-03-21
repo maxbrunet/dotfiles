@@ -68,7 +68,7 @@ require("lazy").setup({
           },
         },
       },
-      servers = {
+      servers = vim.list_extend({
         "bashls",
         "buf_ls",
         "cssls",
@@ -89,7 +89,9 @@ require("lazy").setup({
         "terraformls",
         "ts_ls",
         "yamlls",
-      },
+      }, CO_API_KEY ~= nil and CO_API_KEY ~= "" and {
+        "lsp_ai"
+      } or {}),
       config = {
         bashls = {
           settings = {
@@ -99,6 +101,38 @@ require("lazy").setup({
                 binaryNextLine = true,
                 caseIndent = true,
               },
+            },
+          },
+        },
+        lsp_ai = {
+          init_options = {
+            models= {
+              ["command-a-03-2025"] = {
+                type= "open_ai",
+                chat_endpoint =  "https://api.cohere.ai/compatibility/v1/chat/completions",
+                model = "command-a-03-2025",
+                auth_token_env_var_name = "CO_API_KEY",
+              },
+            },
+            chat = {
+              {
+                trigger = "!C",
+                action_display_name = "Chat",
+                model = "command-a-03-2025",
+                parameters = {
+                  max_context= 256000,
+                  system = "You are a code assistant chatbot. The user will ask you for assistance coding and you will do you best to answer succinctly and accurately"
+                }
+              },
+              {
+                trigger = "!CC",
+                action_display_name = "Chat with context",
+                model = "command-a-03-2025",
+                parameters = {
+                  max_context= 256000,
+                  system = "You are a code assistant chatbot. The user will ask you for assistance coding and you will do you best to answer succinctly and accurately given the code context=\n\n{CONTEXT}"
+                }
+              }
             },
           },
         },
@@ -184,25 +218,6 @@ require("lazy").setup({
       api_host_cmd = "echo http://127.0.0.1:5483",
       api_key_cmd = "echo dummy",
     },
-  },
-  {
-    "huggingface/llm.nvim",
-    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
-    opts = {
-      api_token = CO_API_KEY,
-      model = "command-a-03-2025",
-      backend = "cohere",
-      url = "https://api.cohere.com",
-      request_body = {
-        preamble = "You are a software engineer. Complete the code. Do not repeat the given code. Do not format with markdown. Do not explain.",
-        temperature = 0.2,
-        p = 0.95,
-      },
-      lsp = {
-        bin_path = "/run/current-system/sw/bin/llm-ls",
-      },
-      context_window = 4096,
-    }
   },
   {
     "rebelot/heirline.nvim",
