@@ -175,6 +175,7 @@ require("lazy").setup({
       auto_suggestions_provider = "cohere",
       cohere = {
         model = "command-a-03-2025",
+        max_tokens = 8192,
       }
     },
   },
