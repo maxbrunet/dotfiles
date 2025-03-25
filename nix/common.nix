@@ -26,17 +26,17 @@
     gdu
     git-lfs
     gh
-    go
+    unstable.go_1_24
     go-jsonnet
-    gofumpt
-    golangci-lint
+    unstable.golangci-lint
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
-    gopls
+    (unstable.gopls.override {
+      buildGoModule = unstable.buildGo124Module;
+    })
     goreleaser
-    gotools
     grpcurl
     hadolint
     helm-ls
