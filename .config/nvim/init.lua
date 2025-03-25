@@ -87,6 +87,7 @@ require("lazy").setup({
         "ruff",
         "rust_analyzer",
         "terraformls",
+        "tflint",
         "ts_ls",
         "yamlls",
       },
