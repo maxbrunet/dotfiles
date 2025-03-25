@@ -248,6 +248,7 @@ require("lazy").setup({
       opts.diagnostics_format = "[#{c}] #{m} (#{s})"
       opts.sources = {
         null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.formatting.d2_fmt,
         null_ls.builtins.formatting.prettier,
       }
       return opts
