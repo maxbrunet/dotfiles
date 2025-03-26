@@ -55,7 +55,7 @@ require("lazy").setup({
           "cssls",
           "html",
           "jsonls",
-          "tsserver",
+          "ts_ls",
           "yaml",
         },
         format_on_save = {
