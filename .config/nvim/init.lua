@@ -145,6 +145,7 @@ require("lazy").setup({
     version = "17.1.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
+    { import = "astrocommunity.git.gitlinker-nvim" },
     { import = "astrocommunity.pack.helm" },
     { import = "astrocommunity.pack.json" },
     { import = "astrocommunity.pack.yaml" },
