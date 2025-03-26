@@ -61,6 +61,7 @@ require("lazy").setup({
         format_on_save = {
           enabled = true,
           allow_filetypes = {
+            "d2",
             "go",
             "jsonnet",
             "rust",
