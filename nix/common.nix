@@ -65,23 +65,6 @@
     kubernetes-helm
     kustomize
     lazygit
-    (llm-ls.overrideAttrs (prev: rec {
-      # https://github.com/huggingface/llm-ls/pull/104
-      src = fetchFromGitHub {
-        owner = "huggingface";
-        repo = "llm-ls";
-        rev = "fc5f4d249d78108aeed33b1cc464c4e9bcccd82c";
-        sha256 = "sha256-0xlJOip68gQ9TKJmu8DdVsgk5qetQPb/YbV3HTlf0b8=";
-      };
-      patches = [ (builtins.elemAt prev.patches 0) ];
-      cargoDeps = prev.cargoDeps.overrideAttrs (
-        lib.const {
-          name = "${prev.pname}-${prev.version}-vendor.tar.gz";
-          inherit src patches;
-          outputHash = "sha256-m/w9aJZCCh1rgnHlkGQD/pUDoWn2/WRVt5X4pFx9nC4=";
-        }
-      );
-    }))
     lua-language-server
     marksman
     mods

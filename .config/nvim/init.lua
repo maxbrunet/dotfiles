@@ -190,25 +190,6 @@ require("lazy").setup({
     },
   },
   {
-    "huggingface/llm.nvim",
-    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
-    opts = {
-      api_token = CO_API_KEY,
-      model = "command-a-03-2025",
-      backend = "cohere",
-      url = "https://api.cohere.com",
-      request_body = {
-        preamble = "You are a software engineer. Complete the code. Do not repeat the given code. Do not format with markdown. Do not explain.",
-        temperature = 0.2,
-        p = 0.95,
-      },
-      lsp = {
-        bin_path = "/run/current-system/sw/bin/llm-ls",
-      },
-      context_window = 4096,
-    }
-  },
-  {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
       local status = require("astroui.status")
