@@ -104,6 +104,18 @@ require("lazy").setup({
             },
           },
         },
+        golangci_lint_ls = {
+          init_options = {
+            -- https://github.com/nametake/golangci-lint-langserver/issues/51
+            command = {
+              "golangci-lint",
+              "run",
+              "--output.json.path=stdout",
+              "--show-stats=false",
+              "--issues-exit-code=1",
+            },
+          },
+        },
         pylsp = {
           settings = {
             pylsp = {
