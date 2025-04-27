@@ -135,13 +135,6 @@
           system = "aarch64-darwin";
           modules = [
             {
-              # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setNixPath
-              nix.nixPath = nixpkgs-darwin.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
-              # Equivalent to https://nixos.org/manual/nixos/stable/options#opt-nixpkgs.flake.setFlakeRegistry
-              nix.registry.nixpkgs.to = {
-                type = "path";
-                path = nixpkgs-darwin.outPath;
-              };
               nixpkgs.overlays = [
                 overlayNixpkgsUnstable
                 overlayPkgs
