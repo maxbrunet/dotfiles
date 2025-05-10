@@ -206,6 +206,94 @@ require("lazy").setup({
     },
   },
   {
+    "olimorris/codecompanion.nvim",
+    version = "15.3.1",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionActions",
+      "CodeCompanionChat",
+      "CodeCompanionCmd",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = function(_, opts)
+          if not opts.file_types then opts.file_types = { "markdown" } end
+          opts.file_types = require("astrocore").list_insert_unique(opts.file_types, { "codecompanion" })
+        end,
+      },
+      {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          local maps = opts.mappings
+          local prefix = "<Leader>C"
+          maps.n[prefix] = { desc = require("astroui").get_icon("CodeCompanion", 1, true) .. "CodeCompanion" }
+          maps.v[prefix] = { desc = require("astroui").get_icon("CodeCompanion", 1, true) .. "CodeCompanion" }
+          maps.n[prefix .. "c"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle chat" }
+          maps.v[prefix .. "c"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle chat" }
+          maps.n[prefix .. "i"] = { "<cmd>CodeCompanion<cr>", desc = "Open inline assistant" }
+          maps.v[prefix .. "i"] = { "<cmd>CodeCompanion<cr>", desc = "Open inline assistant" }
+          maps.n[prefix .. "p"] = { "<cmd>CodeCompanionActions<cr>", desc = "Open action palette" }
+          maps.v[prefix .. "p"] = { "<cmd>CodeCompanionActions<cr>", desc = "Open action palette" }
+          maps.v[prefix .. "a"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add selection to chat" }
+
+          vim.cmd([[cab cc CodeCompanion]])
+        end,
+      },
+      { "AstroNvim/astroui", opts = { icons = { CodeCompanion = "󰚩" } } },
+    },
+    opts = {
+      adapters = {
+        cohere = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            name = "cohere",
+            formatted_name = "Cohere",
+            env = {
+              url = "https://api.cohere.ai/compatibility",
+              api_key = CO_API_KEY,
+            },
+            handlers = {
+              -- overwrite setup to remove unsupported stream_options
+              setup = function(self)
+                if self.opts and self.opts.stream then
+                  self.parameters.stream = true
+                end
+                return true
+              end,
+            },
+            schema = {
+              model = {
+                default = "command-a-03-2025",
+              },
+            },
+          })
+        end,
+      },
+      display = {
+        action_palette = {
+          provider = "snacks",
+        },
+        chat = {
+          start_in_insert_mode = true,
+        },
+      },
+      strategies = {
+        chat = {
+          adapter = "cohere",
+        },
+        inline = {
+          adapter = "cohere",
+        },
+        cmd = {
+          adapter = "cohere",
+        }
+      },
+    },
+  },
+  {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
       local status = require("astroui.status")
