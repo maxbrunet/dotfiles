@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "4.32.3",
+    version = "5.2.6",
     import = "astronvim.plugins",
   },
   {
@@ -154,14 +154,14 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "17.1.0",
+    version = "18.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.git.gitlinker-nvim" },
     { import = "astrocommunity.pack.helm" },
     { import = "astrocommunity.pack.json" },
     { import = "astrocommunity.pack.yaml" },
-    { import = "astrocommunity.recipes.telescope-lsp-mappings" },
+    { import = "astrocommunity.recipes.picker-lsp-mappings" },
   },
   { "ellisonleao/gruvbox.nvim" },
   { "terrastruct/d2-vim", ft = { "d2" } },
@@ -169,7 +169,7 @@ require("lazy").setup({
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
     opts = {
-      disabled_filetypes = { "alpha", "neo-tree", "help", "text" },
+      disabled_filetypes = { "snacks_dashboard", "neo-tree", "help", "text" },
       scope = "window",
     },
   },
@@ -177,6 +177,10 @@ require("lazy").setup({
     -- Made a direct dependency, because when avante.nvim is disabled, its hash
     -- disappears from the lock file.
     "MeanderingProgrammer/render-markdown.nvim",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
+  },
+  {
+    "Kaiser-Yang/blink-cmp-avante",
     enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
   },
   {
@@ -191,7 +195,7 @@ require("lazy").setup({
       cohere = {
         model = "command-a-03-2025",
         max_tokens = 8192,
-      }
+      },
     },
   },
   {
@@ -223,8 +227,9 @@ require("lazy").setup({
       dap.configurations.go = configurations.delve
     end,
   },
-  { "williamboman/mason-lspconfig.nvim", enabled = false },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim", enabled = false },
   { "jay-babu/mason-null-ls.nvim", enabled = false },
+  { "williamboman/mason-lspconfig.nvim", enabled = false },
   { "williamboman/mason.nvim", enabled = false },
   {
     "nvim-neo-tree/neo-tree.nvim",
