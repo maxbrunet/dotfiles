@@ -53,9 +53,8 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 
 > At least it is not Windows.
 
-1. Install [Homebrew](https://brew.sh)
-2. Install [Nix](https://nixos.org/download.html#nix-install-macos)
-3. Install the dotfiles:
+1. Install [Nix](https://nixos.org/download.html#nix-install-macos)
+2. Install the dotfiles:
 
    ```shell
    mkdir -p ~/.config
@@ -64,7 +63,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    git remote set-url origin git@github.com:maxbrunet/dotfiles.git
    ```
 
-4. Prepare system for `nix-darwin`:
+3. Prepare system for `nix-darwin`:
 
    ```shell
    sudo mv /etc/bashrc /etc/bashrc.orig
@@ -75,20 +74,20 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
    ```
 
-5. Install [nix-darwin](https://daiderd.com/nix-darwin/):
+4. Install [nix-darwin](https://daiderd.com/nix-darwin/):
 
    ```shell
    nix --extra-experimental-features 'flakes nix-command' build ".#darwinConfigurations.$(scutil --get LocalHostName).system"
    ./result/sw/bin/darwin-rebuild switch --flake .
    ```
 
-6. Change login shell to Nix's Zsh:
+5. Change login shell to Nix's Zsh:
 
    ```shell
    chsh -s /run/current-system/sw/bin/zsh maxime
    ```
 
-7. Configure SSH client:
+6. Configure SSH client:
 
    ```shell
    ssh-keygen -t ed25519 -a 100
@@ -99,7 +98,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
    EOF
    ```
 
-8. Set up Podman machine:
+7. Set up Podman machine:
 
    ```shell
    sudo podman-mac-helper install

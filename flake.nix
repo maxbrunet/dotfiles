@@ -13,6 +13,10 @@
     disko.inputs.nixpkgs.follows = "nixos";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixos";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew.inputs.nix-darwin.follows = "darwin";
+    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    nix-homebrew.inputs.brew-src.follows = "brew-src";
 
     base16-alacritty = {
       url = "github:tinted-theming/base16-alacritty";
@@ -24,6 +28,22 @@
     };
     base16-shell = {
       url = "github:tinted-theming/base16-shell";
+      flake = false;
+    };
+    brew-src = {
+      url = "github:Homebrew/brew/4.5.2";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-localsend = {
+      url = "github:localsend/homebrew-localsend";
       flake = false;
     };
     oh-my-tmux = {
@@ -50,6 +70,11 @@
       darwin,
       disko,
       home-manager,
+      nix-homebrew,
+      brew-src,
+      homebrew-cask,
+      homebrew-core,
+      homebrew-localsend,
       zsh-completions-src,
       ...
     }@attrs:
@@ -157,6 +182,44 @@
               home-manager.users.maxime = import ./nix/home.nix;
               home-manager.extraSpecialArgs = attrs;
             }
+            nix-homebrew.darwinModules.nix-homebrew
+            (
+              { config, lib, ... }:
+              {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  user = "maxime";
+                  mutableTaps = false;
+                  taps = {
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "localsend/localsend" = homebrew-localsend;
+                  };
+                };
+
+                system.activationScripts = {
+                  # https://github.com/zhaofengli/nix-homebrew/pull/79
+                  extraUserActivation.text = lib.mkAfter ''
+                    ${config.system.activationScripts.setup-homebrew-extra.text}
+                  '';
+                  setup-homebrew-extra.text = ''
+                    HOMEBREW_PREFIX=/opt/homebrew
+
+                    # Link brew docs
+                    sudo /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
+                    # Link brew manpages
+                    sudo /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
+                    sudo /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
+
+                    # Link brew shell completions
+                    sudo /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
+                    sudo /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
+                    sudo /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+                  '';
+                };
+              }
+            )
           ];
         };
       };
