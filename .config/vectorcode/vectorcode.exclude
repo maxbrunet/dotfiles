@@ -1,0 +1,14 @@
+*.bin
+*.data
+*.gif
+*.jpeg
+*.jpg
+*.png
+*.svg
+.git
+.mypy_cache
+.terraform
+.venv
+__pycache__
+node_modules
+vendor
