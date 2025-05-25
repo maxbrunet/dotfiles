@@ -165,6 +165,9 @@
     tree
     urlscan
     unstable.uv
+    (unstable.vectorcode.overridePythonAttrs (prev: {
+      dependencies = prev.dependencies ++ unstable.vectorcode.optional-dependencies.lsp;
+    }))
     wget
     yarn
     yq-go

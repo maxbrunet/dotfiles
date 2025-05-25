@@ -90,6 +90,7 @@ require("lazy").setup({
         "terraformls",
         "tflint",
         "ts_ls",
+        "vectorcode_server",
         "yamlls",
       },
       config = {
@@ -280,6 +281,14 @@ require("lazy").setup({
           start_in_insert_mode = true,
         },
       },
+      extensions = {
+        vectorcode = {
+          opts = {
+            add_tool = true,
+            add_slash_command = true,
+          },
+        },
+      },
       strategies = {
         chat = {
           adapter = "cohere",
@@ -289,9 +298,20 @@ require("lazy").setup({
         },
         cmd = {
           adapter = "cohere",
-        }
+        },
       },
     },
+  },
+  {
+    "Davidyz/VectorCode",
+    version = "0.6.8",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("vectorcode").setup({
+        async_backend = "lsp",
+      })
+    end,
   },
   {
     "rebelot/heirline.nvim",

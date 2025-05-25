@@ -12,9 +12,16 @@
 
 let
   inherit (pkgs) stdenv;
-  inherit (pkgs.python3Packages) litellm;
+  inherit (pkgs.python3Packages) chromadb cohere litellm;
   litellmProxy = litellm.overridePythonAttrs (prev: {
     dependencies = prev.dependencies ++ litellm.optional-dependencies.proxy;
+  });
+  chromaCohere = chromadb.overridePythonAttrs (prev: {
+    dependencies = prev.dependencies ++ [ cohere ];
+    makeWrapperArgs = [
+      # https://github.com/NixOS/nixpkgs/issues/386256
+      "--set ANONYMIZED_TELEMETRY False"
+    ];
   });
 in
 {
@@ -37,6 +44,27 @@ in
   };
 
   launchd.agents = {
+    VectorCodeChroma = {
+      config = {
+        ProgramArguments = [
+          "${chromaCohere}/bin/chroma"
+          "run"
+          "--host"
+          "localhost"
+          "--port"
+          "8000"
+          "--path"
+          "${config.home.homeDirectory}/Library/Application Support/VectorCode/chroma"
+          "--log-path"
+          "/dev/stdout"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/VectorCode/chroma/launchd-stderr.log";
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/VectorCode/chroma/launchd-stdout.log";
+      };
+      enable = true;
+    };
     LiteLLM = {
       config = {
         ProgramArguments = [
