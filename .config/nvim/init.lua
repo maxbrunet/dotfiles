@@ -241,6 +241,7 @@ require("lazy").setup({
         end,
       },
       { "AstroNvim/astroui", opts = { icons = { CodeCompanion = "󰚩" } } },
+      { "Davidyz/VectorCode" },
     },
     opts = {
       adapters = {
@@ -277,6 +278,9 @@ require("lazy").setup({
           start_in_insert_mode = true,
         },
       },
+      extensions = {
+        vectorcode = {},
+      },
       strategies = {
         chat = {
           adapter = "cohere",
@@ -286,9 +290,21 @@ require("lazy").setup({
         },
         cmd = {
           adapter = "cohere",
-        }
+        },
       },
     },
+  },
+  {
+    "Davidyz/VectorCode",
+    version = "0.7.12",
+    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
+    cmd = "VectorCode",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("vectorcode").setup({
+        async_backend = "lsp",
+      })
+    end,
   },
   {
     "rebelot/heirline.nvim",

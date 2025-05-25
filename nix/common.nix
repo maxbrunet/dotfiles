@@ -158,6 +158,18 @@
     tree
     urlscan
     unstable.uv
+    (unstable.vectorcode.overridePythonAttrs (prev: {
+      dependencies =
+        prev.dependencies
+        ++ unstable.vectorcode.optional-dependencies.lsp
+        ++ [ unstable.python3Packages.cohere ];
+      makeWrapperArgs = [
+        # https://github.com/NixOS/nixpkgs/issues/386256
+        "--set"
+        "ANONYMIZED_TELEMETRY"
+        "False"
+      ];
+    }))
     wget
     yq-go
     zsh-autosuggestions

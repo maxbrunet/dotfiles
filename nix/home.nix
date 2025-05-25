@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   base16-alacritty,
@@ -11,6 +12,19 @@
 
 let
   inherit (pkgs) stdenv;
+  # https://github.com/NixOS/nixpkgs/blob/6027c30c8e9810896b92429f0092f624f7b1aace/pkgs/by-name/ve/vectorcode/package.nix#L20-L21
+  chromadb = lib.lists.findSingle (
+    drv: drv.pname == "chromadb"
+  ) "none" "multiple" pkgs.unstable.vectorcode.dependencies;
+  chromaCohere = chromadb.overridePythonAttrs (prev: {
+    dependencies = prev.dependencies ++ [ pkgs.unstable.python3Packages.cohere ];
+    makeWrapperArgs = [
+      # https://github.com/NixOS/nixpkgs/issues/386256
+      "--set"
+      "ANONYMIZED_TELEMETRY"
+      "False"
+    ];
+  });
 in
 {
   home.file = {
@@ -28,6 +42,32 @@ in
     };
     "Library/Application Support/mods/mods.yml" = lib.mkIf stdenv.isDarwin {
       source = ../.config/mods/mods.yml;
+    };
+  };
+
+  launchd.agents = {
+    VectorCodeChroma = {
+      config = {
+        ProgramArguments = [
+          "${chromaCohere}/bin/chroma"
+          "run"
+          "--host"
+          "localhost"
+          "--port"
+          "8000"
+          "--path"
+          "${config.home.homeDirectory}/Library/Application Support/VectorCode/chroma"
+          "--log-path"
+          "/dev/stdout"
+        ];
+        KeepAlive = {
+          SuccessfulExit = true;
+        };
+        RunAtLoad = true;
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/VectorCode/chroma/launchd-stderr.log";
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/VectorCode/chroma/launchd-stdout.log";
+      };
+      enable = true;
     };
   };
 
