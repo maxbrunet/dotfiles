@@ -1,0 +1,13 @@
+// vim: ft=json5
+{
+  embedding_function: "CohereEmbeddingFunction",
+  embedding_params: {
+    api_key: "CO_API_KEY",
+    model_name: "embed-v4.0",
+  },
+  reranker: "NaiveReranker",
+  chunk_size: 300000,
+  hnsw: {
+    "hnsw:M": 64,
+  },
+}
