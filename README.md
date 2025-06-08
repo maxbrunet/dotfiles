@@ -57,9 +57,9 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 2. Install the dotfiles:
 
    ```shell
-   mkdir -p ~/.config
-   git clone https://github.com/maxbrunet/dotfiles.git ~/.config/darwin
-   cd ~/.config/darwin
+   sudo git clone https://github.com/maxbrunet/dotfiles.git /etc/nix-darwin
+   sudo chown -R "${UID}:${GID}" /etc/nix-darwin
+   cd /etc/nix-darwin
    git remote set-url origin git@github.com:maxbrunet/dotfiles.git
    ```
 
@@ -78,7 +78,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, 
 
    ```shell
    nix --extra-experimental-features 'flakes nix-command' build ".#darwinConfigurations.$(scutil --get LocalHostName).system"
-   ./result/sw/bin/darwin-rebuild switch --flake .
+   ./result/sw/bin/darwin-rebuild switch
    ```
 
 5. Change login shell to Nix's Zsh:

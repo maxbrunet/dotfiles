@@ -7,6 +7,7 @@
     argocd
     aws-vault
     awscli2
+    azure-cli
     bash-language-server
     bat
     bottom
@@ -26,16 +27,14 @@
     gdu
     git-lfs
     gh
-    unstable.go_1_24
+    go
     go-jsonnet
-    unstable.golangci-lint
+    golangci-lint
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
-    (unstable.gopls.override {
-      buildGoModule = unstable.buildGo124Module;
-    })
+    gopls
     goreleaser
     grpcurl
     hadolint
@@ -61,7 +60,7 @@
       }
     ])
     kubelogin
-    unstable.kubelogin-oidc
+    kubelogin-oidc
     kubernetes-helm
     kustomize
     lazygit
@@ -106,8 +105,8 @@
         unpropagateKeyring =
           pkg:
           pkg.overridePythonAttrs (prev: {
-            buildInputs = prev.buildInputs ++ [ keyring ];
-            propagatedBuildInputs = lib.remove keyring prev.propagatedBuildInputs;
+            build-system = prev.build-system ++ [ keyring ];
+            dependencies = lib.remove keyring prev.dependencies;
           });
         backends = map unpropagateKeyring (
           with python3Packages;
@@ -140,6 +139,7 @@
       python-lsp-server.overridePythonAttrs (prev: {
         dependencies = prev.dependencies ++ plugins;
         disabledTests = prev.disabledTests ++ [
+          "test_autoimport_code_actions_and_completions_for_notebook_document"
           "test_notebook_document__did_open"
           "test_notebook_document__did_change"
         ];

@@ -14,7 +14,7 @@ if not pcall(require, "lazy") then
 end
 
 local dotfiles_dir_tbl = {
-  ["Darwin"] = os.getenv('HOME')  .. "/.config/darwin",
+  ["Darwin"] = "/etc/nix-darwin",
   ["Linux"] = "/etc/nixos",
 }
 local sysname = vim.loop.os_uname().sysname
@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "5.2.6",
+    version = "5.3.3",
     import = "astronvim.plugins",
   },
   {
@@ -154,7 +154,7 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "18.0.0",
+    version = "19.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.git.gitlinker-nvim" },
@@ -192,9 +192,13 @@ require("lazy").setup({
     opts = {
       provider = "cohere",
       auto_suggestions_provider = "cohere",
-      cohere = {
-        model = "command-a-03-2025",
-        max_tokens = 8192,
+      providers = {
+        cohere = {
+          model = "command-a-03-2025",
+          extra_request_body = {
+            max_tokens = 8192,
+          },
+        },
       },
     },
   },

@@ -2,20 +2,18 @@
   description = "My NixOS configuration: A Mix of Nix and Max";
 
   inputs = {
-    nixos.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixos.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.11.0";
     disko.inputs.nixpkgs.follows = "nixos";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    nix-homebrew.inputs.nix-darwin.follows = "darwin";
-    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs-darwin";
     nix-homebrew.inputs.brew-src.follows = "brew-src";
 
     base16-alacritty = {
@@ -31,7 +29,7 @@
       flake = false;
     };
     brew-src = {
-      url = "github:Homebrew/brew/4.5.2";
+      url = "github:Homebrew/brew/4.5.4";
       flake = false;
     };
     homebrew-core = {
@@ -200,9 +198,6 @@
 
                 system.activationScripts = {
                   # https://github.com/zhaofengli/nix-homebrew/pull/79
-                  extraUserActivation.text = lib.mkAfter ''
-                    ${config.system.activationScripts.setup-homebrew-extra.text}
-                  '';
                   setup-homebrew-extra.text = ''
                     HOMEBREW_PREFIX=/opt/homebrew
 

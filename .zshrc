@@ -8,7 +8,7 @@ ZSH_CUSTOM="${HOME}/.local/share/oh-my-zsh-custom"
 # dotfiles
 case "${OSTYPE}" in
   darwin*)
-    DOTFILES_DIR="${HOME}/.config/darwin"
+    DOTFILES_DIR="/etc/nix-darwin"
     ;;
   linux*)
     DOTFILES_DIR="/etc/nixos"

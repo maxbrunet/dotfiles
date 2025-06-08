@@ -66,7 +66,6 @@ in
     ++ (with pkgs; [
       appimage-run
       aspellDicts.en
-      azure-cli
       bind.dnsutils
       brightnessctl
       (chromium.override {
@@ -146,7 +145,7 @@ in
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     font-awesome
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.symbols-only
     source-code-pro
   ];
 
@@ -172,8 +171,6 @@ in
       isSystem = false;
     };
   };
-  services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
-  services.geoclue2.submissionUrl = "https://api.beacondb.net/v2/geosubmit";
 
   networking.wireless.iwd.enable = true;
 

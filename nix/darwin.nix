@@ -59,17 +59,10 @@ in
     ]);
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+    nerd-fonts.sauce-code-pro
   ];
 
   homebrew.enable = true;
-  homebrew.brews = [
-    # Unable to build the darwin-system derivation with the azure-cli package,
-    # so using Homebrew's instead
-    # sandbox-exec: pattern serialization length 66790 exceeds maximum (65535)
-    # https://github.com/NixOS/nix/issues/4119
-    "azure-cli"
-  ];
   homebrew.casks = [
     "alacritty"
     "android-file-transfer"
@@ -115,11 +108,8 @@ in
   programs.zsh.enableCompletion = false;
   programs.zsh.promptInit = "";
 
-  # FIXME: Requires pam_reattach to work in tmux
-  # https://github.com/LnL7/nix-darwin/pull/662
-  security.pam.enableSudoTouchIdAuth = true;
-
-  services.nix-daemon.enable = true;
+  security.pam.services.sudo_local.reattach = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
   system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 2.0;
@@ -136,6 +126,8 @@ in
   system.defaults.screensaver.askForPassword = true;
   system.defaults.screensaver.askForPasswordDelay = 5; # seconds
   system.defaults.trackpad.Clicking = true;
+
+  system.primaryUser = "maxime";
 
   # Used by home-manager
   users.users.maxime.home = "/Users/maxime";
