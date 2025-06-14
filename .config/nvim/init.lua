@@ -157,7 +157,6 @@ require("lazy").setup({
     "AstroNvim/astrocommunity",
     version = "19.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
-    { import = "astrocommunity.editing-support.chatgpt-nvim" },
     { import = "astrocommunity.git.gitlinker-nvim" },
     { import = "astrocommunity.pack.helm" },
     { import = "astrocommunity.pack.json" },
@@ -201,13 +200,6 @@ require("lazy").setup({
           },
         },
       },
-    },
-  },
-  {
-    "jackMort/ChatGPT.nvim",
-    opts = {
-      api_host_cmd = "echo http://127.0.0.1:5483",
-      api_key_cmd = "echo dummy",
     },
   },
   {
