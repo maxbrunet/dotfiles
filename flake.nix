@@ -29,7 +29,7 @@
       flake = false;
     };
     brew-src = {
-      url = "github:Homebrew/brew/4.5.4";
+      url = "github:Homebrew/brew/4.5.6";
       flake = false;
     };
     homebrew-core = {
@@ -63,7 +63,6 @@
       nixos,
       nixos-unstable,
       nixos-hardware,
-      nixpkgs-darwin,
       nixpkgs-unstable,
       darwin,
       disko,
@@ -181,40 +180,37 @@
               home-manager.extraSpecialArgs = attrs;
             }
             nix-homebrew.darwinModules.nix-homebrew
-            (
-              { config, lib, ... }:
-              {
-                nix-homebrew = {
-                  enable = true;
-                  enableRosetta = true;
-                  user = "maxime";
-                  mutableTaps = false;
-                  taps = {
-                    "homebrew/homebrew-cask" = homebrew-cask;
-                    "homebrew/homebrew-core" = homebrew-core;
-                    "localsend/localsend" = homebrew-localsend;
-                  };
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                user = "maxime";
+                mutableTaps = false;
+                taps = {
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "localsend/localsend" = homebrew-localsend;
                 };
+              };
 
-                system.activationScripts = {
-                  # https://github.com/zhaofengli/nix-homebrew/pull/79
-                  setup-homebrew-extra.text = ''
-                    HOMEBREW_PREFIX=/opt/homebrew
+              system.activationScripts = {
+                # https://github.com/zhaofengli/nix-homebrew/pull/79
+                setup-homebrew-extra.text = ''
+                  HOMEBREW_PREFIX=/opt/homebrew
 
-                    # Link brew docs
-                    sudo /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
-                    # Link brew manpages
-                    sudo /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
-                    sudo /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
+                  # Link brew docs
+                  sudo /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
+                  # Link brew manpages
+                  sudo /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
+                  sudo /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
 
-                    # Link brew shell completions
-                    sudo /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
-                    sudo /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
-                    sudo /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
-                  '';
-                };
-              }
-            )
+                  # Link brew shell completions
+                  sudo /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
+                  sudo /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
+                  sudo /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+                '';
+              };
+            }
           ];
         };
       };
