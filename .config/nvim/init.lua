@@ -64,6 +64,7 @@ require("lazy").setup({
             "d2",
             "go",
             "jsonnet",
+            "nix",
             "rust",
             "terraform",
           },
