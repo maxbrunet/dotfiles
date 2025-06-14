@@ -206,6 +206,35 @@ in
       };
   };
 
+  targets.darwin.defaults = lib.mkIf stdenv.isDarwin {
+    "com.apple.AppleMultitouchTrackpad" = {
+      Clicking = true;
+    };
+    "com.apple.desktopservices" = {
+      DSDontWriteNetworkStores = true;
+      DSDontWriteUSBStores = true;
+    };
+    "com.apple.dock" = {
+      autohide = true;
+      mineffect = "scale";
+      mru-spaces = 0;
+      show-recents = false;
+      tilesize = 48;
+      wvous-bl-corner = 5; # Start Screen Saver
+      wvous-br-corner = 5; # Start Screen Saver
+    };
+    "com.apple.screensaver" = {
+      askForPassword = true;
+      askForPasswordDelay = 5; # seconds
+    };
+    NSGlobalDomain = {
+      "com.apple.swipescrolldirection" = true;
+      "com.apple.trackpad.scaling" = 2.0;
+      AppleInterfaceStyle = "Dark";
+      NSAutomaticWindowAnimationsEnabled = false;
+    };
+  };
+
   xdg.userDirs = lib.mkIf stdenv.isLinux {
     enable = true;
     createDirectories = true;

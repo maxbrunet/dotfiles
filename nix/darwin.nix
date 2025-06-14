@@ -111,21 +111,7 @@ in
   security.pam.services.sudo_local.reattach = true;
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
-  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 2.0;
-  system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
-  system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.alf.globalstate = 2; # blocks
-  system.defaults.dock.autohide = true;
-  system.defaults.dock.mineffect = "scale";
-  system.defaults.dock.mru-spaces = false;
-  system.defaults.dock.show-recents = false;
-  system.defaults.dock.tilesize = 48;
-  system.defaults.dock.wvous-bl-corner = 5; # Start Screen Saver
-  system.defaults.dock.wvous-br-corner = 5; # Start Screen Saver
-  system.defaults.screensaver.askForPassword = true;
-  system.defaults.screensaver.askForPasswordDelay = 5; # seconds
-  system.defaults.trackpad.Clicking = true;
 
   system.primaryUser = "maxime";
 
