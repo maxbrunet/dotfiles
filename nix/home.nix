@@ -175,7 +175,7 @@ in
     "com.apple.dock" = {
       autohide = true;
       mineffect = "scale";
-      mru-spaces = 0;
+      mru-spaces = false;
       show-recents = false;
       tilesize = 48;
       wvous-bl-corner = 5; # Start Screen Saver
@@ -186,7 +186,7 @@ in
       askForPasswordDelay = 5; # seconds
     };
     NSGlobalDomain = {
-      "com.apple.swipescrolldirection" = true;
+      "com.apple.swipescrolldirection" = false;
       "com.apple.trackpad.scaling" = 2.0;
       AppleInterfaceStyle = "Dark";
       NSAutomaticWindowAnimationsEnabled = false;
