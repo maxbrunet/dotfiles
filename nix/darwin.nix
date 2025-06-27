@@ -82,7 +82,6 @@ in
       };
     }
     "localsend/localsend/localsend"
-    "lulu"
     "podman-desktop"
     "thunderbird"
     "wireshark"
