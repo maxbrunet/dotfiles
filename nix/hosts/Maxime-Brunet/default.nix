@@ -12,7 +12,6 @@
   ids.gids.nixbld = 30000;
 
   homebrew.casks = [
-    "tailscale"
     "tuple"
   ];
 }
