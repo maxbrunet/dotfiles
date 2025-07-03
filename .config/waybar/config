@@ -86,21 +86,22 @@
         "on-click": "pavucontrol"
     },
     "mpris": {
-	    "format": "{player_icon} {dynamic}",
-	    "format-paused": "{player_icon} {dynamic} {status_icon}",
-	    "format-stopped": "{player_icon} {dynamic} {status_icon}",
-	    "player-icons": {
+        "interval": 1,
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{player_icon} {dynamic} {status_icon}",
+        "format-stopped": "{player_icon} {dynamic} {status_icon}",
+        "player-icons": {
             "default": "🎜",
             "firefox": "",
             "chromium": "",
             "spotify": "",
             "vlc": ""
-	    },
-	    "status-icons": {
-	        "playing": "",
-	    	"paused": "",
-	    	"stopped": ""
-	    }
-	}
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        }
+    }
 }
 
