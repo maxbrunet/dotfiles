@@ -189,6 +189,8 @@ in
     allowUnfree = true;
   };
 
+  programs.adb.enable = true;
+
   programs.git.enable = true;
 
   programs.gnupg.agent.enable = true;
@@ -310,6 +312,7 @@ in
   users.users.maxime = {
     isNormalUser = true;
     extraGroups = [
+      "adbusers"
       "input"
       "lp"
       "scanner"
