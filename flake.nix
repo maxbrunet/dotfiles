@@ -29,7 +29,7 @@
       flake = false;
     };
     brew-src = {
-      url = "github:Homebrew/brew/4.5.8";
+      url = "github:Homebrew/brew/4.5.9";
       flake = false;
     };
     homebrew-core = {
