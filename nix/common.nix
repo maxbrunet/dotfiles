@@ -78,13 +78,6 @@
     nodePackages.yaml-language-server
     nodejs
     oci-cli
-    (pdm.overridePythonAttrs (prev: {
-      dependencies =
-        prev.dependencies
-        ++ (with python3Packages; [
-          keyrings-google-artifactregistry-auth
-        ]);
-    }))
     perl
     pnpm
     podman-compose
