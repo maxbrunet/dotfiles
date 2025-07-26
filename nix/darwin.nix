@@ -84,7 +84,7 @@ in
     "localsend/localsend/localsend"
     "podman-desktop"
     "thunderbird"
-    "wireshark"
+    "wireshark-app"
   ];
   homebrew.masApps = {
     Amphetamine = 937984704;
