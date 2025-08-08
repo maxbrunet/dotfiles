@@ -90,7 +90,6 @@
                 _pre-commit
                 _ts-node
                 _tsc
-                _yarn
               )
               install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
             '';

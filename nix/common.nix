@@ -159,7 +159,6 @@
     urlscan
     unstable.uv
     wget
-    yarn
     yq-go
     zsh-autosuggestions
     zsh-completions
