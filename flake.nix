@@ -159,14 +159,6 @@
               nixpkgs.overlays = [
                 overlayNixpkgsUnstable
                 overlayPkgs
-                # https://github.com/NixOS/nixpkgs/issues/402079
-                (_: prev: {
-                  inherit (nixos-unstable.legacyPackages.${prev.system})
-                    nodejs_20
-                    nodejs-slim_20
-                    pre-commit
-                    ;
-                })
               ];
             }
             ./nix/darwin.nix
