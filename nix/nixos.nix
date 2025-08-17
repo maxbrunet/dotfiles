@@ -68,13 +68,9 @@ in
       aspellDicts.en
       bind.dnsutils
       brightnessctl
-      (chromium.override {
+      (ungoogled-chromium.override {
         commandLineArgs = builtins.concatStringsSep " " [
           "--enable-features=WebRTCPipeWireCapturer"
-          # Hardware acceleration freezes the (Chromecast) video playback
-          # when the window is not focused/is in the background.
-          # https://bugs.chromium.org/p/chromium/issues/detail?id=752726
-          "--disable-gpu"
         ];
       })
       emote

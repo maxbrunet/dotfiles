@@ -68,7 +68,7 @@ in
     "android-file-transfer"
     # https://chromium.googlesource.com/chromium/src/+/main/docs/mac_arm64.md
     {
-      name = "chromium";
+      name = "ungoogled-chromium";
       args = {
         no_quarantine = true;
       };
