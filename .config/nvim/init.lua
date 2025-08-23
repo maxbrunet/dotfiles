@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "5.3.8",
+    version = "5.3.9",
     import = "astronvim.plugins",
   },
   {
@@ -204,7 +204,7 @@ require("lazy").setup({
   },
   {
     "olimorris/codecompanion.nvim",
-    version = "17.15.0",
+    version = "17.16.0",
     enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     cmd = {
       "CodeCompanion",
