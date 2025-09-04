@@ -15,7 +15,7 @@
     cmake
     d2
     delta
-    delve
+    unstable.delve
     devpod
     direnv
     docker-credential-helpers
@@ -27,14 +27,16 @@
     gdu
     git-lfs
     gh
-    go
+    unstable.go_1_25
     go-jsonnet
-    golangci-lint
+    (unstable.golangci-lint.override {
+      buildGoModule = unstable.buildGo125Module;
+    })
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
-    gopls
+    unstable.gopls
     goreleaser
     grpcurl
     hadolint
