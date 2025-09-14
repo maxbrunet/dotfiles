@@ -29,14 +29,7 @@
     gh
     unstable.go_1_25
     go-jsonnet
-    (unstable.golangci-lint.override (
-      if stdenv.isLinux then
-        {
-          buildGoModule = unstable.buildGo125Module;
-        }
-      else
-        { }
-    ))
+    unstable.golangci-lint
     golangci-lint-langserver
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
