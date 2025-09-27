@@ -24,7 +24,7 @@ local CO_API_KEY = os.getenv("CO_API_KEY")
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "5.3.11",
+    version = "5.3.12",
     import = "astronvim.plugins",
   },
   {
