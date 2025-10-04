@@ -21,6 +21,7 @@
     docker-credential-helpers
     dockerfile-language-server-nodejs
     dos2unix
+    unstable.egctl
     fd
     fpp
     fzf
