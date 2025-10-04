@@ -51,16 +51,16 @@
     "brew-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1759048880,
-        "narHash": "sha256-cDK7aiKeC3iiR55bwVaxYZnQ54Y89jZvEq6h6Q/7SXY=",
+        "lastModified": 1758543057,
+        "narHash": "sha256-lw3V2jOGYphUFHYQ5oARcb6urlbNpUCLJy1qhsGdUmc=",
         "owner": "Homebrew",
         "repo": "brew",
-        "rev": "2a9372210add62a52171d3370e696dcff2807310",
+        "rev": "5b236456eb93133c2bd0d60ef35ed63f1c0712f6",
         "type": "github"
       },
       "original": {
         "owner": "Homebrew",
-        "ref": "4.6.15",
+        "ref": "4.6.12",
         "repo": "brew",
         "type": "github"
       }
@@ -178,9 +178,7 @@
     },
     "nix-homebrew": {
       "inputs": {
-        "brew-src": [
-          "brew-src"
-        ]
+        "brew-src": "brew-src"
       },
       "locked": {
         "lastModified": 1758598228,
@@ -312,7 +310,6 @@
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
-        "brew-src": "brew-src",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",

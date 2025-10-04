@@ -14,7 +14,6 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    nix-homebrew.inputs.brew-src.follows = "brew-src";
 
     base16-alacritty = {
       url = "github:tinted-theming/base16-alacritty";
@@ -26,10 +25,6 @@
     };
     base16-shell = {
       url = "github:tinted-theming/base16-shell";
-      flake = false;
-    };
-    brew-src = {
-      url = "github:Homebrew/brew/4.6.15";
       flake = false;
     };
     homebrew-core = {
@@ -68,7 +63,6 @@
       disko,
       home-manager,
       nix-homebrew,
-      brew-src,
       homebrew-cask,
       homebrew-core,
       homebrew-localsend,
@@ -186,20 +180,24 @@
 
               system.activationScripts = {
                 # https://github.com/zhaofengli/nix-homebrew/pull/79
-                setup-homebrew-extra.text = ''
-                  HOMEBREW_PREFIX=/opt/homebrew
+                extraActivation.text =
+                  let
+                    brew-src = nix-homebrew.inputs.brew-src;
+                  in
+                  ''
+                    HOMEBREW_PREFIX=/opt/homebrew
 
-                  # Link brew docs
-                  sudo /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
-                  # Link brew manpages
-                  sudo /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
-                  sudo /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
+                    # Link brew docs
+                    /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
+                    # Link brew manpages
+                    /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
+                    /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
 
-                  # Link brew shell completions
-                  sudo /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
-                  sudo /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
-                  sudo /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
-                '';
+                    # Link brew shell completions
+                    /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
+                    /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
+                    /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+                  '';
               };
             }
           ];
