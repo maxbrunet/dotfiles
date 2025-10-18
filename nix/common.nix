@@ -16,7 +16,6 @@
     d2
     delta
     unstable.delve
-    devpod
     direnv
     docker-credential-helpers
     dockerfile-language-server-nodejs
