@@ -131,11 +131,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1760201413,
-        "narHash": "sha256-dmzW/m01w/CQKzDUeB83s4McvBMNYZZ4wzTLvlTJNaY=",
+        "lastModified": 1760795645,
+        "narHash": "sha256-Z+3fUAFZ7csjV1atOGmZnUbJgc2aT4UqNDyhPdhy8MY=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "692c4c28c7ec5b44ec938477ee630f69cbcf72c4",
+        "rev": "9feefde813f034856777d1e354d00527659a5ce4",
         "type": "github"
       },
       "original": {
@@ -147,11 +147,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1760203257,
-        "narHash": "sha256-hBZaDYsSQHzF5RsDzjfRg6i+V8mdpxfX3wo2rh9grU8=",
+        "lastModified": 1760801076,
+        "narHash": "sha256-wH7IQEIKxICARClZrKHNu5tUk4VaIMNXGI+yHKW7CJc=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "d4e87298be7d985633d30256751bf7cf6701aa8f",
+        "rev": "6961ec5c626bb0e8cf671c96983566ed4a781fdf",
         "type": "github"
       },
       "original": {
@@ -196,11 +196,11 @@
     },
     "nixos": {
       "locked": {
-        "lastModified": 1759994382,
-        "narHash": "sha256-wSK+3UkalDZRVHGCRikZ//CyZUJWDJkBDTQX1+G77Ow=",
+        "lastModified": 1760580664,
+        "narHash": "sha256-/YdfibIrnqXAL8p5kqCU345mzpHoOtuVIkMiI2pF4Dc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5da4a26309e796daa7ffca72df93dbe53b8164c7",
+        "rev": "98ff3f9af2684f6136c24beef08f5e2033fc5389",
         "type": "github"
       },
       "original": {
@@ -227,11 +227,11 @@
     },
     "nixos-unstable": {
       "locked": {
-        "lastModified": 1760038930,
-        "narHash": "sha256-Oncbh0UmHjSlxO7ErQDM3KM0A5/Znfofj2BSzlHLeVw=",
+        "lastModified": 1760524057,
+        "narHash": "sha256-EVAqOteLBFmd7pKkb0+FIUyzTF61VKi7YmvP1tw4nEw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0b4defa2584313f3b781240b29d61f6f9f7e0df3",
+        "rev": "544961dfcce86422ba200ed9a0b00dd4b1486ec5",
         "type": "github"
       },
       "original": {
@@ -243,11 +243,11 @@
     },
     "nixpkgs-darwin": {
       "locked": {
-        "lastModified": 1760103274,
-        "narHash": "sha256-3pfFKrcs1+EIGqPg0VA+rfeySrrAOKgM6IIH0D0KCOI=",
+        "lastModified": 1760625687,
+        "narHash": "sha256-dYs4YRt+8Pl9iKiaHHyDmQVuVV/UF3iZZ4TK8drwTVE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "12c702c6157fbd004a7745055153162297a3d2ce",
+        "rev": "b7902c4646e82d9bf8415ea84cd30db01c4f69ce",
         "type": "github"
       },
       "original": {
@@ -259,11 +259,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1760103332,
-        "narHash": "sha256-BMsGVfKl4Q80Pr9T1AkCRljO1bpwCmY8rTBVj8XGuhA=",
+        "lastModified": 1760596604,
+        "narHash": "sha256-J/i5K6AAz/y5dBePHQOuzC7MbhyTOKsd/GLezSbEFiM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "870493f9a8cb0b074ae5b411b2f232015db19a65",
+        "rev": "3cbe716e2346710d6e1f7c559363d14e11c32a43",
         "type": "github"
       },
       "original": {
@@ -292,11 +292,11 @@
     "oh-my-zsh": {
       "flake": false,
       "locked": {
-        "lastModified": 1760007129,
-        "narHash": "sha256-b2r0NWKG3taubfvCSylp4ihKVzXCid+YuCjHhOCMbk0=",
+        "lastModified": 1760519634,
+        "narHash": "sha256-Nt/7UZJl+7Kw7trMByuyhjE7RnccgAzW1oNwKsIx3Jw=",
         "owner": "ohmyzsh",
         "repo": "ohmyzsh",
-        "rev": "853680fd621a8907338e0eee080dc6cf754408bf",
+        "rev": "d1c04d8a33f9127d03b69617c5367db5ceebc8a7",
         "type": "github"
       },
       "original": {
@@ -330,11 +330,11 @@
     "zsh-completions-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1758526596,
-        "narHash": "sha256-xy3TzKS5M+M6yhEmfLT1FDVW6k6jIQdQvVMK8JrXa0w=",
+        "lastModified": 1760630028,
+        "narHash": "sha256-EzSTVv1+4xmzI9naz6XJiUc+ukhdMsA01qIr3iU8Vxg=",
         "owner": "zsh-users",
         "repo": "zsh-completions",
-        "rev": "173a14c436d5f66cbe69f5c14c7a09784004bc21",
+        "rev": "5fd23d5376a8eba491c4d3cffe5141447bac15a2",
         "type": "github"
       },
       "original": {
