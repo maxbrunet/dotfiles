@@ -191,6 +191,9 @@ in
       AppleInterfaceStyle = "Dark";
       NSAutomaticWindowAnimationsEnabled = false;
     };
+    "com.apple.assistant.support" = {
+      "Search Queries Data Sharing Status" = 2;
+    };
   };
 
   xdg.userDirs = lib.mkIf stdenv.isLinux {
