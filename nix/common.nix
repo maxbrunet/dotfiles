@@ -62,7 +62,9 @@
     kubelogin
     kubelogin-oidc
     kubernetes-helm
-    kustomize
+    # Until v5.7.0 is available in stable channel
+    # https://github.com/kubernetes-sigs/kustomize/pull/5859
+    unstable.kustomize
     lazygit
     lua-language-server
     marksman
