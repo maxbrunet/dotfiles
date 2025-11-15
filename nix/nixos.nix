@@ -68,11 +68,7 @@ in
       aspellDicts.en
       bind.dnsutils
       brightnessctl
-      (ungoogled-chromium.override {
-        commandLineArgs = builtins.concatStringsSep " " [
-          "--enable-features=WebRTCPipeWireCapturer"
-        ];
-      })
+      ungoogled-chromium
       emote
       evince
       file
