@@ -193,8 +193,6 @@ in
 
   programs.localsend.enable = true;
 
-  programs.noisetorch.enable = true;
-
   programs.seahorse.enable = true;
 
   programs.sway = {
