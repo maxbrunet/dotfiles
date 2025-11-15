@@ -199,16 +199,11 @@ in
       let
         schema = gsettings-desktop-schemas;
         dataDir = "${schema}/share/gsettings-schemas/${schema.name}";
-        gsettings-wrapped = writeTextFile {
-          name = "gsettings";
-          destination = "/bin/gsettings";
-          executable = true;
-          text = ''
-            export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
+        gsettings-wrapped = writeScriptBin "gsettings" ''
+          export XDG_DATA_DIRS=${dataDir}:$XDG_DATA_DIRS
 
-            ${glib}/bin/gsettings "$@"
-          '';
-        };
+          ${glib}/bin/gsettings "$@"
+        '';
       in
       [
         arc-theme
