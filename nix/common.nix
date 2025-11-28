@@ -145,7 +145,7 @@
     ripgrep
     unstable.ruff
     rustup
-    scaleway-cli
+    unstable.scaleway-cli
     shellcheck
     shfmt
     solo2-cli
