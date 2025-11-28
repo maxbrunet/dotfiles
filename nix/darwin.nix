@@ -66,24 +66,19 @@ in
   homebrew.casks = [
     "alacritty"
     "android-file-transfer"
-    # https://chromium.googlesource.com/chromium/src/+/main/docs/mac_arm64.md
-    {
-      name = "ungoogled-chromium";
-      args = {
-        no_quarantine = true;
-      };
-    }
     "gimp"
-    # https://librewolf.net/docs/faq/#why-is-librewolf-marked-as-broken
     {
       name = "librewolf";
       args = {
+        # https://librewolf.net/docs/faq/#why-is-librewolf-marked-as-broken
+        # https://codeberg.org/librewolf/issues/issues/2664
         no_quarantine = true;
       };
     }
     "localsend/localsend/localsend"
     "podman-desktop"
     "thunderbird"
+    "ungoogled-chromium"
     "wireshark-app"
   ];
   homebrew.masApps = {
