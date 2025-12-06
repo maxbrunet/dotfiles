@@ -18,7 +18,7 @@
     unstable.delve
     direnv
     docker-credential-helpers
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     dos2unix
     unstable.egctl
     fd
@@ -44,7 +44,7 @@
     jq
     jsonnet-bundler
     jsonnet-language-server
-    kube3d
+    k3d
     kubecolor
     kubectl
     kubectl-explore
@@ -62,19 +62,16 @@
     kubelogin
     kubelogin-oidc
     kubernetes-helm
-    # Until v5.7.0 is available in stable channel
-    # https://github.com/kubernetes-sigs/kustomize/pull/5859
-    unstable.kustomize
+    kustomize
     lazygit
     lua-language-server
     marksman
     mods
     neovim
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nmap
     nodePackages.prettier
-    nodePackages.ts-node
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server

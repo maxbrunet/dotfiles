@@ -39,7 +39,6 @@ in
   '';
 
   environment.pathsToLink = [
-    "/libexec"
     "/share/fzf-tab"
     "/share/zsh-autosuggestions"
     "/share/zsh-syntax-highlighting"
@@ -56,6 +55,7 @@ in
     PDM_NO_BINARY = "ruff,uv";
     PIP_NO_BINARY = "ruff,uv";
     POETRY_INSTALLER_NO_BINARY = "ruff,uv";
+    SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/gcr/ssh";
     XDG_CURRENT_DESKTOP = "sway";
   };
 
@@ -181,8 +181,6 @@ in
     allowUnfree = true;
   };
 
-  programs.adb.enable = true;
-
   programs.git.enable = true;
 
   programs.gnupg.agent.enable = true;
@@ -213,7 +211,7 @@ in
         gsettings-wrapped
         imv
         libappindicator
-        libsForQt5.breeze-gtk
+        nordic
         numix-icon-theme
         numix-icon-theme-circle
         sway-contrib.grimshot
@@ -225,8 +223,7 @@ in
         wofi
       ];
     extraSessionCommands = ''
-      eval "$(gnome-keyring-daemon --start)"
-      export SSH_AUTH_SOCK
+      gnome-keyring-daemon --start
     '';
   };
 
@@ -253,17 +250,18 @@ in
   # For dnscrypt-proxy: https://wiki.archlinux.org/title/ConnMan#/etc/resolv.conf
   systemd.services.connman.serviceConfig.RuntimeDirectory = "connman";
 
-  services.dnscrypt-proxy2.enable = true;
+  services.dnscrypt-proxy.enable = true;
 
   services.fwupd.enable = true;
 
+  services.gnome.gcr-ssh-agent.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   services.gvfs.enable = true;
 
-  services.logind.extraConfig = ''
-    RuntimeDirectorySize=20%
-  '';
+  services.logind.settings.Login = {
+    RuntimeDirectorySize = "20%";
+  };
 
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplip ];
@@ -297,7 +295,6 @@ in
   users.users.maxime = {
     isNormalUser = true;
     extraGroups = [
-      "adbusers"
       "input"
       "lp"
       "scanner"
@@ -314,6 +311,8 @@ in
   virtualisation.podman.defaultNetwork.settings = {
     dns_enabled = true;
   };
+
+  xdg.icons.fallbackCursorThemes = [ "Nordic-cursors" ];
 
   xdg.mime = rec {
     defaultApplications = {

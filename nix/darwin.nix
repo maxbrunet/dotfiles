@@ -85,6 +85,9 @@ in
     Amphetamine = 937984704;
   };
 
+  networking.applicationFirewall.enable = true;
+  networking.applicationFirewall.blockAllIncoming = true;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -104,8 +107,6 @@ in
 
   security.pam.services.sudo_local.reattach = true;
   security.pam.services.sudo_local.touchIdAuth = true;
-
-  system.defaults.alf.globalstate = 2; # blocks
 
   system.primaryUser = "maxime";
 

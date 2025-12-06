@@ -88,7 +88,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $ws1 "1 "
+set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
 set $ws4 "4 "
@@ -240,12 +240,12 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Arc-Dark'
     gsettings set $gnome-schema icon-theme 'Numix-Circle'
-    gsettings set $gnome-schema cursor-theme 'breeze_cursors'
+    gsettings set $gnome-schema cursor-theme 'Nordic-cursors'
     gsettings set $gnome-schema font-name 'Noto Sans 11'
 }
 
 # https://github.com/NixOS/nixpkgs/issues/22652#issuecomment-890512607
-seat * xcursor_theme breeze_cursors
+seat * xcursor_theme Nordic-cursors
 
 # startup
 exec swayidle -w \

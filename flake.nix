@@ -2,16 +2,16 @@
   description = "My NixOS configuration: A Mix of Nix and Max";
 
   inputs = {
-    nixos.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.11.0";
     disko.inputs.nixpkgs.follows = "nixos";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
@@ -91,10 +91,10 @@
         );
       };
       overlayNixOSUnstable = final: prev: {
-        unstable = nixos-unstable.legacyPackages.${prev.system};
+        unstable = nixos-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
       };
       overlayNixpkgsUnstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
       };
       baseModules = [
         {
