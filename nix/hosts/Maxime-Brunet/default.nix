@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     argocd-vault-plugin
+    tuple
   ];
 
   # The default Nix build user group ID was changed from 30000 to 350.
@@ -10,8 +11,4 @@
   # management tools without a complete uninstallation and reinstallation
   # of Nix.
   ids.gids.nixbld = 30000;
-
-  homebrew.casks = [
-    "tuple"
-  ];
 }

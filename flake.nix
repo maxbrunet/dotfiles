@@ -71,6 +71,7 @@
     }@attrs:
     let
       overlayPkgs = final: prev: {
+        tuple = prev.callPackage ./nix/pkgs/tuple { };
         zsh-completions = (
           prev.zsh-completions.overrideAttrs {
             version = "HEAD";

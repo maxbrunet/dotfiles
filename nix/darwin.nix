@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   common = import ./common.nix { inherit pkgs; };
@@ -98,6 +98,12 @@ in
   nix.gc.options = "--delete-older-than 30d";
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "tuple"
+    ];
 
   programs.zsh.enable = true;
   # Managed by oh-my-zsh
