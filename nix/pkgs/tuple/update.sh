@@ -1,45 +1,36 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -i bash --pure -p cacert curl jq nix
+#! nix-shell -i bash --pure -p cacert curl jq nix xq-xml
 # shellcheck shell=bash
 
 set -euo pipefail
 
 cd "$(readlink -e "$(dirname "${BASH_SOURCE[0]}")")"
 
-# We assume the 1st redirection is always https://tuple.app/download/mac -> https://production.tuple.app/downloads/latest
-# to read the location header of the 2nd one and avoid downloading the archive.
-# Another other option would be to follow the redirections all the way (which
-# would download the archive) and output %{url_effective}.
-DARWIN_URL="$(
+# Ensure pager is unset for xq
+unset PAGER
+
+DARWIN_DATA="$(
   curl \
-    --fail \
-    --silent \
-    --show-error \
-    --output=/dev/null \
-    --write-out='%header{location}' \
-    https://production.tuple.app/downloads/latest
-)"
-
-DARWIN_VERSION_RE='/tuple-([0-9]+\.[0-9]+\.[0-9]+)-.+\.zip$'
-if [[ "${DARWIN_URL}" =~ ${DARWIN_VERSION_RE} ]]; then
-  DARWIN_VERSION="${BASH_REMATCH[1]}"
-else
-  printf 'Failed to extract darwin version from URL %s with regex %s\n' "${DARWIN_URL}" "${DARWIN_VERSION_RE}" >&2
-  exit 1
-fi
-
-LINUX_DATA=$(
-  curl -L \
     --fail-with-body \
     --silent \
     --show-error \
-    --header "Accept: application/vnd.github+json" \
-    --header "X-GitHub-Api-Version: 2022-11-28" \
-    https://api.github.com/repos/tupleapp/linux-release/releases/latest
-)
+    https://d32ifkf9k9ezcg.cloudfront.net/production/sparkle/appcast.xml
+)"
 
+LINUX_DATA="$(
+  curl \
+    --fail-with-body \
+    --silent \
+    --show-error \
+    --header='Accept: application/vnd.github+json' \
+    --header='X-GitHub-Api-Version: 2022-11-28' \
+    https://api.github.com/repos/tupleapp/linux-release/releases/latest
+)"
+
+DARWIN_VERSION="$(xq --xpath '//rss/channel/item[1]/sparkle:shortVersionString' <<<"${DARWIN_DATA}")"
 LINUX_VERSION="$(jq --raw-output '.tag_name | ltrimstr("v") | gsub("_"; "-")' <<<"${LINUX_DATA}")"
 
+DARWIN_URL="$(xq --xpath '//rss/channel/item[1]/enclosure/@url' <<<"${DARWIN_DATA}")"
 AARCH64_LINUX_URL="$(jq --raw-output '.assets[] | select(.name == "tuple-arm64") | .browser_download_url' <<<"${LINUX_DATA}")"
 X86_64_LINUX_URL="$(jq --raw-output '.assets[] | select(.name == "tuple-x64") | .browser_download_url' <<<"${LINUX_DATA}")"
 
