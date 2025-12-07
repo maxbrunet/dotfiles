@@ -7,7 +7,7 @@ in
   environment.interactiveShellInit = ''
     # Set DOCKER_HOST and DOCKER_SOCK environment variables
     eval "$(
-      /opt/homebrew/bin/podman system connection list --format='{{if .Default}}{{.URI}}{{end -}}' \
+      ${pkgs.podman}/bin/podman system connection list --format='{{if .Default}}{{.URI}}{{end -}}' \
         | ruby -r uri -e '
           uri = URI.parse(ARGF.read)
 
@@ -38,11 +38,12 @@ in
   environment.systemPackages =
     common.packages
     ++ (with pkgs; [
+      alacritty
       coreutils-prefixed
       (linkFarm "docker-compat" [
         {
           name = "bin/docker";
-          path = "/opt/homebrew/bin/podman";
+          path = "${podman}/bin/podman";
         }
       ])
       findutils
@@ -53,9 +54,15 @@ in
       gnupg
       gnused
       gnutar
+      librewolf
+      localsend
       netcat-gnu
       pinentry_mac
+      podman
+      podman-desktop
+      thunderbird
       unixtools.watch
+      wireshark
     ]);
 
   fonts.packages = with pkgs; [
@@ -64,22 +71,8 @@ in
 
   homebrew.enable = true;
   homebrew.casks = [
-    "alacritty"
-    "android-file-transfer"
     "gimp"
-    {
-      name = "librewolf";
-      args = {
-        # https://librewolf.net/docs/faq/#why-is-librewolf-marked-as-broken
-        # https://codeberg.org/librewolf/issues/issues/2664
-        no_quarantine = true;
-      };
-    }
-    "localsend/localsend/localsend"
-    "podman-desktop"
-    "thunderbird"
     "ungoogled-chromium"
-    "wireshark-app"
   ];
   homebrew.masApps = {
     Amphetamine = 937984704;
