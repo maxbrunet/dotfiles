@@ -112,8 +112,8 @@ in
     defaultFonts = {
       emoji = [
         "Noto Color Emoji"
-        "Font Awesome 6 Free"
-        "Font Awesome 6 Brands"
+        "Font Awesome 7 Free"
+        "Font Awesome 7 Brands"
         "Symbols Nerd Font"
       ];
       monospace = [
