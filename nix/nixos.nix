@@ -151,6 +151,10 @@ in
   hardware.sane.extraBackends = [ pkgs.hplip ];
 
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_MESSAGES = "en_US.UTF-8";
+    LC_TIME = "en_DK.UTF-8"; # ISO 8601 format
+  };
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

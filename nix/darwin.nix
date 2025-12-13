@@ -112,6 +112,46 @@ in
   security.pam.services.sudo_local.reattach = true;
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.defaults.CustomUserPreferences = {
+    "com.apple.HIToolbox" = {
+      AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keylayout.US";
+      AppleEnabledInputSources = [
+        {
+          "Bundle ID" = "com.apple.CharacterPaletteIM";
+          InputSourceKind = "Non Keyboard Input Method";
+        }
+        {
+          "Bundle ID" = "com.apple.PressAndHold";
+          InputSourceKind = "Non Keyboard Input Method";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 0;
+          "KeyboardLayout Name" = "U.S.";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 15000;
+          "KeyboardLayout Name" = "USInternational-PC";
+        }
+      ];
+    };
+    NSGlobalDomain = {
+      AppleLanguages = [
+        "en-US"
+        "en-CA"
+        "en"
+        "es-UY"
+        "es-AR"
+        "es"
+        "fr-FR"
+        "fr-CA"
+        "fr"
+      ];
+      AppleLocale = "en_US@rg=dkzzzz"; # Denmark region
+    };
+  };
+
   system.primaryUser = "maxime";
 
   # Used by home-manager
