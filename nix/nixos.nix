@@ -243,6 +243,16 @@ in
   services.automatic-timezoned.enable = true;
   # Always running unstable as maintainer
   services.automatic-timezoned.package = pkgs.unstable.automatic-timezoned;
+  # https://github.com/NixOS/nixpkgs/pull/470359
+  systemd.services = {
+    automatic-timezoned = {
+      after = [ "multi-user.target" ];
+      wantedBy = lib.mkForce [ "multi-user.target" ];
+    };
+    automatic-timezoned-geoclue-agent = {
+      wantedBy = lib.mkForce [ ];
+    };
+  };
 
   services.avahi.enable = true;
 
