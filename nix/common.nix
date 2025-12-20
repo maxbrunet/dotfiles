@@ -112,32 +112,6 @@
         pythonImportsCheck = prev.pythonImportsCheck ++ map (pkg: pkg.pythonImportsCheck) backends;
       })
     )
-    (
-      let
-        inherit (python3Packages) python-lsp-server;
-        unpropagatePylsp =
-          pkg:
-          pkg.overridePythonAttrs (prev: {
-            build-system = (prev.build-system or [ ]) ++ [ python-lsp-server ];
-            dependencies = lib.remove python-lsp-server prev.dependencies;
-          });
-        plugins = map unpropagatePylsp (
-          with python3Packages;
-          [
-            pylsp-mypy
-          ]
-        );
-      in
-      python-lsp-server.overridePythonAttrs (prev: {
-        dependencies = prev.dependencies ++ plugins;
-        disabledTests = prev.disabledTests ++ [
-          "test_autoimport_code_actions_and_completions_for_notebook_document"
-          "test_notebook_document__did_open"
-          "test_notebook_document__did_change"
-        ];
-        pythonImportsCheck = prev.pythonImportsCheck ++ map (pkg: pkg.pythonImportsCheck) plugins;
-      })
-    )
     regctl
     ripgrep
     unstable.ruff
@@ -156,6 +130,7 @@
     tfswitch
     tmux
     tree
+    unstable.ty
     urlscan
     unstable.uv
     wget
