@@ -204,7 +204,7 @@ require("lazy").setup({
   },
   {
     "olimorris/codecompanion.nvim",
-    version = "17.33.0",
+    version = "18.2.1",
     enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     cmd = {
       "CodeCompanion",
