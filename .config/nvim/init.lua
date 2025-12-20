@@ -85,12 +85,12 @@ require("lazy").setup({
         "lua_ls",
         "marksman",
         "nixd",
-        "pylsp",
         "ruff",
         "rust_analyzer",
         "terraformls",
         "tflint",
         "ts_ls",
+        "ty",
         "yamlls",
       },
       config = {
@@ -105,22 +105,6 @@ require("lazy").setup({
             },
           },
         },
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pylsp_mypy = {
-                  overrides = {
-                    "--python-executable=" .. vim.fn.exepath("python"),
-                    "--warn-unreachable",
-                    true,
-                  },
-                  strict = true,
-                },
-              },
-            },
-          },
-        }
       },
     },
   },

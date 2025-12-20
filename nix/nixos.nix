@@ -52,9 +52,8 @@ in
     NIXOS_OZONE_WL = "1";
     # To ensure ruff and uv are always built from source (e.g. pre-commit)
     # https://github.com/NixOS/nixpkgs/issues/142383#issuecomment-1481800175
-    PDM_NO_BINARY = "ruff,uv";
-    PIP_NO_BINARY = "ruff,uv";
-    POETRY_INSTALLER_NO_BINARY = "ruff,uv";
+    PIP_NO_BINARY = "ruff,ty,uv";
+    POETRY_INSTALLER_NO_BINARY = "ruff,ty,uv";
     SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/gcr/ssh";
     XDG_CURRENT_DESKTOP = "sway";
   };
