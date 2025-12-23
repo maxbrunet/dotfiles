@@ -39,6 +39,7 @@ in
     common.packages
     ++ (with pkgs; [
       alacritty
+      unstable.caffeine
       coreutils-prefixed
       (linkFarm "docker-compat" [
         {
@@ -70,16 +71,12 @@ in
   ];
 
   homebrew.enable = true;
-  homebrew.brews = [ "mas" ];
   homebrew.casks = [
     # https://github.com/NixOS/nixpkgs/issues/411189
     "gimp"
     # https://github.com/NixOS/nixpkgs/issues/247855
     "ungoogled-chromium"
   ];
-  homebrew.masApps = {
-    Amphetamine = 937984704;
-  };
   # idempotent because taps are managed declaratively via nix-homebrew
   homebrew.onActivation.upgrade = true;
 
