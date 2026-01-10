@@ -75,7 +75,12 @@ in
       librewolf
       gcc
       gimp
-      gnome-calculator
+      (gnome-calculator.overrideAttrs (prev: {
+        # https://github.com/NixOS/nixpkgs/pull/476875
+        buildInputs = prev.buildInputs ++ [
+          glib-networking
+        ];
+      }))
       gnumake
       libreoffice
       libsecret
