@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   common = import ./common.nix { inherit pkgs; };
@@ -82,6 +87,12 @@ in
 
   networking.applicationFirewall.enable = true;
   networking.applicationFirewall.blockAllIncoming = true;
+  networking.dns = [ "127.0.0.1" ]; # dnscrypt-proxy
+  # Discovered with `networksetup -listallnetworkservices`
+  networking.knownNetworkServices = [
+    "Wi-Fi"
+    "Thunderbolt Bridge"
+  ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -108,6 +119,26 @@ in
 
   security.pam.services.sudo_local.reattach = true;
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  services.dnscrypt-proxy.enable = true;
+  services.dnscrypt-proxy.settings =
+    lib.recursiveUpdate
+      # Upstream defaults
+      (lib.importTOML "${config.services.dnscrypt-proxy.package}/etc/dnscrypt-proxy/dnscrypt-proxy.toml")
+      {
+        log_file = "/dev/stderr";
+        use_syslog = false;
+        sources = {
+          public-resolvers = {
+            cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
+          };
+          relays = {
+            cache_file = "/var/lib/dnscrypt-proxy/relays.md";
+          };
+        };
+      };
+  # https://github.com/nix-darwin/nix-darwin/issues/1408
+  launchd.daemons.dnscrypt-proxy.serviceConfig.UserName = lib.mkForce null;
 
   system.defaults.CustomUserPreferences = {
     "com.apple.HIToolbox" = {
