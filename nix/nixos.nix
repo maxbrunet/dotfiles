@@ -186,10 +186,6 @@ in
     "flakes"
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   programs.git.enable = true;
 
   programs.gnupg.agent.enable = true;
@@ -305,6 +301,9 @@ in
   services.tumbler.enable = true;
 
   services.upower.enable = true;
+
+  # https://github.com/NixOS/nixpkgs/issues/349572
+  systemd.enableStrictShellChecks = true;
 
   # Delegate cpuset to user slice: https://github.com/k3d-io/k3d/issues/1082
   systemd.services."user@".serviceConfig = {
