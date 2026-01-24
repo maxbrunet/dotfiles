@@ -130,10 +130,10 @@ in
         use_syslog = false;
         sources = {
           public-resolvers = {
-            cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
+            cache_file = "${config.users.users._dnscrypt-proxy.home}/public-resolvers.md";
           };
           relays = {
-            cache_file = "/var/lib/dnscrypt-proxy/relays.md";
+            cache_file = "${config.users.users._dnscrypt-proxy.home}/relays.md";
           };
         };
       };
