@@ -60,7 +60,8 @@ in
       gnupg
       gnused
       gnutar
-      librewolf
+      # https://hydra.nixos.org/build/320743126
+      unstable.librewolf
       localsend
       netcat-gnu
       pinentry_mac
