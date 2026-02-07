@@ -191,10 +191,14 @@ require("lazy").setup({
     },
     opts = {
       provider = "cohere",
-      auto_suggestions_provider = "cohere",
       providers = {
         cohere = {
-          model = "command-a-03-2025",
+          __inherited_from = "openai",
+          api_key_name = "CO_API_KEY",
+          endpoint = "https://api.cohere.ai/compatibility/v1",
+          model = "command-a-reasoning-08-2025",
+          context_window = 288000,
+          tokenizer_id = "https://storage.googleapis.com/cohere-public/tokenizers/command-a-reasoning-08-2025.json",
           extra_request_body = {
             max_tokens = 8192,
           },
@@ -264,7 +268,7 @@ require("lazy").setup({
               },
               schema = {
                 model = {
-                  default = "command-a-03-2025",
+                  default = "command-a-reasoning-08-2025",
                 },
               },
             })
