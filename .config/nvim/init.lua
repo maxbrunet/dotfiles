@@ -244,30 +244,32 @@ require("lazy").setup({
     },
     opts = {
       adapters = {
-        cohere = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            name = "cohere",
-            formatted_name = "Cohere",
-            env = {
-              url = "https://api.cohere.ai/compatibility",
-              api_key = CO_API_KEY,
-            },
-            handlers = {
-              -- overwrite setup to remove unsupported stream_options
-              setup = function(self)
-                if self.opts and self.opts.stream then
-                  self.parameters.stream = true
-                end
-                return true
-              end,
-            },
-            schema = {
-              model = {
-                default = "command-a-03-2025",
+        http = {
+          cohere = function()
+            return require("codecompanion.adapters.http").extend("openai_compatible", {
+              name = "cohere",
+              formatted_name = "Cohere",
+              env = {
+                url = "https://api.cohere.ai/compatibility",
+                api_key = CO_API_KEY,
               },
-            },
-          })
-        end,
+              handlers = {
+                -- overwrite setup to remove unsupported stream_options
+                setup = function(self)
+                  if self.opts and self.opts.stream then
+                    self.parameters.stream = true
+                  end
+                  return true
+                end,
+              },
+              schema = {
+                model = {
+                  default = "command-a-03-2025",
+                },
+              },
+            })
+          end,
+        },
       },
       display = {
         action_palette = {
@@ -277,7 +279,7 @@ require("lazy").setup({
           start_in_insert_mode = true,
         },
       },
-      strategies = {
+      interactions = {
         chat = {
           adapter = "cohere",
         },
