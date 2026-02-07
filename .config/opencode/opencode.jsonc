@@ -1,0 +1,62 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "model": "cohere/command-a-03-2025",
+    },
+    "plan": {
+      "model": "cohere/command-a-reasoning-08-2025",
+    },
+    "general": {
+      "model": "cohere/command-a-reasoning-08-2025",
+    },
+    "compaction": {
+      "model": "cohere/command-r-plus-08-2024",
+    },
+    "title": {
+      "model": "cohere/command-r-08-2024",
+    },
+    "summary": {
+      "model": "cohere/command-r-plus-08-2024",
+    },
+  },
+  "autoupdate": false,
+  "mcp": {
+    "tavily": {
+      "type": "remote",
+      "url": "https://mcp.tavily.com/mcp/",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer {env:TAVILY_API_KEY}",
+      },
+    },
+  },
+  "provider": {
+    "cohere": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Cohere",
+      "options": {
+        "baseURL": "https://api.cohere.com/compatibility/v1",
+        "apiKey": "{env:CO_API_KEY}",
+      },
+      "models": {
+        "command-a-03-2025": {
+          "name": "Command A 03-2025",
+        },
+        "command-a-reasoning-08-2025": {
+          "name": "Command A Reasoning 08-2025",
+        },
+        "command-r7b-12-2024": {
+          "name": "Command R7B 12-2024",
+        },
+        "command-r-08-2024": {
+          "name": "Command R 04-2024",
+        },
+        "command-r-plus-08-2024": {
+          "name": "Command R+ 04-2024",
+        },
+      },
+    },
+  },
+  "theme": "system",
+}

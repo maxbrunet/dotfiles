@@ -88,6 +88,9 @@ in
       onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
       source = ../.config/nvim;
     };
+    "opencode/opencode.jsonc" = {
+      source = ../.config/opencode/opencode.jsonc;
+    };
     pypoetry = {
       source = ../.config/pypoetry;
     };

@@ -86,6 +86,7 @@
     nodePackages.yaml-language-server
     nodejs
     oci-cli
+    unstable.opencode
     perl
     pnpm
     podman-compose
