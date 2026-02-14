@@ -185,7 +185,7 @@ require("lazy").setup({
           api_key_name = "CO_API_KEY",
           endpoint = "https://api.cohere.ai/compatibility/v1",
           model = "command-a-reasoning-08-2025",
-          context_window = 288000,
+          context_window = 256000,
           tokenizer_id = "https://storage.googleapis.com/cohere-public/tokenizers/command-a-reasoning-08-2025.json",
           extra_request_body = {
             max_tokens = 8192,
