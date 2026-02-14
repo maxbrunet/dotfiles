@@ -63,6 +63,9 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 # kubecolor
 export KUBECOLOR_PRESET='pre-0.0.21-dark'
 
+# opencode
+OPENCODE_DISABLE_LSP_DOWNLOAD='true'
+
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'
 ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"

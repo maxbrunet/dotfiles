@@ -1,5 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "cohere/command-a-reasoning-08-2025",
+  "small_model": "cohere/command-r-08-2024",
   "agent": {
     "build": {
       "model": "cohere/command-a-03-2025",
@@ -21,6 +23,76 @@
     },
   },
   "autoupdate": false,
+  "disabled_providers": ["opencode"],
+  "lsp": {
+    "bash": {
+      "command": ["bash-language-server", "start"],
+      "extensions": [".sh", ".bash", ".zsh", ".ksh"],
+      "initialization": {
+        "bashIde": {
+          "shfmt": {
+            // Google-style
+            "binaryNextLine": true,
+            "caseIndent": true,
+          },
+        },
+      },
+    },
+    "buf": {
+      "command": ["buf", "lsp", "serve", "--log-format=text"],
+      "extensions": [".proto"],
+    },
+    "css": {
+      "command": ["vscode-css-language-server", "--stdio"],
+      "extensions": [".css", ".scss", ".less"],
+    },
+    "docker": {
+      "command": ["docker-langserver", "--stdio"],
+      "extensions": ["Dockerfile"],
+    },
+    "golangci-lint": {
+      "command": ["golangci-lint-langserver"],
+      "extensions": [".go"],
+      "initialization": {
+        "command": [
+          "golangci-lint",
+          "run",
+          // disable all output formats that might be enabled by the users .golangci.yml
+          "--output.text.path=",
+          "--output.tab.path=",
+          "--output.html.path=",
+          "--output.checkstyle.path=",
+          "--output.junit-xml.path=",
+          "--output.teamcity.path=",
+          "--output.sarif.path=",
+          // disable stats output
+          "--show-stats=false",
+          // enable JSON output to be used by the language server
+          "--output.json.path=stdout",
+        ],
+      },
+    },
+    "json": {
+      "command": ["vscode-json-language-server", "--stdio"],
+      "extensions": [".json", ".jsonc"],
+    },
+    "jsonnet": {
+      "command": ["jsonnet-language-server"],
+      "extensions": [".jsonnet", ".libsonnet"],
+    },
+    "marksman": {
+      "command": ["marksman", "server"],
+      "extensions": [".md", ".mdx"],
+    },
+    "ruff": {
+      "command": ["ruff", "server"],
+      "extensions": [".py"],
+    },
+    "tflint": {
+      "command": ["tflint", "--langserver"],
+      "extensions": [".tf"],
+    },
+  },
   "mcp": {
     "gopls": {
       "type": "local",
@@ -34,6 +106,28 @@
       "headers": {
         "Authorization": "Bearer {env:TAVILY_API_KEY}",
       },
+    },
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "git show *": "allow",
+      "git status *": "allow",
+      "ls *": "allow",
+    },
+    "tools": {
+      "*": "ask",
+      "gopls_go_diagnostics": "allow",
+      "gopls_go_file_context": "allow",
+      "gopls_go_package_api": "allow",
+      "gopls_go_search": "allow",
+      "gopls_go_symbol_references": "allow",
+      "gopls_go_vulncheck": "allow",
+      "gopls_go_workspace": "allow",
+      "tavily_tavily_extract": "allow",
+      "tavily_tavily_search": "allow",
     },
   },
   "provider": {
