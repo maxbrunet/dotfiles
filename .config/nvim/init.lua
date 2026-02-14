@@ -190,7 +190,7 @@ require("lazy").setup({
       { "MeanderingProgrammer/render-markdown.nvim" },
     },
     opts = {
-      provider = "cohere",
+      provider = "opencode",
       providers = {
         cohere = {
           __inherited_from = "openai",

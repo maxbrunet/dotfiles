@@ -22,6 +22,11 @@
   },
   "autoupdate": false,
   "mcp": {
+    "gopls": {
+      "type": "local",
+      "command": ["gopls", "mcp"],
+      "enabled": true,
+    },
     "tavily": {
       "type": "remote",
       "url": "https://mcp.tavily.com/mcp/",
