@@ -2,8 +2,8 @@
 set -euo pipefail
 
 readonly DUNSTIFY_CONFIG=(
-  --appname='Audio Volume'
-  --replace='991049'
+  --app-name='Audio Volume'
+  --replace-id='991049'
   --urgency='low'
   --timeout='2000'
 )
@@ -36,7 +36,7 @@ function send_volume_notification {
   icon="$(get_volume_icon "${level}")"
 
   dunstify "${DUNSTIFY_CONFIG[@]}" \
-    --hints="int:value:${level}" \
+    --hint="int:value:${level}" \
     --icon="${icon}" \
     'Volume'
 }

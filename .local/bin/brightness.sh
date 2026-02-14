@@ -35,11 +35,11 @@ function send_brigthness_notification {
   icon="$(get_brightness_icon "${level}")"
 
   dunstify \
-    --appname='Display Brightness' \
-    --replace='991049' \
+    --app-name='Display Brightness' \
+    --replace-id='991049' \
     --urgency='low' \
     --timeout='2000' \
-    --hints="int:value:${level}" \
+    --hint="int:value:${level}" \
     --icon="${icon}" \
     'Brightness'
 }

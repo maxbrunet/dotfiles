@@ -138,8 +138,8 @@ in
               | while read -r file; do
                 profile="$(<"$file")"
                 dunstify \
-                  --appname='Platform Profile' \
-                  --replace='991049' \
+                  --app-name='Platform Profile' \
+                  --replace-id='991049' \
                   --urgency='low' \
                   --timeout='2000' \
                   --icon='cpu' \
