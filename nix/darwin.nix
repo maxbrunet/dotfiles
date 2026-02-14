@@ -135,6 +135,8 @@ in
       };
   # https://github.com/nix-darwin/nix-darwin/issues/1408
   launchd.daemons.dnscrypt-proxy.serviceConfig.UserName = lib.mkForce null;
+  # Fix "nix-darwin does not support changing the home directory of existing users.")",
+  users.users._dnscrypt-proxy.home = lib.mkForce "/private/var/lib/dnscrypt-proxy";
 
   system.defaults.CustomUserPreferences = {
     "com.apple.HIToolbox" = {
