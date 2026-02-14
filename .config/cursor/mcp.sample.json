@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "gopls": {
+      "type": "stdio",
+      "command": "gopls",
+      "args": ["mcp"]
+    },
+    "tavily": {
+      "url": "https://mcp.tavily.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${env:TAVILY_API_KEY}"
+      }
+    }
+  }
+}

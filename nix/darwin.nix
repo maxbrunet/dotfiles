@@ -106,12 +106,6 @@ in
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "tuple"
-    ];
-
   programs.zsh.enable = true;
   # Managed by oh-my-zsh
   programs.zsh.enableBashCompletion = false;

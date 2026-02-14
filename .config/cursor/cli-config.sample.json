@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Mcp(gopls:go_diagnostics)",
+      "Mcp(gopls:go_file_context)",
+      "Mcp(gopls:go_package_api)",
+      "Mcp(gopls:go_search)",
+      "Mcp(gopls:go_symbol_references)",
+      "Mcp(gopls:go_vulncheck)",
+      "Mcp(gopls:go_workspace)",
+      "Mcp(tavily:tavily_extract)",
+      "Mcp(tavily:tavily_search)",
+      "Shell(git log)",
+      "Shell(git diff)",
+      "Shell(git show)",
+      "Shell(git status)",
+      "Shell(ls)"
+    ],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": true
+  },
+  "hasChangedDefaultModel": false,
+  "network": {
+    "useHttp1ForAgent": false
+  },
+  "approvalMode": "allowlist",
+  "sandbox": {
+    "mode": "disabled",
+    "networkAccess": "allowlist"
+  },
+  "attribution": {
+    "attributeCommitsToAgent": false,
+    "attributePRsToAgent": false
+  }
+}

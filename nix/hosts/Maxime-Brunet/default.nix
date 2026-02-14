@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     argocd-vault-plugin
+    unstable.cursor-cli
     tuple
   ];
 

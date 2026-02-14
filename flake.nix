@@ -91,19 +91,29 @@
           }
         );
       };
-      overlayNixOSUnstable = final: prev: {
-        unstable = nixos-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
-      };
-      overlayNixpkgsUnstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (nixos.lib.getName pkg) [
+          "cursor-cli"
+          "tuple"
+        ];
+      unstableOverlayFrom =
+        source:
+        (final: prev: {
+          unstable = import source {
+            config = { inherit allowUnfreePredicate; };
+            localSystem = { inherit (prev.stdenv.hostPlatform) system; };
+          };
+        });
+      configureNixpkgs = unstable: {
+        nixpkgs.config = { inherit allowUnfreePredicate; };
+        nixpkgs.overlays = [
+          (unstableOverlayFrom unstable)
+          overlayPkgs
+        ];
       };
       baseModules = [
-        {
-          nixpkgs.overlays = [
-            overlayNixOSUnstable
-            overlayPkgs
-          ];
-        }
+        (configureNixpkgs nixos-unstable)
         ./nix/nixos.nix
         disko.nixosModules.disko
         # Disable Disko config as it uses device names, we prefer the robustness of UUIDs.
@@ -150,12 +160,7 @@
         Maxime-Brunet = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            {
-              nixpkgs.overlays = [
-                overlayNixpkgsUnstable
-                overlayPkgs
-              ];
-            }
+            (configureNixpkgs nixpkgs-unstable)
             ./nix/darwin.nix
             ./nix/hosts/Maxime-Brunet
             home-manager.darwinModules.home-manager
