@@ -60,6 +60,7 @@ in
       gnupg
       gnused
       gnutar
+      # https://hydra.nixos.org/job/nixpkgs/nixpkgs-25.11-darwin/librewolf-unwrapped.aarch64-darwin
       # https://hydra.nixos.org/build/320743126
       unstable.librewolf
       localsend
