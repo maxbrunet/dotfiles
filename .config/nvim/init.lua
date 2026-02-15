@@ -185,6 +185,7 @@ require("lazy").setup({
           args = { "acp" },
           env = {
             CO_API_KEY = CO_API_KEY,
+            TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
           },
         },
       },
