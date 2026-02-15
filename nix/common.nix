@@ -13,6 +13,19 @@
     bottom
     buf
     cmake
+    (unstable.crush.overrideAttrs {
+      vendorHash =
+        if stdenv.isDarwin then
+          # nixpkgs-unstable
+          "sha256-leZEtdujfyyLfaTnJ3IetYDlnIKn8cxj/MWZHtjFk5g="
+        else
+          # nixos-unstable
+          "sha256-5UfE/wL4lbmc2RgIcD/zKr7bPeQtfmyYF3VBvV18OQc=";
+      patches = [
+        # https://github.com/charmbracelet/crush/pull/2229
+        ./patches/crush/0001-allow-disabling-standalone-SSE-stream.patch
+      ];
+    })
     (d2.overrideAttrs {
       patches = [
         (fetchpatch2 {

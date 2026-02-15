@@ -1,0 +1,89 @@
+From 19fa0ba7ea18ba32fce766f12c0eaafbf0d16b19 Mon Sep 17 00:00:00 2001
+From: Maxime Brunet <max@brnt.mx>
+Date: Sun, 15 Feb 2026 15:43:54 -0300
+Subject: [PATCH] fix(mcp): allow disabling standalone SSE stream
+
+---
+ go.mod                           | 4 ++--
+ go.sum                           | 8 ++++----
+ internal/agent/tools/mcp/init.go | 5 +++--
+ internal/config/config.go        | 2 ++
+ 4 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index 7672d9c5ab..c975130076 100644
+--- a/go.mod
++++ b/go.mod
+@@ -45,7 +45,7 @@ require (
+ 	github.com/jordanella/go-ansi-paintbrush v0.0.0-20240728195301-b7ad996ecf3d
+ 	github.com/lucasb-eyer/go-colorful v1.3.0
+ 	github.com/mattn/go-isatty v0.0.20
+-	github.com/modelcontextprotocol/go-sdk v1.2.0
++	github.com/modelcontextprotocol/go-sdk v1.3.0
+ 	github.com/ncruces/go-sqlite3 v0.30.5
+ 	github.com/nxadm/tail v1.4.11
+ 	github.com/openai/openai-go/v2 v2.7.1
+@@ -120,7 +120,7 @@ require (
+ 	github.com/goccy/go-yaml v1.19.2 // indirect
+ 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+ 	github.com/google/go-cmp v0.7.0 // indirect
+-	github.com/google/jsonschema-go v0.3.0 // indirect
++	github.com/google/jsonschema-go v0.4.2 // indirect
+ 	github.com/google/s2a-go v0.1.9 // indirect
+ 	github.com/googleapis/enterprise-certificate-proxy v0.3.7 // indirect
+ 	github.com/googleapis/gax-go/v2 v2.15.0 // indirect
+diff --git a/go.sum b/go.sum
+index 81b47ce591..05ece5d65c 100644
+--- a/go.sum
++++ b/go.sum
+@@ -194,8 +194,8 @@ github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6
+ github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+ github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+ github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+-github.com/google/jsonschema-go v0.3.0 h1:6AH2TxVNtk3IlvkkhjrtbUc4S8AvO0Xii0DxIygDg+Q=
+-github.com/google/jsonschema-go v0.3.0/go.mod h1:r5quNTdLOYEz95Ru18zA0ydNbBuYoo9tgaYcxEYhJVE=
++github.com/google/jsonschema-go v0.4.2 h1:tmrUohrwoLZZS/P3x7ex0WAVknEkBZM46iALbcqoRA8=
++github.com/google/jsonschema-go v0.4.2/go.mod h1:r5quNTdLOYEz95Ru18zA0ydNbBuYoo9tgaYcxEYhJVE=
+ github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e h1:ijClszYn+mADRFY17kjQEVQ1XRhq2/JR1M3sGqeJoxs=
+ github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e/go.mod h1:boTsfXsheKC2y+lKOCMpSfarhxDeIzfZG1jqGcPl3cA=
+ github.com/google/s2a-go v0.1.9 h1:LGD7gtMgezd8a/Xak7mEWL0PjoTQFvpRudN895yqKW0=
+@@ -263,8 +263,8 @@ github.com/microcosm-cc/bluemonday v1.0.27 h1:MpEUotklkwCSLeH+Qdx1VJgNqLlpY2KXwX
+ github.com/microcosm-cc/bluemonday v1.0.27/go.mod h1:jFi9vgW+H7c3V0lb6nR74Ib/DIB5OBs92Dimizgw2cA=
+ github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
+ github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
+-github.com/modelcontextprotocol/go-sdk v1.2.0 h1:Y23co09300CEk8iZ/tMxIX1dVmKZkzoSBZOpJwUnc/s=
+-github.com/modelcontextprotocol/go-sdk v1.2.0/go.mod h1:6fM3LCm3yV7pAs8isnKLn07oKtB0MP9LHd3DfAcKw10=
++github.com/modelcontextprotocol/go-sdk v1.3.0 h1:gMfZkv3DzQF5q/DcQePo5rahEY+sguyPfXDfNBcT0Zs=
++github.com/modelcontextprotocol/go-sdk v1.3.0/go.mod h1:AnQ//Qc6+4nIyyrB4cxBU7UW9VibK4iOZBeyP/rF1IE=
+ github.com/muesli/cancelreader v0.2.2 h1:3I4Kt4BQjOR54NavqnDogx/MIoWBFa0StPA8ELUXHmA=
+ github.com/muesli/cancelreader v0.2.2/go.mod h1:3XuTXfFS2VjM+HTLZY9Ak0l6eUKfijIfMUZ4EgX0QYo=
+ github.com/muesli/mango v0.1.0 h1:DZQK45d2gGbql1arsYA4vfg4d7I9Hfx5rX/GCmzsAvI=
+diff --git a/internal/agent/tools/mcp/init.go b/internal/agent/tools/mcp/init.go
+index f8cfe0ce84..8099f2f60e 100644
+--- a/internal/agent/tools/mcp/init.go
++++ b/internal/agent/tools/mcp/init.go
+@@ -422,8 +422,9 @@ func createTransport(ctx context.Context, m config.MCPConfig, resolver config.Va
+ 			},
+ 		}
+ 		return &mcp.StreamableClientTransport{
+-			Endpoint:   m.URL,
+-			HTTPClient: client,
++			Endpoint:             m.URL,
++			HTTPClient:           client,
++			DisableStandaloneSSE: m.DisableStandaloneSSE,
+ 		}, nil
+ 	case config.MCPSSE:
+ 		if strings.TrimSpace(m.URL) == "" {
+diff --git a/internal/config/config.go b/internal/config/config.go
+index 626fbe3274..8459e8dc49 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -183,6 +183,8 @@ type MCPConfig struct {
+ 
+ 	// TODO: maybe make it possible to get the value from the env
+ 	Headers map[string]string `json:"headers,omitempty" jsonschema:"description=HTTP headers for HTTP/SSE MCP servers"`
++
++	DisableStandaloneSSE bool `json:"disable_standalone_sse" jsonschema:"description=(HTTP only) Whether the client establishes a standalone SSE stream for receiving server-initiated messages,default=false"`
+ }
+ 
+ type LSPConfig struct {

@@ -94,6 +94,7 @@
       allowUnfreePredicate =
         pkg:
         builtins.elem (nixos.lib.getName pkg) [
+          "crush"
           "cursor-cli"
           "tuple"
         ];
