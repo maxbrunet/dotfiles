@@ -179,6 +179,15 @@ require("lazy").setup({
     },
     opts = {
       provider = "opencode",
+      acp_providers = {
+        ["opencode"] = {
+          command = "opencode",
+          args = { "acp" },
+          env = {
+            CO_API_KEY = CO_API_KEY,
+          },
+        },
+      },
       providers = {
         cohere = {
           __inherited_from = "openai",
