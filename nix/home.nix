@@ -51,6 +51,9 @@ in
     "base16/shell" = {
       source = base16-shell;
     };
+    "nvim/plugins" = {
+      source = import ./nvim/plugins.nix { inherit pkgs; };
+    };
     "oh-my-zsh" = {
       source = oh-my-zsh;
     };
@@ -88,7 +91,6 @@ in
       source = ../.config/npm;
     };
     nvim = {
-      onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
       source = ../.config/nvim;
     };
     "opencode/opencode.jsonc" = {

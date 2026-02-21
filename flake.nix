@@ -14,7 +14,14 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-
+    astronvim-src = {
+      url = "github:AstroNvim/AstroNvim/v5.3.15";
+      flake = false;
+    };
+    astrocommunity-src = {
+      url = "github:AstroNvim/astrocommunity/v19.0.0";
+      flake = false;
+    };
     base16-alacritty = {
       url = "github:tinted-theming/base16-alacritty";
       flake = false;
@@ -25,6 +32,10 @@
     };
     base16-shell = {
       url = "github:tinted-theming/base16-shell";
+      flake = false;
+    };
+    d2-vim-src = {
+      url = "github:terrastruct/d2-vim";
       flake = false;
     };
     homebrew-core = {
@@ -66,12 +77,36 @@
       homebrew-cask,
       homebrew-core,
       homebrew-localsend,
+      astronvim-src,
+      astrocommunity-src,
+      d2-vim-src,
       zsh-completions-src,
       ...
     }@attrs:
     let
       overlayPkgs = final: prev: {
         tuple = prev.callPackage ./nix/pkgs/tuple { };
+        vimPlugins = prev.vimPlugins.extend (
+          _: _: {
+            AstroNvim = prev.vimUtils.buildVimPlugin {
+              pname = "AstroNvim";
+              version = "source";
+              src = astronvim-src;
+              doCheck = false;
+            };
+            astrocommunity = prev.vimUtils.buildVimPlugin {
+              pname = "astrocommunity";
+              version = "source";
+              src = astrocommunity-src;
+              doCheck = false;
+            };
+            "d2-vim" = prev.vimUtils.buildVimPlugin {
+              pname = "d2-vim";
+              version = "source";
+              src = d2-vim-src;
+            };
+          }
+        );
         zsh-completions = (
           prev.zsh-completions.overrideAttrs {
             version = "HEAD";
@@ -210,5 +245,8 @@
           ];
         };
       };
+
+      # Expose for scripts/update-nvim-plugins.sh
+      inherit astronvim-src;
     };
 }

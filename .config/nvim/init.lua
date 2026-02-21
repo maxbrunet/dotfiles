@@ -1,30 +1,16 @@
-local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- validate that lazy is available
-if not pcall(require, "lazy") then
-  -- stylua: ignore
-  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
-  vim.fn.getchar()
+local plugins = vim.fn.stdpath("data") .. "/plugins"
+if vim.fn.isdirectory(plugins) == 0 then
+  vim.api.nvim_echo({ { "plugins not found at " .. plugins .. "\n", "ErrorMsg" } }, true, {})
   vim.cmd.quit()
 end
 
-local dotfiles_dir_tbl = {
-  ["Darwin"] = "/etc/nix-darwin",
-  ["Linux"] = "/etc/nixos",
-}
-local sysname = vim.loop.os_uname().sysname
+vim.opt.rtp:prepend(plugins .. "/lazy.nvim")
 
 local CO_API_KEY = os.getenv("CO_API_KEY")
 
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
-    version = "5.3.15",
     import = "astronvim.plugins",
   },
   {
@@ -143,7 +129,6 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    version = "19.0.0",
     { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.git.gitlinker-nvim" },
     { import = "astrocommunity.pack.helm" },
@@ -162,20 +147,11 @@ require("lazy").setup({
     },
   },
   {
-    -- Made a direct dependency, because when avante.nvim is disabled, its hash
-    -- disappears from the lock file.
-    "MeanderingProgrammer/render-markdown.nvim",
-    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
-  },
-  {
-    "Kaiser-Yang/blink-cmp-avante",
-    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
-  },
-  {
     "yetone/avante.nvim",
     enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
     dependencies = {
       { "MeanderingProgrammer/render-markdown.nvim" },
+      { "Kaiser-Yang/blink-cmp-avante" },
     },
     opts = {
       provider = "opencode",
@@ -257,26 +233,29 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-        "bash",
-        "dockerfile",
-        "go",
-        "gomod",
-        "hcl",
-        "hjson",
-        "json",
-        "jsonnet",
-        "nix",
-        "proto",
-        "python",
-        "regex",
-        "rust",
-        "terraform",
-        "toml",
-        "typescript",
-      })
+      opts.ensure_installed = {}
+      opts.auto_install = false
     end,
   },
 } --[[@as LazySpec]], {
-  lockfile = dotfiles_dir_tbl[sysname] .. "/.config/nvim/lazy-lock.json",
+  dev = {
+    -- Use the plugins installed by home-manager
+    path = plugins,
+    -- They should all come from there
+    patterns = { "." },
+    -- No fallback to Git if non-existent
+    fallback = false,
+  },
+  checker = { enabled = false },
+  install = { missing = false },
+  readme = { enabled = false },
+  -- Nix-built treesitter grammars live in a single merged directory;
+  -- add it to the rtp so nvim-treesitter can find the parser/*.so files.
+  performance = {
+    rtp = {
+      paths = { plugins .. "/nvim-treesitter-grammars" },
+    },
+  },
+  -- Disable lockfile
+  lockfile = "/dev/null",
 } --[[@as LazyConfig]])
