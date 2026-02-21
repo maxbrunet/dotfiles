@@ -1,5 +1,39 @@
 {
   "nodes": {
+    "astrocommunity-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747813999,
+        "narHash": "sha256-Spl93+rGlQ22S2pG+T5vIBsEJfEnCglkJFYRJcadRKs=",
+        "owner": "AstroNvim",
+        "repo": "astrocommunity",
+        "rev": "71e8b6626651ef7bf24b929e3b7a8192f182139f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AstroNvim",
+        "ref": "v19.0.0",
+        "repo": "astrocommunity",
+        "type": "github"
+      }
+    },
+    "astronvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769431389,
+        "narHash": "sha256-3sMBH1Dr4F7RHYXmXK3QREUcPnFBjxlxWhPSRW7lh/w=",
+        "owner": "AstroNvim",
+        "repo": "AstroNvim",
+        "rev": "7fd58328e2bc91d5cad606ee48fdf924fca6ea3e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AstroNvim",
+        "ref": "v5.3.15",
+        "repo": "AstroNvim",
+        "type": "github"
+      }
+    },
     "base16-alacritty": {
       "flake": false,
       "locked": {
@@ -62,6 +96,22 @@
         "owner": "Homebrew",
         "ref": "5.0.12",
         "repo": "brew",
+        "type": "github"
+      }
+    },
+    "d2-vim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755566748,
+        "narHash": "sha256-HmDQfOIoSV93wqRe7O4FPuHEmAxwoP1+Ut+sKhB62jA=",
+        "owner": "terrastruct",
+        "repo": "d2-vim",
+        "rev": "cb3eb7fcb1a2d45c4304bf2e91077d787b724a39",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terrastruct",
+        "repo": "d2-vim",
         "type": "github"
       }
     },
@@ -307,9 +357,12 @@
     },
     "root": {
       "inputs": {
+        "astrocommunity-src": "astrocommunity-src",
+        "astronvim-src": "astronvim-src",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "d2-vim-src": "d2-vim-src",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",
