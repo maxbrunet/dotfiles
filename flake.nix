@@ -35,10 +35,6 @@
       url = "github:tinted-theming/base16-shell";
       flake = false;
     };
-    d2-vim-src = {
-      url = "github:terrastruct/d2-vim";
-      flake = false;
-    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -80,7 +76,6 @@
       homebrew-localsend,
       astronvim-src,
       astrocommunity-src,
-      d2-vim-src,
       zsh-completions-src,
       ...
     }@attrs:
@@ -100,11 +95,6 @@
               version = "source";
               src = astrocommunity-src;
               doCheck = false;
-            };
-            "d2-vim" = prev.vimUtils.buildVimPlugin {
-              pname = "d2-vim";
-              version = "source";
-              src = d2-vim-src;
             };
           }
         );

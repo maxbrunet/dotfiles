@@ -39,7 +39,7 @@ let
     # User plugins from nixpkgs
     "avante.nvim" = pkgs.unstable.vimPlugins.avante-nvim;
     "blink-cmp-avante" = vimPlugins.blink-cmp-avante;
-    "d2-vim" = vimPlugins.d2-vim;
+    "d2-vim" = pkgs.unstable.vimPlugins.d2-vim;
     "gitlinker.nvim" = vimPlugins.gitlinker-nvim;
     "gruvbox.nvim" = vimPlugins.gruvbox-nvim;
     "render-markdown.nvim" = vimPlugins.render-markdown-nvim;
