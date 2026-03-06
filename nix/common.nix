@@ -31,7 +31,9 @@
       ];
     })
     delta
-    unstable.delve
+    (unstable.delve.override {
+      buildGoModule = buildGo126Module;
+    })
     direnv
     docker-credential-helpers
     dockerfile-language-server
@@ -43,7 +45,7 @@
     gdu
     git-lfs
     gh
-    unstable.go_1_25
+    unstable.go_1_26
     go-jsonnet
     unstable.golangci-lint
     golangci-lint-langserver
