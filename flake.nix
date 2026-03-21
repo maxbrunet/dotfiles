@@ -15,6 +15,10 @@
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    agentic-nvim-src = {
+      url = "github:carlos-algms/agentic.nvim";
+      flake = false;
+    };
     astronvim-src = {
       url = "github:AstroNvim/AstroNvim/v5.3.15";
       flake = false;
@@ -74,6 +78,7 @@
       homebrew-cask,
       homebrew-core,
       homebrew-localsend,
+      agentic-nvim-src,
       astronvim-src,
       astrocommunity-src,
       zsh-completions-src,
@@ -84,15 +89,39 @@
         tuple = prev.callPackage ./nix/pkgs/tuple { };
         vimPlugins = prev.vimPlugins.extend (
           _: _: {
+            agentic-nvim = prev.vimUtils.buildVimPlugin {
+              pname = "agentic-nvim";
+              version = agentic-nvim-src.rev;
+              src = agentic-nvim-src;
+              # Only functional when required from the tests runner.
+              # Build the skip list dynamically from lua/agentic/**/*.test.lua
+              # by converting each test file path into its Lua module name.
+              nvimSkipModules = builtins.sort builtins.lessThan (
+                map
+                  (
+                    path:
+                    builtins.replaceStrings [ "/" ] [ "." ] (
+                      prev.lib.strings.removeSuffix ".lua" (
+                        prev.lib.strings.removePrefix "${agentic-nvim-src}/lua/" (toString path)
+                      )
+                    )
+                  )
+                  (
+                    prev.lib.filter (path: prev.lib.strings.hasSuffix ".test.lua" (toString path)) (
+                      prev.lib.filesystem.listFilesRecursive "${agentic-nvim-src}/lua/agentic"
+                    )
+                  )
+              );
+            };
             AstroNvim = prev.vimUtils.buildVimPlugin {
               pname = "AstroNvim";
-              version = "source";
+              version = astronvim-src.rev;
               src = astronvim-src;
               doCheck = false;
             };
             astrocommunity = prev.vimUtils.buildVimPlugin {
               pname = "astrocommunity";
-              version = "source";
+              version = astrocommunity-src.rev;
               src = astrocommunity-src;
               doCheck = false;
             };

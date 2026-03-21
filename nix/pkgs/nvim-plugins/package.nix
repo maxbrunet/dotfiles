@@ -37,11 +37,11 @@ let
     "blink.cmp" = vimPlugins.blink-cmp; # needs pre-built Rust native lib
 
     # User plugins from nixpkgs
-    "avante.nvim" = pkgs.unstable.vimPlugins.avante-nvim;
-    "blink-cmp-avante" = vimPlugins.blink-cmp-avante;
+    "agentic.nvim" = vimPlugins.agentic-nvim;
     "d2-vim" = pkgs.unstable.vimPlugins.d2-vim;
     "gitlinker.nvim" = vimPlugins.gitlinker-nvim;
     "gruvbox.nvim" = vimPlugins.gruvbox-nvim;
+    "img-clip.nvim" = vimPlugins.img-clip-nvim;
     "render-markdown.nvim" = vimPlugins.render-markdown-nvim;
     "schemastore.nvim" = vimPlugins.SchemaStore-nvim;
     "smartcolumn.nvim" = vimPlugins.smartcolumn-nvim;

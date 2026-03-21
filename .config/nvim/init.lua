@@ -129,12 +129,80 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocommunity",
-    { import = "astrocommunity.completion.avante-nvim" },
     { import = "astrocommunity.git.gitlinker-nvim" },
+    { import = "astrocommunity.media.img-clip-nvim" },
     { import = "astrocommunity.pack.helm" },
     { import = "astrocommunity.pack.json" },
     { import = "astrocommunity.pack.yaml" },
     { import = "astrocommunity.recipes.picker-lsp-mappings" },
+  },
+  {
+    "carlos-algms/agentic.nvim",
+    dependencies = {
+      {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          opts.autocmds = opts.autocmds or {}
+          opts.autocmds.agentic_input = {
+            {
+              event = "FileType",
+              pattern = "AgenticInput",
+              callback = function(args)
+                vim.b[args.buf].completion = false
+              end,
+            },
+          }
+
+          local prefix = "<Leader>a"
+          local icon = require("astroui").get_icon("Agentic", 1, true)
+          local common_mappings = {
+            ["<CR>"] = { function() require("agentic").toggle() end, "Toggle chat" },
+            ["n"] = { function() require("agentic").new_session() end, "New session" },
+            ["r"] = { function() require("agentic").restore_session() end, "Restore session" },
+          }
+          local mode_mappings = {
+            n = vim.tbl_extend("force", common_mappings, {
+              ["a"] = { function() require("agentic").add_selection_or_file_to_context() end, "Add file to context" },
+              ["d"] = { function() require("agentic").add_current_line_diagnostics() end, "Add current line diagnostic to context" },
+              ["D"] = { function() require("agentic").add_buffer_diagnostics() end, "Add all buffer diagnostics to context" },
+            }),
+            v = vim.tbl_extend("force", common_mappings, {
+              ["a"] = { function() require("agentic").add_selection_or_file_to_context() end, "Add selection to context" },
+            }),
+          }
+          for mode, mappings in pairs(mode_mappings) do
+            opts.mappings[mode][prefix] = { desc = icon .. "Agentic" }
+            for suffix, spec in pairs(mappings) do
+              opts.mappings[mode][prefix .. suffix] = { spec[1], desc = spec[2] }
+            end
+          end
+        end,
+      },
+      { "AstroNvim/astroui", opts = { icons = { Agentic = "" } } },
+      { "hakonharnes/img-clip.nvim" },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = { file_types = { "AgenticChat" } },
+      },
+    },
+    opts = {
+      provider = vim.loop.os_uname().sysname == "Darwin" and "cursor-acp" or "opencode-acp",
+      acp_providers = {
+        ["cursor-acp"] = {
+          env = {
+            HOME = os.getenv("HOME"),
+            PATH = os.getenv("PATH"),
+            TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
+          },
+        },
+        ["opencode-acp"] = {
+          env = {
+            CO_API_KEY = CO_API_KEY,
+            TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
+          },
+        },
+      },
+    },
   },
   { "ellisonleao/gruvbox.nvim" },
   { "terrastruct/d2-vim", ft = { "d2" } },
@@ -144,40 +212,6 @@ require("lazy").setup({
     opts = {
       disabled_filetypes = { "snacks_dashboard", "neo-tree", "help", "text" },
       scope = "window",
-    },
-  },
-  {
-    "yetone/avante.nvim",
-    enabled = CO_API_KEY ~= nil and CO_API_KEY ~= "",
-    dependencies = {
-      { "MeanderingProgrammer/render-markdown.nvim" },
-      { "Kaiser-Yang/blink-cmp-avante" },
-    },
-    opts = {
-      provider = "opencode",
-      acp_providers = {
-        ["opencode"] = {
-          command = "opencode",
-          args = { "acp" },
-          env = {
-            CO_API_KEY = CO_API_KEY,
-            TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
-          },
-        },
-      },
-      providers = {
-        cohere = {
-          __inherited_from = "openai",
-          api_key_name = "CO_API_KEY",
-          endpoint = "https://api.cohere.ai/compatibility/v1",
-          model = "command-a-reasoning-08-2025",
-          context_window = 256000,
-          tokenizer_id = "https://storage.googleapis.com/cohere-public/tokenizers/command-a-reasoning-08-2025.json",
-          extra_request_body = {
-            max_tokens = 8192,
-          },
-        },
-      },
     },
   },
   {

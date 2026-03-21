@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "agentic-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774036934,
+        "narHash": "sha256-mnTrph9JMbMVhI6MyCrgUB31TYQQMgx+8RNnfgC6JS4=",
+        "owner": "carlos-algms",
+        "repo": "agentic.nvim",
+        "rev": "4813e54e8310b3a917d4b094d016b200b27e6d3a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "carlos-algms",
+        "repo": "agentic.nvim",
+        "type": "github"
+      }
+    },
     "astrocommunity-src": {
       "flake": false,
       "locked": {
@@ -341,6 +357,7 @@
     },
     "root": {
       "inputs": {
+        "agentic-nvim-src": "agentic-nvim-src",
         "astrocommunity-src": "astrocommunity-src",
         "astronvim-src": "astronvim-src",
         "base16-alacritty": "base16-alacritty",

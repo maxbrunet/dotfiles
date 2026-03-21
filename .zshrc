@@ -145,7 +145,6 @@ compdef kubecolor='kubectl'
 
 # Aliases
 alias argocd='KUBECTL_EXTERNAL_DIFF="git --no-pager diff --no-index" argocd'
-alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 alias tree='tree -C -F'
 alias nvimrc="${EDITOR} ${DOTFILES_DIR}/.config/nvim/init.lua"
 alias zshrc="${EDITOR} ${DOTFILES_DIR}/.zshrc"
