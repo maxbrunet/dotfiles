@@ -260,6 +260,12 @@ in
   services.blueman.enable = true;
 
   services.connman.enable = true;
+  services.connman.package = pkgs.connman.override {
+    readline = pkgs.readline.overrideAttrs {
+      # https://github.com/NixOS/nixpkgs/issues/480215
+      inherit (pkgs.unstable.readline) upstreamPatches;
+    };
+  };
   services.connman.extraFlags = [ "--nodnsproxy" ]; # For dnscrypt-proxy
   services.connman.wifi.backend = "iwd";
   # For dnscrypt-proxy: https://wiki.archlinux.org/title/ConnMan#/etc/resolv.conf

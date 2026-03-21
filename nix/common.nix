@@ -14,7 +14,6 @@
     buf
     cmake
     (unstable.crush.overrideAttrs {
-      vendorHash = "sha256-NgJJCUvvDbe0+IWZ+N8TNZ3pTJIOxGzYBIwosdf6dkU=";
       patches = [
         # https://github.com/charmbracelet/crush/pull/2229
         ./patches/crush/0001-allow-disabling-standalone-SSE-stream.patch
