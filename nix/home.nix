@@ -26,9 +26,6 @@ in
     ".librewolf/librewolf.overrides.cfg" = {
       source = ../.librewolf/librewolf.overrides.cfg;
     };
-    "Library/Application Support/mods/mods.yml" = lib.mkIf stdenv.isDarwin {
-      source = ../.config/mods/mods.yml;
-    };
   };
 
   programs.chromium.enable = true;
@@ -83,9 +80,6 @@ in
     };
     "gtk-4.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-4.0/settings.ini;
-    };
-    "mods/mods.yml" = lib.mkIf stdenv.isLinux {
-      source = ../.config/mods/mods.yml;
     };
     "npm" = {
       source = ../.config/npm;

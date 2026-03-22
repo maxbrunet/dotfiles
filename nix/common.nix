@@ -83,7 +83,6 @@
     lazygit
     lua-language-server
     marksman
-    mods
     neovim
     nixd
     nixfmt
