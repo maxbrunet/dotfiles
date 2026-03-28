@@ -14,7 +14,8 @@
       "Shell(git diff)",
       "Shell(git show)",
       "Shell(git status)",
-      "Shell(ls)"
+      "Shell(ls)",
+      "WebFetch(pkg.go.dev)"
     ],
     "deny": []
   },
