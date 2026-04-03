@@ -47,42 +47,6 @@ let
     "smartcolumn.nvim" = vimPlugins.smartcolumn-nvim;
   };
 
-  treesitterGrammars = {
-    "nvim-treesitter-grammars" = pkgs.symlinkJoin {
-      name = "nvim-treesitter-grammars";
-      paths =
-        let
-          p = vimPlugins.nvim-treesitter-parsers;
-        in
-        [
-          p.bash
-          p.dockerfile
-          p.go
-          p.gomod
-          p.hcl
-          p.helm
-          p.hjson
-          p.json
-          p.jsonnet
-          p.lua
-          p.markdown
-          p.markdown_inline
-          p.nix
-          p.proto
-          p.python
-          p.query
-          p.regex
-          p.rust
-          p.terraform
-          p.toml
-          p.typescript
-          p.vim
-          p.vimdoc
-          p.yaml
-        ];
-    };
-  };
-
-  allPlugins = astronvimDeps // userPlugins // treesitterGrammars;
+  allPlugins = astronvimDeps // userPlugins;
 in
 pkgs.linkFarm "nvim-plugins" (lib.mapAttrsToList (name: path: { inherit name path; }) allPlugins)

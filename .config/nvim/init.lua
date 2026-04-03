@@ -15,21 +15,35 @@ require("lazy").setup({
   },
   {
     "AstroNvim/astrocore",
-    ---@type AstroCoreOpts
-    opts = {
-      options = {
-        opt = {
-          cmdheight = 1, -- Always display cmd line
-          foldcolumn = "0", -- Hide foldcolumn
-          guicursor = "", -- Disable Nvim GUI cursor
-          mouse = "", -- Disable mouse support
-          number = false, -- Hide numberline
-          relativenumber = false, -- Hide relative numberline
-          signcolumn = "auto", -- Show sign column when used only
-          spell = true, -- Enable spell checking
+    init = function()
+      -- Expose nvim-treesitter's bundled queries on runtimepath.
+      vim.opt.rtp:prepend(plugins .. "/nvim-treesitter/runtime")
+    end,
+    ---@param _ LazyPlugin
+    ---@param opts AstroCoreOpts
+    ---@return AstroCoreOpts
+    opts = function(_, opts)
+      opts = require("astrocore").extend_tbl(opts, {
+        options = {
+          opt = {
+            cmdheight = 1,          -- Always display cmd line
+            foldcolumn = "0",       -- Hide foldcolumn
+            guicursor = "",         -- Disable Nvim GUI cursor
+            mouse = "",             -- Disable mouse support
+            number = false,         -- Hide numberline
+            relativenumber = false, -- Hide relative numberline
+            signcolumn = "auto",    -- Show sign column when used only
+            spell = true,           -- Enable spell checking
+          },
         },
-      },
-     }
+        treesitter = {
+          auto_install = false,
+        },
+      }) --[[@as AstroCoreOpts]]
+      -- Must be assigned directly so AstroNvim's list-extension logic doesn't keep defaults.
+      opts.treesitter.ensure_installed = {}
+      return opts
+    end,
   },
   {
     "AstroNvim/astrolsp",
@@ -60,7 +74,7 @@ require("lazy").setup({
         "bashls",
         "buf_ls",
         "cssls",
-        "dockerls",
+        "docker_language_server",
         "eslint",
         "golangci_lint_ls",
         "gopls",
@@ -146,6 +160,13 @@ require("lazy").setup({
           opts.autocmds.agentic_input = {
             {
               event = "FileType",
+              pattern = "AgenticChat",
+              callback = function(args)
+                vim.treesitter.start(args.buf, "markdown")
+              end,
+            },
+            {
+              event = "FileType",
               pattern = "AgenticInput",
               callback = function(args)
                 vim.b[args.buf].completion = false
@@ -182,7 +203,7 @@ require("lazy").setup({
       { "hakonharnes/img-clip.nvim" },
       {
         "MeanderingProgrammer/render-markdown.nvim",
-        opts = { file_types = { "AgenticChat" } },
+        opts = { file_types = { "markdown", "AgenticChat" } },
       },
     },
     opts = {
@@ -205,7 +226,7 @@ require("lazy").setup({
     },
   },
   { "ellisonleao/gruvbox.nvim" },
-  { "terrastruct/d2-vim", ft = { "d2" } },
+  { "terrastruct/d2-vim",      ft = { "d2" } },
   {
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
@@ -237,9 +258,9 @@ require("lazy").setup({
     end,
   },
   { "WhoIsSethDaniel/mason-tool-installer.nvim", enabled = false },
-  { "jay-babu/mason-null-ls.nvim", enabled = false },
-  { "williamboman/mason-lspconfig.nvim", enabled = false },
-  { "williamboman/mason.nvim", enabled = false },
+  { "jay-babu/mason-null-ls.nvim",               enabled = false },
+  { "mason-org/mason-lspconfig.nvim",            enabled = false },
+  { "mason-org/mason.nvim",                      enabled = false },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -262,17 +283,6 @@ require("lazy").setup({
         null_ls.builtins.formatting.prettier,
       }
       return opts
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    init = function()
-      -- Nix-built treesitter grammars
-      vim.opt.rtp:prepend(plugins .. "/nvim-treesitter-grammars")
-    end,
-    opts = function(_, opts)
-      opts.ensure_installed = {}
-      opts.auto_install = false
     end,
   },
 } --[[@as LazySpec]], {

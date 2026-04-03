@@ -2,15 +2,6 @@
 # Last updated: 2026-04-03
 { fetchFromGitHub }:
 {
-  "Comment.nvim" = {
-    version = "e30b7f2";
-    src = fetchFromGitHub {
-      owner = "numToStr";
-      repo = "Comment.nvim";
-      rev = "e30b7f2008e52442154b66f7c519bfd2f1e32acb";
-      hash = "sha256-h0kPue5Eqd5aeu4VoLH45pF0DmWWo1d8SnLICSQ63zc=";
-    };
-  };
   "LuaSnip" = {
     version = "v2.4.1";
     src = fetchFromGitHub {
@@ -21,30 +12,30 @@
     };
   };
   "aerial.nvim" = {
-    version = "v2.7.0";
+    version = "v3.1.0";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "aerial.nvim";
-      rev = "v2.7.0";
-      hash = "sha256-F+k9lbeqo/FGuU/lt86OMuA9CIlKGaQuVpGafPExBf4=";
+      rev = "v3.1.0";
+      hash = "sha256-ugzNA/+Z2ReIy/8ks9wHEtmpTwpr8qqVR0xemw+GrUc=";
     };
   };
   "astrocore" = {
-    version = "v2.1.2";
+    version = "v3.0.0";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astrocore";
-      rev = "v2.1.2";
-      hash = "sha256-hxJw7xMcSKV1vsf+WgdnD8udpckvJI9/jew11Gf5AUg=";
+      rev = "v3.0.0";
+      hash = "sha256-xo+B5zgyKLWHegF+J8evv4Zr7rwTjeLW8zlkoCIhH94=";
     };
   };
   "astrolsp" = {
-    version = "v3.2.1";
+    version = "v4.0.0";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astrolsp";
-      rev = "v3.2.1";
-      hash = "sha256-yihSqpqs8KqK0Vo0PG0b9KIGnfBA24nOZD+aONk5t1g=";
+      rev = "v4.0.0";
+      hash = "sha256-N8uwx9PpGey0itrvq/OKOEwtRxXfto0MQ5Tbb7Bnc8w=";
     };
   };
   "astrotheme" = {
@@ -57,12 +48,12 @@
     };
   };
   "astroui" = {
-    version = "v3.1.5";
+    version = "v4.0.0";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astroui";
-      rev = "v3.1.5";
-      hash = "sha256-4J3RXbPU6yiVApSFpXHu1M0IXhWpcQDHQkNYX+5Ltuw=";
+      rev = "v4.0.0";
+      hash = "sha256-290PxuIz8Pc1UWz6Huy0ZQH1CxGeoqN5x2U+VDCRBJc=";
     };
   };
   "better-escape.nvim" = {
@@ -77,7 +68,7 @@
   "blink.cmp" = {
     version = "v1.10.1";
     src = fetchFromGitHub {
-      owner = "Saghen";
+      owner = "saghen";
       repo = "blink.cmp";
       rev = "v1.10.1";
       hash = "sha256-y8f+bmPkb3M6DzcUkJMxd2woDLoBYslne7aB8A0ejCk=";
@@ -86,7 +77,7 @@
   "blink.compat" = {
     version = "v2.5.0";
     src = fetchFromGitHub {
-      owner = "Saghen";
+      owner = "saghen";
       repo = "blink.compat";
       rev = "v2.5.0";
       hash = "sha256-GluPgQ8EPH9XXsyLnw//sh1lcDEdcu3VbYQG4ns5JAE=";
@@ -111,12 +102,12 @@
     };
   };
   "gitsigns.nvim" = {
-    version = "v1.0.2";
+    version = "v2.1.0";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "v1.0.2";
-      hash = "sha256-qWusbKY+3d1dkW5oLYDyfSLdt1qFlJdDeXgFWqQ4hUI=";
+      rev = "v2.1.0";
+      hash = "sha256-ETVmrlUXmCiekjd68mY8657wg9CdQk/rPRv5ABO9pxk=";
     };
   };
   "guess-indent.nvim" = {
@@ -138,21 +129,21 @@
     };
   };
   "lazydev.nvim" = {
-    version = "v1.10.0";
+    version = "ff2cbcb";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "lazydev.nvim";
-      rev = "v1.10.0";
-      hash = "sha256-sqtdijEnUZrgp+4GKpetZmenA4hkFNHk/jw57y+25co=";
+      rev = "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d";
+      hash = "sha256-Tsg1wNdySi6nK00sq1qDBRkRRlpdMCXVToDJ1SiqnPQ=";
     };
   };
   "mason-lspconfig.nvim" = {
-    version = "v1.32.0";
+    version = "25f609e";
     src = fetchFromGitHub {
-      owner = "williamboman";
+      owner = "mason-org";
       repo = "mason-lspconfig.nvim";
-      rev = "v1.32.0";
-      hash = "sha256-+Rji3UH32QQZADqQhMcJpgmkwbDumKaBlZO6cqNvUGY=";
+      rev = "25f609e7fca78af7cede4f9fa3af8a94b1c4950b";
+      hash = "sha256-VjnN8NMXDjayF3whr2Oa5fQJmW18+798q9T4jFxAG3U=";
     };
   };
   "mason-null-ls.nvim" = {
@@ -185,19 +176,19 @@
   "mason.nvim" = {
     version = "v2.2.1";
     src = fetchFromGitHub {
-      owner = "williamboman";
+      owner = "mason-org";
       repo = "mason.nvim";
       rev = "v2.2.1";
       hash = "sha256-IeBKl+JOwRQqpdKQqO1v91/7qtUuro83+EXiSgoLgi4=";
     };
   };
   "mini.icons" = {
-    version = "v0.16.0";
+    version = "v0.17.0";
     src = fetchFromGitHub {
-      owner = "echasnovski";
+      owner = "nvim-mini";
       repo = "mini.icons";
-      rev = "v0.16.0";
-      hash = "sha256-/sdLtMOOGeVvFDBB9N4CyUHpGXtUi1ZJ9dIpvxZ9C4Q=";
+      rev = "v0.17.0";
+      hash = "sha256-yns7HZFklgkiXoQJheDRAAtmoKTW9g+hpT/gf5DzwAw=";
     };
   };
   "neo-tree.nvim" = {
@@ -209,22 +200,13 @@
       hash = "sha256-/TNl/IX81qr7Mcoy0dhF3bcsewXEnPSy2n+dm31eyyw=";
     };
   };
-  "neoconf.nvim" = {
-    version = "bbe36f4";
-    src = fetchFromGitHub {
-      owner = "folke";
-      repo = "neoconf.nvim";
-      rev = "bbe36f4d60ed096282f564ddae4e781e420a8270";
-      hash = "sha256-J4ot/eGfppKvB/TIBcC6B3MdUtH0cqkxZR+KNhxZZR0=";
-    };
-  };
   "none-ls.nvim" = {
-    version = "3c206df";
+    version = "c9317c2";
     src = fetchFromGitHub {
       owner = "nvimtools";
       repo = "none-ls.nvim";
-      rev = "3c206dfedf5f1385e9d29f85ffaec7874358592a";
-      hash = "sha256-WLRNPTttuB9M12hkpk5FVFmnvdwZpsBvIJnfSdhF0zw=";
+      rev = "c9317c2a8629d4e39e7cf47be74cb67f3ab37cda";
+      hash = "sha256-PmDYh9VqfpxNzIepTiNzXKrighUN9e6Ug5pCD3XCGd4=";
     };
   };
   "nui.nvim" = {
@@ -237,30 +219,30 @@
     };
   };
   "nvim-autopairs" = {
-    version = "c2a0dd0";
+    version = "59bce2e";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4";
-      hash = "sha256-8k/vGYktoFBX3kjOyn+VR49xmhFhNZbkaI8UmbPSYF4=";
+      rev = "59bce2eef357189c3305e25bc6dd2d138c1683f5";
+      hash = "sha256-0IqXpxKCzqVz6i9QajPYJ0FdfReHQBhehrvN89/8n6U=";
     };
   };
   "nvim-dap" = {
-    version = "085386b";
+    version = "4f5deb1";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-dap";
-      rev = "085386b9359ddf8d76ad89b98973b8e332dc5ba3";
-      hash = "sha256-GI7BCwZxzEJzwQzoM7AownvxhWyTvcHXrRE7bwZnNwg=";
+      rev = "4f5deb110d9ff8994d96c21df95e2271d11214f9";
+      hash = "sha256-H3LML3FgqvD4xI4IljAp2E3dxAdFx/As+nzjC+jPzyc=";
     };
   };
   "nvim-dap-ui" = {
-    version = "cf91d5e";
+    version = "f5b6673";
     src = fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-dap-ui";
-      rev = "cf91d5e2d07c72903d052f5207511bf7ecdb7122";
-      hash = "sha256-391zChjd6uAJycfXy1RG2Qt0OdCY3/WF9u0MWLtFZxA=";
+      rev = "f5b6673f374626515401c5bc51b005f784a4f252";
+      hash = "sha256-vK311E7N3woU6yE+2KR0425EPFaMzx78YubsmMGBws0=";
     };
   };
   "nvim-highlight-colors" = {
@@ -273,12 +255,12 @@
     };
   };
   "nvim-lspconfig" = {
-    version = "v2.1.0";
+    version = "v2.7.0";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "v2.1.0";
-      hash = "sha256-0Eg+IGW0RcKEmKmlvZIkDbWgXyJbV4MWcyxoOx6Uty4=";
+      rev = "v2.7.0";
+      hash = "sha256-+KwR8rOsKC6jz3suGTv1A6bhzh25cXi7Mm/ChlqIhrs=";
     };
   };
   "nvim-nio" = {
@@ -291,48 +273,30 @@
     };
   };
   "nvim-treesitter" = {
-    version = "42fc28b";
+    version = "c82bf96";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "42fc28ba918343ebfd5565147a42a26580579482";
-      hash = "sha256-CVs9FTdg3oKtRjz2YqwkMr0W5qYLGfVyxyhE3qnGYbI=";
+      rev = "c82bf96f0a773d85304feeb695e1e23b2207ac35";
+      hash = "sha256-FjX1ncba4/L+n3xFT570fjZ1PLi50VJtjBGXWH7bNOc=";
     };
   };
   "nvim-treesitter-textobjects" = {
-    version = "5ca4aaa";
+    version = "93d60a4";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "5ca4aaa6efdcc59be46b95a3e876300cfead05ef";
-      hash = "sha256-lf+AwSu96iKO1vWWU2D7jWHGfjXkbX9R2CX3gMZaD4M=";
+      rev = "93d60a475f0b08a8eceb99255863977d3a25f310";
+      hash = "sha256-H1tIn3XYJtLF1JvlUJvLtTScMdV/NHDFq+KZjBV4q1c=";
     };
   };
   "nvim-ts-autotag" = {
-    version = "db15f2e";
+    version = "8e1c0a3";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-ts-autotag";
-      rev = "db15f2e0df2f5db916e511e3fffb682ef2f6354f";
-      hash = "sha256-XajbH3R1ONStQyYK6xQBE1cfGk3Y6tP/Mh9Ch90aKCk=";
-    };
-  };
-  "nvim-ts-context-commentstring" = {
-    version = "1b212c2";
-    src = fetchFromGitHub {
-      owner = "JoosepAlviste";
-      repo = "nvim-ts-context-commentstring";
-      rev = "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f";
-      hash = "sha256-AjDM3+n4+lNBQi8P2Yrh0Ab06uYCndBQT9TX36rDbOM=";
-    };
-  };
-  "nvim-ufo" = {
-    version = "v1.5.0";
-    src = fetchFromGitHub {
-      owner = "kevinhwang91";
-      repo = "nvim-ufo";
-      rev = "v1.5.0";
-      hash = "sha256-iGQgpFP7jVpau9pSxNb5WNuGco5boTNBVp//nza3JWY=";
+      rev = "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595";
+      hash = "sha256-a6xnl1IyKLMEeaw3OIuwdNx10HFPYxExVuGWAhaim+M=";
     };
   };
   "nvim-window-picker" = {
@@ -353,15 +317,6 @@
       hash = "sha256-9Un7ekhBxcnmFE1xjCCFTZ7eqIbmXvQexpnhduAg4M0=";
     };
   };
-  "promise-async" = {
-    version = "v1.0.0";
-    src = fetchFromGitHub {
-      owner = "kevinhwang91";
-      repo = "promise-async";
-      rev = "v1.0.0";
-      hash = "sha256-V29QPg6q+0h8hKoTD8KWghdeWnb35NMGLwxIuuWXfqY=";
-    };
-  };
   "resession.nvim" = {
     version = "v1.2.1";
     src = fetchFromGitHub {
@@ -372,12 +327,12 @@
     };
   };
   "smart-splits.nvim" = {
-    version = "v1.9.1";
+    version = "1242676";
     src = fetchFromGitHub {
       owner = "mrjones2014";
       repo = "smart-splits.nvim";
-      rev = "v1.9.1";
-      hash = "sha256-fbU5mY9H70rA4C0rRq12O5u+p2rHpfoIbLBjHAhyBDs=";
+      rev = "12426763591f06b865c20990d8423345ea96d44f";
+      hash = "sha256-IIDUedURO9QI26v7vuKFJR/5w198lMDuCF1ChjPVWzY=";
     };
   };
   "snacks.nvim" = {
@@ -390,11 +345,11 @@
     };
   };
   "todo-comments.nvim" = {
-    version = "31e3c38";
+    version = "v1.5.0";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "31e3c38ce9b29781e4422fc0322eb0a21f4e8668";
+      rev = "v1.5.0";
       hash = "sha256-VGeIRfwQsHgSO89Pmn6yIP9na1F6mmYZx0HDLe9IKCQ=";
     };
   };
@@ -405,15 +360,6 @@
       repo = "toggleterm.nvim";
       rev = "v2.13.1";
       hash = "sha256-Xc3TZUA6glsuchignUSk4gLZs1IBvI+YnWeP1r+snbQ=";
-    };
-  };
-  "vim-illuminate" = {
-    version = "0d1e936";
-    src = fetchFromGitHub {
-      owner = "RRethy";
-      repo = "vim-illuminate";
-      rev = "0d1e93684da00ab7c057410fecfc24f434698898";
-      hash = "sha256-KqAJRCtDBG5xsvNsqkxoBdDckg02u4NBBreYQw7BphA=";
     };
   };
   "which-key.nvim" = {

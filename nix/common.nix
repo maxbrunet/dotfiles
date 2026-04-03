@@ -29,7 +29,7 @@
     })
     direnv
     docker-credential-helpers
-    dockerfile-language-server
+    docker-language-server
     dos2unix
     unstable.egctl
     fd
@@ -77,7 +77,7 @@
     lazygit
     lua-language-server
     marksman
-    neovim
+    unstable.neovim
     nixd
     nixfmt
     nmap
@@ -167,6 +167,7 @@
     tfswitch
     tmux
     tree
+    tree-sitter
     urlscan
     unstable.uv
     wget

@@ -11,6 +11,8 @@
 
 let
   inherit (pkgs) stdenv;
+  nvimPlugins = pkgs.callPackage ./pkgs/nvim-plugins { };
+  nvimTreesitterParsers = pkgs.callPackage ./pkgs/nvim-treesitter-parsers { };
 in
 {
   home.file = {
@@ -49,7 +51,11 @@ in
       source = base16-shell;
     };
     "nvim/plugins" = {
-      source = pkgs.callPackage ./pkgs/nvim-plugins { };
+      source = nvimPlugins;
+    };
+    "nvim/site/parser" = {
+      # nvim-treesitter detects installed parsers from stdpath("data")/site/parser.
+      source = "${nvimTreesitterParsers}/parser";
     };
     "oh-my-zsh" = {
       source = oh-my-zsh;

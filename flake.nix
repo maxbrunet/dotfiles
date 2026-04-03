@@ -20,11 +20,11 @@
       flake = false;
     };
     astronvim-src = {
-      url = "github:AstroNvim/AstroNvim/v5.3.15";
+      url = "github:AstroNvim/AstroNvim/v6.0.2";
       flake = false;
     };
     astrocommunity-src = {
-      url = "github:AstroNvim/astrocommunity/v19.0.0";
+      url = "github:AstroNvim/astrocommunity/v20.0.0";
       flake = false;
     };
     base16-alacritty = {

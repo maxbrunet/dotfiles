@@ -19,16 +19,16 @@
     "astrocommunity-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1747813999,
-        "narHash": "sha256-Spl93+rGlQ22S2pG+T5vIBsEJfEnCglkJFYRJcadRKs=",
+        "lastModified": 1775126682,
+        "narHash": "sha256-zZxiRUwCJsQSHcRxGwewxNoRIhSx/olNyjNYaWBlsH0=",
         "owner": "AstroNvim",
         "repo": "astrocommunity",
-        "rev": "71e8b6626651ef7bf24b929e3b7a8192f182139f",
+        "rev": "175a21dc270a2abd65b7059ddb7ff166212d1e0f",
         "type": "github"
       },
       "original": {
         "owner": "AstroNvim",
-        "ref": "v19.0.0",
+        "ref": "v20.0.0",
         "repo": "astrocommunity",
         "type": "github"
       }
@@ -36,16 +36,16 @@
     "astronvim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1769431389,
-        "narHash": "sha256-3sMBH1Dr4F7RHYXmXK3QREUcPnFBjxlxWhPSRW7lh/w=",
+        "lastModified": 1775058276,
+        "narHash": "sha256-4v0MfKx7uf59vtiHih5w/tOTbptt27MucU44GGVlOlI=",
         "owner": "AstroNvim",
         "repo": "AstroNvim",
-        "rev": "7fd58328e2bc91d5cad606ee48fdf924fca6ea3e",
+        "rev": "bf37390b310fc2e3a1c57b21362b525bbfe6eed4",
         "type": "github"
       },
       "original": {
         "owner": "AstroNvim",
-        "ref": "v5.3.15",
+        "ref": "v6.0.2",
         "repo": "AstroNvim",
         "type": "github"
       }
