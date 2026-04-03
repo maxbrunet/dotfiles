@@ -69,9 +69,6 @@ in
     "azure/config" = {
       source = ../.config/azure/config;
     };
-    "crush/crush.json" = {
-      source = ../.config/crush/crush.json;
-    };
     dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };

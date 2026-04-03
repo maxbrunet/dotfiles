@@ -150,7 +150,6 @@
         pkg:
         builtins.elem (nixos.lib.getName pkg) [
           "broadcom-bt-firmware"
-          "crush"
           "cursor-cli"
           "tuple"
         ];

@@ -13,12 +13,6 @@
     bottom
     buf
     cmake
-    (unstable.crush.overrideAttrs {
-      patches = [
-        # https://github.com/charmbracelet/crush/pull/2229
-        ./patches/crush/0001-allow-disabling-standalone-SSE-stream.patch
-      ];
-    })
     (d2.overrideAttrs {
       patches = [
         (fetchpatch2 {
