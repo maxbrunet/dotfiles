@@ -60,7 +60,7 @@
       flake = false;
     };
     zsh-completions-src = {
-      url = "github:zsh-users/zsh-completions";
+      url = "github:zsh-users/zsh-completions/0.36.0";
       flake = false;
     };
   };
@@ -137,9 +137,6 @@
                 _golang
                 _grpcurl
                 _node
-                _pre-commit
-                _ts-node
-                _tsc
               )
               install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
             '';

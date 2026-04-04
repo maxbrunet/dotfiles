@@ -99,7 +99,7 @@
         ]);
     }))
     popeye
-    pre-commit
+    unstable.prek
     pwgen
     python3
     (

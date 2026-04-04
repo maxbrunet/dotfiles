@@ -383,15 +383,16 @@
     "zsh-completions-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1775111951,
-        "narHash": "sha256-uUXYfT01l2v/w+jLLD91rtg6FIEfnl/lSfbf0PwGBZs=",
+        "lastModified": 1773068079,
+        "narHash": "sha256-XCSC7DyhfnxzKjtbdsu7/pyw8eoVLPdthEoFZ8rBAyo=",
         "owner": "zsh-users",
         "repo": "zsh-completions",
-        "rev": "959c0fa66513f575160c5b44b0fbf83a373a65d3",
+        "rev": "28c5bdcaf81bb89e56d0df8267d822c3b8aed9e0",
         "type": "github"
       },
       "original": {
         "owner": "zsh-users",
+        "ref": "0.36.0",
         "repo": "zsh-completions",
         "type": "github"
       }
