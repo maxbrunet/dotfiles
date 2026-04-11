@@ -35,6 +35,8 @@ let
 
     # Override astronvimDeps
     "blink.cmp" = vimPlugins.blink-cmp; # needs pre-built Rust native lib
+    # Keep queries aligned with the parsers.
+    "nvim-treesitter" = pkgs.unstable.vimPlugins.nvim-treesitter;
 
     # User plugins from nixpkgs
     "agentic.nvim" = vimPlugins.agentic-nvim;

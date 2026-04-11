@@ -2,6 +2,8 @@
   pname,
   version,
   src,
+  strictDeps,
+  __structuredAttrs,
   passthru,
   meta,
 
@@ -15,6 +17,8 @@ stdenv.mkDerivation {
     pname
     version
     src
+    strictDeps
+    __structuredAttrs
     passthru
     meta
     ;

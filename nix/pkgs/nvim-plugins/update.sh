@@ -20,6 +20,13 @@ function error {
 
 function parse_snapshot {
   luajit - "$1" <<EOF
+local stub_features = {
+  ["nvim-0.12"] = 1,
+}
+vim = { fn = {} }
+vim.fn.has = function(feature)
+  return stub_features[feature] or 0
+end
 local cjson = require("cjson")
 local snapshot = dofile(arg[1])
 for _, entry in ipairs(snapshot) do

@@ -187,7 +187,14 @@ require("lazy").setup({
       { "hakonharnes/img-clip.nvim" },
       {
         "MeanderingProgrammer/render-markdown.nvim",
-        opts = { file_types = { "markdown", "AgenticChat" } },
+        cmd = "RenderMarkdown",
+        ft = function()
+          local plugin = require("lazy.core.config").spec.plugins["render-markdown.nvim"]
+          local opts = require("lazy.core.plugin").values(plugin, "opts", false)
+          local default = require("render-markdown").default
+          opts.file_types = require("astrocore").list_insert_unique(opts.file_types or default.file_types, { "AgenticChat" })
+          return opts.file_types
+        end,
       },
     },
     opts = {

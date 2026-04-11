@@ -2,6 +2,8 @@
   pname,
   version,
   src,
+  strictDeps,
+  __structuredAttrs,
   passthru,
   meta,
 
@@ -13,6 +15,8 @@ stdenvNoCC.mkDerivation {
     pname
     version
     src
+    strictDeps
+    __structuredAttrs
     passthru
     meta
     ;

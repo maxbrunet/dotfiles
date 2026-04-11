@@ -3,7 +3,7 @@
 }:
 
 let
-  p = pkgs.vimPlugins.nvim-treesitter-parsers;
+  p = pkgs.unstable.vimPlugins.nvim-treesitter-parsers;
 in
 pkgs.symlinkJoin {
   name = "nvim-treesitter-parsers";

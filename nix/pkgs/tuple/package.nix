@@ -12,6 +12,9 @@ let
 
   pname = "tuple";
 
+  strictDeps = true;
+  __structuredAttrs = true;
+
   passthru = {
     updateScript = ./update.sh;
   };
@@ -33,6 +36,12 @@ let
   };
 in
 callPackage (if stdenvNoCC.hostPlatform.isDarwin then ./darwin.nix else ./linux.nix) {
-  inherit pname passthru meta;
+  inherit
+    pname
+    strictDeps
+    __structuredAttrs
+    passthru
+    meta
+    ;
   inherit (sources.${system} or (throw "Unsupported system: ${system}")) version src;
 }

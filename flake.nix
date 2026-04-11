@@ -20,7 +20,7 @@
       flake = false;
     };
     astronvim-src = {
-      url = "github:AstroNvim/AstroNvim/v6.0.2";
+      url = "github:AstroNvim/AstroNvim/v6.0.4";
       flake = false;
     };
     astrocommunity-src = {
@@ -86,6 +86,8 @@
     }@attrs:
     let
       overlayPkgs = final: prev: {
+        # https://github.com/NixOS/nixpkgs/issues/507531
+        direnv = prev.direnv.overrideAttrs { doCheck = !prev.stdenv.isDarwin; };
         tuple = prev.callPackage ./nix/pkgs/tuple { };
         vimPlugins = prev.vimPlugins.extend (
           _: _: {
