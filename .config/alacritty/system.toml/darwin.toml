@@ -16,3 +16,6 @@ mods = "Alt"
 chars = "\u001Bf"
 key = "Right"
 mods = "Alt"
+
+[window]
+option_as_alt = "Both"

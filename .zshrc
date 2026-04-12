@@ -66,12 +66,9 @@ export KUBECOLOR_PRESET='pre-0.0.21-dark'
 # opencode
 export OPENCODE_DISABLE_LSP_DOWNLOAD='true'
 
-# tmux plugin
-ZSH_TMUX_AUTOSTART='true'
-ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
-
-# https://github.com/gpakosz/.tmux/blob/master/README.md#installation
-export TERM='xterm-256color'
+# zellij
+ZELLIJ_AUTO_ATTACH='true'
+ZELLIJ_AUTO_EXIT='true'
 
 # Theme to load
 ZSH_THEME='tjkirch'
@@ -79,7 +76,7 @@ ZSH_THEME='tjkirch'
 # Plugins
 plugins=(
   base16
-  tmux
+  zellij
   xdg-base-dir
   aws
   colored-man-pages
@@ -165,6 +162,8 @@ source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlight
 unset \
   DOTFILES_DIR \
   FZF_BASE \
+  ZELLIJ_AUTO_ATTACH \
+  ZELLIJ_AUTO_EXIT \
   ZSH \
   ZSH_CUSTOM \
   ZSH_THEME

@@ -4,7 +4,6 @@
   base16-alacritty,
   base16-fzf,
   base16-shell,
-  oh-my-tmux,
   oh-my-zsh,
   ...
 }:
@@ -102,12 +101,6 @@ in
     "tinted-theming/theme_name" = {
       text = "google-dark";
     };
-    "tmux/tmux.conf" = {
-      source = "${oh-my-tmux}/.tmux.conf";
-    };
-    "tmux/tmux.conf.local" = {
-      source = ../.config/tmux/tmux.conf.local;
-    };
     "uv" = lib.mkIf stdenv.isLinux {
       source = ../.config/uv;
     };
@@ -122,6 +115,9 @@ in
     };
     "xfce4/helpers.rc" = lib.mkIf stdenv.isLinux {
       source = ../.config/xfce4/helpers.rc;
+    };
+    "zellij" = {
+      source = ../.config/zellij;
     };
   };
 
