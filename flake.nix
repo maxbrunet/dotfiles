@@ -51,10 +51,6 @@
       url = "github:localsend/homebrew-localsend";
       flake = false;
     };
-    oh-my-tmux = {
-      url = "github:gpakosz/.tmux";
-      flake = false;
-    };
     oh-my-zsh = {
       url = "github:ohmyzsh/ohmyzsh";
       flake = false;

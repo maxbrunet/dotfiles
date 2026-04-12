@@ -1,6 +1,6 @@
 # My Awesome Dotfiles
 
-My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `tmux`, and [NixOS](https://nixos.org).
+My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `zellij`, and [NixOS](https://nixos.org).
 
 ![Screenshot](screenshot.png)
 

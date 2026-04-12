@@ -113,7 +113,6 @@ in
   programs.zsh.enableCompletion = false;
   programs.zsh.promptInit = "";
 
-  security.pam.services.sudo_local.reattach = true;
   security.pam.services.sudo_local.touchIdAuth = true;
 
   services.dnscrypt-proxy.enable = true;

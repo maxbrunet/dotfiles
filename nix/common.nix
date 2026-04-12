@@ -33,7 +33,6 @@
     dos2unix
     unstable.egctl
     fd
-    fpp
     fzf
     gdu
     git-lfs
@@ -139,14 +138,13 @@
     terraform-ls
     tflint
     tfswitch
-    tmux
     tree
     tree-sitter
     unstable.ty
-    urlscan
     unstable.uv
     wget
     yq-go
+    unstable.zellij
     zsh-autosuggestions
     zsh-completions
     zsh-fzf-tab
