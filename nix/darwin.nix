@@ -43,7 +43,7 @@ in
   environment.systemPackages =
     common.packages
     ++ (with pkgs; [
-      alacritty
+      alacritty-graphics
       unstable.caffeine
       coreutils-prefixed
       (linkFarm "docker-compat" [

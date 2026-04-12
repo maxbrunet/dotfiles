@@ -209,7 +209,7 @@ in
       in
       [
         arc-theme
-        alacritty
+        alacritty-graphics
         dunst
         gammastep
         gsettings-wrapped
