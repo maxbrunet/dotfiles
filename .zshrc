@@ -64,7 +64,7 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 export KUBECOLOR_PRESET='pre-0.0.21-dark'
 
 # opencode
-OPENCODE_DISABLE_LSP_DOWNLOAD='true'
+export OPENCODE_DISABLE_LSP_DOWNLOAD='true'
 
 # tmux plugin
 ZSH_TMUX_AUTOSTART='true'

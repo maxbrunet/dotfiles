@@ -184,7 +184,15 @@ require("lazy").setup({
         end,
       },
       { "AstroNvim/astroui", opts = { icons = { Agentic = "" } } },
-      { "hakonharnes/img-clip.nvim" },
+      {
+        "hakonharnes/img-clip.nvim",
+        opts = {
+          default = {
+            -- https://github.com/hakonharnes/img-clip.nvim/issues/133
+            drag_and_drop = { insert_mode = false },
+          },
+        },
+      },
       {
         "MeanderingProgrammer/render-markdown.nvim",
         cmd = "RenderMarkdown",
@@ -192,7 +200,9 @@ require("lazy").setup({
           local plugin = require("lazy.core.config").spec.plugins["render-markdown.nvim"]
           local opts = require("lazy.core.plugin").values(plugin, "opts", false)
           local default = require("render-markdown").default
-          opts.file_types = require("astrocore").list_insert_unique(opts.file_types or default.file_types, { "AgenticChat" })
+          opts.file_types = require("astrocore").list_insert_unique(
+            opts.file_types or default.file_types, { "AgenticChat" }
+          )
           return opts.file_types
         end,
       },
