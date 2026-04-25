@@ -1,19 +1,54 @@
 {
-  callPackage,
+  lib,
+  stdenv,
+  stdenvNoCC,
+  cacert,
   fetchurl,
   fetchzip,
-  lib,
-  stdenvNoCC,
+  makeWrapper,
 }:
 
 let
-  inherit (stdenvNoCC.hostPlatform) system;
+  inherit (stdenvNoCC.hostPlatform) isDarwin system;
   sources = import ./sources.nix { inherit fetchurl fetchzip; };
 
+  tupleStdenv = if isDarwin then stdenvNoCC else stdenv;
+in
+tupleStdenv.mkDerivation {
   pname = "tuple";
+
+  inherit (sources.${system} or (throw "Unsupported system: ${system}")) version src;
+
+  sourceRoot = lib.optionalString isDarwin ".";
 
   strictDeps = true;
   __structuredAttrs = true;
+
+  dontUnpack = !isDarwin;
+
+  nativeBuildInputs = lib.optionals (!isDarwin) [
+    makeWrapper
+  ];
+
+  installPhase =
+    if isDarwin then
+      ''
+        runHook preInstall
+        mkdir -p $out/Applications
+        cp -a $src $out/Applications/Tuple.app
+        runHook postInstall
+      ''
+    else
+      ''
+        runHook preInstall
+
+        install -Dm755 $src $out/libexec/tuple
+
+        makeWrapper $out/libexec/tuple $out/bin/tuple \
+          --set-default SSL_CERT_FILE ${cacert}/etc/ssl/certs/ca-bundle.crt
+
+        runHook postInstall
+      '';
 
   passthru = {
     updateScript = ./update.sh;
@@ -34,14 +69,4 @@ let
     ];
     mainProgram = "tuple";
   };
-in
-callPackage (if stdenvNoCC.hostPlatform.isDarwin then ./darwin.nix else ./linux.nix) {
-  inherit
-    pname
-    strictDeps
-    __structuredAttrs
-    passthru
-    meta
-    ;
-  inherit (sources.${system} or (throw "Unsupported system: ${system}")) version src;
 }
