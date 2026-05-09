@@ -10,26 +10,8 @@ let
 in
 {
   environment.interactiveShellInit = ''
-    # Set DOCKER_HOST and DOCKER_SOCK environment variables
-    eval "$(
-      ${pkgs.podman}/bin/podman system connection list --format='{{if .Default}}{{.URI}}{{end -}}' \
-        | ruby -r uri -e '
-          uri = URI.parse(ARGF.read)
-
-          # "localhost" is automatically added to known_hosts, but not "127.0.0.1"
-          if uri.host == "127.0.0.1"
-            uri.host = "localhost"
-          end
-
-          sock = uri.path
-          uri.path = ""
-
-          puts <<~EOT
-            export DOCKER_HOST="#{uri}"
-            export DOCKER_SOCK="#{sock}"
-          EOT
-        '
-    )"
+    DOCKER_SOCK="$HOME/.local/share/containers/podman/machine/podman.sock"
+    DOCKER_HOST="unix://$DOCKER_SOCK"
   '';
 
   environment.pathsToLink = [
