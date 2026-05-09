@@ -4,9 +4,6 @@ let
   common = import ./common.nix { inherit pkgs; };
 in
 {
-  # https://github.com/theori-io/copy-fail-CVE-2026-31431/issues/48
-  # https://nixpk.gs/pr-tracker.html?pr=515037
-  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.unstable.linux_6_12;
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1; # needed by k3d's svclb-traefik DaemonSet
   };
