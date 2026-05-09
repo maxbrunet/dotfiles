@@ -5,6 +5,12 @@
       "command": "gopls",
       "args": ["mcp"]
     },
+    "linear": {
+      "url": "https://mcp.linear.app/mcp/"
+    },
+    "notion": {
+      "url": "https://mcp.notion.com/mcp/"
+    },
     "tavily": {
       "url": "https://mcp.tavily.com/mcp/",
       "headers": {
