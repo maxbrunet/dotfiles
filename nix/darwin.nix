@@ -89,6 +89,8 @@ in
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
 
+  programs.direnv.enable = true;
+
   programs.zsh.enable = true;
   # Managed by oh-my-zsh
   programs.zsh.enableBashCompletion = false;

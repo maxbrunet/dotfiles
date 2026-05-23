@@ -185,6 +185,8 @@ in
     "flakes"
   ];
 
+  programs.direnv.enable = true;
+
   programs.git.enable = true;
 
   programs.gnupg.agent.enable = true;

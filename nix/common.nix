@@ -27,7 +27,6 @@
     (unstable.delve.override {
       buildGoModule = buildGo126Module;
     })
-    direnv
     docker-credential-helpers
     docker-language-server
     dos2unix
