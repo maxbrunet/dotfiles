@@ -127,7 +127,16 @@
     ripgrep
     unstable.ruff
     rustup
-    unstable.scaleway-cli
+    (unstable.scaleway-cli.overrideAttrs {
+      patches = [
+        # https://github.com/NixOS/nixpkgs/pull/521971
+        (fetchpatch2 {
+          name = "update-expected-time-in-marshaler-test.patch";
+          url = "https://github.com/scaleway/scaleway-cli/commit/21f7a93e6e924600ac7bc3c7cfba69171fd05f60.patch?full_index=1";
+          hash = "sha256-lZbqqC/A2sIOGZKqC8pANqKW+da4PJxawlkHEZi5EsM=";
+        })
+      ];
+    })
     shellcheck
     shfmt
     solo2-cli
