@@ -61,6 +61,7 @@ in
 
   homebrew.enable = true;
   homebrew.casks = [
+    "flashspace"
     # https://github.com/NixOS/nixpkgs/issues/411189
     "gimp"
     # https://github.com/NixOS/nixpkgs/issues/247855
@@ -164,58 +165,10 @@ in
 
         # Ensure Mission Control's Control–Arrow keys shortcuts do not conflict
         # with AstroNvim split resize mappings
-
-        # Mission Control
-        "32" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              126 # ↑
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Application Windows
-        "33" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              125 # ↓
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Move left a space
-        "79" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              123 # ←
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Move right a space
-        "81" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              124 # →
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
+        "32".enabled = false; # ⌃↑ = Mission Control
+        "33".enabled = false; # ⌃↓ = Application Windows
+        "79".enabled = false; # ⌃← = Move left a space
+        "81".enabled = false; # ⌃→ = Move right a space
       };
     };
     NSGlobalDomain = {

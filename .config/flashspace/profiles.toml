@@ -1,0 +1,128 @@
+[[profiles]]
+id = 'BC545498-2C09-4D6A-AF91-589C5CD2D9E2'
+name = 'Default'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'cmd+shift+1'
+display = 'Built-in Retina Display'
+id = 'FBAD018B-5F7F-4237-A3CC-E15C75B429FA'
+name = '1'
+openAppsOnActivation = true
+shortcut = 'cmd+1'
+symbolIconName = 'network'
+
+[profiles.workspaces.appToFocus]
+autoOpen = true
+bundleIdentifier = 'org.nixos.librewolf'
+iconPath = '/Applications/Nix Apps/LibreWolf.app/Contents/Resources/firefox.icns'
+name = 'LibreWolf'
+
+[[profiles.workspaces.apps]]
+autoOpen = true
+bundleIdentifier = 'org.nixos.librewolf'
+iconPath = '/Applications/Nix Apps/LibreWolf.app/Contents/Resources/firefox.icns'
+name = 'LibreWolf'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'org.chromium.Chromium'
+iconPath = '/Applications/Chromium.app/Contents/Resources/app.icns'
+name = 'Chromium'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'cmd+shift+2'
+display = 'Built-in Retina Display'
+id = 'CBB601BC-6F5A-4E82-9A34-F880E04EBE02'
+name = '2'
+openAppsOnActivation = true
+shortcut = 'cmd+2'
+symbolIconName = 'apple.terminal'
+
+[profiles.workspaces.appToFocus]
+autoOpen = true
+bundleIdentifier = 'org.alacritty'
+iconPath = '/Applications/Nix Apps/Alacritty.app/Contents/Resources/alacritty.icns'
+name = 'Alacritty'
+
+[[profiles.workspaces.apps]]
+autoOpen = true
+bundleIdentifier = 'org.alacritty'
+iconPath = '/Applications/Nix Apps/Alacritty.app/Contents/Resources/alacritty.icns'
+name = 'Alacritty'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'cmd+shift+3'
+display = 'Built-in Retina Display'
+id = 'C8A83DA1-00CA-43BE-8522-0BF4E9DC9DD7'
+name = '3'
+openAppsOnActivation = false
+shortcut = 'cmd+3'
+symbolIconName = 'envelope'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'org.nixos.thunderbird'
+iconPath = '/Applications/Nix Apps/Thunderbird.app/Contents/Resources/thunderbird.icns'
+name = 'Thunderbird'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+4'
+display = 'Built-in Retina Display'
+id = '70C89B06-8768-4F0E-8ADD-CAB637E8053C'
+name = '4'
+openAppsOnActivation = false
+shortcut = 'cmd+4'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+5'
+display = 'Built-in Retina Display'
+id = 'FDF36F0D-7447-4B8E-85D4-776632CB9B75'
+name = '5'
+shortcut = 'cmd+5'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+6'
+display = 'Built-in Retina Display'
+id = '16A57F2E-AF49-4E23-84BB-22ED8D0B0303'
+name = '6'
+shortcut = 'cmd+6'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+7'
+display = 'Built-in Retina Display'
+id = '758CE589-6694-45D9-940B-34A8DAEE51B8'
+name = '7'
+shortcut = 'cmd+7'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+8'
+display = 'Built-in Retina Display'
+id = '09421F55-0F21-4109-9FFF-C1CF9C7CD39A'
+name = '8'
+shortcut = 'cmd+8'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+9'
+display = 'Built-in Retina Display'
+id = '799ECEFC-8B2C-401A-85D5-2CBF25CD2E62'
+name = '9'
+shortcut = 'cmd+9'
+symbolIconName = 'macwindow.on.rectangle'
+
+[[profiles.workspaces]]
+apps = []
+assignAppShortcut = 'cmd+shift+0'
+display = 'Built-in Retina Display'
+id = '0EBEF356-FA10-4FC3-AFE4-B19028845CAF'
+name = '10'
+shortcut = 'cmd+0'
+symbolIconName = 'macwindow.on.rectangle'

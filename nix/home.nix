@@ -77,6 +77,9 @@ in
     dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };
+    flashspace = lib.mkIf stdenv.isDarwin {
+      source = ../.config/flashspace;
+    };
     "gtk-3.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-3.0/settings.ini;
     };

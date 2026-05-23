@@ -1,0 +1,84 @@
+activeWorkspaceOnFocusChange = true
+alternativeDisplays = ''
+autoAssignAlreadyAssignedApps = false
+autoAssignAppsToWorkspaces = true
+centerCursorOnFocusChange = false
+centerCursorOnWorkspaceChange = false
+changeWorkspaceOnAppAssign = true
+checkForUpdatesAutomatically = false
+cornerHiddenApps = []
+displayMode = 'static'
+enableFocusManagement = true
+enableIntegrations = false
+enablePictureInPictureSupport = true
+enableSpaceControl = false
+enableSpaceControlAnimations = true
+enableSpaceControlTilesAnimations = true
+enableSwipeGestures = false
+enableWorkspaceSwitcher = false
+enableWorkspaceTransitions = false
+focusFrontmostWindow = false
+focusNextWorkspaceWindow = 'cmd+up'
+focusPreviousWorkspaceWindow = 'cmd+down'
+keepUnassignedAppsOnSwitch = false
+loopWorkspaces = true
+loopWorkspacesOnAllDisplays = false
+menuBarDisplayAliases = ''
+menuBarTitleScriptPath = ''
+menuBarTitleTemplate = '$WORKSPACE'
+menuBarTitleUseScript = false
+pipScreenCornerOffset = 15
+restartAppOnWakeUp = false
+restoreHiddenAppsOnSwitch = true
+runScriptAfterWorkspaceChange = ''
+runScriptOnLaunch = ''
+runScriptOnProfileChange = 'sketchybar --reload'
+runScriptOnWorkspaceChange = 'sketchybar --trigger flashspace_workspace_change WORKSPACE="$WORKSPACE" DISPLAY="$DISPLAY"'
+showFloatingNotifications = true
+showMenuBarIcon = true
+showMenuBarTitle = true
+showRecentWorkspaceWhenActivatedTwice = false
+showWorkspaceSwitcher = 'opt+tab'
+skipEmptyWorkspacesOnSwitch = false
+spaceControlCurrentDisplayWorkspaces = false
+spaceControlHideEmptyWorkspaces = false
+spaceControlNumberOfColumns = 0
+spaceControlUpdateScreenshotsOnOpen = false
+swipeDown3FingerAction = 'none'
+swipeDown4FingerAction = 'none'
+swipeLeft3FingerAction = 'previousWorkspace'
+swipeLeft4FingerAction = 'none'
+swipeRight3FingerAction = 'nextWorkspace'
+swipeRight4FingerAction = 'none'
+swipeThreshold = 0.20000000000000001
+swipeUp3FingerAction = 'none'
+swipeUp4FingerAction = 'none'
+switchWorkspaceOnCursorScreen = false
+switchWorkspaceWhenPipCloses = true
+toggleTheFocusedAppFloating = 'cmd+shift+space'
+workspaceSwitcherCurrentDisplayWorkspaces = true
+workspaceSwitcherShowScreenshots = true
+workspaceSwitcherSortByLastActivation = false
+workspaceSwitcherVisibleWorkspaces = 5
+workspaceTransitionDimming = 0.20000000000000001
+workspaceTransitionDuration = 0.29999999999999999
+
+[[floatingApps]]
+bundleIdentifier = 'com.apple.systempreferences'
+iconPath = '/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns'
+name = 'System Settings'
+
+[[pipApps]]
+bundleIdentifier = 'org.nixos.librewolf'
+name = 'LibreWolf'
+pipWindowTitleRegex = 'Picture-in-Picture'
+
+[[pipApps]]
+bundleIdentifier = 'org.chromium.Chromium'
+name = 'Chromium'
+pipWindowTitleRegex = 'Picture in Picture'
+
+[[pipApps]]
+bundleIdentifier = 'org.chromium.Chromium'
+name = 'Chromium'
+pipWindowTitleRegex = 'Picture-in-picture'
