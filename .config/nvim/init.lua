@@ -6,8 +6,6 @@ end
 
 vim.opt.rtp:prepend(plugins .. "/lazy.nvim")
 
-local CO_API_KEY = os.getenv("CO_API_KEY")
-
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
@@ -212,6 +210,7 @@ require("lazy").setup({
       acp_providers = {
         ["cursor-acp"] = {
           env = {
+            CURSOR_CONFIG_DIR = os.getenv("CURSOR_CONFIG_DIR"),
             HOME = os.getenv("HOME"),
             PATH = os.getenv("PATH"),
             TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
@@ -219,7 +218,7 @@ require("lazy").setup({
         },
         ["opencode-acp"] = {
           env = {
-            CO_API_KEY = CO_API_KEY,
+            CO_API_KEY = os.getenv("CO_API_KEY"),
             TAVILY_API_KEY = os.getenv("TAVILY_API_KEY"),
           },
         },

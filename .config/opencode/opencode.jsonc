@@ -1,25 +1,25 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "cohere/command-a-reasoning-08-2025",
-  "small_model": "cohere/command-a-03-2025",
+  "model": "cohere/command-a-plus-05-2026",
+  "small_model": "cohere/command-a-plus-05-2026",
   "agent": {
     "build": {
-      "model": "cohere/command-a-03-2025",
+      "model": "cohere/command-a-plus-05-2026",
     },
     "plan": {
-      "model": "cohere/command-a-reasoning-08-2025",
+      "model": "cohere/command-a-plus-05-2026",
     },
     "general": {
-      "model": "cohere/command-a-reasoning-08-2025",
+      "model": "cohere/command-a-plus-05-2026",
     },
     "compaction": {
-      "model": "cohere/command-a-reasoning-08-2024",
+      "model": "cohere/command-a-plus-05-2026",
     },
     "title": {
-      "model": "cohere/command-a-03-2025",
+      "model": "cohere/command-a-plus-05-2026",
     },
     "summary": {
-      "model": "cohere/command-a-03-2025",
+      "model": "cohere/command-a-plus-05-2026",
     },
   },
   "autoupdate": false,
@@ -147,6 +147,12 @@
           "name": "Command A 03-2025",
           "cost": { "input": 2.5, "output": 10 },
           "limit": { "context": 256000, "output": 8000 },
+        },
+        "command-a-plus-05-2026": {
+          "name": "Command A+ 05-2026",
+          // Free until rate limits are reached (20 req/min)
+          "cost": { "input": 0, "output": 0 },
+          "limit": { "context": 128000, "output": 64000 },
         },
         "command-a-reasoning-08-2025": {
           "name": "Command A Reasoning 08-2025",

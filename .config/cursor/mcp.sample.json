@@ -3,7 +3,17 @@
     "gopls": {
       "type": "stdio",
       "command": "gopls",
-      "args": ["mcp"]
+      "args": ["mcp"],
+      "env": {
+        "GOBIN": "${GOBIN}",
+        "GOFLAGS": "${GOFLAGS}",
+        "GOPATH": "${GOPATH}",
+        "GOPRIVATE": "${GOPRIVATE}",
+        "GOTOOLCHAIN": "${GOTOOLCHAIN}",
+        "HOME": "${HOME}",
+        "PATH": "${PATH}",
+        "PKG_CONFIG_PATH": "${PKG_CONFIG_PATH}"
+      }
     },
     "linear": {
       "url": "https://mcp.linear.app/mcp/"
@@ -14,7 +24,7 @@
     "tavily": {
       "url": "https://mcp.tavily.com/mcp/",
       "headers": {
-        "Authorization": "Bearer ${env:TAVILY_API_KEY}"
+        "Authorization": "Bearer ${TAVILY_API_KEY}"
       }
     }
   }
