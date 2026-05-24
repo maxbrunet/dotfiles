@@ -116,12 +116,9 @@ in
     defaultFonts = {
       emoji = [
         "Noto Color Emoji"
-        "Font Awesome 7 Free"
-        "Font Awesome 7 Brands"
-        "Symbols Nerd Font"
       ];
       monospace = [
-        "Source Code Pro"
+        "SauceCodePro Nerd Font"
         "emoji"
       ];
       sansSerif = [
@@ -141,8 +138,7 @@ in
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     font-awesome
-    nerd-fonts.symbols-only
-    source-code-pro
+    nerd-fonts.sauce-code-pro
   ];
 
   gtk.iconCache.enable = true;
