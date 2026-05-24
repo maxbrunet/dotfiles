@@ -78,6 +78,7 @@ in
     "Thunderbolt Bridge"
   ];
 
+  nix.channel.enable = false;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';

@@ -81,6 +81,7 @@
       ...
     }@attrs:
     let
+      inherit (nixos) lib;
       overlayPkgs = final: prev: {
         # https://github.com/NixOS/nixpkgs/issues/507531
         direnv = prev.direnv.overrideAttrs { doCheck = !prev.stdenv.isDarwin; };
@@ -157,6 +158,13 @@
           };
         });
       configureNixpkgs = unstable: {
+        nix.nixPath = lib.mkDefault [
+          "nixpkgs-unstable=flake:nixpkgs-unstable"
+        ];
+        nix.registry.nixpkgs-unstable.to = {
+          type = "path";
+          path = unstable.outPath;
+        };
         nixpkgs.config = { inherit allowUnfreePredicate; };
         nixpkgs.overlays = [
           (unstableOverlayFrom unstable)

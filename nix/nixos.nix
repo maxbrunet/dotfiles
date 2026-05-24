@@ -174,6 +174,7 @@ in
 
   networking.wireless.iwd.enable = true;
 
+  nix.channel.enable = false;
   nix.gc = {
     automatic = true;
     dates = "weekly";
