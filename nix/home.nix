@@ -26,6 +26,24 @@ in
     };
   };
 
+  programs.agent-skills = {
+    enable = true;
+    sources = {
+      cc-skills-golang = {
+        input = "cc-skills-golang";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+      compound-engineering = {
+        input = "compound-engineering-plugin";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+    };
+    skills.enableAll = true;
+    targets.agents.enable = true;
+  };
+
   programs.chromium.enable = true;
   programs.chromium.package = pkgs.writeTextDir "dummy-chromium/chromium" "";
   programs.chromium.extensions = [

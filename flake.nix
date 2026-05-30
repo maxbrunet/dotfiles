@@ -14,6 +14,9 @@
     disko.inputs.nixpkgs.follows = "nixos";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixos";
+    agent-skills.url = "github:Kyure-A/agent-skills-nix";
+    agent-skills.inputs.nixpkgs.follows = "nixos";
+    agent-skills.inputs.home-manager.follows = "home-manager";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     agentic-nvim-src = {
@@ -38,6 +41,14 @@
     };
     base16-shell = {
       url = "github:tinted-theming/base16-shell";
+      flake = false;
+    };
+    cc-skills-golang = {
+      url = "github:samber/cc-skills-golang/v1.5.1";
+      flake = false;
+    };
+    compound-engineering-plugin = {
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.15.0";
       flake = false;
     };
     homebrew-core = {
@@ -67,6 +78,7 @@
       darwin,
       disko,
       home-manager,
+      agent-skills,
       nix-homebrew,
       homebrew-cask,
       homebrew-core,
@@ -165,6 +177,9 @@
         }
         home-manager.nixosModules.home-manager
         {
+          home-manager.sharedModules = [
+            agent-skills.homeManagerModules.default
+          ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.maxime = import ./nix/home.nix;
@@ -205,6 +220,9 @@
             ./nix/hosts/Maxime-Brunet
             home-manager.darwinModules.home-manager
             {
+              home-manager.sharedModules = [
+                agent-skills.homeManagerModules.default
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
               home-manager.users.maxime = import ./nix/home.nix;

@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779957311,
+        "narHash": "sha256-ay1wGiKQIGIcFpSxlutpoAlsPVerbVhDUXtmaDVLz+o=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "df7a6e0fa87655cf28369781232d153c1c7b55ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "agentic-nvim-src": {
       "flake": false,
       "locked": {
@@ -112,6 +135,40 @@
         "owner": "Homebrew",
         "ref": "6.0.1",
         "repo": "brew",
+        "type": "github"
+      }
+    },
+    "cc-skills-golang": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780750822,
+        "narHash": "sha256-+B2q1Oz5W5n/aBOJVUYG+D5+S//nSffJN2wHwi7I6UU=",
+        "owner": "samber",
+        "repo": "cc-skills-golang",
+        "rev": "2e24bfb3279751a4fae0194e184d99139b240619",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samber",
+        "ref": "v1.5.1",
+        "repo": "cc-skills-golang",
+        "type": "github"
+      }
+    },
+    "compound-engineering-plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782531364,
+        "narHash": "sha256-AO/rB3/huG3RywS3v1AXukq5FybDbsDNNGnMXUArvaQ=",
+        "owner": "EveryInc",
+        "repo": "compound-engineering-plugin",
+        "rev": "2bbdbfb1d4287db95af407808b53266988ada974",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EveryInc",
+        "ref": "compound-engineering-v3.15.0",
+        "repo": "compound-engineering-plugin",
         "type": "github"
       }
     },
@@ -346,12 +403,15 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "agentic-nvim-src": "agentic-nvim-src",
         "astrocommunity-src": "astrocommunity-src",
         "astronvim-src": "astronvim-src",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "cc-skills-golang": "cc-skills-golang",
+        "compound-engineering-plugin": "compound-engineering-plugin",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",
