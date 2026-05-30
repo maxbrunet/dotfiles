@@ -231,7 +231,14 @@ require("lazy").setup({
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
     opts = {
-      disabled_filetypes = { "snacks_dashboard", "neo-tree", "help", "text" },
+      disabled_filetypes = {
+        "AgenticChat",
+        "AgenticInput",
+        "help",
+        "neo-tree",
+        "snacks_dashboard",
+        "text",
+      },
       scope = "window",
     },
   },
