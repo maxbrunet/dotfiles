@@ -12,6 +12,14 @@ let
 in
 {
   home.file = {
+    ".cursor/agents" = lib.mkIf stdenv.isDarwin {
+      source = pkgs.symlinkJoin {
+        name = "cursor-agents";
+        paths = [
+          "${pkgs.compound-engineering-plugin}/agents"
+        ];
+      };
+    };
     ".local/bin/brightness.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/brightness.sh;
     };
@@ -24,6 +32,24 @@ in
     ".librewolf/librewolf.overrides.cfg" = {
       source = ../.librewolf/librewolf.overrides.cfg;
     };
+  };
+
+  programs.agent-skills = {
+    enable = true;
+    sources = {
+      cc-skills-golang = {
+        input = "cc-skills-golang";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+      compound-engineering = {
+        path = pkgs.compound-engineering-plugin;
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+    };
+    skills.enableAll = true;
+    targets.agents.enable = true;
   };
 
   programs.chromium.enable = true;
@@ -86,8 +112,19 @@ in
     nvim = {
       source = ../.config/nvim;
     };
+    "opencode/agents" = {
+      source = pkgs.symlinkJoin {
+        name = "opencode-agents";
+        paths = [
+          "${pkgs.compound-engineering-plugin.opencode}/agents"
+        ];
+      };
+    };
     "opencode/opencode.jsonc" = {
       source = ../.config/opencode/opencode.jsonc;
+    };
+    "opencode/tui.jsonc" = {
+      source = ../.config/opencode/tui.jsonc;
     };
     pypoetry = {
       source = ../.config/pypoetry;

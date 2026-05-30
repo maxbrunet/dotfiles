@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779957311,
+        "narHash": "sha256-ay1wGiKQIGIcFpSxlutpoAlsPVerbVhDUXtmaDVLz+o=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "df7a6e0fa87655cf28369781232d153c1c7b55ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "agentic-nvim-src": {
       "flake": false,
       "locked": {
@@ -112,6 +135,23 @@
         "owner": "Homebrew",
         "ref": "5.1.11",
         "repo": "brew",
+        "type": "github"
+      }
+    },
+    "cc-skills-golang": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779223725,
+        "narHash": "sha256-kNNRjvlqSDJ5AWuSDHJrikWocF2xGHqyewd19pdWfpg=",
+        "owner": "samber",
+        "repo": "cc-skills-golang",
+        "rev": "26e1d996a738d64ed112d1575079882ee8f39389",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samber",
+        "ref": "v1.5.0",
+        "repo": "cc-skills-golang",
         "type": "github"
       }
     },
@@ -346,12 +386,14 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "agentic-nvim-src": "agentic-nvim-src",
         "astrocommunity-src": "astrocommunity-src",
         "astronvim-src": "astronvim-src",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "cc-skills-golang": "cc-skills-golang",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",
