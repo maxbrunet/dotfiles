@@ -1,5 +1,29 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786379373,
+        "narHash": "sha256-zrvcpGFA8zG6yRLBqQH9bNkJap8xMvLNvkuT4+7w6X8=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "1594ba479be81a7cb6dd19faabefcb1ed5b3f964",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "agentic-nvim-src": {
       "flake": false,
       "locked": {
@@ -98,6 +122,28 @@
         "type": "github"
       }
     },
+    "blueprint": {
+      "inputs": {
+        "nixpkgs": [
+          "agent-skills",
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1776249299,
+        "narHash": "sha256-Dt9t1TGRmJFc0xVYhttNBD6QsAgHOHCArqGa0AyjrJY=",
+        "owner": "numtide",
+        "repo": "blueprint",
+        "rev": "56131e8628f173d24a27f6d27c0215eff57e40dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "blueprint",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -112,6 +158,40 @@
         "owner": "Homebrew",
         "ref": "6.0.22",
         "repo": "brew",
+        "type": "github"
+      }
+    },
+    "cc-skills-golang": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787231064,
+        "narHash": "sha256-d7HZ+oxuEgLIM6tXFLxT1JrXBbNsvIVMOprbqdlrOWs=",
+        "owner": "samber",
+        "repo": "cc-skills-golang",
+        "rev": "053894c088317d7ba2038cffcbf5fd57b5494fa6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samber",
+        "ref": "v2.0.0",
+        "repo": "cc-skills-golang",
+        "type": "github"
+      }
+    },
+    "compound-engineering-plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788211778,
+        "narHash": "sha256-WD2u7CTDUUEvVxembsUWCyKKkIMUxjiaVt5I+H9v0d0=",
+        "owner": "EveryInc",
+        "repo": "compound-engineering-plugin",
+        "rev": "3ad9b51bceecf0158e590c882034d0398dbb9c5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EveryInc",
+        "ref": "compound-engineering-v3.24.0",
+        "repo": "compound-engineering-plugin",
         "type": "github"
       }
     },
@@ -154,6 +234,22 @@
         "owner": "nix-community",
         "ref": "v1.13.0",
         "repo": "disko",
+        "type": "github"
+      }
+    },
+    "google-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787959928,
+        "narHash": "sha256-/xsb2AXgAwe/8P//Brap+NzqkWKnInV6PTm18brX1v4=",
+        "owner": "google",
+        "repo": "skills",
+        "rev": "a7123f80525a4438bc9601d7d6511dfde674b620",
+        "type": "github"
+      },
+      "original": {
+        "owner": "google",
+        "repo": "skills",
         "type": "github"
       }
     },
@@ -314,14 +410,18 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "agentic-nvim-src": "agentic-nvim-src",
         "astrocommunity-src": "astrocommunity-src",
         "astronvim-src": "astronvim-src",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "cc-skills-golang": "cc-skills-golang",
+        "compound-engineering-plugin": "compound-engineering-plugin",
         "darwin": "darwin",
         "disko": "disko",
+        "google-skills": "google-skills",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "nix-homebrew": "nix-homebrew",
@@ -331,6 +431,21 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oh-my-zsh": "oh-my-zsh"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     }
   },

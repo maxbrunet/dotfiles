@@ -31,6 +31,54 @@ in
   # Packages are managed at the system level by NixOS and nix-darwin.
   home.packages = lib.mkForce [ ];
 
+  programs.agent-skills = {
+    enable = true;
+    sources = {
+      cc-skills-golang = {
+        input = "cc-skills-golang";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+      compound-engineering = {
+        input = "compound-engineering-plugin";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
+      gh = {
+        path = "${pkgs.gh.src}/skills";
+        filter.maxDepth = 1;
+        filter.nameRegex = "^gh$";
+      };
+      google = {
+        input = "google-skills";
+        subdir = "skills";
+        filter.maxDepth = 2;
+        filter.nameRegex =
+          "cloud/("
+          + (builtins.concatStringsSep "|" [
+            "cloud-logging-query-generation"
+            "cloud-monitoring-chart-generation"
+            "cloud-monitoring-list-time-series-request"
+            "cloud-monitoring-metric-selection"
+            "cloud-sql-basics"
+            "gcloud"
+            "gke-basics"
+            "gke-cost-analysis"
+            "gke-networking"
+            "gke-observability"
+            "gke-reliability"
+            "gke-workload-troubleshooting"
+            "google-cloud-networking-observability"
+          ])
+          + ")";
+        idPrefix = "google";
+      };
+    };
+    skills.enableAll = true;
+    targets.cursor.enable = stdenv.isDarwin;
+    targets.opencode.enable = true;
+  };
+
   programs.chromium.enable = true;
   programs.chromium.extensions = [
     "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
@@ -89,6 +137,9 @@ in
     };
     nvim = {
       source = ../.config/nvim;
+    };
+    "opencode/AGENTS.md" = {
+      source = ../.config/opencode/AGENTS.md;
     };
     "opencode/opencode.jsonc" = {
       source = ../.config/opencode/opencode.jsonc;
