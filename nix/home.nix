@@ -1,10 +1,7 @@
 {
   lib,
   pkgs,
-  base16-alacritty,
-  base16-fzf,
-  base16-shell,
-  oh-my-zsh,
+  inputs,
   ...
 }:
 
@@ -41,13 +38,13 @@ in
 
   xdg.dataFile = {
     "base16/alacritty" = {
-      source = base16-alacritty;
+      source = inputs.base16-alacritty;
     };
     "base16/fzf" = {
-      source = base16-fzf;
+      source = inputs.base16-fzf;
     };
     "base16/shell" = {
-      source = base16-shell;
+      source = inputs.base16-shell;
     };
     "nvim/plugins" = {
       source = nvimPlugins;
@@ -57,7 +54,7 @@ in
       source = "${nvimTreesitterParsers}/parser";
     };
     "oh-my-zsh" = {
-      source = oh-my-zsh;
+      source = inputs.oh-my-zsh;
     };
     "oh-my-zsh-custom" = {
       source = ../.local/share/oh-my-zsh-custom;

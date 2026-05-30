@@ -42,9 +42,9 @@ tupleStdenv.mkDerivation {
       ''
         runHook preInstall
 
-        install -Dm755 $src $out/libexec/tuple
+        install -Dm755 $src $out/bin/.tuple-wrapped
 
-        makeWrapper $out/libexec/tuple $out/bin/tuple \
+        makeWrapper $out/bin/.tuple-wrapped $out/bin/tuple \
           --set-default SSL_CERT_FILE ${cacert}/etc/ssl/certs/ca-bundle.crt
 
         runHook postInstall
@@ -61,12 +61,7 @@ tupleStdenv.mkDerivation {
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
     maintainers = [ lib.maintainers.maxbrunet ];
-    platforms = [
-      "aarch64-darwin"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = builtins.attrNames sources;
     mainProgram = "tuple";
   };
 }

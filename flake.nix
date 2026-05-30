@@ -5,6 +5,7 @@
     nixos.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.inputs.nixpkgs.follows = "nixos";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
@@ -62,7 +63,7 @@
   };
 
   outputs =
-    {
+    inputs@{
       nixos,
       nixos-unstable,
       nixos-hardware,
@@ -79,7 +80,7 @@
       astrocommunity-src,
       zsh-completions-src,
       ...
-    }@attrs:
+    }:
     let
       inherit (nixos) lib;
       overlayPkgs = final: prev: {
@@ -187,7 +188,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.maxime = import ./nix/home.nix;
-          home-manager.extraSpecialArgs = attrs;
+          home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
     in
@@ -227,7 +228,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
               home-manager.users.maxime = import ./nix/home.nix;
-              home-manager.extraSpecialArgs = attrs;
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
             nix-homebrew.darwinModules.nix-homebrew
             {

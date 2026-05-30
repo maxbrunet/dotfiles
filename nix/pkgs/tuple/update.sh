@@ -16,16 +16,34 @@ X86_64_LINUX_DATA="$(curl -sSf --header 'Accept: application/tuple.app; version=
   "https://production.tuple.app/latest_version/linux?arch=x86_64")"
 
 DARWIN_VERSION="$(xq --xpath '//rss/channel/item[1]/sparkle:shortVersionString' <<<"${DARWIN_DATA}")"
-AARCH64_LINUX_VERSION="$(jq --raw-output '.version | ltrimstr("v") | gsub("_"; "-")' <<<"${AARCH64_LINUX_DATA}")"
-X86_64_LINUX_VERSION="$(jq --raw-output '.version | ltrimstr("v") | gsub("_"; "-")' <<<"${X86_64_LINUX_DATA}")"
+AARCH64_LINUX_VERSION="$(jq --raw-output '
+  .version
+  | ltrimstr("v")
+  | if test("^\\d{4}_\\d{2}_\\d{2}\\.\\d+$") then
+      .
+      | sub("\\.\\d+$"; "")
+      | gsub("_"; "-")
+      | "0-unstable-\(.)"
+    else . end
+' <<<"${AARCH64_LINUX_DATA}")"
+X86_64_LINUX_VERSION="$(jq --raw-output '
+  .version
+  | ltrimstr("v")
+  | if test("^\\d{4}_\\d{2}_\\d{2}\\.\\d+$") then
+      .
+      | sub("\\.\\d+$"; "")
+      | gsub("_"; "-")
+      | "0-unstable-\(.)"
+    else . end
+' <<<"${X86_64_LINUX_DATA}")"
 
 DARWIN_URL="$(xq --xpath '//rss/channel/item[1]/enclosure/@url' <<<"${DARWIN_DATA}")"
 AARCH64_LINUX_URL="$(jq --raw-output '.url' <<<"${AARCH64_LINUX_DATA}")"
 X86_64_LINUX_URL="$(jq --raw-output '.url' <<<"${X86_64_LINUX_DATA}")"
 
-darwin_hash=$(nix-prefetch-url --unpack "${DARWIN_URL}")
-aarch64_linux_hash=$(nix-prefetch-url "${AARCH64_LINUX_URL}")
-x86_64_linux_hash=$(nix-prefetch-url "${X86_64_LINUX_URL}")
+darwin_hash=$(nix-prefetch-url --unpack "${DARWIN_URL}" --name "tuple-${DARWIN_VERSION}")
+aarch64_linux_hash=$(nix-prefetch-url "${AARCH64_LINUX_URL}" --name "tuple-${AARCH64_LINUX_VERSION}")
+x86_64_linux_hash=$(nix-prefetch-url "${X86_64_LINUX_URL}" --name "tuple-${X86_64_LINUX_VERSION}")
 
 # use friendlier hashes
 
