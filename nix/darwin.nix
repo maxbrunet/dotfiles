@@ -47,7 +47,6 @@ in
       netcat-gnu
       pinentry_mac
       podman
-      podman-desktop
       thunderbird
       unixtools.watch
       wireshark

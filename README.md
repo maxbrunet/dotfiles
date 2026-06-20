@@ -98,21 +98,13 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `zellij`
    EOF
    ```
 
-7. Set up Podman machine:
+7. Set up Podman machine for k3d:
 
    ```shell
-   sudo podman-mac-helper install
-   podman machine init --cpus=4 --memory=4096 --now
-
    # https://github.com/k3d-io/k3d/issues/1082
    podman machine ssh bash -e <<EOF
    echo 'Delegate=cpuset' | sudo tee -a /etc/systemd/system/user@.service.d/delegate.conf
    sudo systemctl daemon-reload
    sudo systemctl restart user@\${UID}
-   EOF
-
-   cat >>~/.ssh/config <<EOF
-   Host localhost
-   	IdentityFile $(podman machine inspect --format='{{.SSHConfig.IdentityPath}}')
    EOF
    ```

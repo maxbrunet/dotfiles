@@ -118,6 +118,20 @@ in
     };
   };
 
+  services.podman = lib.mkIf stdenv.isDarwin {
+    enable = true;
+    machines = {
+      podman-machine-default = {
+        autoStart = true;
+        cpus = 4;
+        # regctl manifest digest quay.io/podman/machine-os:5.8
+        image = "docker://quay.io/podman/machine-os@sha256:c9b1989b9b215b87f431f6996d1462c89b5684240bfa9150249f0c5aacf52c7f";
+        memory = 4096;
+      };
+    };
+    useDefaultMachine = false;
+  };
+
   systemd.user.services = {
     # https://www.kernel.org/doc/html/latest/userspace-api/sysfs-platform_profile.html
     platform-profile-notify =
