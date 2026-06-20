@@ -26,7 +26,7 @@ in
     common.packages
     ++ (with pkgs; [
       alacritty-graphics
-      unstable.caffeine
+      caffeine
       coreutils-prefixed
       (linkFarm "docker-compat" [
         {
@@ -42,9 +42,7 @@ in
       gnupg
       gnused
       gnutar
-      # https://hydra.nixos.org/job/nixpkgs/nixpkgs-25.11-darwin/librewolf-unwrapped.aarch64-darwin
-      # https://hydra.nixos.org/build/320743126
-      unstable.librewolf
+      librewolf
       localsend
       netcat-gnu
       pinentry_mac
@@ -89,6 +87,12 @@ in
   nix.gc.options = "--delete-older-than 30d";
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
+
+  # https://github.com/NixOS/nixpkgs/pull/533046
+  nixpkgs.config.permittedInsecurePackages = [
+    pkgs.librewolf.name
+    pkgs.librewolf-unwrapped.name
+  ];
 
   programs.direnv.enable = true;
 

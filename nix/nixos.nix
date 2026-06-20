@@ -19,7 +19,6 @@ in
     luks.devices."cryptroot" = {
       allowDiscards = true;
       bypassWorkqueues = true;
-      fallbackToPassword = true;
       keyFile = "/keyfile.bin";
     };
     secrets = {
@@ -69,22 +68,19 @@ in
       brightnessctl
       ungoogled-chromium
       emote
+      engrampa
       evince
+      exo
       file
       librewolf
       gcc
       gimp
-      (gnome-calculator.overrideAttrs (prev: {
-        # https://github.com/NixOS/nixpkgs/pull/476875
-        buildInputs = prev.buildInputs ++ [
-          glib-networking
-        ];
-      }))
+      gnome-calculator
       gnumake
       libreoffice
       libsecret
       lsof
-      mate.engrampa
+      mousepad
       pavucontrol
       playerctl
       polkit_gnome
@@ -93,22 +89,20 @@ in
       pulseaudio
       simple-scan
       system-config-printer
+      (thunar.override {
+        thunarPlugins = [
+          thunar-volman
+          thunar-archive-plugin
+          thunar-media-tags-plugin
+        ];
+      })
       thunderbird
       traceroute
       unzip
       vlc
       xdg-terminal-exec
       xdg-utils
-      xfce.exo
-      xfce.mousepad
-      (xfce.thunar.override {
-        thunarPlugins = with xfce; [
-          thunar-volman
-          thunar-archive-plugin
-          thunar-media-tags-plugin
-        ];
-      })
-      xfce.xfconf
+      xfconf
       zip
     ]);
 
@@ -258,12 +252,6 @@ in
   services.blueman.enable = true;
 
   services.connman.enable = true;
-  services.connman.package = pkgs.connman.override {
-    readline = pkgs.readline.overrideAttrs {
-      # https://github.com/NixOS/nixpkgs/issues/480215
-      inherit (pkgs.unstable.readline) upstreamPatches;
-    };
-  };
   services.connman.extraFlags = [ "--nodnsproxy" ]; # For dnscrypt-proxy
   services.connman.wifi.backend = "iwd";
   # For dnscrypt-proxy: https://wiki.archlinux.org/title/ConnMan#/etc/resolv.conf

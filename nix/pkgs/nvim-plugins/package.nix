@@ -36,11 +36,11 @@ let
     # Override astronvimDeps
     "blink.cmp" = vimPlugins.blink-cmp; # needs pre-built Rust native lib
     # Keep queries aligned with the parsers.
-    "nvim-treesitter" = pkgs.unstable.vimPlugins.nvim-treesitter;
+    "nvim-treesitter" = pkgs.vimPlugins.nvim-treesitter;
 
     # User plugins from nixpkgs
     "agentic.nvim" = vimPlugins.agentic-nvim;
-    "d2-vim" = pkgs.unstable.vimPlugins.d2-vim;
+    "d2-vim" = pkgs.vimPlugins.d2-vim;
     "gitlinker.nvim" = vimPlugins.gitlinker-nvim;
     "gruvbox.nvim" = vimPlugins.gruvbox-nvim;
     "img-clip.nvim" = vimPlugins.img-clip-nvim;

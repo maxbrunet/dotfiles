@@ -2,17 +2,17 @@
   description = "My NixOS configuration: A Mix of Nix and Max";
 
   inputs = {
-    nixos.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixos.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-hardware.inputs.nixpkgs.follows = "nixos";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-26.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.13.0";
     disko.inputs.nixpkgs.follows = "nixos";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixos";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
@@ -56,10 +56,6 @@
       url = "github:ohmyzsh/ohmyzsh";
       flake = false;
     };
-    zsh-completions-src = {
-      url = "github:zsh-users/zsh-completions/0.36.0";
-      flake = false;
-    };
   };
 
   outputs =
@@ -78,7 +74,6 @@
       agentic-nvim-src,
       astronvim-src,
       astrocommunity-src,
-      zsh-completions-src,
       ...
     }:
     let
@@ -125,21 +120,6 @@
               src = astrocommunity-src;
               doCheck = false;
             };
-          }
-        );
-        zsh-completions = (
-          prev.zsh-completions.overrideAttrs {
-            version = "HEAD";
-            src = zsh-completions-src;
-            installPhase = ''
-              functions=(
-                _direnv
-                _golang
-                _grpcurl
-                _node
-              )
-              install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
-            '';
           }
         );
       };

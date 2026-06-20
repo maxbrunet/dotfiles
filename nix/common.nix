@@ -75,14 +75,10 @@
     lazygit
     lua-language-server
     marksman
-    unstable.neovim
+    neovim
     nixd
     nixfmt
     nmap
-    nodePackages.prettier
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
     nodejs
     oci-cli
     unstable.opencode
@@ -97,7 +93,8 @@
         ]);
     }))
     popeye
-    unstable.prek
+    prek
+    prettier
     pwgen
     python3
     (
@@ -125,16 +122,7 @@
     ripgrep
     unstable.ruff
     rustup
-    (unstable.scaleway-cli.overrideAttrs {
-      patches = [
-        # https://github.com/NixOS/nixpkgs/pull/521971
-        (fetchpatch2 {
-          name = "update-expected-time-in-marshaler-test.patch";
-          url = "https://github.com/scaleway/scaleway-cli/commit/21f7a93e6e924600ac7bc3c7cfba69171fd05f60.patch?full_index=1";
-          hash = "sha256-lZbqqC/A2sIOGZKqC8pANqKW+da4PJxawlkHEZi5EsM=";
-        })
-      ];
-    })
+    unstable.scaleway-cli
     shellcheck
     shfmt
     solo2-cli
@@ -149,12 +137,25 @@
     tree
     tree-sitter
     unstable.ty
+    typescript-language-server
     unstable.uv
+    vscode-langservers-extracted
     wget
+    yaml-language-server
     yq-go
-    unstable.zellij
+    zellij
     zsh-autosuggestions
-    zsh-completions
+    (unstable.zsh-completions.overrideAttrs {
+      installPhase = ''
+        functions=(
+          _direnv
+          _golang
+          _grpcurl
+          _node
+        )
+        install -D --target-directory=$out/share/zsh/site-functions "''${functions[@]/#/src/}"
+      '';
+    })
     zsh-fzf-tab
     zsh-syntax-highlighting
   ];

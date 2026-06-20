@@ -197,6 +197,8 @@ in
   xdg.userDirs = lib.mkIf stdenv.isLinux {
     enable = true;
     createDirectories = true;
+    # Until bumping `home.stateVersion` to "26.05" or greater is confirmed safe.
+    setSessionVariables = false;
   };
 
   # This value determines the Home Manager release that your
