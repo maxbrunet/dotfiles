@@ -127,6 +127,12 @@ in
         # regctl manifest digest quay.io/podman/machine-os:$(nix eval nixpkgs#podman.version --apply 'v: builtins.elemAt (builtins.match "([0-9]+\.[0-9]+).*" v) 0' --raw)
         image = "docker://quay.io/podman/machine-os@sha256:72857d85cd944afbe67b874a3498441be67d42a9c4ab4aada1f9fa0fb3009bd7";
         memory = 4096;
+        # https://github.com/nix-community/home-manager/pull/9368
+        volumes = [
+          "/Users:/Users"
+          "/private:/private"
+          "/var/folders:/var/folders"
+        ];
       };
     };
     useDefaultMachine = false;
