@@ -1,25 +1,25 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "cohere/command-a-plus-05-2026",
-  "small_model": "cohere/command-a-plus-05-2026",
+  "model": "cohere/north-mini-code-1-0",
+  "small_model": "cohere/north-mini-code-1-0",
   "agent": {
     "build": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
     "plan": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
     "general": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
     "compaction": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
     "title": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
     "summary": {
-      "model": "cohere/command-a-plus-05-2026",
+      "model": "cohere/north-mini-code-1-0",
     },
   },
   "autoupdate": false,
@@ -177,6 +177,12 @@
           "cost": { "input": 2.5, "output": 10 },
           "limit": { "context": 128000, "output": 4000 },
           "reasoning": false,
+        },
+        "north-mini-code-1-0": {
+          "name": "North Mini Code",
+          // Free until rate limits are reached (20 req/min)
+          "cost": { "input": 0, "output": 0 },
+          "limit": { "context": 256000, "output": 64000 },
         },
       },
     },

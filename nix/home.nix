@@ -89,6 +89,9 @@ in
     "opencode/opencode.jsonc" = {
       source = ../.config/opencode/opencode.jsonc;
     };
+    "opencode/tui.jsonc" = {
+      source = ../.config/opencode/tui.jsonc;
+    };
     pypoetry = {
       source = ../.config/pypoetry;
     };
