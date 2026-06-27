@@ -96,6 +96,10 @@
       "command": ["tflint", "--langserver"],
       "extensions": [".tf"],
     },
+    "ty": {
+      "command": ["ty", "server"],
+      "extensions": [".py"],
+    },
   },
   "mcp": {
     "gopls": {
