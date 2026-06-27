@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -i bash --pure -p cacert coreutils gh git jq luajit luajitPackages.cjson nix nodePackages.semver
+#! nix-shell -i bash --pure -p cacert coreutils gh git jq luajit luajitPackages.cjson nix python3 python3Packages.node-semver
 # shellcheck shell=bash
 
 set -euo pipefail
@@ -51,7 +51,19 @@ function resolve_semver_tag {
   fi
 
   local resolved
-  resolved="$(semver -r "${constraint}" "${tag_names[@]}" | tail -1)"
+  resolved="$(
+    python - "${constraint}" "${tag_names[@]}" <<EOF
+import sys
+
+import nodesemver
+
+range_ = sys.argv[1]
+versions = [v for v in sys.argv[2:] if nodesemver.parse(v, loose=False)]
+version = nodesemver.max_satisfying(versions, range_)
+if version:
+    print(version)
+EOF
+  )"
 
   if [[ -z "${resolved}" ]]; then
     error "no tag matching '${constraint}' for ${owner}/${repo}"

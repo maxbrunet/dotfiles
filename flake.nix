@@ -21,7 +21,7 @@
       flake = false;
     };
     astronvim-src = {
-      url = "github:AstroNvim/AstroNvim/v6.0.4";
+      url = "github:AstroNvim/AstroNvim/v6.0.5";
       flake = false;
     };
     astrocommunity-src = {

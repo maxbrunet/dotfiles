@@ -87,12 +87,6 @@ in
   nix.optimise.automatic = true;
   nix.settings.sandbox = true;
 
-  # https://github.com/NixOS/nixpkgs/pull/533046
-  nixpkgs.config.permittedInsecurePackages = [
-    pkgs.librewolf.name
-    pkgs.librewolf-unwrapped.name
-  ];
-
   programs.direnv.enable = true;
 
   programs.zsh.enable = true;

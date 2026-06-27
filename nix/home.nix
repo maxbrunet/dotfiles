@@ -124,8 +124,8 @@ in
       podman-machine-default = {
         autoStart = true;
         cpus = 4;
-        # regctl manifest digest quay.io/podman/machine-os:5.8
-        image = "docker://quay.io/podman/machine-os@sha256:c9b1989b9b215b87f431f6996d1462c89b5684240bfa9150249f0c5aacf52c7f";
+        # regctl manifest digest quay.io/podman/machine-os:$(nix eval nixpkgs#podman.version --apply 'v: builtins.elemAt (builtins.match "([0-9]+\.[0-9]+).*" v) 0' --raw)
+        image = "docker://quay.io/podman/machine-os@sha256:72857d85cd944afbe67b874a3498441be67d42a9c4ab4aada1f9fa0fb3009bd7";
         memory = 4096;
       };
     };
