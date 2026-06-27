@@ -10,8 +10,7 @@ let
 in
 {
   environment.interactiveShellInit = ''
-    DOCKER_SOCK="$HOME/.local/share/containers/podman/machine/podman.sock"
-    DOCKER_HOST="unix://$DOCKER_SOCK"
+    export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/podman.sock"
   '';
 
   environment.pathsToLink = [
