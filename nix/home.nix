@@ -26,8 +26,11 @@ in
     };
   };
 
+  # Disable installing packages in user profile.
+  # Packages are managed at the system level by NixOS and nix-darwin.
+  home.packages = lib.mkForce [ ];
+
   programs.chromium.enable = true;
-  programs.chromium.package = pkgs.writeTextDir "dummy-chromium/chromium" "";
   programs.chromium.extensions = [
     "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
     "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
