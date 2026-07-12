@@ -10,7 +10,7 @@ let
 in
 {
   environment.interactiveShellInit = ''
-    export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/podman.sock"
+    export DOCKER_HOST="unix://''${TMPDIR%/}/podman/podman-machine-default-api.sock"
   '';
 
   environment.pathsToLink = [
@@ -118,115 +118,10 @@ in
   # Fix "nix-darwin does not support changing the home directory of existing users.")",
   users.users._dnscrypt-proxy.home = lib.mkForce "/private/var/lib/dnscrypt-proxy";
 
-  system.defaults.CustomUserPreferences = {
-    "com.apple.HIToolbox" = {
-      AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keylayout.US";
-      AppleEnabledInputSources = [
-        {
-          "Bundle ID" = "com.apple.CharacterPaletteIM";
-          InputSourceKind = "Non Keyboard Input Method";
-        }
-        {
-          "Bundle ID" = "com.apple.PressAndHold";
-          InputSourceKind = "Non Keyboard Input Method";
-        }
-        {
-          InputSourceKind = "Keyboard Layout";
-          "KeyboardLayout ID" = 0;
-          "KeyboardLayout Name" = "U.S.";
-        }
-        {
-          InputSourceKind = "Keyboard Layout";
-          "KeyboardLayout ID" = 15000;
-          "KeyboardLayout Name" = "USInternational-PC";
-        }
-      ];
-    };
-    "com.apple.symbolichotkeys" = {
-      # What does each part in com.apple.symbolichotkeys.plist mean?
-      # https://apple.stackexchange.com/a/474905
-      AppleSymbolicHotKeys = {
-        # "<ACTION>" = {
-        #   enabled = <IS_ENABLED>;
-        #   value = {
-        #     parameters = [
-        #       <ASCII>
-        #       <KEY_CODE>
-        #       <MODIFIERS>
-        #     ];
-        #     type = "standard";
-        #   };
-        # };
-
-        # Ensure Mission Control's Control–Arrow keys shortcuts do not conflict
-        # with AstroNvim split resize mappings
-
-        # Mission Control
-        "32" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              126 # ↑
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Application Windows
-        "33" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              125 # ↓
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Move left a space
-        "79" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              123 # ←
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-
-        # Move right a space
-        "81" = {
-          enabled = true;
-          value = {
-            parameters = [
-              65535
-              124 # →
-              9437184 # ⌘ Command
-            ];
-            type = "standard";
-          };
-        };
-      };
-    };
-    NSGlobalDomain = {
-      AppleLanguages = [
-        "en-US"
-        "en-CA"
-        "en"
-        "es-UY"
-        "es-AR"
-        "es"
-        "fr-FR"
-        "fr-CA"
-        "fr"
-      ];
-      AppleLocale = "en_US@rg=dkzzzz"; # Denmark region
+  system.defaults.CustomSystemPreferences = {
+    "com.apple.smartcharging.topoffprotection" = {
+      MCLFeatureState = true;
+      mclLimitValue = 80;
     };
   };
 

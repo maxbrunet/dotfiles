@@ -200,19 +200,147 @@ in
       autohide = true;
       mineffect = "scale";
       mru-spaces = false;
+      persistent-apps = [
+        {
+          tile-data = {
+            file-data = {
+              _CFURLString = "file:///Applications/Nix%20Apps/LibreWolf.app/";
+              _CFURLStringType = 15;
+            };
+          };
+          tile-type = "file-tile";
+        }
+        {
+          tile-data = {
+            file-data = {
+              _CFURLString = "file:///Applications/Nix%20Apps/Alacritty.app/";
+              _CFURLStringType = 15;
+            };
+          };
+          tile-type = "file-tile";
+        }
+      ];
+      persistent-others = [ ];
       show-recents = false;
       tilesize = 48;
       wvous-bl-corner = 5; # Start Screen Saver
       wvous-br-corner = 5; # Start Screen Saver
     };
+    "com.apple.HIToolbox" = {
+      AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keylayout.US";
+      AppleEnabledInputSources = [
+        {
+          "Bundle ID" = "com.apple.CharacterPaletteIM";
+          InputSourceKind = "Non Keyboard Input Method";
+        }
+        {
+          "Bundle ID" = "com.apple.PressAndHold";
+          InputSourceKind = "Non Keyboard Input Method";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 0;
+          "KeyboardLayout Name" = "U.S.";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 15000;
+          "KeyboardLayout Name" = "USInternational-PC";
+        }
+      ];
+    };
     "com.apple.screensaver" = {
       askForPassword = true;
       askForPasswordDelay = 5; # seconds
     };
+    "com.apple.symbolichotkeys" = {
+      # What does each part in com.apple.symbolichotkeys.plist mean?
+      # https://apple.stackexchange.com/a/474905
+      AppleSymbolicHotKeys = {
+        # "<ACTION>" = {
+        #   enabled = <IS_ENABLED>;
+        #   value = {
+        #     parameters = [
+        #       <ASCII>
+        #       <KEY_CODE>
+        #       <MODIFIERS>
+        #     ];
+        #     type = "standard";
+        #   };
+        # };
+
+        # Ensure Mission Control's Control–Arrow keys shortcuts do not conflict
+        # with AstroNvim split resize mappings
+
+        # Mission Control
+        "32" = {
+          enabled = true;
+          value = {
+            parameters = [
+              65535
+              126 # ↑
+              9437184 # ⌘ Command
+            ];
+            type = "standard";
+          };
+        };
+
+        # Application Windows
+        "33" = {
+          enabled = true;
+          value = {
+            parameters = [
+              65535
+              125 # ↓
+              9437184 # ⌘ Command
+            ];
+            type = "standard";
+          };
+        };
+
+        # Move left a space
+        "79" = {
+          enabled = true;
+          value = {
+            parameters = [
+              65535
+              123 # ←
+              9437184 # ⌘ Command
+            ];
+            type = "standard";
+          };
+        };
+
+        # Move right a space
+        "81" = {
+          enabled = true;
+          value = {
+            parameters = [
+              65535
+              124 # →
+              9437184 # ⌘ Command
+            ];
+            type = "standard";
+          };
+        };
+      };
+    };
     NSGlobalDomain = {
+      AppleInterfaceStyle = "Dark";
+      AppleLanguages = [
+        "en-US"
+        "en-CA"
+        "en"
+        "es-UY"
+        "es-AR"
+        "es"
+        "fr-FR"
+        "fr-CA"
+        "fr"
+      ];
+      AppleLocale = "en_US@rg=dkzzzz"; # Denmark region
       "com.apple.swipescrolldirection" = false;
       "com.apple.trackpad.scaling" = 2.0;
-      AppleInterfaceStyle = "Dark";
       NSAutomaticWindowAnimationsEnabled = false;
     };
     "com.apple.assistant.support" = {

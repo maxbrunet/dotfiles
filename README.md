@@ -54,40 +54,67 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `zellij`
 > At least it is not Windows.
 
 1. Install [Nix](https://nixos.org/download.html#nix-install-macos)
-2. Install the dotfiles:
+2. Log out and log back in to load the new shell profiles installed by Nix (possibly restart)
+3. Install the dotfiles:
 
    ```shell
-   sudo git clone https://github.com/maxbrunet/dotfiles.git /etc/nix-darwin
-   sudo chown -R "${UID}:${GID}" /etc/nix-darwin
+   sudo mkdir /etc/nix-darwin
+   sudo chown "${UID}:${GID}" /etc/nix-darwin
+   # Git is not installed, so curl and tar are used to get a copy of the repository
+   curl --proto '=https' --tlsv1.2 -sSfL https://github.com/maxbrunet/dotfiles/archive/HEAD.tar.gz \
+     | tar xvf - --strip-components=1 -C /etc/nix-darwin
    cd /etc/nix-darwin
-   git remote set-url origin git@github.com:maxbrunet/dotfiles.git
    ```
 
-3. Prepare system for `nix-darwin`:
+4. Prepare system for `nix-darwin`:
 
    ```shell
    sudo mv /etc/bashrc /etc/bashrc.orig
    sudo mv /etc/shells /etc/shells.orig
    sudo mv /etc/zshrc /etc/zshrc.orig
    sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.orig
-   printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
-   /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
    ```
 
-4. Install [nix-darwin](https://daiderd.com/nix-darwin/):
+6. Install [Command Line Tools for Xcode](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/#Install-the-Command-Line-Tools-package-in-Terminal) (required by Homebrew)
+
+   ```shell
+   xcode-select --install
+   ```
+
+5. Install [Rosetta](https://support.apple.com/en-ca/102527):
+
+   ```shell
+   softwareupdate --install-rosetta --agree-to-license
+   ```
+
+6. Install [nix-darwin](https://daiderd.com/nix-darwin/):
 
    ```shell
    nix --extra-experimental-features 'flakes nix-command' build ".#darwinConfigurations.$(scutil --get LocalHostName).system"
    ./result/sw/bin/darwin-rebuild switch
    ```
 
-5. Change login shell to Nix's Zsh:
+7. Change login shell to Nix's Zsh:
 
    ```shell
    chsh -s /run/current-system/sw/bin/zsh maxime
    ```
 
-6. Configure SSH client:
+8. Log out and log back in to load the new shell profiles installed by nix-darwin (possibly restart)
+
+9. Git should now be available, fetch the Git tracking data:
+
+   ```shell
+   cd /etc/nix-darwin
+   git init
+   git remote add --fetch origin https://git@github.com/maxbrunet/dotfiles.git
+   git reset origin/HEAD
+   git remote set-url origin git@github.com:maxbrunet/dotfiles.git
+   ```
+
+   ```
+
+10. Configure SSH client:
 
    ```shell
    ssh-keygen -t ed25519 -a 100
@@ -98,7 +125,7 @@ My dotfiles collection for a flawless workflow. Starring `zsh`, `nvim`, `zellij`
    EOF
    ```
 
-7. Set up Podman machine for k3d:
+11. Set up Podman machine for k3d:
 
    ```shell
    # https://github.com/k3d-io/k3d/issues/1082

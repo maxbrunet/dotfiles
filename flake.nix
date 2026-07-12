@@ -232,16 +232,31 @@
                   in
                   ''
                     HOMEBREW_PREFIX=/opt/homebrew
+                    NIX_HOMEBREW_UID="$(id -u maxime)"
+                    NIX_HOMEBREW_GID="$(dscl . -read /Groups/admin PrimaryGroupID | awk '{print $2}')"
 
                     # Link brew docs
+                    /bin/mkdir -p "$HOMEBREW_PREFIX/share/doc"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/doc"
                     /bin/ln -shf "${brew-src}/docs" "$HOMEBREW_PREFIX/share/doc/homebrew"
                     # Link brew manpages
+                    /bin/mkdir -p "$HOMEBREW_PREFIX/share/man/man1"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/man"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/man/man1"
                     /bin/ln -shf "${brew-src}/manpages/README.md" "$HOMEBREW_PREFIX/share/man/man1/README.md"
                     /bin/ln -shf "${brew-src}/manpages/brew.1" "$HOMEBREW_PREFIX/share/man/man1/brew.1"
 
                     # Link brew shell completions
+                    /bin/mkdir -p "$HOMEBREW_PREFIX/etc/bash_completion.d"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/etc/bash_completion.d"
                     /bin/ln -shf "${brew-src}/completions/bash/brew" "$HOMEBREW_PREFIX/etc/bash_completion.d/brew"
+                    /bin/mkdir -p "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/fish"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
                     /bin/ln -shf "${brew-src}/completions/fish/brew.fish" "$HOMEBREW_PREFIX/share/fish/vendor_completions.d/brew.fish"
+                    /bin/mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/zsh"
+                    /usr/sbin/chown "$NIX_HOMEBREW_UID:$NIX_HOMEBREW_GID" "$HOMEBREW_PREFIX/share/zsh/site-functions"
                     /bin/ln -shf "${brew-src}/completions/zsh/_brew" "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
                   '';
               };
