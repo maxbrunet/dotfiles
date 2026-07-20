@@ -248,6 +248,7 @@ in
           "KeyboardLayout Name" = "USInternational-PC";
         }
       ];
+      AppleFnUsageType = 2; # Show Emoji & Symbols
     };
     "com.apple.screensaver" = {
       askForPassword = true;
