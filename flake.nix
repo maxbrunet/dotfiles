@@ -40,16 +40,8 @@
       url = "github:tinted-theming/base16-shell";
       flake = false;
     };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-localsend = {
-      url = "github:localsend/homebrew-localsend";
       flake = false;
     };
     oh-my-zsh = {
@@ -69,8 +61,6 @@
       home-manager,
       nix-homebrew,
       homebrew-cask,
-      homebrew-core,
-      homebrew-localsend,
       agentic-nvim-src,
       astronvim-src,
       astrocommunity-src,
@@ -219,8 +209,6 @@
                 mutableTaps = false;
                 taps = {
                   "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "localsend/localsend" = homebrew-localsend;
                 };
               };
 

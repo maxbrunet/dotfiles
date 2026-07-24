@@ -194,38 +194,6 @@
         "type": "github"
       }
     },
-    "homebrew-core": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1784393234,
-        "narHash": "sha256-RQkzx3Fv8XgeyJcjAdE52+0IElSqmgqHsco46NEKCyQ=",
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "rev": "a68053628f6151a2e3151de3f4d95371ba98fed3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "type": "github"
-      }
-    },
-    "homebrew-localsend": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740018032,
-        "narHash": "sha256-/8RdWkK3DOsZ7BcT3PkqpNlLOcsozvMGW3p6m9qTW98=",
-        "owner": "localsend",
-        "repo": "homebrew-localsend",
-        "rev": "22735388c7869dee9f5d7ed0a88190420367236a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "localsend",
-        "repo": "homebrew-localsend",
-        "type": "github"
-      }
-    },
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src"
@@ -356,8 +324,6 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
-        "homebrew-core": "homebrew-core",
-        "homebrew-localsend": "homebrew-localsend",
         "nix-homebrew": "nix-homebrew",
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
