@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "gopls": {
+      "command": "gopls",
+      "args": ["mcp"],
+      "env": {}
+    },
+    "linear": {
+      "url": "https://mcp.linear.app/mcp/"
+    },
+    "notion": {
+      "url": "https://mcp.notion.com/mcp/"
+    }
+  }
+}

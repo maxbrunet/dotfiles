@@ -83,6 +83,15 @@ in
     "gtk-4.0/settings.ini" = lib.mkIf stdenv.isLinux {
       source = ../.config/gtk-4.0/settings.ini;
     };
+    "jcode/config.toml" = {
+      source = ../.config/jcode/config.toml;
+    };
+    "jcode/mcp.json" = {
+      source = ../.config/jcode/mcp.json;
+    };
+    "jcode/no_telemetry" = {
+      source = pkgs.writeText "jcode_no_telemetry" "";
+    };
     "npm" = {
       source = ../.config/npm;
     };

@@ -1,0 +1,30 @@
+[provider]
+default_model = "north-mini-code-1-0"
+default_provider = "cohere"
+openai_reasoning_effort = "high"
+
+[providers.cohere]
+type = "open-ai-compatible"
+base_url = "https://api.cohere.com/compatibility/v1"
+api_key_env = "CO_API_KEY"
+default_model = "north-mini-code-1-0"
+model_catalog = true
+
+[[providers.cohere.models]]
+id = "north-mini-code-1-0"
+context_window = 256000
+
+[terminal]
+preferred = 'alacritty'
+
+[safety]
+desktop_notifications = false
+
+[notifications]
+turn_complete = false
+
+[sponsors]
+enabled = false
+
+[launch_hotkeys]
+enabled = false

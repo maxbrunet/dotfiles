@@ -44,6 +44,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-jcode = {
+      url = "github:1jehuang/homebrew-jcode";
+      flake = false;
+    };
     oh-my-zsh = {
       url = "github:ohmyzsh/ohmyzsh";
       flake = false;
@@ -61,6 +65,7 @@
       home-manager,
       nix-homebrew,
       homebrew-cask,
+      homebrew-jcode,
       agentic-nvim-src,
       astronvim-src,
       astrocommunity-src,
@@ -209,6 +214,7 @@
                 mutableTaps = false;
                 taps = {
                   "homebrew/homebrew-cask" = homebrew-cask;
+                  "1jehuang/homebrew-jcode" = homebrew-jcode;
                 };
               };
 

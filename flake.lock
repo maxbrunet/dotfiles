@@ -194,6 +194,22 @@
         "type": "github"
       }
     },
+    "homebrew-jcode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784865724,
+        "narHash": "sha256-xAyrGPOAls7j52vkLZH07vo09jLU/sUttPYdbmV9VdY=",
+        "owner": "1jehuang",
+        "repo": "homebrew-jcode",
+        "rev": "620b90eec03571d36ffdd72170f2b141778fd405",
+        "type": "github"
+      },
+      "original": {
+        "owner": "1jehuang",
+        "repo": "homebrew-jcode",
+        "type": "github"
+      }
+    },
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src"
@@ -324,6 +340,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
+        "homebrew-jcode": "homebrew-jcode",
         "nix-homebrew": "nix-homebrew",
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",

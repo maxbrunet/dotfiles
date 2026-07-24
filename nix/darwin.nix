@@ -56,6 +56,9 @@ in
   ];
 
   homebrew.enable = true;
+  homebrew.brews = [
+    "1jehuang/jcode/jcode"
+  ];
   homebrew.casks = [
     # https://github.com/NixOS/nixpkgs/issues/411189
     "gimp"
