@@ -9,6 +9,7 @@ let
   inherit (pkgs) stdenv;
   nvimPlugins = pkgs.callPackage ./pkgs/nvim-plugins { };
   nvimTreesitterParsers = pkgs.callPackage ./pkgs/nvim-treesitter-parsers { };
+  opencodeDeps = pkgs.callPackage ./pkgs/opencode-deps { };
 in
 {
   home.file = {
@@ -94,6 +95,17 @@ in
     };
     "opencode/tui.jsonc" = {
       source = ../.config/opencode/tui.jsonc;
+    };
+    # It does not seem we can disable this, so we package it to avoid surprises
+    # https://github.com/anomalyco/opencode/blob/e5cc278dec9294a627a7b05f47ce6a564408c1a2/packages/opencode/src/config/config.ts#L439-L446
+    "opencode/node_modules" = {
+      source = "${opencodeDeps}/node_modules";
+    };
+    "opencode/package.json" = {
+      source = ../.config/opencode/package.json;
+    };
+    "opencode/package-lock.json" = {
+      source = ../.config/opencode/package-lock.json;
     };
     pypoetry = {
       source = ../.config/pypoetry;
