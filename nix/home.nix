@@ -354,6 +354,7 @@ in
       AppleLocale = "en_US@rg=dkzzzz"; # Denmark region
       "com.apple.swipescrolldirection" = false;
       "com.apple.trackpad.scaling" = 2.0;
+      ApplePressAndHoldEnabled = false;
       NSAutomaticWindowAnimationsEnabled = false;
     };
     "com.apple.assistant.support" = {
