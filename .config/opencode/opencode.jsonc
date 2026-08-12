@@ -23,7 +23,7 @@
     },
   },
   "autoupdate": false,
-  "disabled_providers": ["opencode"],
+  "disabled_providers": ["cloudflare-ai-gateway", "opencode"],
   "lsp": {
     "bash": {
       "command": ["bash-language-server", "start"],
@@ -105,6 +105,7 @@
     "gopls": {
       "type": "local",
       "command": ["gopls", "mcp"],
+      "cwd": ".",
       "enabled": true,
     },
     "tavily": {
