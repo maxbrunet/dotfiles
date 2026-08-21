@@ -70,7 +70,6 @@ in
       emote
       engrampa
       evince
-      exo
       file
       librewolf
       gcc
@@ -102,6 +101,7 @@ in
       vlc
       xdg-terminal-exec
       xdg-utils
+      xfce4-exo
       xfconf
       zip
     ]);
@@ -260,6 +260,8 @@ in
   services.dnscrypt-proxy.enable = true;
 
   services.fwupd.enable = true;
+  # https://github.com/fwupd/fwupd/pull/10479
+  services.fwupd.package = pkgs.unstable.fwupd;
 
   services.gnome.gcr-ssh-agent.enable = true;
   services.gnome.gnome-keyring.enable = true;

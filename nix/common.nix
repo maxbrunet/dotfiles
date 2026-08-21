@@ -13,16 +13,7 @@
     bottom
     buf
     cmake
-    (d2.overrideAttrs {
-      patches = [
-        (fetchpatch2 {
-          # https://github.com/terrastruct/d2/pull/2659
-          name = "0001-imgbundler-fetch-images-more-reliably-add-headers.patch";
-          url = "https://github.com/terrastruct/d2/commit/58c2d17a255606e6abe297b481acf9382387820f.patch?full_index=1";
-          hash = "sha256-mAK1VqLhBZP5//tbvlrARFhOrEVDNC4b4iubCOcYO+0=";
-        })
-      ];
-    })
+    unstable.d2
     delta
     (unstable.delve.override {
       buildGoModule = buildGo126Module;
