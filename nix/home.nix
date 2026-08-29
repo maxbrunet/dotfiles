@@ -143,7 +143,7 @@ in
         autoStart = true;
         cpus = 4;
         # regctl manifest digest quay.io/podman/machine-os:$(nix eval nixpkgs#podman.version --apply 'v: builtins.elemAt (builtins.match "([0-9]+\.[0-9]+).*" v) 0' --raw)
-        image = "docker://quay.io/podman/machine-os@sha256:ee3be164d467497fcc2563684711c443ddb4b33decae1f816f50901d41dce5cc";
+        image = "docker://quay.io/podman/machine-os@sha256:136b778b34b2ed851d1cb6a42b41038fe3cee5d4538f9d48939e2e14d38abfea";
         memory = 4096;
         # https://github.com/nix-community/home-manager/pull/9368
         volumes = [
