@@ -71,7 +71,6 @@
       overlayPkgs = final: prev: {
         # https://github.com/NixOS/nixpkgs/issues/507531
         direnv = prev.direnv.overrideAttrs { doCheck = !prev.stdenv.isDarwin; };
-        tuple = prev.callPackage ./nix/pkgs/tuple { };
         vimPlugins = prev.vimPlugins.extend (
           _: _: {
             agentic-nvim = prev.vimUtils.buildVimPlugin {
