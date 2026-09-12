@@ -273,5 +273,42 @@
           ];
         };
       };
+
+      apps = lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
+        system:
+        let
+          pkgs = nixos.legacyPackages.${system};
+        in
+        {
+          update = {
+            type = "app";
+            program = "${
+              pkgs.writeShellApplication {
+                name = "update-all";
+                runtimeInputs = with pkgs; [
+                  bash
+                  coreutils
+                  nix
+                ];
+                text = ''
+                  set -euo pipefail
+
+                  echo '>>> Updating pinned inputs...'
+                  scripts/update-pinned-flake-inputs.sh "$@"
+
+                  echo '>>> Updating flake inputs to latest...'
+                  nix flake update
+
+                  shopt -s nullglob
+                  for updater in nix/pkgs/*/update.sh; do
+                    echo ">>> Running $updater"
+                    "$updater"
+                  done
+                '';
+              }
+            }/bin/update-all";
+          };
+        }
+      );
     };
 }
