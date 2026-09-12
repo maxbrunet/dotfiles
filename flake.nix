@@ -273,8 +273,5 @@
           ];
         };
       };
-
-      # Expose for scripts/update-nvim-plugins.sh
-      inherit astronvim-src;
     };
 }

@@ -1,5 +1,33 @@
-#!/usr/bin/env nix-shell
-#! nix-shell -i bash --pure -p cacert coreutils gh git jq luajit luajitPackages.cjson nix python3 python3Packages.node-semver
+#!/usr/bin/env nix
+#! nix --extra-experimental-features ``nix-command flakes``
+#! nix develop --ignore-env --impure --expr ``
+#! nix let
+#! nix   flake = builtins.getFlake (toString ../../..);
+#! nix   pkgs = flake.inputs.nixos.legacyPackages.${builtins.currentSystem};
+#! nix in
+#! nix pkgs.mkShell {
+#! nix   env = {
+#! nix     ASTRONVIM_SRC = flake.inputs.astronvim-src.outPath;
+#! nix   };
+#! nix   packages = with pkgs; [
+#! nix     cacert
+#! nix     coreutils
+#! nix     gh
+#! nix     git
+#! nix     jq
+#! nix     luajit
+#! nix     luajitPackages.cjson
+#! nix     nix
+#! nix     python3
+#! nix     python3Packages.node-semver
+#! nix   ];
+#! nix }
+#! nix ``
+#! nix --keep-env-var HOME
+#! nix --keep-env-var USER
+#! nix --keep-env-var GITHUB_TOKEN
+#! nix --keep-env-var GH_TOKEN
+#! nix --command bash
 # shellcheck shell=bash
 
 set -euo pipefail
@@ -131,8 +159,6 @@ export -f prefetch_plugin
 export -f process_snapshot_entry
 
 function main {
-  local ASTRONVIM_SRC
-  ASTRONVIM_SRC="$(nix --extra-experimental-features 'nix-command flakes' eval --raw ../../..#astronvim-src)"
   local SNAPSHOT="${ASTRONVIM_SRC}/lua/astronvim/lazy_snapshot.lua"
 
   if [[ ! -f "${SNAPSHOT}" ]]; then
