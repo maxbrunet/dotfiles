@@ -2,28 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "cohere/north-mini-code-1-0",
   "small_model": "cohere/north-mini-code-1-0",
-  "agent": {
-    "build": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-    "plan": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-    "general": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-    "compaction": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-    "title": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-    "summary": {
-      "model": "cohere/north-mini-code-1-0",
-    },
-  },
   "autoupdate": false,
-  "disabled_providers": ["cloudflare-ai-gateway", "opencode"],
+  "enabled_providers": ["cohere"],
   "lsp": {
     "bash": {
       "command": ["bash-language-server", "start"],

@@ -8,7 +8,7 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode-deps";
-  version = "1.18.25";
+  version = "1.18.29";
 
   src = lib.filterSource (
     path: type:
@@ -26,7 +26,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-/UYpvfiMNOxtJHx+F/FfYrsXr8IzlJQOKUBt5/47axs=";
+    hash = "sha256-U8davfNStvQF5H74urwcYt5CtqwZXOEbaJzuEUSzHEc=";
   };
 
   installPhase = ''

@@ -206,7 +206,7 @@ require("lazy").setup({
       },
     },
     opts = {
-      provider = vim.loop.os_uname().sysname == "Darwin" and "cursor-acp" or "opencode-acp",
+      provider = "opencode-acp",
       acp_providers = {
         ["cursor-acp"] = {
           env = {
