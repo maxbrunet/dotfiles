@@ -100,6 +100,7 @@
   "permission": {
     "bash": {
       "*": "ask",
+      "ast-grep outline *": "allow",
       "git log *": "allow",
       "git diff *": "allow",
       "git show *": "allow",
