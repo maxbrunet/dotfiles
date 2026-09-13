@@ -44,6 +44,7 @@
       "Mcp(notion:notion-search)",
       "Mcp(tavily:tavily_extract)",
       "Mcp(tavily:tavily_search)",
+      "Shell(ast-grep outline)",
       "Shell(git diff)",
       "Shell(git log)",
       "Shell(git show)",

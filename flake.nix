@@ -23,6 +23,10 @@
       url = "github:carlos-algms/agentic.nvim";
       flake = false;
     };
+    ast-grep-skills = {
+      url = "github:ast-grep/agent-skill";
+      flake = false;
+    };
     astronvim-src = {
       url = "github:AstroNvim/AstroNvim/v6.0.7";
       flake = false;

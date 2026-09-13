@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   inputs,
@@ -13,17 +14,20 @@ let
 in
 {
   home.file = {
+    ".librewolf/librewolf.overrides.cfg" = {
+      source = ../.librewolf/librewolf.overrides.cfg;
+    };
     ".local/bin/brightness.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/brightness.sh;
     };
     ".local/bin/volume.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/volume.sh;
     };
+    "sgconfig.yml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/ast-grep/sgconfig.yml";
+    };
     ".zshrc" = {
       source = ../.zshrc;
-    };
-    ".librewolf/librewolf.overrides.cfg" = {
-      source = ../.librewolf/librewolf.overrides.cfg;
     };
   };
 
@@ -34,7 +38,18 @@ in
   programs.agent-skills = {
     enable = true;
     sources = {
-      cc-skills-golang = {
+      ast-grep = {
+        input = "ast-grep-skills";
+        subdir = "ast-grep/skills";
+        filter.maxDepth = 1;
+        filter.nameRegex = "^ast-grep$";
+      };
+      ast-grep-outline = {
+        input = "ast-grep-skills";
+        subdir = "ast-grep/skills/outline";
+        filter.maxDepth = 1;
+      };
+      golang = {
         input = "cc-skills-golang";
         subdir = "skills";
         filter.maxDepth = 1;
@@ -119,6 +134,23 @@ in
     };
     "alacritty/system.toml" = {
       source = ../.config/alacritty/system.toml + "/${lib.toLower stdenv.hostPlatform.uname.system}.toml";
+    };
+    "ast-grep/sgconfig.yml" = {
+      source = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
+        customLanguages.jsonnet = {
+          libraryPath = "${pkgs.tree-sitter-grammars.tree-sitter-jsonnet}/parser";
+          extensions = [
+            "jsonnet"
+            "libsonnet"
+          ];
+          expandoChar = "_";
+          # Resolved relative to the discovered config ($HOME/sgconfig.yml), so absolute.
+          outlineRules = "${config.xdg.configHome}/ast-grep/outline/jsonnet.yml";
+        };
+      };
+    };
+    "ast-grep/outline/jsonnet.yml" = {
+      source = ../.config/ast-grep/outline/jsonnet.yml;
     };
     "azure/config" = {
       source = ../.config/azure/config;

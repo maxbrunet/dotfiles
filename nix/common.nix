@@ -5,6 +5,7 @@
     amazon-ecr-credential-helper
     android-tools
     argocd
+    unstable.ast-grep
     aws-vault
     awscli2
     azure-cli

@@ -1,6 +1,22 @@
 repos:
   - repo: local
     hooks:
+      - id: ast-grep-outline
+        name: ast-grep outline tests
+        description: Run the outline test suites for custom languages.
+        entry: |
+          sh -ec '
+            JOBS="$(
+              nix --extra-experimental-features "nix-command flakes" \
+                shell nixpkgs#coreutils --command nproc
+            )"
+            for b in .config/ast-grep/outline/*.bats; do
+              "$b" --jobs "${JOBS}"
+            done
+          '
+        language: system
+        pass_filenames: false
+        files: ^\.config/ast-grep/outline/|^flake\.lock$
       - id: nixfmt
         name: nixfmt
         description: The official formatter for Nix code

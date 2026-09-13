@@ -1,0 +1,257 @@
+---
+id: jsonnet-import
+language: jsonnet
+role: item
+symbolType: module
+rule:
+  kind: import
+  has:
+    any:
+      - kind: string
+        pattern: "'$PATH'"
+      - kind: string
+        pattern: '"$PATH"'
+name: $PATH
+isImport: true
+isExported: false
+---
+id: jsonnet-importstr
+language: jsonnet
+role: item
+symbolType: module
+rule:
+  kind: importstr
+  has:
+    any:
+      - kind: string
+        pattern: "'$PATH'"
+      - kind: string
+        pattern: '"$PATH"'
+name: $PATH
+isImport: true
+isExported: false
+---
+id: jsonnet-local-function
+language: jsonnet
+role: item
+symbolType: function
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: document
+    stopBy:
+      not:
+        kind: local_bind
+  any:
+    - has:
+        field: function
+        pattern: $NAME
+    - has:
+        kind: anonymous_function
+        stopBy: neighbor
+name: $NAME
+isExported: false
+---
+id: jsonnet-local-variable
+language: jsonnet
+role: item
+symbolType: variable
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: document
+    stopBy:
+      not:
+        kind: local_bind
+  not:
+    any:
+      - has:
+          field: function
+          pattern: $NAME
+      - has:
+          kind: anonymous_function
+          stopBy: neighbor
+name: $NAME
+isExported: false
+---
+id: jsonnet-object-field
+language: jsonnet
+role: item
+symbolType: field
+rule:
+  kind: field
+  has:
+    kind: fieldname
+    pattern: $NAME
+  not:
+    has:
+      field: function
+      pattern: $NAME
+name: $NAME
+isExported:
+  not:
+    regex: "^([^\"':]|\"[^\"]*\"|'[^']*'|\\[[^\\]]*\\])*::[^:]"
+---
+id: jsonnet-object-method
+language: jsonnet
+role: item
+symbolType: method
+rule:
+  kind: field
+  has:
+    field: function
+    pattern: $NAME
+name: $NAME
+isExported:
+  not:
+    regex: "^([^\"':]|\"[^\"]*\"|'[^']*'|\\[[^\\]]*\\])*::[^:]"
+---
+id: jsonnet-object-local-variable
+language: jsonnet
+role: item
+symbolType: variable
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: objlocal
+    stopBy: end
+  not:
+    any:
+      - has:
+          field: function
+          pattern: $NAME
+      - has:
+          kind: anonymous_function
+          stopBy: neighbor
+name: $NAME
+isExported: false
+---
+id: jsonnet-object-local-function
+language: jsonnet
+role: item
+symbolType: function
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: objlocal
+    stopBy: end
+  any:
+    - has:
+        field: function
+        pattern: $NAME
+    - has:
+        kind: anonymous_function
+        stopBy: neighbor
+name: $NAME
+isExported: false
+---
+id: jsonnet-object-field-member
+language: jsonnet
+role: member
+symbolType: field
+parentRuleIds:
+  - jsonnet-object-field
+  - jsonnet-object-method
+  - jsonnet-object-local-variable
+  - jsonnet-object-local-function
+  - jsonnet-local-variable
+  - jsonnet-local-function
+rule:
+  kind: field
+  has:
+    kind: fieldname
+    pattern: $NAME
+  not:
+    has:
+      field: function
+      pattern: $NAME
+name: $NAME
+isPublic:
+  not:
+    regex: "^([^\"':]|\"[^\"]*\"|'[^']*'|\\[[^\\]]*\\])*::[^:]"
+---
+id: jsonnet-object-method-member
+language: jsonnet
+role: member
+symbolType: method
+parentRuleIds:
+  - jsonnet-object-field
+  - jsonnet-object-method
+  - jsonnet-object-local-variable
+  - jsonnet-object-local-function
+  - jsonnet-local-variable
+  - jsonnet-local-function
+rule:
+  kind: field
+  has:
+    field: function
+    pattern: $NAME
+name: $NAME
+isPublic:
+  not:
+    regex: "^([^\"':]|\"[^\"]*\"|'[^']*'|\\[[^\\]]*\\])*::[^:]"
+---
+id: jsonnet-object-local-member
+language: jsonnet
+role: member
+symbolType: variable
+parentRuleIds:
+  - jsonnet-object-field
+  - jsonnet-object-method
+  - jsonnet-object-local-variable
+  - jsonnet-object-local-function
+  - jsonnet-local-variable
+  - jsonnet-local-function
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: objlocal
+    stopBy: end
+  not:
+    any:
+      - has:
+          field: function
+          pattern: $NAME
+      - has:
+          kind: anonymous_function
+          stopBy: neighbor
+name: $NAME
+isPublic: false
+---
+id: jsonnet-object-local-function-member
+language: jsonnet
+role: member
+symbolType: function
+parentRuleIds:
+  - jsonnet-object-field
+  - jsonnet-object-method
+  - jsonnet-object-local-variable
+  - jsonnet-object-local-function
+  - jsonnet-local-variable
+  - jsonnet-local-function
+rule:
+  kind: bind
+  has:
+    pattern: $NAME
+  inside:
+    kind: objlocal
+    stopBy: end
+  any:
+    - has:
+        field: function
+        pattern: $NAME
+    - has:
+        kind: anonymous_function
+        stopBy: neighbor
+name: $NAME
+isPublic: false
