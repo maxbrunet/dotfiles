@@ -17,7 +17,7 @@
     unstable.d2
     delta
     (unstable.delve.override {
-      buildGoModule = buildGo126Module;
+      buildGoModule = buildGo127Module;
     })
     docker-credential-helpers
     docker-language-server
@@ -28,7 +28,7 @@
     gdu
     git-lfs
     gh
-    unstable.go_1_26
+    unstable.go_1_27
     go-jsonnet
     unstable.golangci-lint
     golangci-lint-langserver
