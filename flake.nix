@@ -16,7 +16,6 @@
     home-manager.inputs.nixpkgs.follows = "nixos";
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
     agent-skills.inputs.nixpkgs.follows = "nixos";
-    agent-skills.inputs.home-manager.follows = "home-manager";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     agentic-nvim-src = {
@@ -28,7 +27,7 @@
       flake = false;
     };
     astronvim-src = {
-      url = "github:AstroNvim/AstroNvim/v6.0.7";
+      url = "github:AstroNvim/AstroNvim/v6.1.0";
       flake = false;
     };
     astrocommunity-src = {
@@ -52,7 +51,7 @@
       flake = false;
     };
     compound-engineering-plugin = {
-      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.24.0";
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.26.3";
       flake = false;
     };
     google-skills = {
