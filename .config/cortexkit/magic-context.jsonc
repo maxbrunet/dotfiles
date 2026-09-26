@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cortexkit/magic-context/master/assets/magic-context.schema.json",
+  "auto_update": false,
+  "historian": {
+    "opencode": { "model": "cohere/north-mini-code-1-0" },
+  },
+  "embedding": {
+    "provider": "openai-compatible",
+    "endpoint": "https://api.cohere.com/compatibility/v1",
+    "api_key": "{env:CO_API_KEY}",
+    "model": "embed-v5.0-fast",
+  },
+  "memory": { "enabled": false, "auto_search": { "enabled": false } },
+  "dreamer": { "disable": true, "inject_docs": false },
+  "prompt_surface": { "default": "light" },
+}

@@ -177,6 +177,9 @@ in
     "azure/config" = {
       source = ../.config/azure/config;
     };
+    "cortexkit" = {
+      source = ../.config/cortexkit;
+    };
     dunst = lib.mkIf stdenv.isLinux {
       source = ../.config/dunst;
     };

@@ -26,8 +26,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-YcJnhzAEjMjy1WEM6TnQo3U+SKIfOMfCedfpuJd4Nzo=";
+    hash = "sha256-PEgypB5VReBa3S5fYbPZIfB38dHFb6uc8tqniSB13Dw=";
   };
+
+  npmRebuildFlags = [ "--ignore-scripts" ];
 
   installPhase = ''
     mkdir $out
