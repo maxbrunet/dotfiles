@@ -26,7 +26,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-ibm919YEizc6NtVTp7gRxiJSGpkaGBpo99keRp/Cp1w=";
+    hash = "sha256-K2xa5xXUAGnTpfKcCh11AExS6jsm10pFWY+RLxQdVo8=";
   };
 
   installPhase = ''

@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "compaction": { "auto": false }, // Replaced by Magic Context
   "model": "cohere/north-mini-code-1-0",
   "small_model": "cohere/north-mini-code-1-0",
   "autoupdate": false,
@@ -120,6 +121,7 @@
       "tavily_tavily_search": "allow",
     },
   },
+  "plugin": ["@cortexkit/opencode-magic-context"],
   "provider": {
     "cohere": {
       "npm": "@ai-sdk/openai-compatible",
