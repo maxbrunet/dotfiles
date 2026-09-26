@@ -20,6 +20,12 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
 [delta]
 	color-only = true
 	diff-highlight = true

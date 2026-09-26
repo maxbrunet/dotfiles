@@ -64,6 +64,14 @@ in
         filter.maxDepth = 1;
         filter.nameRegex = "^gh$";
       };
+      gh-stack = {
+        path =
+          let
+            pkg = pkgs.unstable.gh-stack;
+          in
+          "${pkg}/share/skills/${pkg.pname}";
+        filter.maxDepth = 1;
+      };
       google = {
         input = "google-skills";
         subdir = "skills";
@@ -113,6 +121,20 @@ in
     "base16/shell" = {
       source = inputs.base16-shell;
     };
+    "gh/extensions" =
+      let
+        extensions = [
+          pkgs.unstable.gh-stack
+        ];
+      in
+      {
+        source = pkgs.linkFarm "gh-extensions" (
+          map (p: {
+            name = p.pname;
+            path = "${p}/bin";
+          }) extensions
+        );
+      };
     "nvim/plugins" = {
       source = nvimPlugins;
     };
