@@ -104,7 +104,7 @@ source "${ZSH}/oh-my-zsh.sh"
 
 # kube-ps1 plugin
 KUBE_PS1_ENABLED='off' # Disable kube-ps1 by default
-KUBE_PS1_PREFIX="\n("
+KUBE_PS1_PREFIX=$'\n('
 KUBE_PS1_SEPARATOR=''
 
 # Adapted PROMPT for kube_ps1 from ${ZSH}/themes/tjkirch.zsh-theme
