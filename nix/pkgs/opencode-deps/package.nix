@@ -26,7 +26,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-Ro3TsE8T2/RhmZGUBp+QEG3suDJViXRXiHvJtVHYIek=";
+    hash = "sha256-9byZ1t4PWGXdyhnN1wW6UUabmNLjCcahXa6bwbaIFJw=";
   };
 
   npmRebuildFlags = [ "--ignore-scripts" ];

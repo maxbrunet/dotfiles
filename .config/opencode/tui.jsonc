@@ -3,6 +3,6 @@
   "keybinds": {
     "app_exit": "ctrl+d,<leader>q",
   },
-  "plugin": ["./node_modules/@cortexkit/opencode-magic-context"],
+  "plugin": ["./packages/@cortexkit/opencode-magic-context"],
   "theme": "system",
 }

@@ -215,6 +215,9 @@ in
     "opencode/package-lock.json" = {
       source = ../.config/opencode/package-lock.json;
     };
+    "opencode/packages/@cortexkit/opencode-magic-context" = {
+      source = pkgs.opencode-magic-context;
+    };
     pypoetry = {
       source = ../.config/pypoetry;
     };

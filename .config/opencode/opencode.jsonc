@@ -121,7 +121,7 @@
       "tavily_tavily_search": "allow",
     },
   },
-  "plugin": ["./node_modules/@cortexkit/opencode-magic-context"],
+  "plugin": ["./packages/@cortexkit/opencode-magic-context"],
   "provider": {
     "cohere": {
       "npm": "@ai-sdk/openai-compatible",

@@ -90,6 +90,12 @@
       overlayPkgs = final: prev: {
         # https://github.com/NixOS/nixpkgs/issues/507531
         direnv = prev.direnv.overrideAttrs { doCheck = !prev.stdenv.isDarwin; };
+        opencode-magic-context = final.callPackage ./nix/pkgs/opencode-magic-context {
+          # Unstable provides bun >= 1.4.0 and the opencode canonicalization
+          # scripts of the version in use
+          bun = final.unstable.bun;
+          opencode = final.unstable.opencode;
+        };
         vimPlugins = prev.vimPlugins.extend (
           _: _: {
             agentic-nvim = prev.vimUtils.buildVimPlugin {
