@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/cortexkit/magic-context/master/assets/magic-context.schema.json",
   "auto_update": false,
   "historian": {
+    "maxTokens": 65536,
     "opencode": { "model": "cohere/north-mini-code-1-0" },
   },
   "embedding": {

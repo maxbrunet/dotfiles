@@ -20,30 +20,30 @@
     };
   };
   "astrocore" = {
-    version = "v3.1.1";
+    version = "v3.1.2";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astrocore";
-      rev = "v3.1.1";
-      hash = "sha256-EBCcsVcdZtrHY7QO+/qc0Yf9tXR1HpOYF+txAv6kbSM=";
+      rev = "v3.1.2";
+      hash = "sha256-rdn45y1i9YgqwoyGyzLS+fy7gh83XUSfSf8L5ek/hLo=";
     };
   };
   "astrolsp" = {
-    version = "v4.0.3";
+    version = "v4.1.0";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astrolsp";
-      rev = "v4.0.3";
-      hash = "sha256-CRE85a4WFcb6R7TtAvsHoaQfGUJT28jdRLWPAzFs/GU=";
+      rev = "v4.1.0";
+      hash = "sha256-0cGeeh84Hl5GKWzyncxgqyyP5km5OskQx8bOW7z+kd4=";
     };
   };
   "astrotheme" = {
-    version = "v4.13.0";
+    version = "v4.14.0";
     src = fetchFromGitHub {
       owner = "AstroNvim";
       repo = "astrotheme";
-      rev = "v4.13.0";
-      hash = "sha256-1VppLnCIrkos3x5NYq6PONbe7pbAfNUWGbZvHtYd8cM=";
+      rev = "v4.14.0";
+      hash = "sha256-wbJi34s3cPRTD0QEV2hWN1vywWlRYlIDVFTFj1sJMxM=";
     };
   };
   "astroui" = {
@@ -92,12 +92,12 @@
     };
   };
   "friendly-snippets" = {
-    version = "6cd7280";
+    version = "b4d01b0";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "6cd7280adead7f586db6fccbd15d2cac7e2188b9";
-      hash = "sha256-FzApcTbWfFkBD9WsYMhaCyn6ky8UmpUC2io/co/eByM=";
+      rev = "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219";
+      hash = "sha256-Wp10iRKSn6yNUmNbu2o10cKPkytNjs0cdjBUpEYVlow=";
     };
   };
   "gitsigns.nvim" = {
@@ -137,12 +137,12 @@
     };
   };
   "mason-lspconfig.nvim" = {
-    version = "7adc933";
+    version = "00b5473";
     src = fetchFromGitHub {
       owner = "mason-org";
       repo = "mason-lspconfig.nvim";
-      rev = "7adc933dabcc7c86ae6b07aff7ee68eac398491f";
-      hash = "sha256-m71BZepmDdLmd0qCHXIdGiZVZke9obO4qFt7OR8p/do=";
+      rev = "00b5473cca4db5b410ff4bae724e3b6e21f2687f";
+      hash = "sha256-9h8hC6rhnRfMdfNuQethhBOj395l3UQt0MPwUF3gXQE=";
     };
   };
   "mason-null-ls.nvim" = {
@@ -200,12 +200,12 @@
     };
   };
   "none-ls.nvim" = {
-    version = "01f8e62";
+    version = "c4b82bb";
     src = fetchFromGitHub {
       owner = "nvimtools";
       repo = "none-ls.nvim";
-      rev = "01f8e62ea11603e59ad9ff7afcfa94fd183f76d6";
-      hash = "sha256-Amz3UFxET/+poFUm+ldyPEdl9u9/DDMarvgF+AleC/U=";
+      rev = "c4b82bb63b13856ba4d6b971b7aad3bb38fc6fe2";
+      hash = "sha256-z+iiRl0C0aaT/vm+apyr5PL91TbzBl+FVwgXY+hJz54=";
     };
   };
   "nui.nvim" = {
@@ -218,21 +218,21 @@
     };
   };
   "nvim-autopairs" = {
-    version = "7b9923a";
+    version = "3172f40";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "7b9923abad60b903ece7c52940e1321d39eccc79";
-      hash = "sha256-klOJgBPw8oGDnF9wKIpGDzuBY+tH1acRyvZSPR4wrjw=";
+      rev = "3172f40c16563db871a58f20d205c710ad782311";
+      hash = "sha256-IcVPwyy5rEyuTydWicXVMdhDPyX5dNohN767dmPOzug=";
     };
   };
   "nvim-dap" = {
-    version = "9e848e0";
+    version = "cfa2d58";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-dap";
-      rev = "9e848e09a697ee95302a3ef2dd43fd6eb709e570";
-      hash = "sha256-IHm3CwO7qUTtOZqhljDjSzz4WbaAJ4kPY384MyZZ9ac=";
+      rev = "cfa2d58f4537aca6ca83e2de1a0d9f1491121264";
+      hash = "sha256-9T6EL8mZ1rddDXBNvkh68jQSKK1bhi73IvyD6v464x8=";
     };
   };
   "nvim-dap-ui" = {
@@ -272,30 +272,30 @@
     };
   };
   "nvim-treesitter" = {
-    version = "61df849";
+    version = "ca581c3";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "61df84986b4b4ec469ee745a182e433d49f8c27e";
-      hash = "sha256-h0O7KX8rIAhOW5MxQPvw9MeTNsjBxP2JuS/9sgcfzrw=";
+      rev = "ca581c3436fc2b236847f5b739ebc263739e5ca6";
+      hash = "sha256-2KMktps3gP0nkQDxbsWACbBQRhToEFbdIAeXyEirxAY=";
     };
   };
   "nvim-treesitter-textobjects" = {
-    version = "898ee30";
+    version = "5c7b026";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "898ee307df58f854d11cd7edd06472574d48014e";
-      hash = "sha256-naZ+p5RrC+uUyFRaksmozDfNgJRifff+9TDWx79DCPk=";
+      rev = "5c7b0263797dfd1bd6202f2b219f3b53a80b2187";
+      hash = "sha256-5f2oiz/c/7/cIj+AUaFuB+sm7ZAfwoQeY4r3+XfUDrI=";
     };
   };
   "nvim-ts-autotag" = {
-    version = "88c1453";
+    version = "d7220b5";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-ts-autotag";
-      rev = "88c1453db4ba7dd24131086fe51fdf74e587d275";
-      hash = "sha256-bvBf9wEDxdwlMGN29v4dEPexZGuxZZr7s+6xAOrDNKI=";
+      rev = "d7220b55e16ed3c04e88086256def5d282429493";
+      hash = "sha256-L0A0at16v8SrylDAaRzUyU/H2vgd7zrT2WP+Ofgiv7s=";
     };
   };
   "nvim-window-picker" = {
@@ -326,12 +326,12 @@
     };
   };
   "smart-splits.nvim" = {
-    version = "32f6788";
+    version = "v2.1.0";
     src = fetchFromGitHub {
       owner = "mrjones2014";
       repo = "smart-splits.nvim";
-      rev = "32f67888ac71942442fdab3819864a10449dfc41";
-      hash = "sha256-1DRSj+xhXKjInkHFvM+Dbe63yPVv2hlTuw3SqeiFdv4=";
+      rev = "v2.1.0";
+      hash = "sha256-IuJNQT0bN68K5lnw0ixyU/heG8V1+zUwlvm0mNvvHOw=";
     };
   };
   "snacks.nvim" = {

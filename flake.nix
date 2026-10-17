@@ -27,7 +27,7 @@
       flake = false;
     };
     astronvim-src = {
-      url = "github:AstroNvim/AstroNvim/v6.1.0";
+      url = "github:AstroNvim/AstroNvim/v6.1.1";
       flake = false;
     };
     astrocommunity-src = {
@@ -51,7 +51,7 @@
       flake = false;
     };
     compound-engineering-plugin = {
-      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.30.4";
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.31.0";
       flake = false;
     };
     google-skills = {

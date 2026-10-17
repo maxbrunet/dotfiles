@@ -22,10 +22,27 @@
 # shellcheck shell=bash
 set -euo pipefail
 
-cd "$(readlink -e "$(dirname "${BASH_SOURCE[0]}")/../../..")"
+cd "$(readlink -e "$(dirname "${BASH_SOURCE[0]}")")"
 
-exec nix-update \
-  --flake \
+WRAPPER="$(mktemp "${TMPDIR:-/tmp}/nix-update-wrapper.XXXXXX")"
+trap 'rm -f "${WRAPPER}"' EXIT
+
+cat >"${WRAPPER}" <<EOF
+{
+  system ? builtins.currentSystem,
+  ...
+}:
+let
+  flake = builtins.getFlake (toString ${PWD}/../../..);
+  pkgs = flake.inputs.nixos-unstable.legacyPackages.\${system};
+in
+{
+  opencode-magic-context = pkgs.callPackage ${PWD}/package.nix { };
+}
+EOF
+
+nix-update \
+  --file "${WRAPPER}" \
   --version-regex '^v(\d+\.\d+\.\d+)$' \
   --subpackage node_modules \
   opencode-magic-context
