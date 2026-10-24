@@ -84,7 +84,10 @@ in
   };
   nix.gc.options = "--delete-older-than 30d";
   nix.optimise.automatic = true;
-  nix.settings.sandbox = true;
+  # true exceeds macOS's 64 KiB sandbox profile limit for derivations that
+  # aggregate the whole package set (https://github.com/NixOS/nix/issues/16613);
+  # "relaxed" + the __noChroot exemptions in flake.nix keeps the rest sandboxed.
+  nix.settings.sandbox = "relaxed";
 
   programs.direnv.enable = true;
 

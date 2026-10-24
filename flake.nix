@@ -137,6 +137,68 @@
           }
         );
       };
+      # macOS seatbelt caps the sandbox profile for derivations that aggregate
+      # the whole package set (https://github.com/NixOS/nix/issues/16613;
+      # originally https://github.com/NixOS/nix/issues/4119). Exempt only
+      # those, so `sandbox = "relaxed"` (nix/darwin.nix) still sandboxes
+      # everything else.
+      #
+      # Exemptions match marker attributes rather than derivation `name`s:
+      # forcing arbitrary names here evaluates lazily-recursive nixpkgs names
+      # too early (rustc's `pname` on Darwin).
+      darwinSandboxOverlay =
+        final: prev:
+        prev.lib.optionalAttrs prev.stdenv.isDarwin {
+          buildEnv =
+            args:
+            let
+              drv = prev.buildEnv args;
+            in
+            if
+              builtins.elem (args.name or "") [
+                "home-manager-applications"
+                "home-manager-fonts"
+                "home-manager-path"
+                "system-applications"
+                "system-path"
+              ]
+            then
+              drv.overrideAttrs (_: {
+                __noChroot = true;
+              })
+            else
+              drv;
+
+          # nix-darwin's `darwin-system` toplevel, identified by its
+          # `activationScript` attribute.
+          stdenvNoCC = prev.stdenvNoCC // {
+            mkDerivation =
+              args:
+              let
+                drv = prev.stdenvNoCC.mkDerivation args;
+              in
+              if args ? activationScript then
+                drv.overrideAttrs (_: {
+                  __noChroot = true;
+                })
+              else
+                drv;
+          };
+
+          # nix-darwin's `etc` and home-manager's generation build via
+          # runCommand with exactly `{ preferLocalBuild = true; }`.
+          runCommand =
+            name: env: cmd:
+            let
+              drv = prev.runCommand name env cmd;
+            in
+            if builtins.attrNames env == [ "preferLocalBuild" ] && env.preferLocalBuild then
+              drv.overrideAttrs (_: {
+                __noChroot = true;
+              })
+            else
+              drv;
+        };
       allowUnfreePredicate =
         pkg:
         builtins.elem (nixos.lib.getName pkg) [
@@ -164,6 +226,7 @@
         nixpkgs.overlays = [
           (unstableOverlayFrom unstable)
           overlayPkgs
+          darwinSandboxOverlay
         ];
       };
       baseModules = [
