@@ -109,6 +109,11 @@
         },
         "disabled": false,
       },
+      "rea": {
+        "type": "local",
+        "command": ["rea", "mcp"],
+        "disabled": true,
+      },
     },
   },
   "permissions": [

@@ -110,6 +110,7 @@
         pythonImportsCheck = prev.pythonImportsCheck ++ map (pkg: pkg.pythonImportsCheck) backends;
       })
     )
+    rea
     regctl
     ripgrep
     unstable.ruff

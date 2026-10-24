@@ -96,6 +96,9 @@
           bun = final.unstable.bun;
           opencode = final.unstable.opencode;
         };
+        rea = final.callPackage ./nix/pkgs/rea {
+          installAgentSkills = final.unstable.installAgentSkills;
+        };
         vimPlugins = prev.vimPlugins.extend (
           _: _: {
             agentic-nvim = prev.vimUtils.buildVimPlugin {

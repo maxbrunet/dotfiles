@@ -109,6 +109,14 @@ in
           + ")";
         idPrefix = "google";
       };
+      rea = {
+        path =
+          let
+            pkg = pkgs.rea;
+          in
+          "${pkg}/share/skills/${pkg.pname}";
+        filter.maxDepth = 1;
+      };
     };
     skills.enableAll = true;
     targets.cursor.enable = stdenv.isDarwin;
