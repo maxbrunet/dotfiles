@@ -161,6 +161,12 @@ in
       isSystem = false;
     };
   };
+  # Ensure DNS is available.
+  systemd.services.geoclue.serviceConfig = {
+    ExecStartPre = "${lib.getExe pkgs.getent} hosts api.beacondb.net";
+    Restart = "on-failure";
+    RestartSec = 3;
+  };
 
   networking.wireless.iwd.enable = true;
 
