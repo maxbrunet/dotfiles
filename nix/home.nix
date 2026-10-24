@@ -8,9 +8,22 @@
 
 let
   inherit (pkgs) stdenv;
+
+  astGrepConfig = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
+    customLanguages.jsonnet = {
+      libraryPath = "${pkgs.tree-sitter-grammars.tree-sitter-jsonnet}/parser";
+      extensions = [
+        "jsonnet"
+        "libsonnet"
+      ];
+      expandoChar = "_";
+      # Resolved relative to the discovered config ($HOME/sgconfig.yml), so absolute.
+      outlineRules = "${config.xdg.configHome}/ast-grep/outline/jsonnet.yml";
+    };
+  };
+
   nvimPlugins = pkgs.callPackage ./pkgs/nvim-plugins { };
   nvimTreesitterParsers = pkgs.callPackage ./pkgs/nvim-treesitter-parsers { };
-  opencodeDeps = pkgs.callPackage ./pkgs/opencode-deps { };
 in
 {
   home.file = {
@@ -158,21 +171,14 @@ in
       source = ../.config/alacritty/system.toml + "/${lib.toLower stdenv.hostPlatform.uname.system}.toml";
     };
     "ast-grep/sgconfig.yml" = {
-      source = (pkgs.formats.yaml { }).generate "sgconfig.yml" {
-        customLanguages.jsonnet = {
-          libraryPath = "${pkgs.tree-sitter-grammars.tree-sitter-jsonnet}/parser";
-          extensions = [
-            "jsonnet"
-            "libsonnet"
-          ];
-          expandoChar = "_";
-          # Resolved relative to the discovered config ($HOME/sgconfig.yml), so absolute.
-          outlineRules = "${config.xdg.configHome}/ast-grep/outline/jsonnet.yml";
-        };
-      };
+      source = astGrepConfig;
     };
     "ast-grep/outline/jsonnet.yml" = {
       source = ../.config/ast-grep/outline/jsonnet.yml;
+    };
+    "ast-grep/trusted-configs.json" = {
+      force = true;
+      text = builtins.toJSON [ "${astGrepConfig}" ];
     };
     "azure/config" = {
       source = ../.config/azure/config;
@@ -198,22 +204,11 @@ in
     "opencode/AGENTS.md" = {
       source = ../.config/opencode/AGENTS.md;
     };
+    "opencode/cli.json" = {
+      source = ../.config/opencode/cli.json;
+    };
     "opencode/opencode.jsonc" = {
       source = ../.config/opencode/opencode.jsonc;
-    };
-    "opencode/tui.jsonc" = {
-      source = ../.config/opencode/tui.jsonc;
-    };
-    # It does not seem we can disable this, so we package it to avoid surprises
-    # https://github.com/anomalyco/opencode/blob/e5cc278dec9294a627a7b05f47ce6a564408c1a2/packages/opencode/src/config/config.ts#L439-L446
-    "opencode/node_modules" = {
-      source = "${opencodeDeps}/node_modules";
-    };
-    "opencode/package.json" = {
-      source = ../.config/opencode/package.json;
-    };
-    "opencode/package-lock.json" = {
-      source = ../.config/opencode/package-lock.json;
     };
     "opencode/packages/@cortexkit/opencode-magic-context" = {
       source = pkgs.opencode-magic-context;

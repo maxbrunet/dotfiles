@@ -2,9 +2,20 @@
   "$schema": "https://opencode.ai/config.json",
   "compaction": { "auto": false }, // Replaced by Magic Context
   "model": "cohere/north-mini-code-1-0",
-  "small_model": "cohere/north-mini-code-1-0",
-  "autoupdate": false,
-  "enabled_providers": ["cohere"],
+  "formatter": {
+    "d2": {
+      "command": ["d2", "fmt", "$FILE"],
+      "extensions": [".d2"],
+    },
+    "gofmt": {},
+    "jsonnetfmt": {
+      "command": ["jsonnetfmt", "--in-place", "$FILE"],
+      "extensions": [".jsonnet", ".libsonnet"],
+    },
+    "nixfmt": {},
+    "rustfmt": {},
+    "terraform": {},
+  },
   "lsp": {
     "bash": {
       "command": ["bash-language-server", "start"],
@@ -83,50 +94,56 @@
     },
   },
   "mcp": {
-    "gopls": {
-      "type": "local",
-      "command": ["gopls", "mcp"],
-      "cwd": ".",
-      "enabled": true,
-    },
-    "tavily": {
-      "type": "remote",
-      "url": "https://mcp.tavily.com/mcp/",
-      "enabled": true,
-      "headers": {
-        "Authorization": "Bearer {env:TAVILY_API_KEY}",
+    "servers": {
+      "gopls": {
+        "type": "local",
+        "command": ["gopls", "mcp"],
+        "cwd": ".",
+        "disabled": false,
+      },
+      "tavily": {
+        "type": "remote",
+        "url": "https://mcp.tavily.com/mcp/",
+        "headers": {
+          "Authorization": "Bearer {env:TAVILY_API_KEY}",
+        },
+        "disabled": false,
       },
     },
   },
-  "permission": {
-    "bash": {
-      "*": "ask",
-      "ast-grep outline *": "allow",
-      "git log *": "allow",
-      "git diff *": "allow",
-      "git show *": "allow",
-      "git status *": "allow",
-      "ls *": "allow",
+  "permissions": [
+    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "gopls_go_diagnostics", "resource": "*", "effect": "allow" },
+    { "action": "gopls_go_file_context", "resource": "*", "effect": "allow" },
+    { "action": "gopls_go_package_api", "resource": "*", "effect": "allow" },
+    { "action": "gopls_go_search", "resource": "*", "effect": "allow" },
+    {
+      "action": "gopls_go_symbol_references",
+      "resource": "*",
+      "effect": "allow",
     },
-    "tools": {
-      "*": "ask",
-      "gopls_go_diagnostics": "allow",
-      "gopls_go_file_context": "allow",
-      "gopls_go_package_api": "allow",
-      "gopls_go_search": "allow",
-      "gopls_go_symbol_references": "allow",
-      "gopls_go_vulncheck": "allow",
-      "gopls_go_workspace": "allow",
-      "tavily_tavily_extract": "allow",
-      "tavily_tavily_search": "allow",
-    },
-  },
-  "plugin": ["./packages/@cortexkit/opencode-magic-context"],
-  "provider": {
+    { "action": "gopls_go_vulncheck", "resource": "*", "effect": "allow" },
+    { "action": "gopls_go_workspace", "resource": "*", "effect": "allow" },
+    { "action": "tavily_tavily_extract", "resource": "*", "effect": "allow" },
+    { "action": "tavily_tavily_search", "resource": "*", "effect": "allow" },
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "ast-grep outline *", "effect": "allow" },
+    { "action": "shell", "resource": "git log *", "effect": "allow" },
+    { "action": "shell", "resource": "git diff *", "effect": "allow" },
+    { "action": "shell", "resource": "git show *", "effect": "allow" },
+    { "action": "shell", "resource": "git status *", "effect": "allow" },
+    { "action": "shell", "resource": "ls *", "effect": "allow" },
+  ],
+  "plugins": ["./packages/@cortexkit/opencode-magic-context"],
+  "policies": [
+    { "action": "provider.use", "resource": "*", "effect": "deny" },
+    { "action": "provider.use", "resource": "cohere", "effect": "allow" },
+  ],
+  "providers": {
     "cohere": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "Cohere",
-      "options": {
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
         "baseURL": "https://api.cohere.com/compatibility/v1",
         "apiKey": "{env:CO_API_KEY}",
       },
@@ -150,21 +167,21 @@
         },
         "command-r7b-12-2024": {
           "name": "Command R7B 12-2024",
+          "capabilities": { "reasoning": { "supported": false } },
           "cost": { "input": 0.0375, "output": 0.15 },
           "limit": { "context": 128000, "output": 4000 },
-          "reasoning": false,
         },
         "command-r-08-2024": {
           "name": "Command R 08-2024",
+          "capabilities": { "reasoning": { "supported": false } },
           "cost": { "input": 0.15, "output": 0.6 },
           "limit": { "context": 128000, "output": 4000 },
-          "reasoning": false,
         },
         "command-r-plus-08-2024": {
           "name": "Command R+ 08-2024",
+          "capabilities": { "reasoning": { "supported": false } },
           "cost": { "input": 2.5, "output": 10 },
           "limit": { "context": 128000, "output": 4000 },
-          "reasoning": false,
         },
         "north-mini-code-1-0": {
           "name": "North Mini Code",
@@ -175,4 +192,6 @@
       },
     },
   },
+  "update": "disable",
+  "websearch": { "provider": "tavily" },
 }

@@ -37,7 +37,7 @@
 # shellcheck shell=bash
 
 outline() {
-  ast-grep --config="${SGCONFIG}" outline --lang=jsonnet --stdin --json=stream "${@}"
+  ast-grep --config="${SGCONFIG}" outline --custom-languages=allow --lang=jsonnet --stdin --json=stream "${@}"
 }
 
 # $1 actual outline JSON; expected JSON on stdin.

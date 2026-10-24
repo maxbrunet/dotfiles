@@ -51,7 +51,7 @@
       flake = false;
     };
     compound-engineering-plugin = {
-      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.31.0";
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.32.0";
       flake = false;
     };
     google-skills = {
