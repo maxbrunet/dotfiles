@@ -41,8 +41,27 @@ in
 }
 EOF
 
-nix-update \
-  --file "${WRAPPER}" \
-  --version-regex '^v(\d+\.\d+\.\d+)$' \
-  --subpackage node_modules \
-  opencode-magic-context
+package_src() {
+  nix build \
+    --extra-experimental-features 'nix-command flakes' \
+    --impure \
+    --no-link \
+    --print-out-paths \
+    --expr "(import \"${WRAPPER}\" { }).opencode-magic-context.src"
+}
+
+update_args=(--file "${WRAPPER}" --version-regex '^v(\d+\.\d+\.\d+)$')
+old_lock="$(sha256sum <"$(package_src)/bun.lock")"
+
+# Update the version and source hash first, without rebuilding node_modules.
+nix-update "${update_args[@]}" opencode-magic-context
+
+new_lock="$(sha256sum <"$(package_src)/bun.lock")"
+
+# Only rebuild node_modules when bun.lock changed.
+if [[ "${old_lock}" != "${new_lock}" ]]; then
+  update_args+=(--subpackage node_modules)
+  nix-update "${update_args[@]}" opencode-magic-context
+else
+  echo "bun.lock unchanged; skipping node_modules update."
+fi

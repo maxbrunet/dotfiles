@@ -51,7 +51,7 @@
       flake = false;
     };
     compound-engineering-plugin = {
-      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.32.0";
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.34.0";
       flake = false;
     };
     google-skills = {
@@ -376,6 +376,9 @@
                     echo ">>> Running $updater"
                     "$updater"
                   done
+
+                  echo '>>> Updating Podman machine image...'
+                  scripts/update-podman-machine-image.sh
                 '';
               }
             }/bin/update-all";

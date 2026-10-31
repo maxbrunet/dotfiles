@@ -12,8 +12,8 @@ let
   node_modules =
     finalAttrs:
     stdenvNoCC.mkDerivation {
-      pname = "${finalAttrs.pname}-node_modules";
-      inherit (finalAttrs) version src;
+      name = "${finalAttrs.pname}-node_modules";
+      inherit (finalAttrs) src;
 
       __structuredAttrs = true;
       strictDeps = true;
@@ -66,14 +66,14 @@ let
       # references store paths
       dontFixup = true;
 
-      outputHash = "sha256-xhuLxbOQPxxGB/gF1nP/l9ClzsTxjY7J9Ly7Rai3Quo=";
+      outputHash = "sha256-srMyHopvELAH0L5+m0gLT1q5P+8kmGG1gdWGQXvzams=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode-magic-context";
-  version = "0.49.20";
+  version = "0.49.34";
 
   __structuredAttrs = true;
   strictDeps = true;
@@ -82,7 +82,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "cortexkit";
     repo = "magic-context";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-s3Bxg6O3lxikYqPGW2QvedypUBWcTRzIUC9Q5/JHRfU=";
+    hash = "sha256-kxbXqC4aCmzTYGiabDZ1kdmFV/vfTCwMAJVj6fAj+gQ=";
   };
 
   nativeBuildInputs = [
