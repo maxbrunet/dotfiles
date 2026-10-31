@@ -5,5 +5,8 @@
   },
   "keybinds": {
     "app.exit": "ctrl+d,<leader>q"
+  },
+  "session": {
+    "verbosity": "high"
   }
 }

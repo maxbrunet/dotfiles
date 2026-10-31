@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Start gopls's MCP server at the nearest Go module or workspace.
+#
+# OpenCode advertises its location directory as an MCP root, and gopls watches
+# every advertised root recursively. Outside a Go project, starting gopls would
+# watch the whole location. Serve an empty MCP tool list instead so the client
+# sees a healthy server with no tools.
+set -euo pipefail
+
+dir="$(pwd -P)"
+while [[ "${dir}" != "/" && "${dir}" != "${HOME:-}" ]]; do
+  if [[ -f "${dir}/go.work" || -f "${dir}/go.mod" ]]; then
+    cd "${dir}"
+    exec gopls mcp "$@"
+  fi
+  dir="$(dirname "${dir}")"
+done
+
+# Minimal MCP server for non-Go locations. It answers the handshake and lists no
+# tools, so OpenCode marks the server connected instead of failed.
+while IFS= read -r line; do
+  [[ -z "${line}" ]] && continue
+  method="$(jq -r '.method // empty' <<<"${line}" 2>/dev/null || true)"
+  id="$(jq -c '.id // empty' <<<"${line}" 2>/dev/null || true)"
+  [[ -z "${id}" ]] && continue
+
+  case "${method}" in
+    initialize)
+      version="$(jq -r '.params.protocolVersion // "2025-06-18"' <<<"${line}" 2>/dev/null || true)"
+      jq --unbuffered -c --arg version "${version}" \
+        '{jsonrpc:"2.0",id:.id,result:{protocolVersion:$version,capabilities:{tools:{}},serverInfo:{name:"gopls-mcp",version:"0.0.0"}}}' \
+        <<<"${line}"
+      ;;
+    tools/list)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,result:{tools:[]}}' <<<"${line}"
+      ;;
+    prompts/list)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,result:{prompts:[]}}' <<<"${line}"
+      ;;
+    resources/list)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,result:{resources:[]}}' <<<"${line}"
+      ;;
+    resources/templates/list)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,result:{resourceTemplates:[]}}' <<<"${line}"
+      ;;
+    ping)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,result:{}}' <<<"${line}"
+      ;;
+    *)
+      jq --unbuffered -c '{jsonrpc:"2.0",id:.id,error:{code:-32601,message:"Method not found"}}' <<<"${line}"
+      ;;
+  esac
+done

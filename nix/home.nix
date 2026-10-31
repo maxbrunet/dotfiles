@@ -33,6 +33,9 @@ in
     ".local/bin/brightness.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/brightness.sh;
     };
+    ".local/bin/gopls-mcp" = {
+      source = ../.local/bin/gopls-mcp;
+    };
     ".local/bin/volume.sh" = lib.mkIf stdenv.isLinux {
       source = ../.local/bin/volume.sh;
     };
@@ -206,6 +209,7 @@ in
     };
     "opencode/cli.json" = {
       source = ../.config/opencode/cli.json;
+      force = true;
     };
     "opencode/opencode.jsonc" = {
       source = ../.config/opencode/opencode.jsonc;

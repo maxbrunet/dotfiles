@@ -15,6 +15,11 @@
     "nixfmt": {},
     "rustfmt": {},
     "terraform": {},
+    // Built-in formatters are enabled whenever their executable is present.
+    "prettier": { "disabled": true },
+    "ruff": { "disabled": true },
+    "uv": { "disabled": true },
+    "shfmt": { "disabled": true },
   },
   "lsp": {
     "bash": {
@@ -97,9 +102,7 @@
     "servers": {
       "gopls": {
         "type": "local",
-        "command": ["gopls", "mcp"],
-        "cwd": ".",
-        "disabled": false,
+        "command": ["gopls-mcp"],
       },
       "tavily": {
         "type": "remote",
@@ -107,7 +110,6 @@
         "headers": {
           "Authorization": "Bearer {env:TAVILY_API_KEY}",
         },
-        "disabled": false,
       },
     },
   },
