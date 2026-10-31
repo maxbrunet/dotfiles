@@ -301,6 +301,9 @@ in
   services.tlp.settings = {
     START_CHARGE_THRESH_BAT0 = 75;
     STOP_CHARGE_THRESH_BAT0 = 80;
+    # Wi-Fi power save (TLP default on battery) makes the the Wi-Fi adapter miss
+    # beacons and drop the connection on weak networks.
+    WIFI_PWR_ON_BAT = "off";
   };
 
   services.tumbler.enable = true;
