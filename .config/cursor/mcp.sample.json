@@ -1,20 +1,5 @@
 {
   "mcpServers": {
-    "gopls": {
-      "type": "stdio",
-      "command": "gopls",
-      "args": ["mcp"],
-      "env": {
-        "GOBIN": "${GOBIN}",
-        "GOFLAGS": "${GOFLAGS}",
-        "GOPATH": "${GOPATH}",
-        "GOPRIVATE": "${GOPRIVATE}",
-        "GOTOOLCHAIN": "${GOTOOLCHAIN}",
-        "HOME": "${HOME}",
-        "PATH": "${PATH}",
-        "PKG_CONFIG_PATH": "${PKG_CONFIG_PATH}"
-      }
-    },
     "linear": {
       "url": "https://mcp.linear.app/mcp/"
     },

@@ -20,6 +20,7 @@ export AZURE_CONFIG_DIR="${CONFIG_HOME}/azure"
 export CURSOR_CONFIG_DIR="${CONFIG_HOME}/cursor"
 export DOCKER_CONFIG="${CONFIG_HOME}/docker"
 export NPM_CONFIG_USERCONFIG="${CONFIG_HOME}/npm/npmrc"
+export OCI_CLI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
 export OCI_CONFIG_FILE="${CONFIG_HOME}/oci/config"
 
 # Data

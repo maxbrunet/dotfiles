@@ -1,13 +1,6 @@
 {
   "permissions": {
     "allow": [
-      "Mcp(gopls:go_diagnostics)",
-      "Mcp(gopls:go_file_context)",
-      "Mcp(gopls:go_package_api)",
-      "Mcp(gopls:go_search)",
-      "Mcp(gopls:go_symbol_references)",
-      "Mcp(gopls:go_vulncheck)",
-      "Mcp(gopls:go_workspace)",
       "Mcp(linear:get_attachment)",
       "Mcp(linear:get_diff)",
       "Mcp(linear:get_diff_threads)",
