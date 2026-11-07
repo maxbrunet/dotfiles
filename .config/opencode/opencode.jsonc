@@ -49,69 +49,6 @@
     { "action": "provider.use", "resource": "*", "effect": "deny" },
     { "action": "provider.use", "resource": "cohere", "effect": "allow" },
   ],
-  "providers": {
-    "cohere": {
-      "name": "Cohere",
-      "package": "aisdk:@ai-sdk/openai-compatible",
-      "settings": {
-        "baseURL": "https://api.cohere.com/compatibility/v1",
-        "apiKey": "{env:CO_API_KEY}",
-      },
-      "models": {
-        "command-a-03-2025": {
-          "name": "Command A 03-2025",
-          "capabilities": { "reasoning": { "supported": false } },
-          "cost": { "input": 2.5, "output": 10 },
-          "limit": { "context": 256000, "output": 8000 },
-        },
-        "command-a-plus-05-2026": {
-          "name": "Command A+ 05-2026",
-          "capabilities": {
-            "reasoning": { "supported": true, "effort": ["none", "high"] },
-          },
-          // Free until rate limits are reached (20 req/min)
-          "cost": { "input": 0, "output": 0 },
-          "limit": { "context": 128000, "output": 64000 },
-        },
-        "command-a-reasoning-08-2025": {
-          "name": "Command A Reasoning 08-2025",
-          "capabilities": {
-            "reasoning": { "supported": true, "effort": ["none", "high"] },
-          },
-          // Free until rate limits are reached (20 req/min)
-          "cost": { "input": 0, "output": 0 },
-          "limit": { "context": 256000, "output": 32000 },
-        },
-        "command-r7b-12-2024": {
-          "name": "Command R7B 12-2024",
-          "capabilities": { "reasoning": { "supported": false } },
-          "cost": { "input": 0.0375, "output": 0.15 },
-          "limit": { "context": 128000, "output": 4000 },
-        },
-        "command-r-08-2024": {
-          "name": "Command R 08-2024",
-          "capabilities": { "reasoning": { "supported": false } },
-          "cost": { "input": 0.15, "output": 0.6 },
-          "limit": { "context": 128000, "output": 4000 },
-        },
-        "command-r-plus-08-2024": {
-          "name": "Command R+ 08-2024",
-          "capabilities": { "reasoning": { "supported": false } },
-          "cost": { "input": 2.5, "output": 10 },
-          "limit": { "context": 128000, "output": 4000 },
-        },
-        "north-mini-code-1-0": {
-          "name": "North Mini Code",
-          "capabilities": {
-            "reasoning": { "supported": true, "effort": ["none", "high"] },
-          },
-          // Free until rate limits are reached (20 req/min)
-          "cost": { "input": 0, "output": 0 },
-          "limit": { "context": 256000, "output": 64000 },
-        },
-      },
-    },
-  },
   "update": "disable",
   "websearch": { "provider": "tavily" },
   "worktree": { "directory": ".worktrees" },
