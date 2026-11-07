@@ -4,6 +4,7 @@
 
 - When working with Go files, always use the `golang-how-to` skill and load any
   Go skills discovered from it as they become relevant to the task.
+- When working with Rust files, always use the `rust-best-practices` skill.
 
 ## Code search
 

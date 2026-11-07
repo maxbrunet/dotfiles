@@ -134,6 +134,23 @@
         "type": "github"
       }
     },
+    "beautiful-rust": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793369775,
+        "narHash": "sha256-Mq7CFygDuuK5er1+pBwgItGVjwN4jPPqpqG7khBpPTI=",
+        "owner": "morganlinton",
+        "repo": "BeautifulRust",
+        "rev": "40db61c6fee84bd121cf288755f0e2f22a50e995",
+        "type": "github"
+      },
+      "original": {
+        "owner": "morganlinton",
+        "ref": "v1.5.0",
+        "repo": "BeautifulRust",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -408,6 +425,7 @@
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "beautiful-rust": "beautiful-rust",
         "cc-skills-golang": "cc-skills-golang",
         "compound-engineering-plugin": "compound-engineering-plugin",
         "darwin": "darwin",

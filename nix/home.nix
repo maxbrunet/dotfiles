@@ -62,6 +62,11 @@ in
         subdir = "ast-grep/skills/outline";
         filter.maxDepth = 1;
       };
+      beautiful-rust = {
+        input = "beautiful-rust";
+        subdir = "skills";
+        filter.maxDepth = 1;
+      };
       golang = {
         input = "cc-skills-golang";
         subdir = "skills";

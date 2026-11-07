@@ -46,6 +46,10 @@
       url = "github:tinted-theming/base16-shell";
       flake = false;
     };
+    beautiful-rust = {
+      url = "github:morganlinton/BeautifulRust/v1.5.0";
+      flake = false;
+    };
     cc-skills-golang = {
       url = "github:samber/cc-skills-golang/v2.0.0";
       flake = false;
