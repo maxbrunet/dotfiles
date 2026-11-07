@@ -2,6 +2,28 @@
   "$schema": "https://opencode.ai/config.json",
   "compaction": { "auto": false }, // Replaced by Magic Context
   "model": "cohere/north-mini-code-1-0",
+  "agents": {
+    "plan": {
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": ".opencode/plans/*",
+          "effect": "allow",
+        },
+        {
+          "action": "edit",
+          "resource": "/tmp/compound-engineering-*",
+          "effect": "allow",
+        },
+        { "action": "edit", "resource": "docs/plans/*", "effect": "allow" },
+        {
+          "action": "external_directory",
+          "resource": "/tmp/compound-engineering-*",
+          "effect": "allow",
+        },
+      ],
+    },
+  },
   "formatter": {
     "d2": {
       "command": ["d2", "fmt", "$FILE"],
