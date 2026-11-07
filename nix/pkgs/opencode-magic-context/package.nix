@@ -73,7 +73,7 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode-magic-context";
-  version = "0.49.34";
+  version = "0.49.40";
 
   __structuredAttrs = true;
   strictDeps = true;
@@ -82,7 +82,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "cortexkit";
     repo = "magic-context";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-kxbXqC4aCmzTYGiabDZ1kdmFV/vfTCwMAJVj6fAj+gQ=";
+    hash = "sha256-2le29HVNBNAf17ZTXarC+zJA7rbPIBCZrjMaqca2Djk=";
   };
 
   nativeBuildInputs = [
