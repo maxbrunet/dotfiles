@@ -24,7 +24,15 @@ in
   environment.systemPackages =
     common.packages
     ++ (with pkgs; [
-      alacritty-graphics
+      (alacritty-graphics.overrideAttrs (prev: {
+        patches = (prev.patches or [ ]) ++ [
+          # Add NSLocalNetworkUsageDescription to Info.plist
+          (fetchpatch2 {
+            url = "https://github.com/alacritty/alacritty/commit/29dc55375da817d53540f4caefbe708703c57b07.patch?full_index=1";
+            hash = "sha256-ozJ2Mh3rgu8QcOkO9Y9lFO3bqb932HFJrDPxEbGLWb4=";
+          })
+        ];
+      }))
       caffeine
       coreutils-prefixed
       (linkFarm "docker-compat" [
@@ -42,7 +50,7 @@ in
       gnused
       gnutar
       librewolf
-      localsend
+      unstable.localsend
       netcat-gnu
       pinentry_mac
       podman
