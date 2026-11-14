@@ -1,0 +1,280 @@
+From 3809a5f54909b3ce7f5bd19b807976edc175f2f3 Mon Sep 17 00:00:00 2001
+From: AILIFE <ailife8881@gmail.com>
+Date: Mon, 19 Oct 2026 07:45:52 +0800
+Subject: [PATCH 1/2] fix(session): keep permission prompts in subagent views
+
+Viewing a subagent dropped its permission requests, so the dialog never
+opened and auto-accept approved nothing. Keep the viewed session and its
+descendants, and do not let the child composer cover the prompt.
+---
+ .../session-composer-region-controller.ts     |  3 +-
+ .../app/src/session/requests/auto-approve.ts  | 10 ++++--
+ packages/app/src/session/requests/model.ts    |  7 ++--
+ packages/tui/src/routes/session/index.tsx     | 36 +++++++++++++------
+ packages/tui/src/util/session.ts              | 24 +++++++++++++
+ packages/tui/test/util/session.test.ts        | 19 +++++++++-
+ 6 files changed, 82 insertions(+), 17 deletions(-)
+
+diff --git a/packages/app/src/session/composer/session-composer-region-controller.ts b/packages/app/src/session/composer/session-composer-region-controller.ts
+index 5fe0e7a7c6..e050048f80 100644
+--- a/packages/app/src/session/composer/session-composer-region-controller.ts
++++ b/packages/app/src/session/composer/session-composer-region-controller.ts
+@@ -21,7 +21,8 @@ export function createSessionComposerRegionController(input: {
+     setDockRef: input.setDockRef,
+     parentID: input.parentID,
+     child: () => !!input.parentID(),
+-    showComposer: () => !input.state.blocked() || !!input.parentID(),
++    // A subagent placeholder used to stay up even while blocked, covering the permission dock.
++    showComposer: () => !input.state.blocked(),
+   }
+ }
+ 
+diff --git a/packages/app/src/session/requests/auto-approve.ts b/packages/app/src/session/requests/auto-approve.ts
+index 6c82b2149c..885984b922 100644
+--- a/packages/app/src/session/requests/auto-approve.ts
++++ b/packages/app/src/session/requests/auto-approve.ts
+@@ -46,8 +46,14 @@ export function createPermissionAutoApprover(input: { sdk: ServerSDK; data: Data
+   createEffect(() => {
+     if (!enabled()) return
+ 
+-    for (const session of input.data.session.list()) {
+-      for (const request of input.data.session.permission.list(session.id) ?? []) approve(request)
++    // session.list() misses a subagent whose permissions were synced before its info landed.
++    // Those requests are otherwise invisible while auto-approve hides the dock.
++    const ids = new Set([
++      ...input.data.session.list().map((session) => session.id),
++      ...input.data.session.permission.sessions(),
++    ])
++    for (const id of ids) {
++      for (const request of input.data.session.permission.list(id) ?? []) approve(request)
+     }
+   })
+ 
+diff --git a/packages/app/src/session/requests/model.ts b/packages/app/src/session/requests/model.ts
+index 915b99d1fd..93ee44b99f 100644
+--- a/packages/app/src/session/requests/model.ts
++++ b/packages/app/src/session/requests/model.ts
+@@ -24,9 +24,10 @@ export function createSessionRequestModel() {
+     const id = params.id
+ 
+     if (!id || serverSDK.connection.status() !== "connected") return
+-    void Promise.all([data.shell.sync({ directory: sdk().directory }), data.session.permission.sync(id)]).catch(
+-      () => undefined,
+-    )
++    void Promise.all([
++      data.shell.sync({ directory: sdk().directory }),
++      ...sessionTreeIDs(data.session.list(), id).map((sessionID) => data.session.permission.sync(sessionID)),
++    ]).catch(() => undefined)
+   })
+ 
+   // Only a running Session can hold a pending form, and events keep loaded forms current. Comparing by value
+diff --git a/packages/tui/src/routes/session/index.tsx b/packages/tui/src/routes/session/index.tsx
+index ce5d3cbc29..c578585664 100644
+--- a/packages/tui/src/routes/session/index.tsx
++++ b/packages/tui/src/routes/session/index.tsx
+@@ -115,6 +115,7 @@ import {
+ } from "./rows"
+ import { switchLabel } from "../../util/model"
+ import { findMessageBoundary, messageNavigationSlack } from "./message-navigation"
++import { sessionTreeIDs } from "../../util/session"
+ import { stringWidth } from "../../util/string-width"
+ import { useArgs } from "../../context/args"
+ import { withTimestampedFallback } from "@opencode/util/session-title-fallback"
+@@ -200,16 +201,21 @@ export function Session(props: {
+     epilogue.session({ title, sessionID: session()?.id })
+   })
+   onCleanup(() => epilogue.session())
+-  const descendantSessionIDs = createMemo(() => {
+-    if (session()?.parentID) return []
+-    return data.session.family(route.sessionID).filter((id) => id !== route.sessionID)
+-  })
+-  const permissions = createMemo(() => {
+-    if (session()?.parentID) return []
+-    return [route.sessionID, ...descendantSessionIDs()].flatMap(
+-      (sessionID) => data.session.permission.list(sessionID) ?? [],
++  const treeSessionIDs = createMemo(() => {
++    const root = route.sessionID
++    const family = data.session.family(root)
++    const known = family.includes(root) ? family : [root, ...family]
++    return sessionTreeIDs(
++      known.map((id) => ({ id, parentID: data.session.get(id)?.parentID })),
++      root,
+     )
+   })
++  const descendantSessionIDs = createMemo(() => treeSessionIDs().filter((id) => id !== route.sessionID))
++  // Child views used to drop every request, so the prompt never opened and auto-accept
++  // approved nothing. Keep this session and its descendants.
++  const permissions = createMemo(() =>
++    treeSessionIDs().flatMap((sessionID) => data.session.permission.list(sessionID) ?? []),
++  )
+   const promptedPermissions = createMemo(() => (local.permission.mode === "autoaccept" ? [] : permissions()))
+   const forms = createMemo(() => {
+     const global = data.session.form.list("global", location()) ?? []
+@@ -1584,7 +1590,10 @@ export function Session(props: {
+               <Slot path="session.composer.top" input={{ sessionID: route.sessionID }} />
+               <Composer
+                 sessionID={route.sessionID}
+-                open={composer.open || (!!session()?.parentID && forms().length === 0)}
++                open={
++                  promptedPermissions().length === 0 &&
++                  (composer.open || (!!session()?.parentID && forms().length === 0))
++                }
+                 defaultTab={composer.tab ?? (session()?.parentID ? "subagents" : undefined)}
+                 onClose={() => {
+                   const parent = session()?.parentID
+@@ -1598,7 +1607,14 @@ export function Session(props: {
+                 visibleTerminalID={props.visibleTerminalID}
+               />
+               <Switch>
+-                <Match when={composer.open || (!!session()?.parentID && forms().length === 0)}>{null}</Match>
++                <Match
++                  when={
++                    promptedPermissions().length === 0 &&
++                    (composer.open || (!!session()?.parentID && forms().length === 0))
++                  }
++                >
++                  {null}
++                </Match>
+                 <Match when={promptedPermissions().length > 0}>
+                   <Show when={promptedPermissions()[0]?.id} keyed>
+                     {(_) => {
+diff --git a/packages/tui/src/util/session.ts b/packages/tui/src/util/session.ts
+index c7213e2205..ea68560e88 100644
+--- a/packages/tui/src/util/session.ts
++++ b/packages/tui/src/util/session.ts
+@@ -7,6 +7,30 @@ type SessionNode = {
+   parentID?: string | null
+ }
+ 
++// The viewed session plus descendants. Ancestors and siblings stay out so a
++// subagent view does not inherit the parent's blockers, but its own requests
++// remain visible and auto-acceptable.
++export function sessionTreeIDs<T extends SessionNode>(sessions: readonly T[], sessionID: string) {
++  const children = new Map<string, string[]>()
++  for (const session of sessions) {
++    if (!session.parentID) continue
++    const list = children.get(session.parentID)
++    if (list) list.push(session.id)
++    else children.set(session.parentID, [session.id])
++  }
++
++  const ids = [sessionID]
++  const seen = new Set([sessionID])
++  for (const id of ids) {
++    for (const child of children.get(id) ?? []) {
++      if (seen.has(child)) continue
++      seen.add(child)
++      ids.push(child)
++    }
++  }
++  return ids
++}
++
+ export function sessionFamily<T extends SessionNode>(sessions: readonly T[], sessionID: string) {
+   const byID = new Map(sessions.map((session) => [session.id, session]))
+   const current = byID.get(sessionID)
+diff --git a/packages/tui/test/util/session.test.ts b/packages/tui/test/util/session.test.ts
+index 9adc00617b..921050650f 100644
+--- a/packages/tui/test/util/session.test.ts
++++ b/packages/tui/test/util/session.test.ts
+@@ -1,5 +1,5 @@
+ import { describe, expect, test } from "bun:test"
+-import { sessionFamily } from "../../src/util/session"
++import { sessionFamily, sessionTreeIDs } from "../../src/util/session"
+ 
+ describe("util.session", () => {
+   test("flattens nested subagents from any session in the family", () => {
+@@ -13,6 +13,23 @@ describe("util.session", () => {
+       { id: "grandchild-b", parentID: "child-b" },
+     ]
+ 
++    expect(sessionTreeIDs(sessions, "child-a")).toEqual([
++      "child-a",
++      "grandchild-a",
++      "grandchild-a2",
++      "great-grandchild-a",
++    ])
++    expect(sessionTreeIDs(sessions, "root")).toEqual([
++      "root",
++      "child-a",
++      "child-b",
++      "grandchild-a",
++      "grandchild-a2",
++      "grandchild-b",
++      "great-grandchild-a",
++    ])
++    expect(sessionTreeIDs([], "child-a")).toEqual(["child-a"])
++
+     expect(sessionFamily(sessions, "great-grandchild-a")).toEqual([
+       { session: sessions[1], prefix: "" },
+       { session: sessions[2], prefix: "├─ " },
+-- 
+2.54.0
+
+
+From b4f150c9747f2152fe1431e95e583accd2c20ff7 Mon Sep 17 00:00:00 2001
+From: AILIFE <ailife8881@gmail.com>
+Date: Mon, 19 Oct 2026 09:52:38 +0800
+Subject: [PATCH 2/2] fix(session): keep pickers and project auto-accept
+
+A pending prompt no longer hides an explicitly opened picker. Unloaded
+sessions go through consider() so a project auto-accept override still applies.
+---
+ packages/app/src/session/requests/auto-approve.ts | 12 +++++++-----
+ packages/tui/src/routes/session/index.tsx         |  8 ++++----
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/packages/app/src/session/requests/auto-approve.ts b/packages/app/src/session/requests/auto-approve.ts
+index 885984b922..36d2c27fda 100644
+--- a/packages/app/src/session/requests/auto-approve.ts
++++ b/packages/app/src/session/requests/auto-approve.ts
+@@ -48,13 +48,15 @@ export function createPermissionAutoApprover(input: { sdk: ServerSDK; data: Data
+ 
+     // session.list() misses a subagent whose permissions were synced before its info landed.
+     // Those requests are otherwise invisible while auto-approve hides the dock.
+-    const ids = new Set([
+-      ...input.data.session.list().map((session) => session.id),
+-      ...input.data.session.permission.sessions(),
+-    ])
+-    for (const id of ids) {
++    // Unknown sessions must go through consider() so a project override is not skipped.
++    const listed = new Set(input.data.session.list().map((session) => session.id))
++    for (const id of listed) {
+       for (const request of input.data.session.permission.list(id) ?? []) approve(request)
+     }
++    for (const id of input.data.session.permission.sessions()) {
++      if (listed.has(id)) continue
++      for (const request of input.data.session.permission.list(id) ?? []) consider(request)
++    }
+   })
+ 
+   // An incomplete sweep leaves pending requests hidden with no later trigger
+diff --git a/packages/tui/src/routes/session/index.tsx b/packages/tui/src/routes/session/index.tsx
+index c578585664..70dde4a2e4 100644
+--- a/packages/tui/src/routes/session/index.tsx
++++ b/packages/tui/src/routes/session/index.tsx
+@@ -1591,8 +1591,8 @@ export function Session(props: {
+               <Composer
+                 sessionID={route.sessionID}
+                 open={
+-                  promptedPermissions().length === 0 &&
+-                  (composer.open || (!!session()?.parentID && forms().length === 0))
++                  composer.open ||
++                  (!!session()?.parentID && forms().length === 0 && promptedPermissions().length === 0)
+                 }
+                 defaultTab={composer.tab ?? (session()?.parentID ? "subagents" : undefined)}
+                 onClose={() => {
+@@ -1609,8 +1609,8 @@ export function Session(props: {
+               <Switch>
+                 <Match
+                   when={
+-                    promptedPermissions().length === 0 &&
+-                    (composer.open || (!!session()?.parentID && forms().length === 0))
++                    composer.open ||
++                    (!!session()?.parentID && forms().length === 0 && promptedPermissions().length === 0)
+                   }
+                 >
+                   {null}
+-- 
+2.54.0
+

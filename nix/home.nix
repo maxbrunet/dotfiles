@@ -42,6 +42,9 @@ in
     ".zshrc" = {
       source = ../.zshrc;
     };
+    "Library/Application Support/ast-grep/trusted-configs.json" = lib.mkIf stdenv.isDarwin {
+      text = builtins.toJSON [ "${astGrepConfig}" ];
+    };
   };
 
   # Disable installing packages in user profile.
@@ -181,8 +184,7 @@ in
     "ast-grep/outline/jsonnet.yml" = {
       source = ../.config/ast-grep/outline/jsonnet.yml;
     };
-    "ast-grep/trusted-configs.json" = {
-      force = true;
+    "ast-grep/trusted-configs.json" = lib.mkIf stdenv.isLinux {
       text = builtins.toJSON [ "${astGrepConfig}" ];
     };
     "azure/config" = {
@@ -254,7 +256,7 @@ in
       podman-machine-default = {
         autoStart = true;
         cpus = 4;
-        image = "docker://quay.io/podman/machine-os@sha256:1e6df7859f182b96e96f437aed66f96394af67bcbabb7596287f9819d35bb688";
+        image = "docker://quay.io/podman/machine-os@sha256:7a7d398fda3f41cc6a161ec82c28221e48cb5705ff4479f25d097bbf76ee7542";
         memory = 4096;
         # https://github.com/nix-community/home-manager/pull/9368
         volumes = [

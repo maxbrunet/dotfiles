@@ -47,7 +47,7 @@
       flake = false;
     };
     beautiful-rust = {
-      url = "github:morganlinton/BeautifulRust/v1.5.0";
+      url = "github:morganlinton/BeautifulRust/v1.6.0";
       flake = false;
     };
     cc-skills-golang = {
@@ -55,7 +55,7 @@
       flake = false;
     };
     compound-engineering-plugin = {
-      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.36.1";
+      url = "github:EveryInc/compound-engineering-plugin/compound-engineering-v3.38.1";
       flake = false;
     };
     google-skills = {

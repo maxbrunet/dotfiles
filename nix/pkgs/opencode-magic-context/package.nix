@@ -66,14 +66,14 @@ let
       # references store paths
       dontFixup = true;
 
-      outputHash = "sha256-srMyHopvELAH0L5+m0gLT1q5P+8kmGG1gdWGQXvzams=";
+      outputHash = "sha256-kL1KDlGeFkD+xggj2QqXhmD6xphsMiyF04NWi3NTJ2o=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode-magic-context";
-  version = "0.49.40";
+  version = "0.49.55";
 
   __structuredAttrs = true;
   strictDeps = true;
@@ -82,7 +82,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "cortexkit";
     repo = "magic-context";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-2le29HVNBNAf17ZTXarC+zJA7rbPIBCZrjMaqca2Djk=";
+    hash = "sha256-cRKLUBIw5Ntv4vxSyYJevDLmTU1/fKuJDJjCLmB2M+A=";
   };
 
   nativeBuildInputs = [

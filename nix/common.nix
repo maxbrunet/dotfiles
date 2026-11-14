@@ -73,7 +73,14 @@
     nmap
     nodejs
     oci-cli
-    unstable.opencode
+    (unstable.opencode.overrideAttrs (prev: {
+      patches = (prev.patches or [ ]) ++ [
+        # https://github.com/anomalyco/opencode/pull/62043
+        ./pkgs/opencode/0001-fix-tui-auto-approve-background-tab-permissions.patch
+        # https://github.com/anomalyco/opencode/pull/56906
+        ./pkgs/opencode/0002-fix-session-keep-permission-prompts-in-subagent-views.patch
+      ];
+    }))
     perl
     pnpm
     podman-compose
