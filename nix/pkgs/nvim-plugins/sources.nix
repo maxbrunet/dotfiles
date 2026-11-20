@@ -254,12 +254,12 @@
     };
   };
   "nvim-lspconfig" = {
-    version = "v2.12.0";
+    version = "v2.13.0";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "v2.12.0";
-      hash = "sha256-FPk6fSdp13byZBp4pAPng1WefLEGoeauNcw62s/+i2Y=";
+      rev = "v2.13.0";
+      hash = "sha256-FywWiEGEuauWQzOONBLwxzc5cPfrMT/v2b6CTcYj7Nw=";
     };
   };
   "nvim-nio" = {
