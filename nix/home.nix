@@ -256,7 +256,7 @@ in
       podman-machine-default = {
         autoStart = true;
         cpus = 4;
-        image = "docker://quay.io/podman/machine-os@sha256:7a7d398fda3f41cc6a161ec82c28221e48cb5705ff4479f25d097bbf76ee7542";
+        image = "docker://quay.io/podman/machine-os@sha256:2a3824f94f588b6724c3ef5320aca7dcac41876cfee80fc16c9c9621868fcf02";
         memory = 4096;
         # https://github.com/nix-community/home-manager/pull/9368
         volumes = [
