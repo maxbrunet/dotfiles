@@ -73,6 +73,9 @@ in
   # idempotent because taps are managed declaratively via nix-homebrew
   homebrew.onActivation.upgrade = true;
 
+  # GUI apps launched by launchd inherit this instead of the bare system PATH.
+  launchd.user.envVariables.PATH = "/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+
   networking.applicationFirewall.enable = true;
   networking.applicationFirewall.blockAllIncoming = true;
   networking.dns = [ "127.0.0.1" ]; # dnscrypt-proxy
